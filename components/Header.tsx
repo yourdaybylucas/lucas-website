@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -23,8 +24,15 @@ export default function Header() {
         <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${headerBg}`}>
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 {/* Brand */}
-                <Link href="/" className="font-sans text-lg tracking-zissou font-bold uppercase text-lucas-navy hover:opacity-70 transition-opacity">
-                    LUCAS
+                <Link href="/" className="hover:opacity-70 transition-opacity flex items-center">
+                    <Image 
+                        src="/logos/Icon Lucas Transparent.png" 
+                        alt="LUCAS" 
+                        width={32} 
+                        height={32} 
+                        className="object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Nav */}
