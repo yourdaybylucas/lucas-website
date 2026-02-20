@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
-import Image from "next/image"; //
+import Image from "next/image";
 
 const partners = [
   { name: "The Birds Papaya", url: "https://www.instagram.com/thebirdspapaya/?hl=en" },
@@ -29,6 +29,20 @@ const featuredFilms = [
   { id: "CYWJBr73jrk", title: "Featured Film 06" }
 ];
 
+// Animation variants for staggered text reveals
+const fadeUpContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
+
 export default function Home() {
   return (
     <main className="relative min-h-[200vh] bg-lucas-cream overflow-hidden">
@@ -40,13 +54,8 @@ export default function Home() {
         <motion.div
           className="flex whitespace-nowrap gap-16 md:gap-32 w-max"
           animate={{ x: [0, -1000] }}
-          transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: 25
-          }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
         >
-          {/* Duplicate the list twice so it loops seamlessly */}
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-16 md:gap-32 items-center">
               {partners.map((partner, idx) => (
@@ -59,67 +68,84 @@ export default function Home() {
         </motion.div>
       </section>
 
-{/* about & philosophy */}
-      <section id="about" className="relative z-10 flex min-h-screen items-center justify-center bg-lucas-cream px-6 py-32">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
+      {/* about & philosophy */}
+      <section id="about" className="relative z-10 flex min-h-screen items-center justify-center bg-lucas-cream px-6 py-32 overflow-hidden">
+        
+        {/* The lonely orange dot from the design */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="absolute bottom-32 left-10 lg:left-32 w-3 h-3 rounded-full bg-lucas-orange hidden md:block"
+        />
+
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-24 lg:gap-16 w-full">
           
           {/* Left: The Layered Portrait */}
-          <div className="w-full md:w-5/12 relative mt-16 md:mt-0 px-4 md:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
+          >
             {/* The Anchor Box */}
-            <div className="relative aspect-square w-full max-w-[360px] mx-auto bg-lucas-slate/10">
+            <div className="relative w-full max-w-[340px] aspect-square bg-[#e2e3df]">
               
-              {/* The textured background image */}
-              <Image
-                src="/images/Lucas Background Small.png"
-                alt="Texture"
-                fill
-                className="object-cover opacity-60 mix-blend-multiply"
-              />
-
-              {/* Back Layer: Giant Typography */}
-              <h2 className="absolute -top-10 md:-top-14 left-1/2 -translate-x-1/2 font-sans font-bold text-7xl md:text-[7rem] text-lucas-navy tracking-tight z-0 select-none pointer-events-none">
+              {/* Back Layer: Giant Typography bleeding off the edges */}
+              <h2 className="absolute top-[8%] -left-[25%] md:-left-[35%] font-sans font-black text-[6rem] md:text-[8rem] text-lucas-navy tracking-tight leading-none z-0 select-none pointer-events-none">
                 LUCAS
               </h2>
 
               {/* Front Layer: Transparent Subject */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[120%] h-[120%] z-10 flex items-end justify-center pointer-events-none">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[120%] z-10 pointer-events-none">
                 <Image
                   src="/images/LUCAS image Transparent.png"
                   alt="Lucas"
-                  width={500}
-                  height={600}
-                  className="object-contain object-bottom max-h-full drop-shadow-xl"
+                  fill
+                  className="object-contain object-bottom drop-shadow-xl"
                   priority
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: The Approach */}
-          <div className="w-full md:w-7/12 md:pl-12 flex flex-col justify-center">
-            
-            <div className="flex items-center gap-4 mb-8">
+          <motion.div 
+            variants={fadeUpContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="w-full lg:w-6/12 flex flex-col justify-center"
+          >
+            <motion.div variants={fadeUpItem} className="flex items-center gap-4 mb-10">
               <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
-              <h2 className="font-sans text-xs tracking-zissou text-lucas-slate uppercase">
+              <h2 className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
                 the approach
               </h2>
-            </div>
+            </motion.div>
 
-            <p className="font-serif text-3xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
-              not a production. not content. just <span className="italic text-lucas-navy/80">easy company</span> and a keen eye.
-            </p>
+            <motion.div variants={fadeUpItem}>
+              <p className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
+                not a production. not content.<br className="hidden md:block" /> just <span className="italic text-lucas-navy/90">easy company</span> and a keen<br className="hidden md:block" /> eye.
+              </p>
+            </motion.div>
             
-            <div className="font-sans text-base md:text-lg text-lucas-slate max-w-lg mb-10 leading-relaxed font-light space-y-6">
+            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
               <p>
                 i'm there to hang out, keep things grounded, and collect the honest frames—bottling the sudden laughs, the heavy tears, and exactly how the day actually felt.
               </p>
               <p>
                 no crews. no scripts. just me.
               </p>
-            </div>
+            </motion.div>
             
-            <p className="font-serif text-2xl italic text-lucas-navy/80">— lucas</p>
-          </div>
+            <motion.div variants={fadeUpItem}>
+              <p className="font-serif text-2xl italic text-lucas-navy/80">— lucas</p>
+            </motion.div>
+          </motion.div>
+          
         </div>
       </section>
 
