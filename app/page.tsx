@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
+import Link from "next/link";
 
 const partners = [
   { name: "The Birds Papaya", url: "https://www.instagram.com/thebirdspapaya/?hl=en" },
@@ -92,19 +93,15 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
             className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
           >
-            <div className="relative w-full max-w-[340px] aspect-square bg-[#e2e3df]">
-              <h2 className="absolute top-[8%] -left-[25%] md:-left-[35%] font-sans font-black text-[6rem] md:text-[8rem] text-lucas-navy tracking-tight leading-none z-0 select-none pointer-events-none">
-                LUCAS
-              </h2>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[120%] z-10 pointer-events-none">
-                <Image
-                  src="/images/LUCAS image Transparent.png"
-                  alt="Lucas"
-                  fill
-                  className="object-contain object-bottom drop-shadow-xl"
-                  priority
-                />
-              </div>
+            {/* Swapped Image Container */}
+            <div className="relative w-full max-w-[400px] aspect-[4/5]">
+              <Image
+                src="/images/Lucas Image with background.jpg"
+                alt="Lucas"
+                fill
+                className="object-cover shadow-xl"
+                priority
+              />
             </div>
           </motion.div>
 
@@ -138,7 +135,17 @@ export default function Home() {
             </motion.div>
             
             <motion.div variants={fadeUpItem}>
-              <p className="font-serif text-2xl italic text-lucas-navy/80">— lucas</p>
+              <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">— lucas</p>
+            </motion.div>
+
+            {/* Link to the Full About Page */}
+            <motion.div variants={fadeUpItem}>
+              <Link 
+                href="/about" 
+                className="inline-block border border-lucas-navy text-lucas-navy px-10 py-4 font-sans text-xs tracking-zissou uppercase hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-300"
+              >
+                Learn More About Me
+              </Link>
             </motion.div>
           </motion.div>
           
