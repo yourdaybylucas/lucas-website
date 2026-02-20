@@ -86,7 +86,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-24 lg:gap-16 w-full">
           
-   <motion.div 
+          <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -94,7 +94,7 @@ export default function Home() {
             className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
           >
             {/* updated image container for the text-heavy composition */}
-            <div className="relative w-full max-w-[500px] aspect-square">
+            <div className="relative w-full max-w-[320px] md:max-w-[500px] aspect-square">
               <Image
                 src="/images/Lucas photo with text transparent BG.png"
                 alt="Lucas"
