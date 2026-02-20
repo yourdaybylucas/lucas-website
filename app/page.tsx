@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
@@ -20,16 +21,16 @@ const partners = [
   { name: "Karilywood Events", url: "https://karilywoodevents.com/" }
 ];
 
+// updated with inventory metadata
 const featuredFilms = [
-  { id: "q2Qw5G4M0Lc", title: "Featured Film 01" },
-  { id: "GHhmsEs_8x8", title: "Featured Film 02" },
-  { id: "kXRULOzL9AQ", title: "Featured Film 03" },
-  { id: "s8Zuuc169lE", title: "Featured Film 04" },
-  { id: "f3L54oek57o", title: "Featured Film 05" },
-  { id: "CYWJBr73jrk", title: "Featured Film 06" }
+  { id: "q2Qw5G4M0Lc", title: "Sarah & Tom", format: "Digital + Super 8mm" },
+  { id: "GHhmsEs_8x8", title: "Elena & Marco", format: "Digital + Super 8mm" },
+  { id: "kXRULOzL9AQ", title: "Jess & Dan", format: "Digital + 16mm" },
+  { id: "s8Zuuc169lE", title: "Anna & James", format: "Super 8mm" },
+  { id: "f3L54oek57o", title: "Chloe & Sam", format: "Digital + Super 8mm" },
+  { id: "CYWJBr73jrk", title: "Mia & Leo", format: "Digital" }
 ];
 
-// Animation variants for staggered text reveals
 const fadeUpContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -44,6 +45,9 @@ const fadeUpItem = {
 };
 
 export default function Home() {
+  // state to track which video is currently playing
+  const [activeFilm, setActiveFilm] = useState<string | null>(null);
+
   return (
     <main className="relative min-h-[200vh] bg-lucas-cream overflow-hidden">
 
@@ -71,7 +75,6 @@ export default function Home() {
       {/* about & philosophy */}
       <section id="about" className="relative z-10 flex min-h-screen items-center justify-center bg-lucas-cream px-6 py-32 overflow-hidden">
         
-        {/* The lonely orange dot from the design */}
         <motion.div 
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -82,7 +85,6 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-24 lg:gap-16 w-full">
           
-          {/* Left: The Layered Portrait */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -90,15 +92,10 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
           >
-            {/* The Anchor Box */}
             <div className="relative w-full max-w-[340px] aspect-square bg-[#e2e3df]">
-              
-              {/* Back Layer: Giant Typography bleeding off the edges */}
               <h2 className="absolute top-[8%] -left-[25%] md:-left-[35%] font-sans font-black text-[6rem] md:text-[8rem] text-lucas-navy tracking-tight leading-none z-0 select-none pointer-events-none">
                 LUCAS
               </h2>
-
-              {/* Front Layer: Transparent Subject */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[120%] z-10 pointer-events-none">
                 <Image
                   src="/images/LUCAS image Transparent.png"
@@ -111,7 +108,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Right: The Approach */}
           <motion.div 
             variants={fadeUpContainer}
             initial="hidden"
@@ -149,29 +145,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* featured films */}
+      {/* the archive (featured films) */}
       <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-16 border-b border-lucas-slate/20 pb-8">
-            <h2 className="font-sans text-4xl md:text-6xl uppercase tracking-tight font-bold">Featured Films</h2>
-            <p className="font-sans text-xs tracking-zissou text-lucas-slate uppercase hidden md:block">Select Works</p>
+        <div className="max-w-5xl mx-auto">
+          
+          <div className="flex justify-between items-end mb-24 border-b border-lucas-slate/20 pb-8">
+            <h2 className="font-sans text-4xl md:text-6xl uppercase tracking-tight font-bold">
+              The Archive
+            </h2>
+            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+              Index of Works
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 lg:px-12">
+          <div className="space-y-32">
             {featuredFilms.map((film, index) => (
-              <div key={film.id} className={`group ${index % 2 !== 0 ? 'md:mt-32' : ''}`}>
-                <div className="aspect-video bg-lucas-slate/20 mb-6 overflow-hidden relative shadow-lg">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${film.id}?vq=hd1080&color=white&modestbranding=1&rel=0`}
-                    title={film.title}
-                    className="w-full h-full absolute top-0 left-0 border-none"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+              <motion.div 
+                key={film.id} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group flex flex-col w-full"
+              >
+                
+                <div 
+                  className="relative aspect-video w-full bg-[#0a1118] overflow-hidden cursor-pointer shadow-2xl"
+                  onClick={() => setActiveFilm(film.id)}
+                >
+                  {activeFilm === film.id ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
+                      title={film.title}
+                      className="w-full h-full absolute top-0 left-0 border-none"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <>
+                      {/* Note: In a production environment, ensure your YouTube video has a maxresdefault thumbnail uploaded */}
+                      <Image
+                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+                        alt={film.title}
+                        fill
+                        className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                      />
+                      
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-lucas-orange/90 backdrop-blur-md flex items-center justify-center text-lucas-cream transform group-hover:scale-110 transition-transform duration-500 ease-out shadow-xl">
+                          <svg className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
-              </div>
+
+                <div className="mt-8 flex flex-col md:flex-row justify-between md:items-start gap-4">
+                  <div>
+                    <h3 className="font-serif text-3xl md:text-4xl italic text-lucas-cream">
+                      {film.title}
+                    </h3>
+                  </div>
+                  
+                  <div className="flex gap-8 md:text-right font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
+                    <div className="flex flex-col space-y-1">
+                      <span>Format</span>
+                      <span className="text-lucas-cream">{film.format}</span>
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                      <span>Index</span>
+                      <span className="text-lucas-cream">Vol. 0{index + 1}</span>
+                    </div>
+                  </div>
+                </div>
+                
+              </motion.div>
             ))}
           </div>
+          
         </div>
       </section>
 
