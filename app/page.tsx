@@ -96,7 +96,7 @@ export default function Home() {
             {/* Swapped Image Container */}
             <div className="relative w-full max-w-[400px] aspect-[4/5]">
               <Image
-                src="/images/Lucas Image with background.jpg"
+                src="/images/Lucas Photo with background text.png"
                 alt="Lucas"
                 fill
                 className="object-cover shadow-xl"
