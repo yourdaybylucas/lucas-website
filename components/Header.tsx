@@ -28,8 +28,8 @@ export default function Header() {
                     <Image 
                         src="/logos/Icon Lucas Transparent.png" 
                         alt="LUCAS" 
-                        width={32} 
-                        height={32} 
+                        width={90} 
+                        height={90} 
                         className="object-contain"
                         priority
                     />
