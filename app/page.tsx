@@ -24,12 +24,12 @@ const partners = [
 
 // updated with inventory metadata
 const featuredFilms = [
-  { id: "q2Qw5G4M0Lc", title: "Sarah & Tom", format: "Digital + Super 8mm" },
-  { id: "GHhmsEs_8x8", title: "Elena & Marco", format: "Digital + Super 8mm" },
-  { id: "kXRULOzL9AQ", title: "Jess & Dan", format: "Digital + 16mm" },
-  { id: "s8Zuuc169lE", title: "Anna & James", format: "Super 8mm" },
-  { id: "f3L54oek57o", title: "Chloe & Sam", format: "Digital + Super 8mm" },
-  { id: "CYWJBr73jrk", title: "Mia & Leo", format: "Digital" }
+  { id: "q2Qw5G4M0Lc", title: "Kristen + Frankie // Spencer's at the Waterfront", format: "Digital + Super 8mm" },
+  { id: "GHhmsEs_8x8", title: "Kevin + Melanie // Graydon Hall Manor", format: "Digital" },
+  { id: "kXRULOzL9AQ", title: "Olivia + Max // Paletta Mansion", format: "Digital" },
+  { id: "s8Zuuc169lE", title: "Eli + Olivia // Muskoka", format: "Ditial" },
+  { id: "f3L54oek57o", title: "Aalia + Joshua // Lune 1860", format: "Digital" },
+  { id: "CYWJBr73jrk", title: "Megan + Mike // Elora Mill", format: "Digital" }
 ];
 
 const fadeUpContainer = {
@@ -152,9 +152,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* the archive (featured films) */}
+{/* the archive (featured films) */}
       <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           
           <div className="flex justify-between items-end mb-24 border-b border-lucas-slate/20 pb-8">
             <h2 className="font-sans text-4xl md:text-6xl uppercase tracking-tight font-bold">
@@ -165,7 +165,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-32">
+          {/* updated: 2-column grid to kill the endless scroll */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
             {featuredFilms.map((film, index) => (
               <motion.div 
                 key={film.id} 
@@ -190,9 +191,9 @@ export default function Home() {
                     ></iframe>
                   ) : (
                     <>
-                      {/* Note: In a production environment, ensure your YouTube video has a maxresdefault thumbnail uploaded */}
+                      {/* updated: using hqdefault so the images actually render */}
                       <Image
-                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+                        src={`https://img.youtube.com/vi/${film.id}/hqdefault.jpg`}
                         alt={film.title}
                         fill
                         className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
@@ -209,14 +210,14 @@ export default function Home() {
                   )}
                 </div>
 
-                <div className="mt-8 flex flex-col md:flex-row justify-between md:items-start gap-4">
+                <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4">
                   <div>
                     <h3 className="font-serif text-3xl md:text-4xl italic text-lucas-cream">
                       {film.title}
                     </h3>
                   </div>
                   
-                  <div className="flex gap-8 md:text-right font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
+                  <div className="flex gap-8 xl:text-right font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
                     <div className="flex flex-col space-y-1">
                       <span>Format</span>
                       <span className="text-lucas-cream">{film.format}</span>
