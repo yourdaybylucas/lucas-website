@@ -23,13 +23,12 @@ const partners = [
 ];
 
 // updated with inventory metadata
+
 const featuredFilms = [
-  { id: "q2Qw5G4M0Lc", title: "Kristen + Frankie // Spencer's at the Waterfront", format: "Digital + Super 8mm" },
-  { id: "GHhmsEs_8x8", title: "Kevin + Melanie // Graydon Hall Manor", format: "Digital" },
-  { id: "kXRULOzL9AQ", title: "Olivia + Max // Paletta Mansion", format: "Digital" },
-  { id: "s8Zuuc169lE", title: "Eli + Olivia // Muskoka", format: "Ditial" },
-  { id: "f3L54oek57o", title: "Aalia + Joshua // Lune 1860", format: "Digital" },
-  { id: "CYWJBr73jrk", title: "Megan + Mike // Elora Mill", format: "Digital" }
+  { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8mm" },
+  { id: "GHhmsEs_8x8", names: "Kevin + Melanie", locale: "Graydon Hall Manor", format: "Digital" },
+  { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" },
+  { id: "f3L54oek57o", names: "Aalia + Joshua", locale: "Lune 1860", format: "Digital" }
 ];
 
 const fadeUpContainer = {
@@ -161,13 +160,13 @@ export default function Home() {
               The Archive
             </h2>
             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-              Index of Works
+              Curated Works
             </p>
           </div>
 
-          {/* updated: 2-column grid to kill the endless scroll */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-            {featuredFilms.map((film, index) => (
+          {/* tight 2x2 grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mb-24">
+            {featuredFilms.map((film) => (
               <motion.div 
                 key={film.id} 
                 initial={{ opacity: 0, y: 30 }}
@@ -184,18 +183,19 @@ export default function Home() {
                   {activeFilm === film.id ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
-                      title={film.title}
+                      title={film.names}
                       className="w-full h-full absolute top-0 left-0 border-none"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
                   ) : (
                     <>
-                      {/* updated: using hqdefault so the images actually render */}
+                      {/* upgraded to maxresdefault for higher resolution frames */}
                       <Image
-                        src={`https://img.youtube.com/vi/${film.id}/hqdefault.jpg`}
-                        alt={film.title}
+                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+                        alt={film.names}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                       />
                       
@@ -210,10 +210,11 @@ export default function Home() {
                   )}
                 </div>
 
-                <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4">
+                {/* metadata text block */}
+                <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4 border-t border-lucas-slate/10 pt-6">
                   <div>
                     <h3 className="font-serif text-3xl md:text-4xl italic text-lucas-cream">
-                      {film.title}
+                      {film.names}
                     </h3>
                   </div>
                   
@@ -223,8 +224,8 @@ export default function Home() {
                       <span className="text-lucas-cream">{film.format}</span>
                     </div>
                     <div className="flex flex-col space-y-1">
-                      <span>Index</span>
-                      <span className="text-lucas-cream">Vol. 0{index + 1}</span>
+                      <span>Locale</span>
+                      <span className="text-lucas-cream">{film.locale}</span>
                     </div>
                   </div>
                 </div>
@@ -232,6 +233,22 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* journal link footer */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center border-t border-lucas-slate/20 pt-16"
+          >
+            <Link 
+              href="/journal" 
+              className="inline-block border border-lucas-slate/30 text-lucas-cream px-10 py-4 font-sans text-[10px] tracking-zissou uppercase hover:bg-lucas-cream hover:text-lucas-navy transition-colors duration-500"
+            >
+              Explore The Journal
+            </Link>
+          </motion.div>
           
         </div>
       </section>
