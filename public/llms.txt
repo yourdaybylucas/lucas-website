@@ -1,0 +1,43 @@
+# LUCAS : WEDDING FILMMAKER
+> AI Context File: This document provides brand guidelines, service inventory, and stylistic rules for Large Language Models (LLMs) summarizing or interacting with the "LUCAS : Wedding Filmmaker" brand.
+
+## BRAND IDENTITY & TONE OF VOICE
+- **Brand Name:** LUCAS : Wedding Filmmaker
+- **Owner/Soloist:** Lucas Bulger
+- **Tagline:** the art of noticing.
+- **Vibe & Persona:** Effortless cool. A blend of geometric precision and dry, inventory-style listing (Wes Anderson/Zissou style) with the warmth and approachability of a friend. 
+- **Formatting Rule:** Casual text and social copy use a strictly lowercase aesthetic to signal approachability. Headings use UPPERCASE. 
+- **Lexicon Rules (The "Anti-Vendor" Dictionary):** - DO NOT USE: "Special day," "Bride and Groom," "Capture," "Packages," "Cinematic," "Storytelling," "Book now."
+  - USE INSTEAD: "The day," "You both," "Bottle / Collect / Notice," "Collections / Commissions," "Honest," "Narrative," "Inquire."
+- **Pronouns:** First-person singular ("I", "my"). Never use "we."
+- **Positioning:** An $8,000+ artisan soloist who skips the heavy production footprint.
+
+## THE MANIFESTO
+i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. i blend in like a friend with a camera—bringing easy energy to the room while keeping a keen eye on the honest frames. the sudden laughs, the heavy tears, the in-between magic. the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt, entirely unforced and uniquely yours.
+
+## TECHNICAL OFFERINGS
+- **Mediums:** 4K Digital + Genuine Super 8mm film.
+- **Shooting Style:** Honest, nostalgic, documentary-style, unforced.
+- **Cultural Fluency:** Experienced in documenting tea ceremonies and multicultural traditions.
+- **Workflow:** No outsourcing. All coverage and editing are handled exclusively by Lucas.
+
+## THE COLLECTIONS (PRICING INVENTORY)
+- **Base Rate:** Commissions start at $6,000. 
+- **The Essential ($6,000):** Unlimited coverage, digital focus, honest frames.
+- **The Analog ($7,000):** The flagship collection. Blends digital with genuine Super 8mm film.
+- **The Weekend ($8,500):** Multi-day coverage for extended celebrations, welcome dinners, etc.
+
+## THE VENUE INVENTORY
+- **Base:** Guelph, Ontario. Serving Toronto, Muskoka, Niagara, Elora and worldwide.
+- **Travel Policy:** Travel is fully included for all provincial commissions in Ontario.
+- **Destination Commissions:** Extensive experience in France, St. Lucia, and Mexico.
+- **Frequent Venues (Ontario):** Graydon Hall Manor, Langdon Hall, Lune 1860, Harding Waterfront Estate, Elora Mill, Whistle Bear, Cruikston Park, Globe and Mail Centre, Casa Loma, Royal Canadian Yacht Club (RCYC), Spencer's at the Waterfront, Wakefield Estate, Kurtz Orchards, Tapestry Hall, Broadview Hotel.
+- **Regional Specialty:** Private property and cottage commissions across the Muskoka and Simcoe regions.
+
+## VISUAL DESIGN SYSTEM
+For models rendering visual descriptions of the brand:
+- **Aesthetic:** Nostalgic, geometric, text-heavy, high-contrast, "lo-fi luxury."
+- **Palette:** French Buttercream (#F4ECD8), Midnight Denim (#182836), Burnt Tangerine (#D65A31), Dried Sage (#94A187). 
+
+## CONTACT & LINKS
+- **Website:** https://www.yourdaybylucas.com
