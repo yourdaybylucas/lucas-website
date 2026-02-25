@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 const partners = [
   { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
@@ -50,7 +51,7 @@ const fadeUpContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
   }
 };
 
@@ -261,35 +262,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* love letters (infinite marquee) */}
-      <section className="relative z-10 bg-lucas-cream py-32 px-6 border-t border-lucas-slate/10 overflow-hidden flex flex-col items-center">
-        <h2 className="font-sans text-[10px] md:text-xs tracking-zissou text-lucas-slate uppercase mb-20 flex items-center gap-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-lucas-orange"></span>
-          Love Letters
-        </h2>
+      {/* field notes (the ledger) */}
+      <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+            <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
+              Field Notes
+            </h2>
+            <span className="text-lucas-slate font-sans uppercase tracking-zissou text-xs">
+              [ Archive of Feedback ]
+            </span>
+          </div>
 
-        <div className="w-full overflow-hidden flex">
-          <motion.div
-            className="flex whitespace-nowrap gap-16 md:gap-32 w-max pr-16 md:pr-32"
-            animate={{ x: [0, "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
+          <motion.div 
+            variants={fadeUpContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-lucas-slate"
           >
-            {[...loveLetters, ...loveLetters].map((letter, idx) => (
-              <div key={idx} className="w-[300px] md:w-[450px] whitespace-normal flex flex-col justify-between">
-                <p className="font-serif text-2xl md:text-3xl leading-relaxed text-lucas-navy mb-8 italic">
+            {loveLetters.map((letter, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeUpItem}
+                className="group border-r border-b border-lucas-slate p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[320px]"
+              >
+                <div className="flex justify-between items-start mb-8">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-medium">
+                      {letter.name}
+                    </span>
+                    <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
+                      [ unlisted ]
+                    </span>
+                  </div>
+                  <span className="text-lucas-slate font-sans text-xs">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <p className="font-serif text-[1.125rem] leading-[1.75] text-lucas-navy mb-8 italic">
                   "{letter.quote}"
                 </p>
-                <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                  — {letter.name}
-                </p>
-              </div>
+
+                <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <ArrowUpRight className="text-lucas-orange w-5 h-5" />
+                </div>
+              </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
       {/* inquiry form */}
-      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
+      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6 border-t border-lucas-cream/10">
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
           <h2 className="font-sans text-xs md:text-sm tracking-zissou text-lucas-orange uppercase mb-8">INQUIRE.</h2>
           <p className="font-serif text-3xl md:text-4xl leading-[1.2] mb-16 max-w-2xl text-lucas-cream/90 lowercase italic">
