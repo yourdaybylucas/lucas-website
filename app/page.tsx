@@ -22,12 +22,28 @@ const partners = [
   { name: "Elle by Stella", url: "https://www.ellebystella.ca/" },
 ];
 
-// updated with inventory metadata
 const featuredFilms = [
   { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8mm" },
   { id: "GHhmsEs_8x8", names: "Kevin + Melanie", locale: "Graydon Hall Manor", format: "Digital" },
   { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" },
   { id: "f3L54oek57o", names: "Aalia + Joshua", locale: "Lune 1860", format: "Digital" }
+];
+
+const loveLetters = [
+  { name: "Hannah & Connor", quote: "such a calming presence... he blended in seamlessly." },
+  { name: "Adele & Steve", quote: "he takes the time to get to know his client and to ensure visions align." },
+  { name: "Kristen & Frankie", quote: "he had this amazing ability to be everywhere without ever being intrusive - capturing every genuine emotion, every tiny detail, and all the moments we never even saw happening." },
+  { name: "Rand & Mostafa", quote: "a wonderful human and an even more phenomenal artist." },
+  { name: "Kevin & Melanie", quote: "his style is very natural and non-intrusive... able to capture the day authentically." },
+  { name: "Billie Jo & Neil", quote: "somehow he is everywhere, but you never see him... lucas captured the warmth, the feel, the emotion." },
+  { name: "Daniela & Andrew", quote: "lucas is not just a videographer; he is a storyteller and true professional who turned our day into a masterpiece." },
+  { name: "Taylor & Joe", quote: "not only was he amazing to work with, but his talent and artistic eye are so clearly present in all of his work." },
+  { name: "Megan & Mike", quote: "every look, every laugh, every detail of our day was documented so thoughtfully and artistically." },
+  { name: "Rachel & Matt", quote: "he truly is a fly on the wall. he caught some beautiful candid moments that really captured the overall feeling." },
+  { name: "LQ Events", quote: "a kind, down to earth, and calming presence." },
+  { name: "Jessica & Chris", quote: "he really understood our personalities, which made it a perfect blend of humour and happiness." },
+  { name: "Eira & Sam", quote: "brought a sense of calm to the room... it was so fun to see ours come to life." },
+  { name: "Jessica & Brandon", quote: "the vibe of the video is completely tailored to brandon and i and who we are as people." }
 ];
 
 const fadeUpContainer = {
@@ -44,7 +60,6 @@ const fadeUpItem = {
 };
 
 export default function Home() {
-  // state to track which video is currently playing
   const [activeFilm, setActiveFilm] = useState<string | null>(null);
 
   return (
@@ -91,7 +106,6 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
             className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
           >
-            {/* updated image container for the text-heavy composition */}
             <div className="relative w-full max-w-[320px] md:max-w-[500px] aspect-square">
               <Image
                 src="/images/Lucas photo with text transparent BG.png"
@@ -136,7 +150,6 @@ export default function Home() {
               <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">— lucas</p>
             </motion.div>
 
-            {/* Link to the Full About Page */}
             <motion.div variants={fadeUpItem}>
               <Link 
                 href="/about" 
@@ -163,7 +176,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* tight 2x2 grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mb-24">
             {featuredFilms.map((film) => (
               <motion.div 
@@ -189,7 +201,6 @@ export default function Home() {
                     ></iframe>
                   ) : (
                     <>
-                      {/* upgraded to maxresdefault for higher resolution frames */}
                       <Image
                         src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
                         alt={film.names}
@@ -209,7 +220,6 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* metadata text block */}
                 <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4 border-t border-lucas-slate/10 pt-6">
                   <div>
                     <h3 className="font-serif text-3xl md:text-4xl italic text-lucas-cream">
@@ -233,7 +243,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* journal link footer */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -252,26 +261,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* testimonials */}
-      <section className="relative z-10 bg-lucas-cream py-32 px-6 overflow-hidden">
-        <h2 className="text-center font-sans text-xs tracking-zissou text-lucas-slate uppercase mb-20">Love Letters</h2>
+      {/* love letters (infinite marquee) */}
+      <section className="relative z-10 bg-lucas-cream py-32 px-6 border-t border-lucas-slate/10 overflow-hidden flex flex-col items-center">
+        <h2 className="font-sans text-[10px] md:text-xs tracking-zissou text-lucas-slate uppercase mb-20 flex items-center gap-4">
+          <span className="w-1.5 h-1.5 rounded-full bg-lucas-orange"></span>
+          Love Letters
+        </h2>
 
-        <div className="flex flex-nowrap gap-16 md:gap-32 w-max px-8">
-          <div className="max-w-sm">
-            <p className="font-serif text-2xl md:text-3xl leading-relaxed text-lucas-navy mb-6">"He had this amazing ability to be everywhere without being noticed."</p>
-            <p className="font-sans text-xs tracking-zissou text-lucas-slate uppercase">— Sarah & Tom</p>
-          </div>
-          <div className="max-w-sm">
-            <p className="font-serif text-2xl md:text-3xl leading-relaxed text-lucas-navy mb-6">"Captures the wind into the fairytale... a masterpiece."</p>
-            <p className="font-sans text-xs tracking-zissou text-lucas-slate uppercase">— Elena & Marco</p>
-          </div>
-          <div className="max-w-sm">
-            <p className="font-serif text-2xl md:text-3xl leading-relaxed text-lucas-navy mb-6">"Lucas is not just a videographer; he is a storyteller."</p>
-            <p className="font-sans text-xs tracking-zissou text-lucas-slate uppercase">— Jess & Dan</p>
-          </div>
-        </div>
-        <div className="text-center mt-12">
-          <p className="font-sans text-[10px] tracking-widest text-lucas-slate uppercase">← drag →</p>
+        <div className="w-full overflow-hidden flex">
+          <motion.div
+            className="flex whitespace-nowrap gap-16 md:gap-32 w-max pr-16 md:pr-32"
+            animate={{ x: [0, "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
+          >
+            {[...loveLetters, ...loveLetters].map((letter, idx) => (
+              <div key={idx} className="w-[300px] md:w-[450px] whitespace-normal flex flex-col justify-between">
+                <p className="font-serif text-2xl md:text-3xl leading-relaxed text-lucas-navy mb-8 italic">
+                  "{letter.quote}"
+                </p>
+                <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                  — {letter.name}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
