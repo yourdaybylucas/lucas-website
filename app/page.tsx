@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const partners = [
   { name: "The Birds Papaya", url: "https://www.instagram.com/thebirdspapaya/?hl=en" },
-  { name: "T Modern Bride", url: "https://www.tmodernbride.com/" },
+  { name: "The Modern Bride", url: "https://www.tmodernbride.com/" },
   { name: "Langdon Hall", url: "https://langdonhall.ca/" },
   { name: "Cruikston Park", url: "https://cruickstonpark.com/" },
   { name: "Clement & Co Events", url: "https://www.clementandcoevents.com/" },
@@ -19,7 +19,7 @@ const partners = [
   { name: "Olivia Dipede", url: "https://www.instagram.com/oliviadipede/?hl=en" },
   { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
   { name: "Lune 1860", url: "https://www.lune1860.ca/" },
-  { name: "Karilywood Events", url: "https://karilywoodevents.com/" }
+  { name: "Kari Lywood Events", url: "https://karilywoodevents.com/" }
 ];
 
 // updated with inventory metadata
