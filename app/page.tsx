@@ -23,7 +23,6 @@ const partners = [
 ];
 
 // updated with inventory metadata
-
 const featuredFilms = [
   { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8mm" },
   { id: "GHhmsEs_8x8", names: "Kevin + Melanie", locale: "Graydon Hall Manor", format: "Digital" },
@@ -151,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-{/* the archive (featured films) */}
+      {/* the archive (featured films) */}
       <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
         <div className="max-w-7xl mx-auto">
           
@@ -279,45 +278,19 @@ export default function Home() {
       {/* inquiry form */}
       <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
-          <h2 className="font-sans text-xs tracking-zissou text-lucas-orange uppercase mb-8">Let's work together</h2>
-          <p className="font-serif text-4xl md:text-6xl leading-[1.1] mb-16">
-            Tell me about your day. I'd love to hear your story.
+          <h2 className="font-sans text-xs md:text-sm tracking-zissou text-lucas-orange uppercase mb-8">INQUIRE.</h2>
+          <p className="font-serif text-3xl md:text-4xl leading-[1.2] mb-16 max-w-2xl text-lucas-cream/90 lowercase italic">
+            i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
           </p>
 
-          <form className="w-full space-y-8 text-left" action="/thank-you">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col border-b border-lucas-slate/30 pb-2">
-                <label className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-2">Names</label>
-                <input type="text" className="bg-transparent border-none outline-none font-serif text-xl focus:ring-0 placeholder:text-lucas-slate/30" placeholder="Jane & John" required />
-              </div>
-              <div className="flex flex-col border-b border-lucas-slate/30 pb-2">
-                <label className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-2">Email Address</label>
-                <input type="email" className="bg-transparent border-none outline-none font-serif text-xl focus:ring-0 placeholder:text-lucas-slate/30" placeholder="hello@example.com" required />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col border-b border-lucas-slate/30 pb-2">
-                <label className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-2">Wedding Date</label>
-                <input type="text" className="bg-transparent border-none outline-none font-serif text-xl focus:ring-0 placeholder:text-lucas-slate/30" placeholder="Oct 24, 2026" />
-              </div>
-              <div className="flex flex-col border-b border-lucas-slate/30 pb-2">
-                <label className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-2">Venue / Location</label>
-                <input type="text" className="bg-transparent border-none outline-none font-serif text-xl focus:ring-0 placeholder:text-lucas-slate/30" placeholder="Tuscany, Italy" />
-              </div>
-            </div>
-
-            <div className="flex flex-col border-b border-lucas-slate/30 pb-2 pt-4">
-              <label className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-4">Tell me about your vision</label>
-              <textarea rows={4} className="bg-transparent border-none outline-none font-serif text-xl focus:ring-0 placeholder:text-lucas-slate/30 resize-none" placeholder="We are planning an intimate weekend with our closest friends..."></textarea>
-            </div>
-
-            <div className="pt-8 text-center">
-              <button type="submit" className="inline-block bg-lucas-orange text-lucas-cream px-12 py-5 font-sans text-xs tracking-zissou uppercase hover:bg-white hover:text-lucas-navy transition-colors duration-500">
-                Send Inquiry
-              </button>
-            </div>
-          </form>
+          <div className="w-full h-full min-h-[700px] overflow-hidden">
+            <iframe 
+              src="https://mylemlii.com/inquiry/your-day-by-lucas" 
+              className="w-full h-[750px] border-0 outline-none" 
+              title="Inquire with Lucas"
+              style={{ border: 'none', margin: 0, padding: 0 }}
+            />
+          </div>
         </div>
       </section>
     </main>
