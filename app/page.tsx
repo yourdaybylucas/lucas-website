@@ -7,19 +7,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 const partners = [
+  { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
   { name: "The Birds Papaya", url: "https://www.instagram.com/thebirdspapaya/?hl=en" },
   { name: "The Modern Bride", url: "https://www.tmodernbride.com/" },
   { name: "Langdon Hall", url: "https://langdonhall.ca/" },
   { name: "Cruikston Park", url: "https://cruickstonpark.com/" },
   { name: "Clement & Co Events", url: "https://www.clementandcoevents.com/" },
   { name: "Wren House by Stella", url: "https://www.wrenhousebystella.ca/" },
-  { name: "Elle by Stella", url: "https://www.ellebystella.ca/" },
   { name: "Samantha Nicholas", url: "https://www.samanthanicholas.ca/" },
   { name: "Jessii Vee", url: "https://www.instagram.com/jessiivee/?hl=en" },
   { name: "Olivia Dipede", url: "https://www.instagram.com/oliviadipede/?hl=en" },
-  { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
   { name: "Lune 1860", url: "https://www.lune1860.ca/" },
   { name: "Kari Lywood Events", url: "https://karilywoodevents.com/" }
+  { name: "Elle by Stella", url: "https://www.ellebystella.ca/" },
 ];
 
 // updated with inventory metadata
