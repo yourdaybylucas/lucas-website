@@ -18,7 +18,7 @@ const partners = [
   { name: "Jessii Vee", url: "https://www.instagram.com/jessiivee/?hl=en" },
   { name: "Olivia Dipede", url: "https://www.instagram.com/oliviadipede/?hl=en" },
   { name: "Lune 1860", url: "https://www.lune1860.ca/" },
-  { name: "Kari Lywood Events", url: "https://karilywoodevents.com/" }
+  { name: "Kari Lywood Events", url: "https://karilywoodevents.com/" },
   { name: "Elle by Stella", url: "https://www.ellebystella.ca/" },
 ];
 
