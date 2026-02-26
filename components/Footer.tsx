@@ -9,22 +9,25 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 border-l border-lucas-slate/20">
                     
                     {/* Col 1 & 2: The Manifesto & Sign-off */}
-                    <div className="col-span-1 md:col-span-2 border-r border-b md:border-b-0 border-lucas-slate/20 p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+                    <div className="col-span-1 md:col-span-2 border-r border-b md:border-b-0 border-lucas-slate/20 p-8 md:p-12 flex flex-col justify-between min-h-[400px]">
                         <div>
-                            <div className="relative w-40 h-12 md:w-56 md:h-16 mb-8">
+                            {/* Logo: Scaled up 4x for visual weight */}
+                            <div className="relative w-full max-w-[640px] h-48 md:h-64 mb-12">
                                 <Image 
                                     src="/logos/Lucas Buttercream trans.png" 
                                     alt="LUCAS" 
                                     fill
                                     className="object-contain object-left"
+                                    priority
                                 />
                             </div>
                             <p className="font-serif italic text-lucas-cream/80 text-xl md:text-2xl max-w-md leading-relaxed">
                                 honest, nostalgic wedding cinema. for couples who prioritize presence over perfection.
                             </p>
                         </div>
+                        
                         <div className="mt-16 flex items-center gap-4">
-                            <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
+                            {/* Orange dot removed for a cleaner baseline */}
                             <p className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
                                 © {new Date().getFullYear()} — the art of noticing.
                             </p>
