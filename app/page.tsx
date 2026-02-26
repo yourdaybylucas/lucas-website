@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 const partners = [
   { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
@@ -244,7 +243,25 @@ export default function Home() {
             ))}
           </div>
 
-{/* field notes (the ledger) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center border-t border-lucas-slate/20 pt-16"
+          >
+            <Link 
+              href="/journal" 
+              className="inline-block border border-lucas-slate/30 text-lucas-cream px-10 py-4 font-sans text-[10px] tracking-zissou uppercase hover:bg-lucas-cream hover:text-lucas-navy transition-colors duration-500"
+            >
+              Explore The Journal
+            </Link>
+          </motion.div>
+          
+        </div>
+      </section>
+
+      {/* field notes (the ledger) */}
       <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
         <div className="max-w-7xl mx-auto">
           
@@ -291,27 +308,6 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-
-        </div>
-      </section>          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center border-t border-lucas-slate/20 pt-16"
-          >
-            <Link 
-              href="/journal" 
-              className="inline-block border border-lucas-slate/30 text-lucas-cream px-10 py-4 font-sans text-[10px] tracking-zissou uppercase hover:bg-lucas-cream hover:text-lucas-navy transition-colors duration-500"
-            >
-              Explore The Journal
-            </Link>
-          </motion.div>
-          
-        </div>
-      </section>
-
-
 
         </div>
       </section>
