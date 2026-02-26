@@ -244,7 +244,56 @@ export default function Home() {
             ))}
           </div>
 
+{/* field notes (the ledger) */}
+      <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+            <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
+              Field Notes
+            </h2>
+            <span className="text-lucas-slate font-sans uppercase tracking-zissou text-xs">
+              [ Archive of Feedback ]
+            </span>
+          </div>
+
+          {/* Horizontal Scroll Container */}
           <motion.div 
+            variants={fadeUpContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="flex overflow-x-auto border-l border-t border-lucas-slate snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            {loveLetters.map((letter, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeUpItem}
+                className="flex-none w-[85vw] md:w-[400px] group border-r border-b border-lucas-slate p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[320px] snap-start"
+              >
+                <div className="flex justify-between items-start mb-8">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-medium">
+                      {letter.name}
+                    </span>
+                    <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
+                      [ unlisted ]
+                    </span>
+                  </div>
+                  <span className="text-lucas-slate font-sans text-xs">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <p className="font-serif text-[1.125rem] leading-[1.75] text-lucas-navy italic">
+                  "{letter.quote}"
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -262,56 +311,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* field notes (the ledger) */}
-      <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
-            <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
-              Field Notes
-            </h2>
-            <span className="text-lucas-slate font-sans uppercase tracking-zissou text-xs">
-              [ Archive of Feedback ]
-            </span>
-          </div>
 
-          <motion.div 
-            variants={fadeUpContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-lucas-slate"
-          >
-            {loveLetters.map((letter, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={fadeUpItem}
-                className="group border-r border-b border-lucas-slate p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[320px]"
-              >
-                <div className="flex justify-between items-start mb-8">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-medium">
-                      {letter.name}
-                    </span>
-                    <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
-                      [ unlisted ]
-                    </span>
-                  </div>
-                  <span className="text-lucas-slate font-sans text-xs">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <p className="font-serif text-[1.125rem] leading-[1.75] text-lucas-navy mb-8 italic">
-                  "{letter.quote}"
-                </p>
-
-                <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <ArrowUpRight className="text-lucas-orange w-5 h-5" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
         </div>
       </section>
