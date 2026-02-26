@@ -20,7 +20,7 @@ export default function Footer() {
                                 />
                             </div>
                             <p className="font-serif italic text-lucas-cream/80 text-xl md:text-2xl max-w-md leading-relaxed">
-                                honest, nostalgic wedding cinema. built for couples who prioritize presence over perfection.
+                                honest, nostalgic wedding cinema. for couples who prioritize presence over perfection.
                             </p>
                         </div>
                         <div className="mt-16 flex items-center gap-4">
