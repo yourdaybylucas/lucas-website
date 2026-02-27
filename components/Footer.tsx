@@ -12,7 +12,7 @@ export default function Footer() {
                     <div className="col-span-1 lg:col-span-2 border-r border-b lg:border-b-0 border-lucas-slate/20 p-8 md:p-10 flex flex-col justify-between min-h-[340px]">
                         <div>
                             {/* Logo: Cleaned up the container so it never clips */}
-                            <div className="relative w-full max-w-[200px] md:max-w-[240px] h-24 md:h-32 mb-8">
+                            <div className="relative w-full max-w-[200px] md:max-w-[240px] h-12 md:h-16 mb-8">
                                 <Image 
                                     src="/logos/Lucas Buttercream trans.png" 
                                     alt="LUCAS" 
