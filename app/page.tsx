@@ -150,7 +150,6 @@ export default function Home() {
               <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">— lucas</p>
             </motion.div>
 
-            {/* Changed from About to Collections */}
             <motion.div variants={fadeUpItem}>
               <Link 
                 href="/collections" 
@@ -243,7 +242,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          {/* Note: The journal button section was intentionally removed here for MVP */}
         </div>
       </section>
 
@@ -260,7 +258,6 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Horizontal Scroll Container */}
           <motion.div 
             variants={fadeUpContainer}
             initial="hidden"
@@ -298,29 +295,50 @@ export default function Home() {
         </div>
       </section>
 
-{/* inquiry form */}
-      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6 border-t border-lucas-slate/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      {/* the ledger (inquiry form) */}
+      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-40 px-6 overflow-hidden">
+        
+        {/* subtle analog grain overlay */}
+        <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
+
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 relative">
           
+          {/* the vertical spine (desktop only) */}
+          <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-px bg-lucas-slate/10"></div>
+
           {/* the anchor (text column) */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left lg:sticky lg:top-32 h-fit">
-            <h2 className="font-sans text-xs md:text-sm tracking-zissou text-lucas-orange uppercase mb-8">
-              INQUIRE.
-            </h2>
-            <p className="font-serif text-3xl md:text-5xl leading-[1.2] text-lucas-cream/90 lowercase italic">
+          <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left lg:sticky lg:top-40 h-fit z-10">
+            
+            {/* inventory header */}
+            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-12">
+              <div className="flex items-center gap-4">
+                <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
+                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">The Ledger</span>
+              </div>
+              <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ 04 ]</span>
+            </div>
+
+            <p className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] text-lucas-cream/95 lowercase italic mb-16">
               i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
             </p>
+
+            {/* scarcity / availability block */}
+            <div className="flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
+              <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
+                <span>2026 Commissions</span>
+                <span className="text-lucas-cream">Open</span>
+              </div>
+              <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
+                <span>2027 Commissions</span>
+                <span className="text-lucas-slate/40">Waitlist</span>
+              </div>
+              <div className="flex justify-between pb-3">
+                <span>Location</span>
+                <span className="text-lucas-cream">Ontario // Worldwide</span>
+              </div>
+            </div>
+
           </div>
 
-          {/* the ledger (form column) */}
-          <div className="lg:col-span-7 w-full h-full min-h-[700px] overflow-hidden">
-            <iframe 
-              src="https://mylemlii.com/inquiry/your-day-by-lucas" 
-              className="w-full h-[750px] border-0 outline-none" 
-              title="inquire with lucas"
-              style={{ border: 'none', margin: 0, padding: 0 }}
-            />
-          </div>
-
-        </div>
-      </section>
+          {/* the dossier (form column) */}
+          <div className="lg:col-span-7 lg:pl-
