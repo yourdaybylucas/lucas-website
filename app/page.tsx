@@ -298,24 +298,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* inquiry form */}
-      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6 border-t border-lucas-cream/10">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
-          <h2 className="font-sans text-xs md:text-sm tracking-zissou text-lucas-orange uppercase mb-8">INQUIRE.</h2>
-          <p className="font-serif text-3xl md:text-4xl leading-[1.2] mb-16 max-w-2xl text-lucas-cream/90 lowercase italic">
-            i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
-          </p>
+{/* inquiry form */}
+      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6 border-t border-lucas-slate/20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          
+          {/* the anchor (text column) */}
+          <div className="lg:col-span-5 flex flex-col items-start text-left lg:sticky lg:top-32 h-fit">
+            <h2 className="font-sans text-xs md:text-sm tracking-zissou text-lucas-orange uppercase mb-8">
+              INQUIRE.
+            </h2>
+            <p className="font-serif text-3xl md:text-5xl leading-[1.2] text-lucas-cream/90 lowercase italic">
+              i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
+            </p>
+          </div>
 
-          <div className="w-full h-full min-h-[700px] overflow-hidden">
+          {/* the ledger (form column) */}
+          <div className="lg:col-span-7 w-full h-full min-h-[700px] overflow-hidden">
             <iframe 
               src="https://mylemlii.com/inquiry/your-day-by-lucas" 
               className="w-full h-[750px] border-0 outline-none" 
-              title="Inquire with Lucas"
+              title="inquire with lucas"
               style={{ border: 'none', margin: 0, padding: 0 }}
             />
           </div>
+
         </div>
       </section>
-    </main>
-  );
-}
