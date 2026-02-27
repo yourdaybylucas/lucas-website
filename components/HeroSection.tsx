@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-// 9 clips total. 
-// Re-mapped to form a wide arch, overlapping clusters on the sides, and pulled up from the bottom.
+// 9 unique clips total. 
 const clipData = [
     // The Arch (Top)
     { id: "01", src: "/videos/clip_01.mp4", top: "12%", left: "10%", rotate: -6, delay: 0.2, parallax: -1 },
@@ -14,12 +13,12 @@ const clipData = [
     // Left Cluster (Overlapping)
     { id: "05", src: "/videos/clip_05.mp4", top: "42%", left: "6%", rotate: -8, delay: 0.5, parallax: -0.8 },
     { id: "03", src: "/videos/clip_03.mp4", top: "55%", left: "13%", rotate: 3, delay: 0.3, parallax: -1.2 },
-    { id: "08", src: "/videos/clip_01.mp4", top: "66%", left: "7%", rotate: -4, delay: 0.9, parallax: 0.6 },
+    { id: "08", src: "/videos/clip_08.mp4", top: "66%", left: "7%", rotate: -4, delay: 0.9, parallax: 0.6 },
     
     // Right Cluster (Overlapping)
     { id: "06", src: "/videos/clip_06.mp4", top: "45%", left: "82%", rotate: 6, delay: 0.7, parallax: 1.3 },
     { id: "04", src: "/videos/clip_04.mp4", top: "58%", left: "75%", rotate: -5, delay: 0.6, parallax: 1 },
-    { id: "09", src: "/videos/clip_02.mp4", top: "68%", left: "85%", rotate: 4, delay: 1.0, parallax: -0.7 },
+    { id: "09", src: "/videos/clip_09.mp4", top: "68%", left: "85%", rotate: 4, delay: 1.0, parallax: -0.7 },
 ];
 
 const FloatingClip = ({ data, mouseX, mouseY }: any) => {
