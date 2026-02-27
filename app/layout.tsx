@@ -36,6 +36,9 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'LUCAS : Wedding Filmmaker',
   description: 'honest, nostalgic wedding cinema. digital + super 8mm. home is ontario // worldwide.',
+  verification: {
+    google: 'YOUR_GOOGLE_STRING_GOES_HERE', // <--- paste your HTML tag string from Google here
+  },
 };
 
 export default function RootLayout({
