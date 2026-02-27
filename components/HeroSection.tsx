@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const clipData = [
     // The Arch (Top)
     { id: "01", src: "/videos/clip_01.mp4", top: "12%", left: "10%", rotate: -6, delay: 0.2, parallax: -1 },
-    { id: "07", src: "/videos/clip_07.mp4", top: "8%", left: "20%", rotate: 2, delay: 0.8, parallax: 0.5 },
+    { id: "07", src: "/videos/clip_07.mp4", top: "15%", left: "20%", rotate: 2, delay: 0.8, parallax: 0.5 },
     { id: "02", src: "/videos/clip_02.mp4", top: "16%", left: "78%", rotate: 4, delay: 0.4, parallax: 1.2 },
     
     // Left Cluster (Overlapping)
