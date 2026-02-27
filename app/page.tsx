@@ -341,4 +341,5 @@ export default function Home() {
           </div>
 
           {/* the dossier (form column) */}
-          <div className="lg:col-span-7 lg:pl-
+       {/* the dossier (form column) */}
+          <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-16 lg:mt-0">
