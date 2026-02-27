@@ -341,5 +341,32 @@ export default function Home() {
           </div>
 
           {/* the dossier (form column) */}
-       {/* the dossier (form column) */}
           <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-16 lg:mt-0">
+            
+            {/* structural frame */}
+            <div className="relative bg-[#111d27] p-4 md:p-8 border border-lucas-slate/5 shadow-2xl">
+              
+              {/* editorial crosshairs */}
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-lucas-slate/30"></div>
+              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-lucas-slate/30"></div>
+              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
+
+              <div className="w-full h-full min-h-[750px] overflow-hidden">
+                <iframe 
+                  src="https://mylemlii.com/inquiry/your-day-by-lucas" 
+                  className="w-full h-[850px] border-0 outline-none bg-transparent" 
+                  title="commission lucas"
+                  style={{ border: 'none', margin: 0, padding: 0 }}
+                />
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  );
+}
