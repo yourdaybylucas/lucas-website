@@ -3,31 +3,35 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-// The "tailwind" property allows us to completely change the layout between mobile and desktop.
+// 9 clips total. 5 visible on mobile, all 9 visible on desktop.
+// Mapped safely to clips 01-07 to prevent blank boxes.
 const clipData = [
-    // The Arch (Top)
-    // Clip 1: Top Left. Bleeds off left edge on mobile.
-    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[2%] -left-[10%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, parallax: -1 },
-    // Clip 7: Hidden on mobile to let text breathe.
-    { id: "07", src: "/videos/clip_07.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
-    // Clip 2: Top Right. Bleeds off right edge on mobile.
-    { id: "02", src: "/videos/clip_02.mp4", tailwind: "top-[8%] -right-[15%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2 },
+    // 01. Top Left (Visible Mobile & Desktop)
+    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[4%] left-[2%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, parallax: -1 },
     
-    // Left Cluster (Overlapping)
-    // Hidden on mobile so they don't cover "THE ART OF noticing"
+    // 02. Top Right (Visible Mobile & Desktop)
+    { id: "02", src: "/videos/clip_02.mp4", tailwind: "top-[12%] right-[2%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2 },
+    
+    // 03. Hidden on Mobile
+    { id: "07", src: "/videos/clip_07.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
+    
+    // 04. Hidden on Mobile
     { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, parallax: -0.8 },
+    
+    // 05. Hidden on Mobile
     { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, delay: 0.3, parallax: -1.2 },
     
-    // Clip 8: Bottom Left. (Ensure clip_08.mp4 exists in your folder!)
-    { id: "08", src: "/videos/clip_08.mp4", tailwind: "top-[68%] -left-[10%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, parallax: 0.6 },
+    // 06. Mid-Bottom Left (Visible Mobile & Desktop)
+    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[64%] left-[2%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, parallax: 0.6 },
     
-    // Right Cluster (Overlapping)
-    // Hidden on mobile so they don't cover "THE ART OF noticing"
-    { id: "06", src: "/videos/clip_06.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, parallax: 1.3 },
-    { id: "04", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[58%] md:left-[75%]", rotate: -5, delay: 0.6, parallax: 1 },
+    // 07. Hidden on Mobile
+    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, parallax: 1.3 },
     
-    // Clip 9: Bottom Right. (Ensure clip_09.mp4 exists in your folder!)
-    { id: "09", src: "/videos/clip_09.mp4", tailwind: "top-[78%] -right-[10%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7 },
+    // 08. Mid-Bottom Right (Visible Mobile & Desktop)
+    { id: "04", src: "/videos/clip_04.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, parallax: 1 },
+    
+    // 09. Bottom Center (Visible Mobile & Desktop)
+    { id: "09", src: "/videos/clip_07.mp4", tailwind: "top-[84%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7 },
 ];
 
 const FloatingClip = ({ data, mouseX, mouseY }: any) => {
@@ -46,14 +50,14 @@ const FloatingClip = ({ data, mouseX, mouseY }: any) => {
                 y: { type: "spring", stiffness: 40, damping: 20 },
                 x: { type: "spring", stiffness: 40, damping: 20 },
             }}
-            // Notice we injected {data.tailwind} here to handle all the responsive positioning
-            className={`absolute bg-[#EAE4D3] flex-col p-2.5 pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
+            className={`absolute bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
             style={{ 
-                width: 'clamp(130px, 18vw, 260px)' // Slightly reduced the min-width so they don't look huge on iPhones
+                // Scaled down the mobile minimum from 130px to 100px so it breathes perfectly
+                width: 'clamp(100px, 24vw, 260px)' 
             }}
         >
             {/* The Video Container - Locked exactly to 4:3 */}
-            <div className="relative w-full aspect-[4/3] bg-lucas-navy/10 overflow-hidden mb-3 pointer-events-none">
+            <div className="relative w-full aspect-[4/3] bg-lucas-navy/10 overflow-hidden mb-2 md:mb-3 pointer-events-none">
                 <video
                     src={data.src}
                     autoPlay
@@ -67,7 +71,7 @@ const FloatingClip = ({ data, mouseX, mouseY }: any) => {
             </div>
             
             {/* The Label */}
-            <span className="font-sans text-[9px] uppercase tracking-zissou text-lucas-slate text-center pointer-events-none">
+            <span className="font-sans text-[8px] md:text-[9px] uppercase tracking-zissou text-lucas-slate text-center pointer-events-none">
                 CLIP_{data.id}
             </span>
         </motion.div>
