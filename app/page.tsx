@@ -150,12 +150,13 @@ export default function Home() {
               <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">— lucas</p>
             </motion.div>
 
+            {/* Changed from About to Collections */}
             <motion.div variants={fadeUpItem}>
               <Link 
-                href="/about" 
+                href="/collections" 
                 className="inline-block border border-lucas-navy text-lucas-navy px-10 py-4 font-sans text-xs tracking-zissou uppercase hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-300"
               >
-                Learn More About Me
+                View Collections
               </Link>
             </motion.div>
           </motion.div>
@@ -242,22 +243,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center border-t border-lucas-slate/20 pt-16"
-          >
-            <Link 
-              href="/journal" 
-              className="inline-block border border-lucas-slate/30 text-lucas-cream px-10 py-4 font-sans text-[10px] tracking-zissou uppercase hover:bg-lucas-cream hover:text-lucas-navy transition-colors duration-500"
-            >
-              Explore The Journal
-            </Link>
-          </motion.div>
-          
+          {/* Note: The journal button section was intentionally removed here for MVP */}
         </div>
       </section>
 
