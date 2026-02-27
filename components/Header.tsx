@@ -160,4 +160,23 @@ export default function Header() {
                                     key={link.path}
                                     href={link.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="font-
+                                    className="font-sans text-xl tracking-zissou uppercase text-lucas-navy hover:text-lucas-orange transition-colors duration-slow"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                            
+                            <Link
+                                href="/#contact"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="mt-8 font-sans text-xs tracking-widest uppercase border border-lucas-navy px-10 py-4 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow"
+                            >
+                                Inquire
+                            </Link>
+                        </nav>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
+    );
+}
