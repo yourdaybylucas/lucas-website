@@ -33,16 +33,14 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Col 3: The Index */}
+                    {/* Col 3: The Index (Trimmed for MVP) */}
                     <div className="col-span-1 border-r border-b lg:border-b-0 border-lucas-slate/20 p-8 md:p-10 flex flex-col hover:bg-lucas-slate/5 transition-colors duration-slow">
                         <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-10 block">
                             [ The Index ]
                         </span>
                         <nav className="flex flex-col gap-5 font-sans text-xs tracking-widest uppercase">
-                            <Link href="/about" className="hover:text-lucas-orange transition-colors w-fit">About</Link>
+                            <Link href="/" className="hover:text-lucas-orange transition-colors w-fit">Home</Link>
                             <Link href="/collections" className="hover:text-lucas-orange transition-colors w-fit">Collections</Link>
-                            <Link href="/analog-lab" className="hover:text-lucas-orange transition-colors w-fit">Analog Lab</Link>
-                            <Link href="/journal" className="hover:text-lucas-orange transition-colors w-fit">Journal</Link>
                         </nav>
                     </div>
 
