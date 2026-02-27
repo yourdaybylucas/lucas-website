@@ -306,19 +306,23 @@ export default function Home() {
           {/* the vertical spine (desktop only) */}
           <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-px bg-lucas-slate/10"></div>
 
-          {/* the anchor (text column) */}
+         {/* the anchor (text column) */}
           <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left lg:sticky lg:top-40 h-fit z-10">
             
             {/* inventory header */}
             <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-12">
               <div className="flex items-center gap-4">
                 <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
-                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">The Ledger</span>
+                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Availability</span>
               </div>
               <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ 04 ]</span>
             </div>
 
-            <p className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] text-lucas-cream/95 lowercase italic mb-16">
+            <h2 className="font-sans text-5xl md:text-6xl lg:text-[4.5rem] uppercase font-bold text-lucas-cream tracking-tight mb-8">
+              INQUIRE.
+            </h2>
+
+            <p className="font-serif text-xl md:text-2xl leading-[1.5] text-lucas-cream/80 lowercase italic mb-16">
               i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
             </p>
 
@@ -326,20 +330,23 @@ export default function Home() {
             <div className="flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2026 Commissions</span>
-                <span className="text-lucas-cream">Open</span>
+                <span className="text-lucas-orange">At Capacity *</span>
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2027 Commissions</span>
-                <span className="text-lucas-slate/40">Waitlist</span>
+                <span className="text-lucas-cream">Open</span>
               </div>
-              <div className="flex justify-between pb-3">
+              <div className="flex justify-between pb-3 border-b border-lucas-slate/10">
                 <span>Location</span>
                 <span className="text-lucas-cream">Ontario // Worldwide</span>
+              </div>
+              
+              <div className="mt-2 text-[9px] tracking-wider text-lucas-slate/70 leading-relaxed normal-case lowercase font-sans">
+                * fully commissioned for 2026, but please still reach out. i am always happy to check my waitlist or connect you with trusted peers.
               </div>
             </div>
 
           </div>
-
           {/* the dossier (form column) */}
           <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-16 lg:mt-0">
             
