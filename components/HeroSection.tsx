@@ -3,15 +3,18 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
-// Update these paths to match exactly what you name your files in the public/videos folder
+// 9 clips total to perfectly frame the center text on desktop.
+// Clips 08 and 09 reuse video files to keep the payload at exactly 9.5mb.
 const clipData = [
-    { id: "01", src: "/videos/clip_01.mp4", top: "15%", left: "8%", rotate: -4, delay: 0.2, parallax: -1 },
-    { id: "02", src: "/videos/clip_02.mp4", top: "20%", left: "75%", rotate: 3, delay: 0.4, parallax: 1.5 },
-    { id: "03", src: "/videos/clip_03.mp4", top: "55%", left: "12%", rotate: -2, delay: 0.3, parallax: -1.2 },
-    { id: "04", src: "/videos/clip_04.mp4", top: "65%", left: "78%", rotate: 5, delay: 0.6, parallax: 1 },
-    { id: "05", src: "/videos/clip_05.mp4", top: "45%", left: "5%", rotate: -8, delay: 0.5, parallax: -0.8 },
-    { id: "06", src: "/videos/clip_06.mp4", top: "50%", left: "85%", rotate: 6, delay: 0.7, parallax: 1.3 },
-    { id: "07", src: "/videos/clip_07.mp4", top: "5%", left: "45%", rotate: 2, delay: 0.8, parallax: -0.5 },
+    { id: "01", src: "/videos/clip_01.mp4", top: "12%", left: "6%", rotate: -4, delay: 0.2, parallax: -1 },
+    { id: "02", src: "/videos/clip_02.mp4", top: "18%", left: "76%", rotate: 3, delay: 0.4, parallax: 1.5 },
+    { id: "03", src: "/videos/clip_03.mp4", top: "58%", left: "10%", rotate: -2, delay: 0.3, parallax: -1.2 },
+    { id: "04", src: "/videos/clip_04.mp4", top: "68%", left: "78%", rotate: 5, delay: 0.6, parallax: 1 },
+    { id: "05", src: "/videos/clip_05.mp4", top: "35%", left: "20%", rotate: -7, delay: 0.5, parallax: -0.8 },
+    { id: "06", src: "/videos/clip_06.mp4", top: "45%", left: "65%", rotate: 6, delay: 0.7, parallax: 1.3 },
+    { id: "07", src: "/videos/clip_07.mp4", top: "8%", left: "45%", rotate: 2, delay: 0.8, parallax: -0.5 },
+    { id: "08", src: "/videos/clip_01.mp4", top: "82%", left: "32%", rotate: -3, delay: 0.9, parallax: 0.6 },
+    { id: "09", src: "/videos/clip_02.mp4", top: "85%", left: "58%", rotate: 4, delay: 1.0, parallax: -0.7 },
 ];
 
 const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
@@ -19,6 +22,7 @@ const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
         <motion.div
             drag
             dragConstraints={constraintsRef}
+            dragElastic={0.1} // Makes the drag feel heavier and more physical
             whileHover={{ scale: 1.05, zIndex: 50, cursor: "grab" }}
             whileDrag={{ scale: 1.1, cursor: "grabbing", zIndex: 100 }}
             initial={{ opacity: 0, y: 20 }}
@@ -32,29 +36,27 @@ const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
                 opacity: { duration: 1, delay: data.delay },
                 y: { type: "spring", stiffness: 50, damping: 20 },
                 x: { type: "spring", stiffness: 50, damping: 20 },
-                layout: { duration: 0.3 }
+                // Removed the "layout" transition which was causing the drag glitch
             }}
-            className="absolute bg-lucas-cream flex flex-col p-2 pb-6 border border-lucas-slate/20 shadow-xl overflow-hidden"
+            className="absolute bg-[#EAE4D3] flex flex-col p-2.5 pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden"
             style={{ 
                 top: data.top, 
                 left: data.left, 
-                width: 'clamp(150px, 20vw, 280px)', 
-                aspectRatio: '4/3' // Changed to 4:3 to match your vintage feel
+                width: 'clamp(160px, 18vw, 260px)'
             }}
         >
-            {/* The Video Container */}
-            <div className="relative w-full h-full bg-lucas-navy/10 overflow-hidden mb-2">
+            {/* The Video Container - Locked exactly to 4:3 */}
+            <div className="relative w-full aspect-[4/3] bg-lucas-navy/10 overflow-hidden mb-3 pointer-events-none">
                 <video
                     src={data.src}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    // These filters keep the video tied to your brand palette (slightly desaturated, high contrast)
-                    className="object-cover w-full h-full opacity-90 grayscale-[20%] contrast-125 mix-blend-multiply pointer-events-none"
+                    className="object-cover w-full h-full opacity-90 grayscale-[20%] contrast-[1.1] mix-blend-multiply"
                 />
-                {/* Subtle grain overlay on top of the video */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.25] mix-blend-overlay pointer-events-none"></div>
+                {/* Subtle grain overlay */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.25] mix-blend-overlay"></div>
             </div>
             
             {/* The Label */}
