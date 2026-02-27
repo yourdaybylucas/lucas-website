@@ -98,13 +98,13 @@ export default function HeroSection() {
                 ))}
             </div>
 
-            {/* Main Hero Content (z-20) */}
+{/* Main Hero Content (z-20) */}
             <div className="relative z-20 text-center flex flex-col items-center mt-12 pointer-events-none">
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="font-sans text-xs uppercase tracking-zissou text-lucas-slate mb-6"
+                    className="font-sans text-[10px] uppercase tracking-zissou text-lucas-slate mb-12"
                 >
                     Ontario // Worldwide
                 </motion.p>
@@ -113,26 +113,21 @@ export default function HeroSection() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex flex-col items-center leading-none"
+                    className="flex flex-col items-center justify-center"
                 >
-                    <span className="font-sans font-bold text-[clamp(2.5rem,4.5vw,5.5rem)] text-lucas-navy uppercase tracking-normal">
+                    {/* The Fix: Hushed the bold text into a quiet, elegant kicker */}
+                    <span className="font-sans font-medium text-sm md:text-base text-lucas-navy/70 uppercase tracking-[0.4em] mb-2 pl-3">
                         The Art Of
                     </span>
-                    <div className="flex items-baseline -mt-3 md:-mt-6">
-                        <span className="font-serif italic text-[clamp(3rem,5.5vw,6.5rem)] text-lucas-navy lowercase">
+                    
+                    {/* Let the graceful serif take over the visual weight */}
+                    <div className="flex items-baseline leading-none">
+                        <span className="font-serif italic text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-navy lowercase tracking-tight">
                             noticing
                         </span>
-                        <span className="font-serif text-[clamp(3rem,5.5vw,6.5rem)] text-lucas-orange ml-1">
+                        <span className="font-serif text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-orange ml-2">
                             .
                         </span>
                     </div>
                 </motion.h1>
             </div>
-
-            {/* Bottom Left Badge */}
-            <div className="absolute bottom-8 left-8 w-12 h-12 bg-lucas-navy rounded-full flex items-center justify-center z-20 pointer-events-none">
-                <span className="text-lucas-cream font-sans font-bold text-sm">N'</span>
-            </div>
-        </section>
-    );
-}
