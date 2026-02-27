@@ -62,10 +62,10 @@ export default function Header() {
                 <MagneticWrap>
                     <Link href="/" className="hover:opacity-70 transition-opacity flex items-center py-4">
                         <Image 
-                            src="/logos/Icon Lucas Transparent.png" 
+                            src="/logos/L Blue Transparent.png" 
                             alt="LUCAS" 
-                            width={120} 
-                            height={120} 
+                            width={64} 
+                            height={64} 
                             className="object-contain"
                             priority
                         />
