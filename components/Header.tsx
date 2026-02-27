@@ -64,8 +64,8 @@ export default function Header() {
                         <Image 
                             src="/logos/L Blue Transparent.png" 
                             alt="LUCAS" 
-                            width={64} 
-                            height={64} 
+                            width={50} 
+                            height={50} 
                             className="object-contain"
                             priority
                         />
