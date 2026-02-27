@@ -11,10 +11,10 @@ export default function Footer() {
                     {/* Col 1 & 2: The Manifesto & Sign-off */}
                     <div className="col-span-1 md:col-span-2 border-r border-b md:border-b-0 border-lucas-slate/20 p-8 md:p-12 flex flex-col justify-between min-h-[400px]">
                         <div>
-                            {/* Logo: Letterboxed container to crop out transparent top/bottom padding */}
-                            <div className="relative w-full max-w-[320px] md:max-w-[400px] h-16 md:h-24 overflow-hidden flex items-center mb-8">
-                                {/* Inner container acts as the full square canvas */}
-                                <div className="relative w-full h-[320px] md:h-[400px] shrink-0">
+                            {/* Logo: Reduced by 30% */}
+                            <div className="relative w-full max-w-[224px] md:max-w-[280px] h-11 md:h-16 overflow-hidden flex items-center mb-8">
+                                {/* Inner canvas scaled down to match */}
+                                <div className="relative w-full h-[224px] md:h-[280px] shrink-0">
                                     <Image 
                                         src="/logos/Lucas Buttercream trans.png" 
                                         alt="LUCAS" 
