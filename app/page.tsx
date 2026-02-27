@@ -177,14 +177,15 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mb-24">
-            {featuredFilms.map((film) => (
+            {featuredFilms.map((film, index) => (
               <motion.div 
                 key={film.id} 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-                className="group flex flex-col w-full"
+                // The logical cull: hide indices 2 and 3 on small screens
+                className={`group flex-col w-full ${index >= 2 ? 'hidden md:flex' : 'flex'}`}
               >
                 
                 <div 
@@ -296,12 +297,13 @@ export default function Home() {
       </section>
 
       {/* the ledger (inquiry form) */}
-      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-40 px-6 overflow-hidden">
+      {/* y-axis padding aggressively scaled down on mobile */}
+      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
         
         {/* subtle analog grain overlay */}
         <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
 
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 relative">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 relative">
           
           {/* the vertical spine (desktop only) */}
           <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-px bg-lucas-slate/10"></div>
@@ -310,7 +312,7 @@ export default function Home() {
           <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left lg:sticky lg:top-40 h-fit z-10">
             
             {/* inventory header */}
-            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-12">
+            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-8 lg:mb-12">
               <div className="flex items-center gap-4">
                 <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Availability</span>
@@ -318,16 +320,17 @@ export default function Home() {
               <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ 04 ]</span>
             </div>
 
-            <h2 className="font-sans text-5xl md:text-6xl lg:text-[4.5rem] uppercase font-bold text-lucas-cream tracking-tight mb-8">
+            <h2 className="font-sans text-5xl md:text-6xl lg:text-[4.5rem] uppercase font-bold text-lucas-cream tracking-tight mb-4 lg:mb-8">
               INQUIRE.
             </h2>
 
-            <p className="font-serif text-xl md:text-2xl leading-[1.5] text-lucas-cream/80 lowercase italic mb-16">
+            {/* hidden on mobile to pull the form up */}
+            <p className="hidden lg:block font-serif text-xl md:text-2xl leading-[1.5] text-lucas-cream/80 lowercase italic mb-16">
               i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
             </p>
 
-            {/* scarcity / availability block */}
-            <div className="flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
+            {/* scarcity / availability block - hidden on mobile to pull the form up */}
+            <div className="hidden lg:flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2026 Commissions</span>
                 <span className="text-lucas-orange">At Capacity *</span>
@@ -348,10 +351,10 @@ export default function Home() {
 
           </div>
           {/* the dossier (form column) */}
-          <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-16 lg:mt-0">
+          <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-4 lg:mt-0">
             
             {/* structural frame */}
-            <div className="relative bg-[#111d27] p-4 md:p-8 border border-lucas-slate/5 shadow-2xl">
+            <div className="relative bg-[#111d27] p-2 md:p-8 border border-lucas-slate/5 shadow-2xl">
               
               {/* editorial crosshairs */}
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-lucas-slate/30"></div>
@@ -359,10 +362,11 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
 
-              <div className="w-full h-full min-h-[750px] overflow-hidden">
+              {/* iframe squeezed to 550px on mobile, holding 850px on desktop */}
+              <div className="w-full h-full min-h-[550px] lg:min-h-[750px] overflow-hidden">
                 <iframe 
                   src="https://mylemlii.com/inquiry/your-day-by-lucas" 
-                  className="w-full h-[850px] border-0 outline-none bg-transparent" 
+                  className="w-full h-[550px] lg:h-[850px] border-0 outline-none bg-transparent" 
                   title="commission lucas"
                   style={{ border: 'none', margin: 0, padding: 0 }}
                 />
