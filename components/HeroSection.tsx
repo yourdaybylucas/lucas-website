@@ -1,30 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
-// 9 clips total to perfectly frame the center text on desktop.
-// Clips 08 and 09 reuse video files to keep the payload at exactly 9.5mb.
+// 9 clips total. 
+// Re-mapped to form a wide arch, overlapping clusters on the sides, and pulled up from the bottom.
 const clipData = [
-    { id: "01", src: "/videos/clip_01.mp4", top: "12%", left: "6%", rotate: -4, delay: 0.2, parallax: -1 },
-    { id: "02", src: "/videos/clip_02.mp4", top: "18%", left: "76%", rotate: 3, delay: 0.4, parallax: 1.5 },
-    { id: "03", src: "/videos/clip_03.mp4", top: "58%", left: "10%", rotate: -2, delay: 0.3, parallax: -1.2 },
-    { id: "04", src: "/videos/clip_04.mp4", top: "68%", left: "78%", rotate: 5, delay: 0.6, parallax: 1 },
-    { id: "05", src: "/videos/clip_05.mp4", top: "35%", left: "20%", rotate: -7, delay: 0.5, parallax: -0.8 },
-    { id: "06", src: "/videos/clip_06.mp4", top: "45%", left: "65%", rotate: 6, delay: 0.7, parallax: 1.3 },
-    { id: "07", src: "/videos/clip_07.mp4", top: "8%", left: "45%", rotate: 2, delay: 0.8, parallax: -0.5 },
-    { id: "08", src: "/videos/clip_01.mp4", top: "82%", left: "32%", rotate: -3, delay: 0.9, parallax: 0.6 },
-    { id: "09", src: "/videos/clip_02.mp4", top: "85%", left: "58%", rotate: 4, delay: 1.0, parallax: -0.7 },
+    // The Arch (Top)
+    { id: "01", src: "/videos/clip_01.mp4", top: "12%", left: "10%", rotate: -6, delay: 0.2, parallax: -1 },
+    { id: "07", src: "/videos/clip_07.mp4", top: "5%", left: "45%", rotate: 2, delay: 0.8, parallax: 0.5 },
+    { id: "02", src: "/videos/clip_02.mp4", top: "16%", left: "78%", rotate: 4, delay: 0.4, parallax: 1.2 },
+    
+    // Left Cluster (Overlapping)
+    { id: "05", src: "/videos/clip_05.mp4", top: "42%", left: "6%", rotate: -8, delay: 0.5, parallax: -0.8 },
+    { id: "03", src: "/videos/clip_03.mp4", top: "55%", left: "13%", rotate: 3, delay: 0.3, parallax: -1.2 },
+    { id: "08", src: "/videos/clip_01.mp4", top: "66%", left: "7%", rotate: -4, delay: 0.9, parallax: 0.6 },
+    
+    // Right Cluster (Overlapping)
+    { id: "06", src: "/videos/clip_06.mp4", top: "45%", left: "82%", rotate: 6, delay: 0.7, parallax: 1.3 },
+    { id: "04", src: "/videos/clip_04.mp4", top: "58%", left: "75%", rotate: -5, delay: 0.6, parallax: 1 },
+    { id: "09", src: "/videos/clip_02.mp4", top: "68%", left: "85%", rotate: 4, delay: 1.0, parallax: -0.7 },
 ];
 
-const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
+const FloatingClip = ({ data, mouseX, mouseY }: any) => {
     return (
         <motion.div
-            drag
-            dragConstraints={constraintsRef}
-            dragElastic={0.1} // Makes the drag feel heavier and more physical
-            whileHover={{ scale: 1.05, zIndex: 50, cursor: "grab" }}
-            whileDrag={{ scale: 1.1, cursor: "grabbing", zIndex: 100 }}
+            whileHover={{ scale: 1.05, zIndex: 50 }} // Smooth hover lift without the drag
             initial={{ opacity: 0, y: 20 }}
             animate={{
                 opacity: 1,
@@ -34,9 +35,8 @@ const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
             }}
             transition={{
                 opacity: { duration: 1, delay: data.delay },
-                y: { type: "spring", stiffness: 50, damping: 20 },
-                x: { type: "spring", stiffness: 50, damping: 20 },
-                // Removed the "layout" transition which was causing the drag glitch
+                y: { type: "spring", stiffness: 40, damping: 20 },
+                x: { type: "spring", stiffness: 40, damping: 20 },
             }}
             className="absolute bg-[#EAE4D3] flex flex-col p-2.5 pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden"
             style={{ 
@@ -69,7 +69,6 @@ const FloatingClip = ({ data, mouseX, mouseY, constraintsRef }: any) => {
 
 export default function HeroSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const constraintsRef = useRef(null);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -83,7 +82,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section ref={constraintsRef} className="relative w-full h-screen bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
+        <section className="relative w-full h-screen bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
 
             {/* Background Scattered Clips (z-10) */}
             <div className="absolute inset-0 z-10">
@@ -93,7 +92,6 @@ export default function HeroSection() {
                         data={clip} 
                         mouseX={mousePosition.x} 
                         mouseY={mousePosition.y} 
-                        constraintsRef={constraintsRef}
                     />
                 ))}
             </div>
