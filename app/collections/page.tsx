@@ -188,11 +188,11 @@ export default function CollectionsPage() {
                     
                     {/* Note: I adjusted the base rate here to $6,000 to match the exact specs in your AI guidelines */}
                     <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy mb-6 mt-8">
-                        Commissions begin at $6,000
+                        Commissions begin at $5,800
                     </h2>
                     
                     <p className="font-serif text-xl md:text-2xl text-lucas-slate mb-12 max-w-2xl italic leading-relaxed">
-                        the complete commission guide—detailing a la carte additions, super 8mm upgrades, and destination logistics—is shared upon inquiry.
+                        inquire for the complete guide, including full pricing and logistics.
                     </p>
                     
                     <Link 
