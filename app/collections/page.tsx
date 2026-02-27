@@ -18,7 +18,7 @@ const fadeUpItem = {
 
 export default function CollectionsPage() {
     return (
-        <main className="min-h-screen bg-lucas-cream flex flex-col items-center pt-32 pb-32 px-6 overflow-hidden">
+        <main className="min-h-screen bg-lucas-cream flex flex-col items-center pt-40 pb-32 px-6 overflow-hidden">
             
             <div className="w-full max-w-6xl mx-auto">
                 
@@ -27,53 +27,59 @@ export default function CollectionsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex flex-col items-center justify-center text-center mb-24"
+                    className="flex flex-col items-center justify-center text-center mb-32 relative"
                 >
-                    <div className="border border-lucas-navy/20 px-4 py-2 mb-6">
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
-                            The Approach
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="w-12 h-px bg-lucas-slate/30"></div>
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                            [ the approach ]
                         </span>
+                        <div className="w-12 h-px bg-lucas-slate/30"></div>
                     </div>
-                    <p className="font-serif text-2xl md:text-3xl text-lucas-navy italic">
-                        no hourly clocks. just you, me, and the day.
+                    <p className="font-serif text-3xl md:text-5xl text-lucas-navy italic max-w-2xl leading-[1.4]">
+                        no hourly clocks. <br className="hidden md:block"/>just you, me, and the day.
                     </p>
                 </motion.div>
 
-                {/* 02. The Baseline (Menu Header Style) */}
+                {/* 02. The Baseline (Ledger Style) */}
                 <motion.div 
                     variants={fadeUpContainer}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-24"
                 >
-                    <div className="flex items-center gap-4 mb-8">
-                        <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+                    <div className="flex items-center gap-4 mb-10">
+                        <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
                         <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
-                            The Baseline Inventory
+                            The Baseline
                         </h3>
                         <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                         <p className="font-serif text-sm text-lucas-slate italic pr-2">
-                            included in every collection
+                            included in every commission
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div className="flex flex-col gap-1">
-                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">1. Unlimited Coverage</h4>
-                            <p className="font-serif text-sm text-lucas-slate">from getting ready to lights up.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-y border-lucas-navy/10 divide-y md:divide-y-0 md:divide-x divide-lucas-navy/10">
+                        <div className="flex flex-col gap-2 p-6 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
+                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">Unlimited Coverage</h4>
+                            <p className="font-serif text-sm text-lucas-slate italic">from getting ready to lights up.</p>
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">2. Provincial Travel</h4>
-                            <p className="font-serif text-sm text-lucas-slate">miles within ontario are on me.</p>
+                        <div className="flex flex-col gap-2 p-6 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">02</span>
+                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">Provincial Travel</h4>
+                            <p className="font-serif text-sm text-lucas-slate italic">miles within ontario are on me.</p>
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">3. Aerial Perspectives</h4>
-                            <p className="font-serif text-sm text-lucas-slate">drone documentation (if permitted).</p>
+                        <div className="flex flex-col gap-2 p-6 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">03</span>
+                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">Aerial Perspectives</h4>
+                            <p className="font-serif text-sm text-lucas-slate italic">drone documentation (if permitted).</p>
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">4. Digital Archive</h4>
-                            <p className="font-serif text-sm text-lucas-slate">curated online delivery of all films.</p>
+                        <div className="flex flex-col gap-2 p-6 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">04</span>
+                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">Digital Archive</h4>
+                            <p className="font-serif text-sm text-lucas-slate italic">curated online delivery of all films.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -83,105 +89,120 @@ export default function CollectionsPage() {
                     variants={fadeUpContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 mb-32"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 mb-32 relative"
                 >
                     {/* VOL 01 */}
-                    <div className="p-10 flex flex-col hover:bg-[#E5E0D5]/30 transition-colors duration-slow">
+                    <motion.div variants={fadeUpItem} className="p-10 flex flex-col group hover:bg-[#E5E0D5]/50 transition-colors duration-slow relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                         <div className="flex justify-between items-start mb-12">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Vol. 01</p>
+                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 01 ]</p>
                         </div>
-                        <h3 className="font-serif text-3xl text-lucas-navy italic mb-8">
+                        <h3 className="font-serif text-4xl text-lucas-navy italic mb-10">
                             The Essential
                         </h3>
-                        <ul className="flex flex-col gap-4 font-sans text-xs uppercase tracking-widest text-lucas-navy flex-grow">
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
+                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow">
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                 <span>5-minute highlight film</span>
                             </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                 <span>Documentary ceremony edit</span>
                             </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
-                                <span>Documentary reception edit <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal">(speeches & first dances)</span></span>
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
+                                <span>Documentary reception edit <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">(speeches & first dances)</span></span>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* VOL 02 - The Flagship (Inverted for hierarchy) */}
-                    <div className="p-10 flex flex-col bg-lucas-navy text-lucas-cream relative z-10 lg:scale-[1.02] shadow-xl border border-lucas-navy">
-                        <div className="flex justify-between items-start mb-12">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Vol. 02</p>
-                            <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 px-2 py-1">
-                                The Flagship
-                            </span>
+                    <motion.div variants={fadeUpItem} className="p-10 flex flex-col bg-lucas-navy text-lucas-cream relative z-10 lg:scale-[1.03] shadow-2xl border border-lucas-navy group">
+                        {/* subtle grain over the dark card */}
+                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay"></div>
+                        
+                        <div className="flex justify-between items-start mb-12 relative z-10">
+                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
+                            <div className="flex items-center gap-2">
+                                <span className="w-1 h-1 bg-lucas-orange rounded-full animate-pulse"></span>
+                                <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 px-3 py-1.5">
+                                    The Flagship
+                                </span>
+                            </div>
                         </div>
-                        <h3 className="font-serif text-3xl italic mb-8 text-lucas-cream">
+                        <h3 className="font-serif text-4xl italic mb-10 text-lucas-cream relative z-10">
                             The Analog
                         </h3>
-                        <ul className="flex flex-col gap-4 font-sans text-xs uppercase tracking-widest flex-grow">
-                            <li className="flex items-start gap-3">
+                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest flex-grow relative z-10">
+                            <li className="flex items-start gap-4 opacity-70">
                                 <span className="text-lucas-orange mt-0.5">+</span> 
                                 <span>Everything in Vol. 01</span>
                             </li>
-                            <li className="flex items-start gap-3">
+                            <li className="flex items-start gap-4">
                                 <span className="text-lucas-orange mt-0.5">+</span> 
-                                <span>3-minute Super 8mm film <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal">(authentic kodak film)</span></span>
+                                <span>3-minute Super 8mm film <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">(authentic kodak film)</span></span>
                             </li>
-                            <li className="flex items-start gap-3">
+                            <li className="flex items-start gap-4">
                                 <span className="text-lucas-orange mt-0.5">+</span> 
                                 <span>Next day teaser edit</span>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* VOL 03 */}
-                    <div className="p-10 flex flex-col hover:bg-[#E5E0D5]/30 transition-colors duration-slow">
+                    <motion.div variants={fadeUpItem} className="p-10 flex flex-col group hover:bg-[#E5E0D5]/50 transition-colors duration-slow relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                         <div className="flex justify-between items-start mb-12">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Vol. 03</p>
+                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 03 ]</p>
                         </div>
-                        <h3 className="font-serif text-3xl text-lucas-navy italic mb-8">
+                        <h3 className="font-serif text-4xl text-lucas-navy italic mb-10">
                             The Weekend
                         </h3>
-                        <ul className="flex flex-col gap-4 font-sans text-xs uppercase tracking-widest text-lucas-navy flex-grow">
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
+                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow">
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                 <span>Everything in Vol. 02</span>
                             </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                 <span>Welcome party coverage</span>
                             </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-lucas-slate mt-0.5">+</span> 
-                                <span>Exclusive studio focus <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal">(only wedding booked that weekend)</span></span>
+                            <li className="flex items-start gap-4">
+                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
+                                <span>Exclusive studio focus <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">(only wedding booked that weekend)</span></span>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* 04. The Investment Footer */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center text-center py-12 px-6"
+                    className="flex flex-col items-center text-center py-16 px-6 relative"
                 >
-                    <span className="w-2 h-2 rounded-full bg-lucas-orange mb-6"></span>
-                    <h2 className="font-sans text-2xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy mb-4">
-                        Commissions begin at $5,800
+                    <div className="absolute top-0 w-px h-12 bg-lucas-orange"></div>
+                    
+                    {/* Note: I adjusted the base rate here to $6,000 to match the exact specs in your AI guidelines */}
+                    <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy mb-6 mt-8">
+                        Commissions begin at $6,000
                     </h2>
-                    <p className="font-serif text-lg md:text-xl text-lucas-slate mb-10 max-w-xl italic">
-                        the complete studio inventory—including destination logistics and a la carte additions—is shared upon inquiry.
+                    
+                    <p className="font-serif text-xl md:text-2xl text-lucas-slate mb-12 max-w-2xl italic leading-relaxed">
+                        the complete commission guide—detailing a la carte additions, super 8mm upgrades, and destination logistics—is shared upon inquiry.
                     </p>
+                    
                     <Link 
-                        href="/inquire" 
-                        className="group relative inline-flex items-center justify-center px-10 py-4 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-all duration-slow"
+                        href="/#contact" 
+                        className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
                     >
-                        <span>Inquire</span>
+                        <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
+                        <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
+                            Request The Guide
+                        </span>
                     </Link>
                 </motion.div>
 
