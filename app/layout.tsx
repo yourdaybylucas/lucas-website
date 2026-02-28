@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
+import CustomCursor from '@/components/CustomCursor';
+import SmoothScrollProvider from '@/components/SmoothScrollProvider';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import './globals.css';
 
+// the soul
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -11,6 +16,7 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
+// the structure
 const generalSans = localFont({
   src: [
     {
@@ -27,11 +33,6 @@ const generalSans = localFont({
   variable: '--font-general-sans',
   display: 'swap',
 });
-
-import CustomCursor from '@/components/CustomCursor';
-import SmoothScrollProvider from '@/components/SmoothScrollProvider';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'LUCAS : Wedding Filmmaker',
@@ -51,6 +52,8 @@ export default function RootLayout({
       <body className="bg-lucas-cream text-lucas-navy font-sans antialiased selection:bg-lucas-orange selection:text-lucas-cream relative">
         <SmoothScrollProvider>
           <CustomCursor />
+          
+          {/* analog grain overlay */}
           <div className="fixed inset-0 z-50 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-multiply"></div>
 
           <Header />
