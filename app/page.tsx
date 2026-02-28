@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,6 +61,10 @@ const fadeUpItem = {
 
 export default function Home() {
   const [activeFilm, setActiveFilm] = useState<string | null>(null);
+  
+  // the tripwire setup
+  const archiveRef = useRef(null);
+  const isArchiveInView = useInView(archiveRef, { once: true, margin: "200px" });
 
   return (
     <main className="relative min-h-[200vh] bg-lucas-cream overflow-hidden">
@@ -164,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* the archive (featured films) */}
-      <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
+      <section ref={archiveRef} id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
         <div className="max-w-7xl mx-auto">
           
           <div className="flex justify-between items-end mb-24 border-b border-lucas-slate/20 pb-8">
@@ -194,7 +198,7 @@ export default function Home() {
                 >
                   {activeFilm === film.id ? (
                     <iframe
-                      src={`https://www.youtube.com/embed/${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
+                      src={`https://www.youtube.com/embed/$${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
                       title={film.names}
                       className="w-full h-full absolute top-0 left-0 border-none"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -203,7 +207,7 @@ export default function Home() {
                   ) : (
                     <>
                       <Image
-                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+                        src={`https://img.youtube.com/vi/$${film.id}/maxresdefault.jpg`}
                         alt={film.names}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -364,12 +368,17 @@ export default function Home() {
 
               {/* iframe squeezed to 550px on mobile, holding 850px on desktop */}
               <div className="w-full h-full min-h-[550px] lg:min-h-[750px] overflow-hidden">
-                <iframe 
-                  src="https://mylemlii.com/inquiry/your-day-by-lucas" 
-                  className="w-full h-[550px] lg:h-[850px] border-0 outline-none bg-transparent" 
-                  title="commission lucas"
-                  style={{ border: 'none', margin: 0, padding: 0 }}
-                />
+                {isArchiveInView ? (
+                  <iframe 
+                    src="https://mylemlii.com/inquiry/your-day-by-lucas" 
+                    className="w-full h-[550px] lg:h-[850px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
+                    title="commission lucas"
+                    style={{ border: 'none', margin: 0, padding: 0 }}
+                  />
+                ) : (
+                  // structural placeholder so the layout doesn't shift when it finally loads
+                  <div className="w-full h-[550px] lg:h-[850px] bg-[#111d27]"></div>
+                )}
               </div>
             </div>
 
