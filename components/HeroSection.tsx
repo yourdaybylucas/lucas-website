@@ -93,7 +93,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="relative w-full h-screen bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
+        <section className="relative w-full h-[100dvh] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
 
             {/* Background Scattered Clips (z-10) */}
             <div className="absolute inset-0 z-10">
@@ -108,7 +108,7 @@ export default function HeroSection() {
             </div>
 
             {/* Main Hero Content (z-20) */}
-            <div className="relative z-20 text-center flex flex-col items-center mt-12 pointer-events-none">
+            <div className="relative z-20 text-center flex flex-col items-center pointer-events-none">
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -137,11 +137,6 @@ export default function HeroSection() {
                         </span>
                     </div>
                 </motion.h1>
-            </div>
-
-            {/* Bottom Left Badge */}
-            <div className="absolute bottom-8 left-8 w-12 h-12 bg-lucas-navy rounded-full flex items-center justify-center z-20 pointer-events-none hidden md:flex">
-                <span className="text-lucas-cream font-sans font-bold text-sm">N'</span>
             </div>
         </section>
     );
