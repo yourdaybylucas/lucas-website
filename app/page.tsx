@@ -371,13 +371,13 @@ export default function Home() {
                 {isContactInView ? (
                   <iframe 
                     src="https://mylemlii.com/inquiry/your-day-by-lucas" 
-                    className="w-full h-[550px] lg:h-[850px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
+                    className="w-full h-[700px] lg:h-[850px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
                     title="commission lucas"
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
                 ) : (
                   // structural placeholder so the layout doesn't shift when it finally loads
-                  <div className="w-full h-[550px] lg:h-[850px] bg-[#111d27]"></div>
+                  <div className="w-full h-[700px] lg:h-[850px] bg-[#111d27]"></div>
                 )}
               </div>
             </div>
