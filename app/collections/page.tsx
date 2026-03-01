@@ -18,7 +18,7 @@ const fadeUpItem = {
 
 export default function CollectionsPage() {
     return (
-        <main className="min-h-screen bg-lucas-cream flex flex-col items-center pt-40 pb-32 px-6 overflow-hidden">
+        <main className="min-h-screen bg-lucas-cream flex flex-col items-center pt-[10vh] pb-[10vh] px-6 overflow-hidden">
             
             <div className="w-full max-w-6xl mx-auto">
                 
@@ -27,7 +27,7 @@ export default function CollectionsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex flex-col items-center justify-center text-center mb-32 relative"
+                    className="flex flex-col items-center justify-center text-center mb-[8vh] relative"
                 >
                     <div className="flex items-center gap-4 mb-8">
                         <div className="w-12 h-px bg-lucas-slate/30"></div>
@@ -47,7 +47,7 @@ export default function CollectionsPage() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="mb-24"
+                    className="mb-[8vh]"
                 >
                     <div className="flex items-center gap-4 mb-10">
                         <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
@@ -90,7 +90,7 @@ export default function CollectionsPage() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 mb-32 relative"
+                    className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 mb-[6vh] relative"
                 >
                     {/* VOL 01 */}
                     <motion.div variants={fadeUpItem} className="p-10 flex flex-col group hover:bg-[#E5E0D5]/50 transition-colors duration-slow relative overflow-hidden">
@@ -176,18 +176,24 @@ export default function CollectionsPage() {
                     </motion.div>
                 </motion.div>
 
-                {/* 04. The Investment Footer */}
+                {/* 04. The Teaser Line (Isolated for layout control) */}
+                <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    whileInView={{ opacity: 1, height: "3rem" }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
+                    className="w-px bg-lucas-orange mx-auto mb-[6vh]"
+                />
+
+                {/* 05. The Investment Footer */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center text-center py-16 px-6 relative"
+                    className="flex flex-col items-center text-center px-6 relative"
                 >
-                    <div className="absolute top-0 w-px h-12 bg-lucas-orange"></div>
-                    
-                    {/* Note: I adjusted the base rate here to $6,000 to match the exact specs in your AI guidelines */}
-                    <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy mb-6 mt-8">
+                    <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy mb-6">
                         Commissions begin at $5,800
                     </h2>
                     
