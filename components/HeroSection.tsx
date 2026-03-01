@@ -22,7 +22,7 @@ const clipData = [
     { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, delay: 0.3, parallax: -1.2 },
     
     // 06. Mid-Bottom Left (Visible Mobile & Desktop)
-    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[15%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, parallax: 0.6 },
+    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, parallax: 0.6 },
     
     // 07. Hidden on Mobile
     { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, parallax: 1.3 },
