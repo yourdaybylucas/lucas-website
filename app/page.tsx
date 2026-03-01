@@ -30,20 +30,20 @@ const featuredFilms = [
 ];
 
 const loveLetters = [
-  { name: "Hannah & Connor", quote: "such a calming presence... he blended in seamlessly." },
-  { name: "Adele & Steve", quote: "he takes the time to get to know his client and to ensure visions align." },
   { name: "Kristen & Frankie", quote: "he had this amazing ability to be everywhere without ever being intrusive - capturing every genuine emotion, every tiny detail, and all the moments we never even saw happening." },
-  { name: "Rand & Mostafa", quote: "a wonderful human and an even more phenomenal artist." },
-  { name: "Kevin & Melanie", quote: "his style is very natural and non-intrusive... able to capture the day authentically." },
   { name: "Billie Jo & Neil", quote: "somehow he is everywhere, but you never see him... lucas captured the warmth, the feel, the emotion." },
-  { name: "Daniela & Andrew", quote: "lucas is not just a videographer; he is a storyteller and true professional who turned our day into a masterpiece." },
-  { name: "Taylor & Joe", quote: "not only was he amazing to work with, but his talent and artistic eye are so clearly present in all of his work." },
-  { name: "Megan & Mike", quote: "every look, every laugh, every detail of our day was documented so thoughtfully and artistically." },
   { name: "Rachel & Matt", quote: "he truly is a fly on the wall. he caught some beautiful candid moments that really captured the overall feeling." },
-  { name: "LQ Events", quote: "a kind, down to earth, and calming presence." },
+  { name: "Jessica & Brandon", quote: "the vibe of the video is completely tailored to brandon and i and who we are as people." },
+  { name: "Hannah & Connor", quote: "such a calming presence... he blended in seamlessly." },
   { name: "Jessica & Chris", quote: "he really understood our personalities, which made it a perfect blend of humour and happiness." },
+  { name: "Megan & Mike", quote: "every look, every laugh, every detail of our day was documented so thoughtfully and artistically." },
+  { name: "Kevin & Melanie", quote: "his style is very natural and non-intrusive... able to capture the day authentically." },
   { name: "Eira & Sam", quote: "brought a sense of calm to the room... it was so fun to see ours come to life." },
-  { name: "Jessica & Brandon", quote: "the vibe of the video is completely tailored to brandon and i and who we are as people." }
+  { name: "Rand & Mostafa", quote: "a wonderful human and an even more phenomenal artist." },
+  { name: "Taylor & Joe", quote: "not only was he amazing to work with, but his talent and artistic eye are so clearly present in all of his work." },
+  { name: "LQ Events", quote: "a kind, down to earth, and calming presence." },
+  { name: "Adele & Steve", quote: "he takes the time to get to know his client and to ensure visions align." },
+  { name: "Daniela & Andrew", quote: "lucas is not just a videographer; he is a storyteller and true professional who turned our day into a masterpiece." }
 ];
 
 const fadeUpContainer = {
