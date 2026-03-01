@@ -300,8 +300,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* the ledger (inquiry form) */}
-      {/* y-axis padding aggressively scaled down on mobile */}
+    {/* the ledger (inquiry form) */}
       <section ref={contactRef} id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
         
         {/* subtle analog grain overlay */}
@@ -366,18 +365,18 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
 
-              {/* iframe squeezed to 700px on mobile, holding 850px on desktop */}
-              <div className="w-full h-full min-h-[550px] lg:min-h-[750px] overflow-hidden">
+              {/* iframe locked to 700px height across all viewports */}
+              <div className="w-full h-full min-h-[700px] overflow-hidden">
                 {isContactInView ? (
                   <iframe 
                     src="https://mylemlii.com/inquiry/your-day-by-lucas" 
-                    className="w-full h-[700px] lg:h-[850px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
+                    className="w-full h-[700px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
                     title="commission lucas"
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
                 ) : (
                   // structural placeholder so the layout doesn't shift when it finally loads
-                  <div className="w-full h-[700px] lg:h-[850px] bg-[#111d27]"></div>
+                  <div className="w-full h-[700px] bg-[#111d27]"></div>
                 )}
               </div>
             </div>
@@ -386,7 +385,3 @@ export default function Home() {
 
         </div>
       </section>
-
-    </main>
-  );
-}
