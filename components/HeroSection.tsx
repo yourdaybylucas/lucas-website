@@ -13,7 +13,7 @@ const clipData = [
     { id: "02", src: "/videos/clip_02.mp4", tailwind: "top-[12%] right-[2%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2 },
     
     // 03. Hidden on Mobile
-    { id: "07", src: "/videos/clip_07.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
+    { id: "07", src: "/videos/clip_10.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
     
     // 04. Hidden on Mobile
     { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, parallax: -0.8 },
