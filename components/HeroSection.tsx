@@ -10,10 +10,10 @@ const clipData = [
     { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[4%] left-[2%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, parallax: -1 },
     
     // 02. Top Right (Visible Mobile & Desktop)
-    { id: "02", src: "/videos/clip_02.mp4", tailwind: "top-[12%] right-[2%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2 },
+    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[12%] right-[2%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2 },
     
     // 03. Hidden on Mobile
-    { id: "07", src: "/videos/clip_10.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
+    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5 },
     
     // 04. Hidden on Mobile
     { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, parallax: -0.8 },
@@ -28,7 +28,7 @@ const clipData = [
     { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, parallax: 1.3 },
     
     // 08. Mid-Bottom Right (Visible Mobile & Desktop)
-    { id: "04", src: "/videos/clip_04.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, parallax: 1 },
+    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, parallax: 1 },
     
     // 09. Bottom Center (Visible Mobile & Desktop)
     { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[84%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7 },
