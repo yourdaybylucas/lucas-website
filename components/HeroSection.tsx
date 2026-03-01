@@ -31,7 +31,7 @@ const clipData = [
     { id: "04", src: "/videos/clip_04.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, parallax: 1 },
     
     // 09. Bottom Center (Visible Mobile & Desktop)
-    { id: "09", src: "/videos/clip_07.mp4", tailwind: "top-[84%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7 },
+    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[84%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7 },
 ];
 
 const FloatingClip = ({ data, mouseX, mouseY }: any) => {
