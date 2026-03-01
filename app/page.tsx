@@ -62,9 +62,9 @@ const fadeUpItem = {
 export default function Home() {
   const [activeFilm, setActiveFilm] = useState<string | null>(null);
   
-  // the tripwire setup
-  const archiveRef = useRef(null);
-  const isArchiveInView = useInView(archiveRef, { once: true, margin: "200px" });
+  // the tripwire setup: massive 800px margin so it loads during scroll or instantly on a jump
+  const contactRef = useRef(null);
+  const isContactInView = useInView(contactRef, { once: true, margin: "800px" });
 
   return (
     <main className="relative min-h-[200vh] bg-lucas-cream overflow-hidden">
@@ -168,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* the archive (featured films) */}
-      <section ref={archiveRef} id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
+      <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
         <div className="max-w-7xl mx-auto">
           
           <div className="flex justify-between items-end mb-24 border-b border-lucas-slate/20 pb-8">
@@ -198,7 +198,7 @@ export default function Home() {
                 >
                   {activeFilm === film.id ? (
                     <iframe
-                      src={`https://www.youtube.com/embed/$${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
+                      src={`https://www.youtube.com/embed/${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
                       title={film.names}
                       className="w-full h-full absolute top-0 left-0 border-none"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -207,7 +207,7 @@ export default function Home() {
                   ) : (
                     <>
                       <Image
-                        src={`https://img.youtube.com/vi/$${film.id}/maxresdefault.jpg`}
+                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
                         alt={film.names}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -302,7 +302,7 @@ export default function Home() {
 
       {/* the ledger (inquiry form) */}
       {/* y-axis padding aggressively scaled down on mobile */}
-      <section id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
+      <section ref={contactRef} id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
         
         {/* subtle analog grain overlay */}
         <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
@@ -366,9 +366,9 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
 
-              {/* iframe squeezed to 550px on mobile, holding 850px on desktop */}
+              {/* iframe squeezed to 700px on mobile, holding 850px on desktop */}
               <div className="w-full h-full min-h-[550px] lg:min-h-[750px] overflow-hidden">
-                {isArchiveInView ? (
+                {isContactInView ? (
                   <iframe 
                     src="https://mylemlii.com/inquiry/your-day-by-lucas" 
                     className="w-full h-[550px] lg:h-[850px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
