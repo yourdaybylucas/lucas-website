@@ -29,6 +29,7 @@ const featuredFilms = [
   { id: "f3L54oek57o", names: "Aalia + Joshua", locale: "Lune 1860", format: "Digital" }
 ];
 
+// reordered for narrative weight
 const loveLetters = [
   { name: "Kristen & Frankie", quote: "he had this amazing ability to be everywhere without ever being intrusive - capturing every genuine emotion, every tiny detail, and all the moments we never even saw happening." },
   { name: "Billie Jo & Neil", quote: "somehow he is everywhere, but you never see him... lucas captured the warmth, the feel, the emotion." },
@@ -62,7 +63,7 @@ const fadeUpItem = {
 export default function Home() {
   const [activeFilm, setActiveFilm] = useState<string | null>(null);
   
-  // the tripwire setup: massive 800px margin so it loads during scroll or instantly on a jump
+  // the tripwire setup
   const contactRef = useRef(null);
   const isContactInView = useInView(contactRef, { once: true, margin: "800px" });
 
@@ -300,7 +301,7 @@ export default function Home() {
         </div>
       </section>
 
-    {/* the ledger (inquiry form) */}
+      {/* the ledger (inquiry form) */}
       <section ref={contactRef} id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
         
         {/* subtle analog grain overlay */}
@@ -385,3 +386,7 @@ export default function Home() {
 
         </div>
       </section>
+
+    </main>
+  );
+}
