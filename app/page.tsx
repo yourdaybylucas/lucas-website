@@ -189,7 +189,6 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-                // The logical cull: hide indices 2 and 3 on small screens
                 className={`group flex-col w-full ${index >= 2 ? 'hidden md:flex' : 'flex'}`}
               >
                 
@@ -333,7 +332,7 @@ export default function Home() {
               i only take on a limited number of weddings per year to ensure i can give every day my full focus. tell me about yours.
             </p>
 
-            {/* scarcity / availability block - hidden on mobile to pull the form up */}
+            {/* scarcity / availability block */}
             <div className="hidden lg:flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2026</span>
@@ -376,7 +375,7 @@ export default function Home() {
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
                 ) : (
-                  {/* structural placeholder so the layout doesn't shift when it finally loads */}
+                  // structural placeholder so the layout doesn't shift when it finally loads
                   <div className="w-full h-[700px] bg-[#111d27]"></div>
                 )}
               </div>
