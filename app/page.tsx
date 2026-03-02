@@ -313,10 +313,10 @@ export default function Home() {
           <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-px bg-lucas-slate/10"></div>
 
          {/* the anchor (text column) */}
-          <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left lg:sticky lg:top-40 h-fit z-10">
+          <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left h-fit z-10">
             
             {/* inventory header */}
-            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-8 lg:mb-12">
+            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-8">
               <div className="flex items-center gap-4">
                 <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Availability</span>
@@ -336,11 +336,11 @@ export default function Home() {
             {/* scarcity / availability block - hidden on mobile to pull the form up */}
             <div className="hidden lg:flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
-                <span>2026 Commissions</span>
+                <span>2026</span>
                 <span className="text-lucas-orange">At Capacity *</span>
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
-                <span>2027 Commissions</span>
+                <span>2027</span>
                 <span className="text-lucas-cream">Open</span>
               </div>
               <div className="flex justify-between pb-3 border-b border-lucas-slate/10">
@@ -376,7 +376,7 @@ export default function Home() {
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
                 ) : (
-                  // structural placeholder so the layout doesn't shift when it finally loads
+                  {/* structural placeholder so the layout doesn't shift when it finally loads */}
                   <div className="w-full h-[700px] bg-[#111d27]"></div>
                 )}
               </div>
