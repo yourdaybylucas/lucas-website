@@ -416,22 +416,18 @@ export default function PrivateCollectionsPage() {
                             </a>
                         </motion.div>
 
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1 }}
-                            className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
-                        >
-                            <img 
-                                src="//images/img1.JPG"
-                                alt="Lucas" 
-                            />
-                        </motion.div>
-                    </section>
-
-                </div>
-            </div>
-        </main>
+<motion.div 
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1 }}
+    className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
+>
+    <img 
+        src="/images/img1.JPG" 
+        alt="Lucas" 
+        className="object-cover w-full h-full grayscale contrast-125 brightness-90"
+    />
+</motion.div>
     );
 }
