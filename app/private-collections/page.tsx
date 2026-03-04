@@ -206,7 +206,7 @@ export default function PrivateCollectionsPage() {
 
                                 {/* VOL 02 */}
                                 <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 xl:scale-[1.03] shadow-2xl border border-lucas-navy group overflow-hidden">
-                                    <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay z-0"></div>
+                                    <div className="absolute inset-0 bg-grain opacity-[0.08] pointer-events-none mix-blend-overlay z-0"></div>
                                     
                                     {/* Creative Film Strip Edge Effect on Hover */}
                                     <div className="absolute top-0 bottom-0 left-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
@@ -266,7 +266,7 @@ export default function PrivateCollectionsPage() {
 
                     {/* 03. Logistics / FAQs (Dark Mode to break up the scroll) */}
                     <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24 bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 -mx-6 lg:-mx-16 lg:px-24 rounded-sm shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.10] pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-grain opacity-[0.10] pointer-events-none mix-blend-overlay"></div>
                         
                         <motion.div 
                             variants={fadeUpContainer}
@@ -397,79 +397,4 @@ export default function PrivateCollectionsPage() {
                                                 'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy bg-lucas-cream'
                                             }`}>
                                                 {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
-                                                {step.status === 'current' && <span className="w-2 h-2 rounded-full bg-lucas-orange animate-pulse"></span>}
-                                                {step.status === 'future' && <span className="font-sans text-[9px] tracking-zissou ml-0.5">{step.num}</span>}
-                                            </div>
-
-                                            {/* The Copy */}
-                                            <div className="flex flex-col pt-1 md:pt-3 pb-2">
-                                                <div className="flex flex-wrap items-center gap-3 mb-2 md:mb-3">
-                                                    <h4 className={`font-sans text-xs md:text-sm uppercase tracking-widest ${
-                                                        step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
-                                                    }`}>
-                                                        {step.title}
-                                                    </h4>
-                                                    {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-sm">Done</span>}
-                                                    {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">You are here</span>}
-                                                </div>
-                                                <p className={`font-serif text-base md:text-[1.125rem] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
-                                                    {step.desc}
-                                                </p>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </section>
-
-                    {/* 05. The CTA */}
-                    <section id="booking" className="flex flex-col md:flex-row items-center justify-between pt-16 border-t border-lucas-navy/10 relative scroll-mt-24 gap-12 pb-12">
-                        <motion.div 
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.8 }}
-                            className="w-full md:w-1/2"
-                        >
-                            <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-none">
-                                let's talk <br/>logistics.
-                            </h2>
-                            
-                            <p className="font-sans text-sm text-lucas-slate mb-10 max-w-md lowercase leading-relaxed">
-                                once you're ready, we'll set up a time to grab a coffee or jump on a video call. we'll map out the timeline, discuss your narrative preferences, and most importantly, just get to know each other.
-                            </p>
-                            
-                            <a 
-                                href="https://calendly.com/your-day-by-lucas" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
-                            >
-                                <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
-                                <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
-                                    Book Discovery Call
-                                </span>
-                            </a>
-                        </motion.div>
-
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1 }}
-                            className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
-                        >
-                            <img 
-                                src="/images/img1.JPG" 
-                                alt="Lucas" 
-                                className="object-cover w-full h-full grayscale contrast-125 brightness-90"
-                            />
-                        </motion.div>
-                    </section>
-
-                </div>
-            </div>
-        </main>
-    );
-}
+                                                {step.status === 'current' &&
