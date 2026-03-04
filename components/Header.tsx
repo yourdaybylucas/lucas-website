@@ -68,6 +68,13 @@ export default function Header() {
         }
     }, [mobileMenuOpen]);
 
+    // --- THE DOSSIER RULE ---
+    // Hide the header completely on private portals. 
+    // Placed here to ensure all React hooks fire safely first.
+    if (pathname === '/private-collections' || pathname === '/the-guide') {
+        return null;
+    }
+
     const headerBg = scrolled ? "bg-lucas-cream/80 backdrop-blur-md border-b border-lucas-slate/10" : "bg-transparent border-b border-transparent";
 
     return (
