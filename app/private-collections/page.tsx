@@ -18,7 +18,7 @@ const fadeUpItem = {
 };
 
 export default function PrivateCollectionsPage() {
-    const [activeSection, setActiveSection] = useState("manifesto");
+    const [activeSection, setActiveSection] = useState("intro");
 
     // intersection observer to highlight the active index dot
     useEffect(() => {
@@ -62,7 +62,7 @@ export default function PrivateCollectionsPage() {
                     <div className="absolute left-[3px] top-2 bottom-2 w-px bg-lucas-navy/10 -z-10"></div>
 
                     {[
-                        { id: "manifesto", label: "01. Manifesto" },
+                        { id: "intro", label: "01. intro" },
                         { id: "collections", label: "02. Collections" },
                         { id: "notes", label: "03. Field Notes" },
                         { id: "progression", label: "04. Progression" },
@@ -85,7 +85,7 @@ export default function PrivateCollectionsPage() {
                 <div className="w-full max-w-6xl mx-auto">
                     
                     {/* 01. The Grounded Welcome (2-Columns) */}
-                    <section id="manifesto" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
+                    <section id="intro" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </motion.div>
 
-                            {/* The Manifesto Visual Anchor */}
+                            {/* The intro Visual Anchor */}
                             <motion.div 
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
