@@ -18,7 +18,7 @@ const fadeUpItem = {
 };
 
 export default function PrivateCollectionsPage() {
-    const [activeSection, setActiveSection] = useState("intro");
+    const [activeSection, setActiveSection] = useState("Intro");
 
     // intersection observer to highlight the active index dot
     useEffect(() => {
@@ -62,9 +62,9 @@ export default function PrivateCollectionsPage() {
                     <div className="absolute left-[3px] top-2 bottom-2 w-px bg-lucas-navy/10 -z-10"></div>
 
                     {[
-                        { id: "intro", label: "01. intro" },
+                        { id: "Intro", label: "01. Intro" },
                         { id: "collections", label: "02. Collections" },
-                        { id: "notes", label: "03. Field Notes" },
+                        { id: "notes", label: "03. Notes" },
                         { id: "progression", label: "04. Progression" },
                         { id: "booking", label: "05. Logistics" },
                     ].map((item) => (
@@ -85,7 +85,7 @@ export default function PrivateCollectionsPage() {
                 <div className="w-full max-w-6xl mx-auto">
                     
                     {/* 01. The Grounded Welcome (2-Columns) */}
-                    <section id="intro" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
+                    <section id="Intro" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </motion.div>
 
-                            {/* The intro Visual Anchor */}
+                            {/* The Intro Visual Anchor */}
                             <motion.div 
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -249,7 +249,7 @@ export default function PrivateCollectionsPage() {
                         >
                             <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-16">
                                 <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
-                                    Field Notes
+                                    Notes
                                 </h2>
                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
                                     [ Logistics & Parameters ]
@@ -416,18 +416,23 @@ export default function PrivateCollectionsPage() {
                             </a>
                         </motion.div>
 
-<motion.div 
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1 }}
-    className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
->
-    <img 
-        src="/images/img1.JPG" 
-        alt="Lucas" 
-        className="object-cover w-full h-full grayscale contrast-125 brightness-90"
-    />
-</motion.div>
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
+                        >
+                            <img 
+                                src="/images/img1.JPG" 
+                                alt="Lucas" 
+                                className="object-cover w-full h-full grayscale contrast-125 brightness-90"
+                            />
+                        </motion.div>
+                    </section>
+
+                </div>
+            </div>
+        </main>
     );
 }
