@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Check } from "lucide-react";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
@@ -83,7 +84,7 @@ export default function PrivateCollectionsPage() {
             <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(4rem,10vh,8rem)] px-6 lg:px-16 overflow-hidden">
                 <div className="w-full max-w-6xl mx-auto">
                     
-                    {/* 01. The Grounded Welcome (Now 2-Columns) */}
+                    {/* 01. The Grounded Welcome (2-Columns) */}
                     <section id="manifesto" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                             <motion.div 
@@ -314,7 +315,7 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
                     </section>
 
-                    {/* 04. The Progression */}
+                    {/* 04. The Progression (The New Dossier Timeline) */}
                     <section id="progression" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
                         <motion.div 
                             variants={fadeUpContainer}
@@ -322,57 +323,64 @@ export default function PrivateCollectionsPage() {
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                         >
-                            <div className="flex items-center gap-4 mb-8">
+                            <div className="flex items-center gap-4 mb-16">
                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                 <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
                                     The Progression
                                 </h2>
                                 <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                                    [ what happens next ]
+                                    [ the roadmap ]
                                 </span>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-5 gap-0 border-y border-lucas-navy/10 divide-y md:divide-y-0 md:divide-x divide-lucas-navy/10">
-                                {/* Step 01 */}
-                                <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Intro</h4>
-                                    <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        we jump on a quick discovery call or chat via email to answer questions and ensure our visions align.
-                                    </p>
-                                </div>
-                                {/* Step 02 */}
-                                <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">02</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Details</h4>
-                                    <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        i build a custom proposal for you to review and place a soft hold on your date. no pressure.
-                                    </p>
-                                </div>
-                                {/* Step 03 */}
-                                <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-orange">03</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">Making it Official</h4>
-                                    <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        if we're a go, you sign the digital agreement and pay the 1/3 retainer. the date is officially yours.
-                                    </p>
-                                </div>
-                                {/* Step 04 */}
-                                <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">04</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The In-Between</h4>
-                                    <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        send me moodboards, tag me in inspiration, or just go radio silent and enjoy being engaged. 
-                                    </p>
-                                </div>
-                                {/* Step 05 */}
-                                <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">05</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Final Sync</h4>
-                                    <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        one month out, we'll connect with you or your planner to iron out the specific logistics and timeline.
-                                    </p>
+                            <div className="relative max-w-3xl mx-auto">
+                                {/* The Spine */}
+                                <div className="absolute left-[14px] md:left-[23px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
+
+                                <div className="flex flex-col gap-10 md:gap-14">
+                                    {[
+                                        { num: "01", title: "The Discovery", desc: "you found my work, felt a connection, and sent over an inquiry.", status: "completed" },
+                                        { num: "02", title: "The Inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if we align.", status: "current" },
+                                        { num: "03", title: "The Intro", desc: "we jump on a quick discovery call or chat via email to get to know each other and talk logistics.", status: "future" },
+                                        { num: "04", title: "The Details", desc: "i build a custom proposal for you to review and place a soft hold on your date.", status: "future" },
+                                        { num: "05", title: "Making it Official", desc: "if we're a go, you sign the digital agreement and pay the 1/3 retainer. the date is locked.", status: "future" },
+                                        { num: "06", title: "The In-Between", desc: "send me moodboards, tag me in inspiration, or just go radio silent and enjoy being engaged.", status: "future" },
+                                        { num: "07", title: "The Final Sync", desc: "one month out, we'll connect with you or your planner to iron out the specific timeline.", status: "future" }
+                                    ].map((step, i) => (
+                                        <motion.div 
+                                            key={i} 
+                                            variants={fadeUpItem}
+                                            className={`relative flex gap-6 md:gap-10 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
+                                        >
+                                            {/* The Node */}
+                                            <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-full border transition-colors duration-500 bg-lucas-cream ${
+                                                step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
+                                                step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.2)]' :
+                                                'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy'
+                                            }`}>
+                                                {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
+                                                {step.status === 'current' && <span className="w-2 h-2 rounded-full bg-lucas-orange animate-pulse"></span>}
+                                                {step.status === 'future' && <span className="font-sans text-[9px] tracking-zissou ml-0.5">{step.num}</span>}
+                                            </div>
+
+                                            {/* The Copy */}
+                                            <div className="flex flex-col pt-1 md:pt-3 pb-2">
+                                                <div className="flex flex-wrap items-center gap-3 mb-2 md:mb-3">
+                                                    <h4 className={`font-sans text-xs md:text-sm uppercase tracking-widest ${
+                                                        step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
+                                                    }`}>
+                                                        {step.title}
+                                                    </h4>
+                                                    {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-sm">Done</span>}
+                                                    {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">You are here</span>}
+                                                </div>
+                                                <p className={`font-serif text-base md:text-[1.125rem] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
+                                                    {step.desc}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    ))}
                                 </div>
                             </div>
                         </motion.div>
