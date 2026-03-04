@@ -424,9 +424,8 @@ export default function PrivateCollectionsPage() {
                             className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
                         >
                             <img 
-                                src="/images/Lucas Image with background.jpg" 
+                                src="//images/img1.JPG"
                                 alt="Lucas" 
-                                className="object-cover w-full h-full grayscale-[20%] contrast-110"
                             />
                         </motion.div>
                     </section>
