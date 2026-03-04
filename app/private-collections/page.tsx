@@ -19,7 +19,7 @@ const fadeUpItem = {
 export default function PrivateCollectionsPage() {
     const [activeSection, setActiveSection] = useState("manifesto");
 
-    // Optional: simple intersection observer to highlight the active index dot
+    // intersection observer to highlight the active index dot
     useEffect(() => {
         const sections = document.querySelectorAll("section[id]");
         const observer = new IntersectionObserver(
@@ -62,7 +62,7 @@ export default function PrivateCollectionsPage() {
 
                     {[
                         { id: "manifesto", label: "01. Manifesto" },
-                        { id: "inventory", label: "02. Inventory" },
+                        { id: "collections", label: "02. Collections" },
                         { id: "notes", label: "03. Field Notes" },
                         { id: "progression", label: "04. Progression" },
                         { id: "booking", label: "05. Logistics" },
@@ -81,35 +81,54 @@ export default function PrivateCollectionsPage() {
 
             {/* SCROLLING CONTENT */}
             <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(4rem,10vh,8rem)] px-6 lg:px-16 overflow-hidden">
-                <div className="w-full max-w-5xl mx-auto">
+                <div className="w-full max-w-6xl mx-auto">
                     
-                    {/* 01. The Grounded Welcome */}
-                    <section id="manifesto" className="flex flex-col items-start justify-start mb-[clamp(6rem,12vh,12rem)] relative max-w-4xl pt-10">
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                        >
-                            <h1 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-bold uppercase tracking-tight text-lucas-navy mb-10 leading-none">
-                                Thank you for <br/>connecting.
-                            </h1>
+                    {/* 01. The Grounded Welcome (Now 2-Columns) */}
+                    <section id="manifesto" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
+                                className="lg:col-span-7"
+                            >
+                                <h1 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-bold uppercase tracking-tight text-lucas-navy mb-10 leading-none">
+                                    Thank you for <br/>connecting.
+                                </h1>
 
-                            <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
-                                <p>
-                                    i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
-                                </p>
-                                <p>
-                                    the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
-                                </p>
-                                <p className="italic text-lucas-slate pt-4">
-                                    here is everything you need to know about working together.
-                                </p>
-                            </div>
-                        </motion.div>
+                                <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
+                                    <p>
+                                        i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
+                                    </p>
+                                    <p>
+                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
+                                    </p>
+                                    <p className="italic text-lucas-slate pt-4">
+                                        here is everything you need to know about working together.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* The Manifesto Visual Anchor */}
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
+                                className="lg:col-span-5 relative aspect-[4/5] bg-lucas-navy/5 shadow-2xl"
+                            >
+                                {/* NOTE: Replace this image with one of your best cinematic stills or a silent looping video */}
+                                <img 
+                                    src="/images/Lucas Image with background.jpg" 
+                                    alt="Cinematic still" 
+                                    className="object-cover w-full h-full"
+                                />
+                                <div className="absolute inset-0 bg-lucas-navy/10 mix-blend-multiply pointer-events-none"></div>
+                            </motion.div>
+                        </div>
                     </section>
 
                     {/* 02. The Collections Grid */}
-                    <section id="inventory" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
+                    <section id="collections" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
@@ -119,7 +138,7 @@ export default function PrivateCollectionsPage() {
                             <div className="flex items-center gap-4 mb-8">
                                 <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                                 <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold px-4">
-                                    The Inventory
+                                    The Collections
                                 </h2>
                                 <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                             </div>
@@ -156,9 +175,14 @@ export default function PrivateCollectionsPage() {
                                 </motion.div>
 
                                 {/* VOL 02 */}
-                                <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 xl:scale-[1.03] shadow-2xl border border-lucas-navy group">
-                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay"></div>
+                                <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 xl:scale-[1.03] shadow-2xl border border-lucas-navy group overflow-hidden">
+                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay z-0"></div>
                                     
+                                    {/* Optional: Add a subtle film still background here that appears on hover */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none z-0">
+                                        {/* <img src="/images/your-super8-still.jpg" className="object-cover w-full h-full grayscale" alt="" /> */}
+                                    </div>
+
                                     <div className="flex justify-between items-start mb-12 relative z-10">
                                         <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
                                         <p className="font-sans text-xs tracking-widest text-lucas-cream">$6,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
@@ -211,75 +235,78 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
                     </section>
 
-                    {/* 03. Logistics / FAQs (The Ledger) */}
-                    <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
+                    {/* 03. Logistics / FAQs (Dark Mode to break up the scroll) */}
+                    <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24 bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 -mx-6 lg:-mx-16 lg:px-24 rounded-sm shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.10] pointer-events-none mix-blend-overlay"></div>
+                        
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
+                            className="relative z-10"
                         >
-                            <div className="flex items-center justify-between border-b border-lucas-navy/20 pb-6 mb-12">
-                                <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight text-lucas-navy font-bold">
+                            <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-16">
+                                <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
                                     Field Notes
                                 </h2>
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+                                <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
                                     [ Logistics & Parameters ]
                                 </span>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
                                 {/* FAQ 1 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Retainer
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         to lock in the date, i require a 1/3 retainer upfront. the remaining balance is simply due two weeks before the day.
                                     </p>
                                 </div>
                                 {/* FAQ 2 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Geography
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         home base is guelph, ontario. miles within the province are entirely on me. there are no hidden travel fees for ontario commissions.
                                     </p>
                                 </div>
                                 {/* FAQ 3 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Footprint
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         most of the time, no second shooter is needed. i document 95% of my commissions solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
                                     </p>
                                 </div>
                                 {/* FAQ 4 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Photographers
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         working well with your photographer is a strict priority. we have the exact same goal: collecting the best frames. i stay out of the way, shoot from different angles, and mostly, they won't even notice i'm there.
                                     </p>
                                 </div>
                                 {/* FAQ 5 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Delivery
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         i prefer to edit while the feeling of the day is still fresh. average turnaround is 5 weeks, but i give myself 10 weeks in the contract just to be safe.
                                     </p>
                                 </div>
                                 {/* FAQ 6 */}
                                 <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy mb-4 border-l-2 border-lucas-orange pl-3">
+                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
                                         The Standard
                                     </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-slate lowercase">
+                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                         absolutely inclusive. i am honored to document your connection, regardless of religion, gender, race, or sexual orientation.
                                     </p>
                                 </div>
@@ -294,7 +321,6 @@ export default function PrivateCollectionsPage() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
-                            className="border-t border-lucas-navy/20 pt-16"
                         >
                             <div className="flex items-center gap-4 mb-8">
                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
@@ -311,7 +337,7 @@ export default function PrivateCollectionsPage() {
                                 {/* Step 01 */}
                                 <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Alignment</h4>
+                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Intro</h4>
                                     <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
                                         we jump on a quick discovery call or chat via email to answer questions and ensure our visions align.
                                     </p>
@@ -319,7 +345,7 @@ export default function PrivateCollectionsPage() {
                                 {/* Step 02 */}
                                 <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">02</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Proposal</h4>
+                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Details</h4>
                                     <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
                                         i build a custom proposal for you to review and place a soft hold on your date. no pressure.
                                     </p>
@@ -327,7 +353,7 @@ export default function PrivateCollectionsPage() {
                                 {/* Step 03 */}
                                 <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-orange">03</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Lock</h4>
+                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">Making it Official</h4>
                                     <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
                                         if we're a go, you sign the digital agreement and pay the 1/3 retainer. the date is officially yours.
                                     </p>
@@ -335,17 +361,17 @@ export default function PrivateCollectionsPage() {
                                 {/* Step 04 */}
                                 <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">04</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Idle</h4>
+                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The In-Between</h4>
                                     <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        collaborate as much or as little as you'd like. send me moodboards, tag me in inspiration, or just go radio silent.
+                                        send me moodboards, tag me in inspiration, or just go radio silent and enjoy being engaged. 
                                     </p>
                                 </div>
                                 {/* Step 05 */}
                                 <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">05</span>
-                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Sync</h4>
+                                    <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Final Sync</h4>
                                     <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
-                                        one month out, we'll connect with you or your planner to iron out the specific logistics and final timeline.
+                                        one month out, we'll connect with you or your planner to iron out the specific logistics and timeline.
                                     </p>
                                 </div>
                             </div>
@@ -353,18 +379,19 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 05. The CTA */}
-                    <section id="booking" className="flex flex-col items-center text-center pt-12 border-t border-lucas-navy/10 relative scroll-mt-24">
+                    <section id="booking" className="flex flex-col md:flex-row items-center justify-between pt-16 border-t border-lucas-navy/10 relative scroll-mt-24 gap-12 pb-12">
                         <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.8 }}
+                            className="w-full md:w-1/2"
                         >
-                            <h2 className="font-serif italic text-[clamp(2rem,4vw,3rem)] text-lucas-navy mb-6">
-                                let's talk logistics.
+                            <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-none">
+                                let's talk <br/>logistics.
                             </h2>
                             
-                            <p className="font-sans text-sm text-lucas-slate mb-12 max-w-xl lowercase leading-relaxed mx-auto">
+                            <p className="font-sans text-sm text-lucas-slate mb-10 max-w-md lowercase leading-relaxed">
                                 once you're ready, we'll set up a time to grab a coffee or jump on a video call. we'll map out the timeline, discuss your narrative preferences, and most importantly, just get to know each other.
                             </p>
                             
@@ -379,6 +406,20 @@ export default function PrivateCollectionsPage() {
                                     Book Discovery Call
                                 </span>
                             </a>
+                        </motion.div>
+
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
+                        >
+                            <img 
+                                src="/images/Lucas Image with background.jpg" 
+                                alt="Lucas" 
+                                className="object-cover w-full h-full grayscale-[20%] contrast-110"
+                            />
                         </motion.div>
                     </section>
 
