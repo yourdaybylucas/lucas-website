@@ -17,6 +17,14 @@ const fadeUpItem = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
 };
 
+const sectionsNav = [
+    { id: "Intro", label: "01. Intro" },
+    { id: "collections", label: "02. Collections" },
+    { id: "notes", label: "03. Notes" },
+    { id: "progression", label: "04. Progression" },
+    { id: "booking", label: "05. Logistics" },
+];
+
 export default function PrivateCollectionsPage() {
     const [activeSection, setActiveSection] = useState("Intro");
 
@@ -61,27 +69,47 @@ export default function PrivateCollectionsPage() {
                     {/* Vertical structural line */}
                     <div className="absolute left-[3px] top-2 bottom-2 w-px bg-lucas-navy/10 -z-10"></div>
 
-                    {[
-                        { id: "Intro", label: "01. Intro" },
-                        { id: "collections", label: "02. Collections" },
-                        { id: "notes", label: "03. Notes" },
-                        { id: "progression", label: "04. Progression" },
-                        { id: "booking", label: "05. Logistics" },
-                    ].map((item) => (
+                    {sectionsNav.map((item) => (
                         <button 
                             key={item.id}
                             onClick={() => scrollTo(item.id)}
                             className={`flex items-center gap-6 text-left transition-colors duration-300 ${activeSection === item.id ? 'text-lucas-orange' : 'text-lucas-slate hover:text-lucas-navy'}`}
                         >
-                            <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${activeSection === item.id ? 'bg-lucas-orange' : 'bg-lucas-cream border border-lucas-navy/20'}`}></div>
+                            <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-lucas-orange scale-125' : 'bg-lucas-cream border border-lucas-navy/20'}`}></div>
                             {item.label}
                         </button>
                     ))}
                 </nav>
             </aside>
 
+            {/* MOBILE PROGRESS MAP (Sticky Bottom - Mobile Only) */}
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] lg:hidden flex items-center gap-4 bg-lucas-navy/90 backdrop-blur-md px-6 py-4 rounded-full border border-lucas-cream/10 shadow-2xl transition-all duration-500">
+                {sectionsNav.map((item, index) => (
+                    <button
+                        key={item.id}
+                        onClick={() => scrollTo(item.id)}
+                        aria-label={`Scroll to ${item.label}`}
+                        className="relative flex items-center justify-center p-1"
+                    >
+                        <div className={`rounded-full transition-all duration-500 ease-out ${
+                            activeSection === item.id 
+                                ? 'w-2.5 h-2.5 bg-lucas-orange' 
+                                : 'w-1.5 h-1.5 bg-lucas-cream/30 hover:bg-lucas-cream/60'
+                        }`} />
+                        {/* the active connecting line */}
+                        {index < sectionsNav.length - 1 && (
+                            <div className={`absolute left-full top-1/2 -translate-y-1/2 h-px transition-all duration-500 w-4 ${
+                                sectionsNav.findIndex(s => s.id === activeSection) >= index + 1
+                                    ? 'bg-lucas-orange/50'
+                                    : 'bg-transparent'
+                            }`} />
+                        )}
+                    </button>
+                ))}
+            </div>
+
             {/* SCROLLING CONTENT */}
-            <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(4rem,10vh,8rem)] px-6 lg:px-16 overflow-hidden">
+            <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(6rem,10vh,12rem)] px-6 lg:px-16 overflow-hidden">
                 <div className="w-full max-w-6xl mx-auto">
                     
                     {/* 01. The Grounded Welcome (2-Columns) */}
@@ -102,7 +130,7 @@ export default function PrivateCollectionsPage() {
                                         i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
                                     </p>
                                     <p>
-                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
+                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic">bottle exactly how it all felt</em>.
                                     </p>
                                     <p className="italic text-lucas-slate pt-4">
                                         here is everything you need to know about working together.
@@ -117,10 +145,11 @@ export default function PrivateCollectionsPage() {
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
                                 className="lg:col-span-5 relative aspect-[4/5] bg-lucas-navy/5 shadow-2xl"
                             >
-                                {/* NOTE: Replace this image with one of your best cinematic stills or a silent looping video */}
-                                <img 
+                                <motion.img 
+                                    animate={{ y: [0, -10, 0] }}
+                                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                                     src="/images/Lucas Image with background.jpg" 
-                                    alt="Cinematic still" 
+                                    alt="super 8mm documentary still" 
                                     className="object-cover w-full h-full"
                                 />
                                 <div className="absolute inset-0 bg-lucas-navy/10 mix-blend-multiply pointer-events-none"></div>
@@ -177,12 +206,11 @@ export default function PrivateCollectionsPage() {
 
                                 {/* VOL 02 */}
                                 <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 xl:scale-[1.03] shadow-2xl border border-lucas-navy group overflow-hidden">
-                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay z-0"></div>
+                                    <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay z-0"></div>
                                     
-                                    {/* Optional: Add a subtle film still background here that appears on hover */}
-                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none z-0">
-                                        {/* <img src="/images/your-super8-still.jpg" className="object-cover w-full h-full grayscale" alt="" /> */}
-                                    </div>
+                                    {/* Creative Film Strip Edge Effect on Hover */}
+                                    <div className="absolute top-0 bottom-0 left-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
+                                    <div className="absolute top-0 bottom-0 right-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
 
                                     <div className="flex justify-between items-start mb-12 relative z-10">
                                         <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
@@ -228,7 +256,7 @@ export default function PrivateCollectionsPage() {
                                         </li>
                                         <li className="flex items-start gap-4">
                                             <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                            <span>Physical Artifacts <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">(the physical super 8 roll, printed film frames, & personalized card)</span></span>
+                                            <span>Physical Artifacts <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ 1x processed super 8mm spool + 15x printed frames + 1x linen card ]</span></span>
                                         </li>
                                     </ul>
                                 </motion.div>
@@ -238,7 +266,7 @@ export default function PrivateCollectionsPage() {
 
                     {/* 03. Logistics / FAQs (Dark Mode to break up the scroll) */}
                     <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24 bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 -mx-6 lg:-mx-16 lg:px-24 rounded-sm shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.10] pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.10] pointer-events-none mix-blend-overlay"></div>
                         
                         <motion.div 
                             variants={fadeUpContainer}
@@ -315,7 +343,7 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
                     </section>
 
-                    {/* 04. The Progression (The New Dossier Timeline) */}
+                    {/* 04. The Progression (The Dynamic Timeline) */}
                     <section id="progression" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
                         <motion.div 
                             variants={fadeUpContainer}
@@ -335,8 +363,17 @@ export default function PrivateCollectionsPage() {
                             </div>
 
                             <div className="relative max-w-3xl mx-auto">
-                                {/* The Spine */}
+                                {/* The Static Background Spine */}
                                 <div className="absolute left-[14px] md:left-[23px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
+                                
+                                {/* The Dynamic Drawing Spine */}
+                                <motion.div 
+                                    initial={{ height: 0 }}
+                                    whileInView={{ height: "100%" }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 2.5, ease: "easeInOut" }}
+                                    className="absolute left-[14px] md:left-[23px] top-4 w-px bg-lucas-navy origin-top"
+                                ></motion.div>
 
                                 <div className="flex flex-col gap-10 md:gap-14">
                                     {[
@@ -357,7 +394,7 @@ export default function PrivateCollectionsPage() {
                                             <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-full border transition-colors duration-500 bg-lucas-cream ${
                                                 step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
                                                 step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.2)]' :
-                                                'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy'
+                                                'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy bg-lucas-cream'
                                             }`}>
                                                 {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
                                                 {step.status === 'current' && <span className="w-2 h-2 rounded-full bg-lucas-orange animate-pulse"></span>}
