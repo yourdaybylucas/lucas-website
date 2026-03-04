@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
@@ -37,12 +36,15 @@ export default function PrivateCollectionsPage() {
                     </div>
                     
                     <h1 className="font-sans text-4xl md:text-6xl font-bold uppercase tracking-tight text-lucas-navy mb-10">
-                        Thank you for <br/>reaching out.
+                        Thank you for <br/>connecting.
                     </h1>
 
                     <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
                         <p>
-                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
+                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
+                        </p>
+                        <p>
+                            the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
                         </p>
                         <p className="italic text-lucas-slate pt-4">
                             here is everything you need to know about working together.
@@ -235,7 +237,76 @@ export default function PrivateCollectionsPage() {
                     </div>
                 </motion.div>
 
-                {/* 04. The CTA */}
+                {/* 04. The Progression */}
+                <motion.div 
+                    variants={fadeUpContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="mb-[clamp(4rem,10vh,8rem)] border-t border-lucas-navy/20 pt-16"
+                >
+                    <div className="flex items-center gap-4 mb-8">
+                        <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
+                        <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
+                            The Progression
+                        </h2>
+                        <div className="h-px bg-lucas-navy/20 flex-grow"></div>
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+                            [ what happens next ]
+                        </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-0 border-y border-lucas-navy/10 divide-y md:divide-y-0 md:divide-x divide-lucas-navy/10">
+                        
+                        {/* Step 01 */}
+                        <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
+                            <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Alignment</h4>
+                            <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
+                                we jump on a quick discovery call or chat via email to answer questions and ensure our visions align.
+                            </p>
+                        </div>
+
+                        {/* Step 02 */}
+                        <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">02</span>
+                            <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Proposal</h4>
+                            <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
+                                i build a custom proposal for you to review and place a soft hold on your date. no pressure.
+                            </p>
+                        </div>
+
+                        {/* Step 03 */}
+                        <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-orange">03</span>
+                            <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Lock</h4>
+                            <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
+                                if we're a go, you sign the digital agreement and pay the 1/3 retainer. the date is officially yours.
+                            </p>
+                        </div>
+
+                        {/* Step 04 */}
+                        <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">04</span>
+                            <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Idle</h4>
+                            <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
+                                collaborate as much or as little as you'd like. send me moodboards, tag me in inspiration, or just go radio silent.
+                            </p>
+                        </div>
+
+                        {/* Step 05 */}
+                        <div className="flex flex-col gap-3 p-[clamp(1.25rem,1.5vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">05</span>
+                            <h4 className="font-sans text-[11px] uppercase tracking-widest text-lucas-navy">The Sync</h4>
+                            <p className="font-serif text-sm text-lucas-slate leading-relaxed lowercase">
+                                one month out, we'll connect with you or your planner to iron out the specific logistics and final timeline.
+                            </p>
+                        </div>
+
+                    </div>
+                </motion.div>
+
+                {/* 05. The CTA */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
