@@ -112,51 +112,86 @@ export default function PrivateCollectionsPage() {
             <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(6rem,10vh,12rem)] px-6 lg:px-16 overflow-hidden">
                 <div className="w-full max-w-6xl mx-auto">
                     
-                    {/* 01. The Grounded Welcome (2-Columns) */}
+{/* 01. The Grounded Welcome (2-Columns - Editorial Redux) */}
                     <section id="Intro" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                            
+                            {/* Left Column: The Narrative */}
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-7"
+                                className="lg:col-span-7 flex flex-col"
                             >
-                                <h1 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-bold uppercase tracking-tight text-lucas-navy mb-10 leading-none">
+                                {/* The Inventory Breadcrumb */}
+                                <div className="flex items-center gap-4 mb-8">
+                                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
+                                    <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
+                                        [ Document 01 : The Welcome ]
+                                    </span>
+                                </div>
+
+                                <h1 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-bold uppercase tracking-tight text-lucas-navy mb-10 leading-[0.95]">
                                     Thank you for <br/>connecting.
                                 </h1>
 
-                                <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
+                                {/* The Structural Divider */}
+                                <div className="w-16 h-px bg-lucas-navy/20 mb-10"></div>
+
+                                {/* The Soul Container (Narrowed for readability) */}
+                                <div className="font-serif text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase max-w-[90%]">
                                     <p>
                                         i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
                                     </p>
                                     <p>
-                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic">bottle exactly how it all felt</em>.
+                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt</em>.
                                     </p>
-                                    <p className="italic text-lucas-slate pt-4">
+                                    <p className="italic text-lucas-slate pt-6 text-lg">
                                         here is everything you need to know about working together.
                                     </p>
                                 </div>
                             </motion.div>
 
-                            {/* The Intro Visual Anchor (Updated to 4:3 Raw Video) */}
+                            {/* Right Column: The Artifact */}
                             <motion.div 
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-5 relative aspect-[4/3] bg-lucas-navy/5 shadow-2xl overflow-hidden"
+                                className="lg:col-span-5 relative"
                             >
-                                <video 
-                                    src="/videos/clip_10cheers.mp4" 
-                                    autoPlay 
-                                    loop 
-                                    muted 
-                                    playsInline
-                                    className="object-cover w-full h-full"
-                                />
+                                {/* The Outer Frame (Adds the dossier feel) */}
+                                <div className="absolute -inset-4 md:-inset-6 border border-lucas-navy/10 z-0"></div>
+                                
+                                {/* The Media Container */}
+                                <div className="relative aspect-[4/3] bg-lucas-navy shadow-[0_20px_40px_-15px_rgba(24,40,54,0.15)] overflow-hidden border border-lucas-navy/20 z-10">
+                                    <video 
+                                        src="/videos/clip_10cheers.mp4" 
+                                        autoPlay 
+                                        loop 
+                                        muted 
+                                        playsInline
+                                        className="object-cover w-full h-full grayscale-[20%] contrast-[1.1]"
+                                    />
+                                    {/* Optional Grain Overlay on the video to blend digital and analog */}
+                                    <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none mix-blend-overlay"></div>
+                                </div>
+
+                                {/* The Artifact Meta-Data */}
+                                <div className="flex justify-between items-center mt-6 px-1 relative z-10">
+                                    <div className="flex gap-4 items-center">
+                                        <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate">
+                                            Rec. 01
+                                        </span>
+                                        <div className="w-8 h-px bg-lucas-slate/30"></div>
+                                    </div>
+                                    <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate">
+                                        Digital + 8mm
+                                    </span>
+                                </div>
                             </motion.div>
+
                         </div>
                     </section>
-
                     {/* 02. The Collections Grid */}
                     <section id="collections" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
                         <motion.div 
