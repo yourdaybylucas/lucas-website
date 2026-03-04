@@ -42,10 +42,7 @@ export default function PrivateCollectionsPage() {
 
                     <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
                         <p>
-                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
-                        </p>
-                        <p>
-                            i blend in like a friend with a camera—bringing easy energy to the room while keeping a keen eye on the honest frames. the sudden laughs, the heavy tears, the in-between magic. the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
+                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and bottle exactly how it all felt.
                         </p>
                         <p className="italic text-lucas-slate pt-4">
                             here is everything you need to know about working together.
