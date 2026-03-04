@@ -138,21 +138,21 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </motion.div>
 
-                            {/* The Intro Visual Anchor */}
+                            {/* The Intro Visual Anchor (Updated to 4:3 Raw Video) */}
                             <motion.div 
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-5 relative aspect-[4/5] bg-lucas-navy/5 shadow-2xl"
+                                className="lg:col-span-5 relative aspect-[4/3] bg-lucas-navy/5 shadow-2xl overflow-hidden"
                             >
-                                <motion.img 
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                    src="/images/Lucas Image with background.jpg" 
-                                    alt="super 8mm documentary still" 
+                                <video 
+                                    src="/videos/clip_10cheers.mp4" 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline
                                     className="object-cover w-full h-full"
                                 />
-                                <div className="absolute inset-0 bg-lucas-navy/10 mix-blend-multiply pointer-events-none"></div>
                             </motion.div>
                         </div>
                     </section>
@@ -206,7 +206,6 @@ export default function PrivateCollectionsPage() {
 
                                 {/* VOL 02 */}
                                 <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 xl:scale-[1.03] shadow-2xl border border-lucas-navy group overflow-hidden">
-                                    {/* Using our new bg-grain utility class */}
                                     <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
                                     
                                     {/* Creative Film Strip Edge Effect on Hover */}
@@ -267,7 +266,6 @@ export default function PrivateCollectionsPage() {
 
                     {/* 03. Logistics / FAQs (Dark Mode to break up the scroll) */}
                     <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24 bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 -mx-6 lg:-mx-16 lg:px-24 rounded-sm shadow-2xl relative overflow-hidden">
-                        {/* Using our new bg-grain utility class */}
                         <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
                         
                         <motion.div 
