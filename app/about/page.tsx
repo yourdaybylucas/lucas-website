@@ -1,16 +1,17 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const fadeUp = {
+// Explicitly typing as Variants fixes the Vercel build error
+const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
 };
@@ -144,24 +145,30 @@ export default function AboutPage() {
 
                 <div className="relative w-full max-w-7xl h-full flex items-center justify-center">
                     {/* TODO: Add an emotional, blurry, or laughing photo of a couple */}
-                    <motion.div style={{ y: y1 }} className="absolute left-[5%] top-[20%] w-[25vw] aspect-[3/4] bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20">
-                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                    <motion.div style={{ y: y1 }} className="absolute left-[5%] top-[20%] w-[25vw] aspect-[3/4] bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20 overflow-hidden group">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou z-10 group-hover:opacity-0 transition-opacity duration-500">
                             [ Photo: The Laugh ]
                         </div>
+                        {/* <Image src="/images/your-photo.jpg" alt="The Laugh" fill className="object-cover" />
+                        */}
                     </motion.div>
 
                     {/* TODO: Add a quiet, in-between moment. Maybe hands, or a dress blowing in wind */}
-                    <motion.div style={{ y: y2 }} className="absolute right-[5%] top-[10%] w-[20vw] aspect-square bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20">
-                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                    <motion.div style={{ y: y2 }} className="absolute right-[5%] top-[10%] w-[20vw] aspect-square bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20 overflow-hidden group">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou z-10 group-hover:opacity-0 transition-opacity duration-500">
                             [ Photo: The Details ]
                         </div>
+                        {/* <Image src="/images/your-photo.jpg" alt="The Details" fill className="object-cover" />
+                        */}
                     </motion.div>
 
                     {/* TODO: Add a wide architectural shot or venue scene */}
-                    <motion.div style={{ y: y3 }} className="absolute left-[35%] bottom-[15%] w-[35vw] aspect-video bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20 z-10">
-                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                    <motion.div style={{ y: y3 }} className="absolute left-[35%] bottom-[15%] w-[35vw] aspect-video bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20 z-10 overflow-hidden group">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou z-10 group-hover:opacity-0 transition-opacity duration-500">
                             [ Photo: The Scene ]
                         </div>
+                        {/* <Image src="/images/your-photo.jpg" alt="The Scene" fill className="object-cover" />
+                        */}
                     </motion.div>
                 </div>
             </section>
