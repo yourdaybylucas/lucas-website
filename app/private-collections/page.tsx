@@ -585,32 +585,32 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
                     </section>
 
-                    {/* 05. The CTA */}
-                    <section id="booking" className="min-h-[100dvh] w-full snap-start flex flex-col md:flex-row items-center justify-between py-24 border-t border-lucas-navy/10 relative gap-12">
+{/* 05. The CTA */}
+                    <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 border-t border-lucas-navy/10 relative gap-12 lg:gap-16">
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.8 }}
-                            className="w-full md:w-1/2"
+                            className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0"
                         >
-                            <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-none">
-                                let's talk <br/>logistics.
+                            <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-[1.1]">
+                                an honest <br/>conversation.
                             </h2>
                             
-                            <p className="font-sans text-sm text-lucas-slate mb-10 max-w-md lowercase leading-relaxed">
-                                once you're ready, we'll set up a time to grab a coffee or jump on a video call. we'll map out the timeline, discuss your narrative preferences, and most importantly, just get to know each other.
+                            <p className="font-sans text-[clamp(0.95rem,1.5vw,1.125rem)] text-lucas-slate mb-10 max-w-md lowercase leading-[1.6]">
+                                zero obligation. whenever you're ready, let's set up a time to grab a coffee or jump on a video call. we'll talk about your vision for the day, discuss your film preferences, and most importantly, just see if our energies actually align.
                             </p>
                             
                             <a 
-                                href="https://calendar.app.google/rWPfdFg7or81U9YD6" 
+                                href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
+                                className="group relative inline-flex items-center justify-center px-10 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
                             >
                                 <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
                                 <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
-                                    Book Discovery Call
+                                    Find A Time
                                 </span>
                             </a>
                         </motion.div>
