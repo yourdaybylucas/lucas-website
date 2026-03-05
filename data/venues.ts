@@ -14,7 +14,7 @@ export interface Venue {
   prep: string;
   flow: string;
   curfew: string;
-  technicalNote: string;
+  fieldNotes: string;
   visualEmbed: string;
 }
 
@@ -30,7 +30,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'lighting is a challenge; the heavy mahogany wood paneling in the main halls eats up ambient light, requiring strategic bounce or on-camera flash. the surrounding forest blocks golden hour quickly, so push couples sessions earlier. the red brick exterior looks phenomenally cinematic on 35mm.',
+    fieldNotes: 'the heavy mahogany wood paneling in the main halls absorbs ambient light, giving everything a rich, moody narrative weight. push the couples session early to catch the forest light. the red brick exterior on 35mm or super 8mm is pure magic.',
     visualEmbed: 'gOZQGueoLkM',
   },
   {
@@ -44,7 +44,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'incredible natural light pours into the foundry prep rooms, but audio is a battle. the rushing gorge waterfall produces a constant, deafening low-frequency hum. use heavy wind muffs and rely on tight lavalier mics over boom setups.',
+    fieldNotes: 'incredible natural light pours into the foundry prep rooms. the rushing gorge waterfall brings an epic, wild energy to the background—just lean into tight lav mics to keep the spoken words crisp over the ambient roar.',
     visualEmbed: 'CYWJBr73jrk',
   },
   {
@@ -58,7 +58,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    technicalNote: 'the stone terrace is basically a giant bounce card when the sun is high, causing harsh squinting. the narrow staircases mean the videographer and photographer will constantly be in each other\'s way during the procession—coordinate your angles carefully.',
+    fieldNotes: 'feels like a european villa dropped in the heart of toronto. a dream space for photo and film. the stone terrace bounces outdoor light beautifully, and the stunning clear tent with trees growing through it sets an incredible vibe for the evening.',
     visualEmbed: 'GHhmsEs_8x8',
   },
   {
@@ -72,7 +72,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'lake-effect wind is unrelenting here. stabilizing tripods with sandbags is mandatory. the vintage indoor wallpaper is a dream for super 8mm film, but audio outside will be destroyed without proper deadcat mic covers.',
+    fieldNotes: 'set right on the water with a beautiful, untamed lake breeze. the vintage indoor wallpaper is a total dream for super 8mm film. just throw a deadcat on the mics outside and let the wind add natural movement to the frames.',
     visualEmbed: '-UZ2S7Rd3Ac',
   },
   {
@@ -86,7 +86,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'the conservatory is a massive natural softbox, but the stained glass creates aggressive green and magenta color casts on skin tones—custom white balancing is critical. the great hall has a 60ft ceiling reverberation nightmare; double-mic everyone.',
+    fieldNotes: 'the conservatory acts as a massive natural softbox. the stained glass throws unique, colorful light patterns that add character to the footage. the great hall has massive acoustic scale, so double-mic everyone to keep the audio intimate and grounded.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -100,7 +100,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '11 pm hard stop',
-    technicalNote: 'absolute clinical precision required. the geometric architecture demands perfectly leveled tripods and symmetrical framing. the blinding white granite courtyards require heavy nd filters, while the indoor shadows fall off sharply.',
+    fieldNotes: 'a masterclass in modern geometry. the striking white granite courtyards and sharp indoor shadows make for brilliant, high-contrast structural framing. throw on an nd filter and lean into the architectural precision.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -114,7 +114,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    technicalNote: 'the galleria italia is an architectural masterpiece but acts like a giant zebra blind as the sun moves. moving the subject three feet left completely alters your exposure setting. be respectful of art protection perimeters.',
+    fieldNotes: 'the galleria italia is an architectural masterpiece. the moving sun creates a dynamic shift of light and shadow throughout the afternoon through the timber framing. it keeps you on your toes and makes every frame entirely unique.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -128,7 +128,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'vast grounds mean considerable hauling of gear. pack light or bring a wagon. the overgrown ruins offer an excellent, moody gothic contrast, but uneven footing makes gimbal walks extremely difficult.',
+    fieldNotes: 'sprawling grounds that give the day plenty of room to breathe. the overgrown ruins offer a brilliant, moody gothic texture. pack light, wander the property, and collect some beautifully raw, unpolished moments.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -142,7 +142,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'the hedge maze is photogenically stunning from the second-story balcony but useless at eye-level. coordinate with planners for upper-level access during cocktail hour to capture the wide establishing drone-style shots.',
+    fieldNotes: 'the hedge maze is a geometric dream. coordinate with the planners to get up on the second-story balcony during cocktail hour—it’s the perfect vantage point to collect wide, structural establishing shots of everyone hanging out.',
     visualEmbed: 'k341XqRMhE8',
   },
   {
@@ -156,7 +156,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'floor-to-ceiling lake-facing windows mean constant backlighting battles. you will be shooting silhouettes unless you deploy powerful continuous fill lights. the mirrored elevators offer a great enclosed, editorial portrait opportunity.',
+    fieldNotes: 'floor-to-ceiling lake windows flood the space with light. it’s a great opportunity to embrace moody silhouettes or bring in some subtle continuous light. the mirrored elevators are perfect for an enclosed, highly editorial portrait.',
     visualEmbed: 'atNWoDTZ0Qs',
   },
   {
@@ -170,7 +170,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'a masterclass in curation. every room is painted a distinct, matte primary color. bouncing flash will turn skin tones blue or pink depending on the room. direct flash or bi-color continuous lighting is strictly necessary.',
+    fieldNotes: 'a total masterclass in curation. every room features a distinct, matte primary color that gives the footage an immediate editorial feel. use direct flash or continuous light to make the subjects pop effortlessly against the bold backdrops.',
     visualEmbed: 'f3L54oek57o',
   },
   {
@@ -184,7 +184,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'the white chapel is beautiful but astonishingly tiny. a 35mm lens is too tight; switch to 24mm or 16mm to capture the breadth. the nearby creek attracts dense clouds of insects at dusk—do not shoot late portraits near the standing water.',
+    fieldNotes: 'the white chapel is wonderfully intimate. throw on a 24mm or 16mm lens to really emphasize the cozy scale of the room. the nearby creek is a beautiful spot to wander for afternoon frames before the evening settles in.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -198,7 +198,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    technicalNote: 'rooftop views are stellar but notoriously windy. the basement screening room, however, is a hidden gem for moody groom prep. it offers absolute darkness and pinpoint spotlights, perfect for cinematic, high-contrast framing.',
+    fieldNotes: 'the rooftop gives you sweeping, structural views of the toronto skyline. down below, the basement screening room is a hidden gem—absolute darkness and pinpoint spotlights make for incredibly moody, high-contrast prep frames.',
     visualEmbed: 'cfAuSM9PdQk',
   },
   {
@@ -212,7 +212,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    technicalNote: 'the lincoln room features deep green accents and east-facing windows, meaning the best natural light disappears before noon. the single elevator queue for rooftop access will inevitably delay your timeline by fifteen minutes.',
+    fieldNotes: 'the lincoln room’s deep green accents and east-facing windows are perfect for catching that soft, early morning light. the rooftop access gives a great urban vantage point—just factor a little extra time to hang out by the elevator.',
     visualEmbed: 'KpQA_JqfBsQ',
   },
   {
@@ -226,7 +226,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '1 am extension available',
-    technicalNote: 'the glass pavilion functions like a greenhouse. mid-summer affairs mean blazing heat and high-contrast window blowouts. the exterior observatory deck offers a flawless, unobstructed horizon line for wide sunset captures.',
+    fieldNotes: 'the glass pavilion lets the natural environment pour in, giving you that bright, high-contrast summer energy. step out to the observatory deck for a flawless, unobstructed horizon line for wide sunset frames.',
     visualEmbed: 'q2Qw5G4M0Lc',
   },
   {
@@ -240,7 +240,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '11 pm hard stop',
-    technicalNote: 'logistics are entirely bound by the toronto island ferry schedule. leave nothing in your car. the southern porch features beautiful, repeating column shadows that are ideal for a slow, structural super 8mm tracking shot.',
+    fieldNotes: 'getting there by ferry forces you to slow down and pack exactly what you need. the southern porch features repeating column shadows that are absolutely perfect for a slow, structural super 8mm tracking shot.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -254,7 +254,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'the a-frame architecture channels all sound directly to the loft apex. a whisper in the kitchen will be recorded crystal clear on a loft mic. immediate, dense tree cover plunges the property into darkness about an hour earlier than expected.',
+    fieldNotes: 'the a-frame architecture is brilliant—it channels sound so well that you can notice quiet whispers from across the room. the dense tree cover brings twilight in early, giving you a head start on that moody evening energy.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -268,7 +268,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'the gracewood estate is fundamentally dusty in late summer—clean your camera sensors meticulously in post. the orchard rows create perfect, one-point perspective leading lines for the couples walk.',
+    fieldNotes: 'the gracewood estate has a beautiful, earthy texture to it in late summer. the orchard rows create perfect, one-point perspective leading lines—ideal for letting you both just walk and be present in the frame.',
     visualEmbed: 'yg9QuK4-Jys',
   },
   {
@@ -282,7 +282,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    technicalNote: 'a stark white cyclorama requires deep intentionality. with no architecture to hide behind, the couple has to carry the frame. this is the place to embrace hard cuts, direct flash photography, and a highly editorial approach.',
+    fieldNotes: 'a stark white cyclorama that acts as a perfect blank canvas. with no architecture in the way, the focus is entirely on the people. a brilliant space to embrace hard cuts, direct flash, and a highly editorial vibe.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -296,7 +296,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    technicalNote: 'the 17th-floor terrace provides sweeping cityscape views with zero wind protection. the main hall\'s acoustic dampening is surprisingly good for a glass box, but to get clean speeches, you must tap directly into the dj soundboard.',
+    fieldNotes: 'the 17th-floor terrace offers massive, sweeping cityscape views with a great open-air feel. inside, the glass box is surprisingly well-damped for sound—just tap into the board to collect those crisp, honest speeches.',
     visualEmbed: 'koOkRfluMIc',
   },
   {
@@ -310,7 +310,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    technicalNote: 'the massive volume of exposed brick greedily absorbs light. bouncing flash is entirely ineffective; use direct lighting or fast prime lenses wide open (f/1.4). train rumbles will occasionally ruin your audio.',
+    fieldNotes: 'the massive volume of exposed brick brings a rich, industrial weight to the frames. it’s a great space to throw on a fast prime lens and embrace the moody, directional fall-off. the occasional train rolling by just adds to the authentic city pulse.',
     visualEmbed: 'RbDwEHWiswc',
   },
   {
@@ -324,7 +324,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    technicalNote: 'acoustically engineered for unamplified performances, so spoken vows will carry perfectly to the back row without mics. the stunning glass atrium requires aggressive color temperature balancing when day turns to twilight.',
+    fieldNotes: 'acoustically engineered to perfection, so the quietest spoken words carry beautifully to the back row. the stunning glass atrium creates a massive, evolving light box that shifts brilliantly from afternoon into twilight.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -338,7 +338,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    technicalNote: 'the norman-style architecture is stunning but demands extensive lighting for indoor spaces. the exterior masonry is heavily textured, so side-lighting during twilight portraits yields incredibly dramatic results. expect significant audio bounce in the main corridors.',
+    fieldNotes: 'the norman-style architecture is incredibly striking. the heavy masonry exterior is highly textured—catch it with some side-light during twilight and the results are brilliantly dramatic. a vast space that feels historic and grand.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -352,7 +352,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    technicalNote: 'exposed steel, heavy timber, and enough negative space for the day to breathe. a massive room that somehow still keeps the energy grounded. bouncing light is tough with the high ceilings; rely on fast prime lenses and embrace the moody, directional fall-off.',
+    fieldNotes: 'exposed steel, heavy timber, and plenty of negative space for the day to breathe. bouncing light off the high ceilings is secondary to just throwing on a fast prime lens and leaning into the natural, moody directional light.',
     visualEmbed: '3l49oQY8o1g',
   },
   {
@@ -366,7 +366,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    technicalNote: 'an old estate right on the water. it feels like stepping away from the noise. intimate rooms for the heavy tears, and wide grounds to wander. the lakefront winds can be aggressive, so pack heavy deadcats for the ceremony audio.',
+    fieldNotes: 'an old estate right on the water that feels like a quiet step away from the noise. intimate rooms for the heavy tears, and wide grounds to wander. the lakefront breeze brings great natural movement to hair and dresses during the ceremony.',
     visualEmbed: 'kXRULOzL9AQ',
   }
 ];
