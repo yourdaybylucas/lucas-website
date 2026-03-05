@@ -436,7 +436,7 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
                     </section>
 
-                    {/* 03. Logistics / FAQs */}
+                   {/* 03. Logistics / FAQs */}
                     <section id="notes" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-12 lg:py-16 relative">
                         <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] rounded-sm shadow-2xl relative overflow-hidden w-full">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
@@ -484,10 +484,10 @@ export default function PrivateCollectionsPage() {
                                     </div>
                                     <div className="flex flex-col">
                                         <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
-                                            Collaborating with Photographers
+                                            The Photographers
                                         </h3>
                                         <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
-                                            working well with your photographer incredibly important. we have very similar goals, and with my low-key shooting style, we can both achieve them without stepping on each-others toes.
+                                            working well with your photographer is incredibly important. we have very similar goals, and with my low-key shooting style, we can both achieve them without stepping on each other's toes.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
