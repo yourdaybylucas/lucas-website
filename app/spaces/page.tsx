@@ -1,201 +1,63 @@
-"use client";
+import { Suspense } from 'react';
+import { Metadata } from 'next';
+import { venues } from '@/data/venues';
+import SpacesClient from './spaces-client';
 
-import { useState, useMemo, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Venue, Geography, Scale, Atmosphere, Footprint } from '@/data/venues';
-import { MapPin, Users, Building, Lock, X } from 'lucide-react';
+export const metadata: Metadata = {
+    title: 'THE LEDGER : HONEST SPACES // LUCAS',
+    description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
+    openGraph: {
+        title: 'THE LEDGER // LUCAS',
+        description: 'an inventory of honest spaces across ontario and worldwide.',
+        url: 'https://lucasfilm.com/spaces',
+        siteName: 'LUCAS : Wedding Filmmaker',
+        images: [
+            {
+                url: '/og-ledger.jpg', 
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'en_CA',
+        type: 'website',
+    },
+};
 
-// (keep your DossierCard component exactly as is here)
-const DossierCard = ({ venue }: { venue: Venue }) => (
-    // ... existing DossierCard code ...
-    <div className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm h-full">
-        {/* omitted for brevity, keep your exact layout */}
-        <h2 className="uppercase tracking-[0.2em] font-bold text-2xl md:text-3xl leading-tight">
-            {venue.name}
-        </h2>
-    </div>
-);
-
-export default function SpacesClient({ venues }: { venues: Venue[] }) {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    
-    // read the active space from the url, not local state
-    const spaceQuery = searchParams.get('space');
-    
-    const [activeFilters, setActiveFilters] = useState<{
-        geography: Geography | null;
-        scale: Scale | null;
-        atmosphere: Atmosphere | null;
-        footprint: Footprint | null;
-    }>({
-        geography: null, scale: null, atmosphere: null, footprint: null,
-    });
-
-    const filteredVenues = useMemo(() => {
-        return venues.filter((v) => {
-            if (activeFilters.geography && v.geography !== activeFilters.geography) return false;
-            if (activeFilters.scale && v.scale !== activeFilters.scale) return false;
-            if (activeFilters.atmosphere && v.atmosphere !== activeFilters.atmosphere) return false;
-            if (activeFilters.footprint && v.footprint !== activeFilters.footprint) return false;
-            return true;
-        });
-    }, [activeFilters, venues]);
-
-    const activeVenue = useMemo(() => {
-        return spaceQuery ? venues.find((v) => v.id === spaceQuery) || null : null;
-    }, [spaceQuery, venues]);
-
-    // clean the url if the modal is closed
-    const closeDossier = () => {
-        router.push('/spaces', { scroll: false });
+export default function SpacesPage() {
+    // the json-ld payload for the bots. 
+    // it bottles the data without compromising our visual aesthetic.
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'itemListElement': venues.map((venue, index) => ({
+            '@type': 'ListItem',
+            'position': index + 1,
+            'item': {
+                '@type': 'EventVenue',
+                'name': venue.name,
+                'address': {
+                    '@type': 'PostalAddress',
+                    'addressLocality': venue.location,
+                    'addressRegion': 'ON',
+                    'addressCountry': 'CA'
+                },
+                'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.technicalNote}`,
+                // reminder: generate these thumbnails later
+                'image': `https://lucasfilm.com/assets/stills/${venue.id}.jpg`, 
+                'url': `https://lucasfilm.com/spaces?space=${venue.id}`
+            }
+        }))
     };
-
-    useEffect(() => {
-        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
-        if (activeVenue && isMobile) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => { document.body.style.overflow = ''; };
-    }, [activeVenue]);
-
-    const handleFilterClick = (category: keyof typeof activeFilters, value: string) => {
-        setActiveFilters((prev) => ({
-            ...prev,
-            [category]: prev[category] === value ? null : value,
-        }));
-        // keep ui clean by closing dossier when filtering
-        closeDossier();
-    };
-
-    const handleClearFilters = () => {
-        setActiveFilters({ geography: null, scale: null, atmosphere: null, footprint: null });
-        closeDossier();
-    };
-
-    // (keep your FilterSection component exactly as is here)
 
     return (
-        <main className="min-h-screen bg-lucas-cream text-lucas-navy font-sans relative pt-32 pb-24">
-            
-            {/* mobile dossier overlay */}
-            <AnimatePresence>
-                {activeVenue && (
-                    <motion.div
-                        initial={{ y: '100%' }}
-                        animate={{ y: 0 }}
-                        exit={{ y: '100%' }}
-                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 z-[150] lg:hidden flex flex-col justify-end pointer-events-none"
-                    >
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-lucas-navy/40 backdrop-blur-sm pointer-events-auto" 
-                            onClick={closeDossier} 
-                        />
-                        <div className="bg-lucas-cream w-full h-[85vh] rounded-t-xl shadow-[0_-10px_40px_rgba(24,40,54,0.2)] pointer-events-auto overflow-y-auto relative flex flex-col">
-                            <div className="sticky top-0 right-0 left-0 bg-lucas-cream/90 backdrop-blur-md z-20 flex justify-between items-center p-4 border-b border-lucas-slate/20">
-                                <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate ml-2">
-                                    [ The Dossier ]
-                                </span>
-                                <button 
-                                    onClick={closeDossier} 
-                                    className="p-2 text-lucas-navy hover:text-lucas-orange transition-colors"
-                                    aria-label="close dossier"
-                                >
-                                    <X size={20} strokeWidth={1.5} />
-                                </button>
-                            </div>
-                            <div className="flex-grow p-0">
-                                <DossierCard venue={activeVenue} />
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-
-                    {/* the filter system */}
-                    <aside className="lg:col-span-3 lg:sticky lg:top-32">
-                        {/* ... keep exact filter layout ... */}
-                    </aside>
-
-                    {/* the lucas ledger */}
-                    <section className="lg:col-span-4 lg:pr-8">
-                        <div className="flex flex-col gap-0.5 border-t border-lucas-slate/20 pt-4">
-                            <AnimatePresence mode="popLayout">
-                                {filteredVenues.length === 0 ? (
-                                    // ... empty state ...
-                                ) : (
-                                    filteredVenues.map((venue, index) => {
-                                        const isSelected = spaceQuery === venue.id;
-                                        return (
-                                            <motion.div
-                                                layout
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
-                                                key={venue.id}
-                                                className="group border-b border-lucas-slate/20 last:border-0"
-                                            >
-                                                {/* THE FIX: using next/link makes this indexable */}
-                                                <Link 
-                                                    href={isSelected ? '/spaces' : `/spaces?space=${venue.id}`}
-                                                    scroll={false}
-                                                    className={`block py-5 md:py-6 transition-colors duration-slow ${isSelected ? 'text-lucas-orange' : 'hover:text-lucas-orange'}`}
-                                                >
-                                                    <div className="flex gap-4">
-                                                        <span className={`font-sans text-[10px] tracking-zissou mt-1.5 transition-opacity duration-slow ${isSelected ? 'text-lucas-orange opacity-100' : 'text-lucas-slate opacity-40 group-hover:opacity-100'}`}>
-                                                            {String(index + 1).padStart(2, '0')}
-                                                        </span>
-                                                        <div className="flex flex-col items-start gap-1.5">
-                                                            <h2 className="text-xl md:text-2xl font-medium lowercase">
-                                                                {venue.name}
-                                                            </h2>
-                                                            <div className={`flex flex-wrap items-center gap-2 text-[10px] md:text-xs uppercase tracking-zissou transition-colors duration-slow ${isSelected ? 'text-lucas-orange/70' : 'text-lucas-slate group-hover:text-lucas-orange/70'}`}>
-                                                                <span>{venue.location}</span>
-                                                                <span className={`w-1 h-1 rounded-full ${isSelected ? 'bg-lucas-orange/30' : 'bg-lucas-slate/30'}`} />
-                                                                <span>{venue.atmosphere}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </motion.div>
-                                        );
-                                    })
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    </section>
-
-                    {/* the dossier (desktop) */}
-                    <section className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32">
-                        <AnimatePresence mode="wait">
-                            {activeVenue ? (
-                                <DossierCard venue={activeVenue} />
-                            ) : (
-                                <motion.div 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    className="h-full min-h-[500px] border border-lucas-slate/20 border-dashed flex items-center justify-center p-8 bg-lucas-navy/[0.02]"
-                                >
-                                    <p className="text-lucas-slate lowercase text-sm">select a space to view the dossier.</p>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </section>
-
-                </div>
-            </div>
-        </main>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <Suspense fallback={<div className="min-h-screen bg-lucas-cream" />}>
+                <SpacesClient venues={venues} />
+            </Suspense>
+        </>
     );
 }
