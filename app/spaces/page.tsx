@@ -88,17 +88,14 @@ export default function SpacesPage() {
     );
 
     return (
-        <main className="min-h-screen bg-lucas-cream text-lucas-navy font-sans relative">
-            {/* Decorative ambient grain */}
-            <div className="fixed inset-0 bg-grain pointer-events-none z-50"></div>
-
-            <div className="max-w-[1600px] mx-auto p-4 md:p-8 lg:p-12 xl:p-16">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <main className="min-h-screen bg-lucas-cream text-lucas-navy font-sans relative pt-32 pb-24">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
                     {/* THE FILTER SYSTEM (Left Sidebar) */}
-                    <aside className="lg:col-span-3 lg:sticky lg:top-16">
-                        <h1 className="text-3xl font-bold uppercase tracking-tight mb-2">The Ledger</h1>
-                        <p className="text-sm text-lucas-slate lowercase mb-12">an inventory of honest spaces.</p>
+                    <aside className="lg:col-span-3 lg:sticky lg:top-32">
+                        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">The Ledger</h1>
+                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of honest spaces.</p>
 
                         <FilterSection
                             title="Geography"
@@ -160,11 +157,11 @@ export default function SpacesPage() {
                                             onMouseEnter={() => setHoveredVenueId(venue.id)}
                                             onMouseLeave={() => setHoveredVenueId(null)}
                                         >
-                                            <div className="py-4 md:py-6 flex flex-col items-start gap-1 transition-colors duration-slow hover:text-lucas-orange">
-                                                <h2 className="text-lg md:text-xl font-medium lowercase">
+                                            <div className="py-5 md:py-6 flex flex-col items-start gap-1.5 transition-colors duration-slow hover:text-lucas-orange">
+                                                <h2 className="text-xl md:text-2xl font-medium lowercase">
                                                     {venue.name}
                                                 </h2>
-                                                <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-zissou text-lucas-slate group-hover:text-lucas-orange/70 transition-colors duration-slow">
+                                                <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-zissou text-lucas-slate group-hover:text-lucas-orange/70 transition-colors duration-slow">
                                                     <span>{venue.location}</span>
                                                     <span className="w-1 h-1 bg-lucas-slate/30 rounded-full" />
                                                     <span>{venue.atmosphere}</span>
@@ -181,7 +178,7 @@ export default function SpacesPage() {
                     </section>
 
                     {/* THE DOSSIER (Right Sidebar / Payoff Card) */}
-                    <section className="lg:col-span-5 lg:sticky lg:top-16">
+                    <section className="lg:col-span-5 lg:sticky lg:top-32">
                         <AnimatePresence mode="wait">
                             {activeVenue ? (
                                 <motion.div
@@ -190,30 +187,30 @@ export default function SpacesPage() {
                                     animate={{ opacity: 1, filter: 'blur(0px)' }}
                                     exit={{ opacity: 0, filter: 'blur(4px)' }}
                                     transition={{ duration: 0.4 }}
-                                    className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-8 flex flex-col"
+                                    className="bg-lucas-cream border border-lucas-slate/20 p-8 md:p-10 flex flex-col shadow-sm"
                                 >
-                                    <div className="mb-6">
-                                        <h2 className="uppercase tracking-[0.2em] font-bold text-xl md:text-2xl leading-tight">
+                                    <div className="mb-8">
+                                        <h2 className="uppercase tracking-[0.2em] font-bold text-2xl md:text-3xl leading-tight">
                                             {activeVenue.name}
                                         </h2>
-                                        <p className="uppercase tracking-[0.2em] text-[10px] text-lucas-slate mt-2">
+                                        <p className="uppercase tracking-[0.2em] text-xs text-lucas-slate mt-3">
                                             loc : {activeVenue.location} // {activeVenue.geography}
                                         </p>
                                     </div>
 
-                                    <div className="relative aspect-video w-full bg-lucas-navy/5 mb-8 overflow-hidden">
-                                        <img
-                                            src={activeVenue.visualEmbed}
-                                            alt={`Visual of ${activeVenue.name}`}
-                                            className="object-cover w-full h-full mix-blend-multiply opacity-90 transition-transform duration-1000 hover:scale-105"
-                                        />
-                                        {/* Simulated super 8mm grain overlay for the image */}
-                                        <div className="absolute inset-0 bg-grain mix-blend-overlay"></div>
+                                    <div className="relative aspect-video w-full bg-[#0a1118] mb-10 overflow-hidden cursor-pointer shadow-md group">
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${activeVenue.visualEmbed}?autoplay=0&color=white&rel=0&modestbranding=1&playsinline=1`}
+                                            title={`Lucas Film at ${activeVenue.name}`}
+                                            className="w-full h-full absolute top-0 left-0 border-none"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        ></iframe>
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-x-4 gap-y-6 mb-8 text-xs">
+                                    <div className="grid grid-cols-2 gap-x-6 gap-y-8 mb-10 text-sm">
                                         <div>
-                                            <h4 className="uppercase tracking-zissou text-[9px] text-lucas-slate mb-1">Scale</h4>
+                                            <h4 className="uppercase tracking-zissou text-[10px] text-lucas-slate mb-1">Scale</h4>
                                             <p className="lowercase font-medium">{activeVenue.scale}</p>
                                         </div>
                                         <div>
@@ -237,9 +234,9 @@ export default function SpacesPage() {
                                         </div>
                                     </div>
 
-                                    <div className="bg-lucas-sage/10 p-6 border-l-2 border-lucas-orange">
-                                        <h4 className="uppercase tracking-zissou text-[9px] text-lucas-slate mb-3">Field Observation</h4>
-                                        <p className="prose-soul text-lucas-navy leading-relaxed text-sm">
+                                    <div className="bg-lucas-sage/10 p-6 md:p-8 border-l-2 border-lucas-orange">
+                                        <h4 className="uppercase tracking-zissou text-[10px] text-lucas-slate mb-3">Field Observation</h4>
+                                        <p className="prose-soul text-lucas-navy leading-loose text-base md:text-lg">
                                             {activeVenue.technicalNote}
                                         </p>
                                     </div>
