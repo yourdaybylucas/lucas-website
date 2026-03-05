@@ -31,7 +31,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '2 am extension available',
     technicalNote: 'lighting is a challenge; the heavy mahogany wood paneling in the main halls eats up ambient light, requiring strategic bounce or on-camera flash. the surrounding forest blocks golden hour quickly, so push couples sessions earlier. the red brick exterior looks phenomenally cinematic on 35mm.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'gOZQGueoLkM',
   },
   {
     id: 'elora-mill',
@@ -45,7 +45,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '2 am extension available',
     technicalNote: 'incredible natural light pours into the foundry prep rooms, but audio is a battle. the rushing gorge waterfall produces a constant, deafening low-frequency hum. use heavy wind muffs and rely on tight lavalier mics over boom setups.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'CYWJBr73jrk',
   },
   {
     id: 'graydon-hall-manor',
@@ -59,7 +59,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '1 am extension available',
     technicalNote: 'the stone terrace is basically a giant bounce card when the sun is high, causing harsh squinting. the narrow staircases mean the videographer and photographer will constantly be in each other\'s way during the procession—coordinate your angles carefully.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'GHhmsEs_8x8',
   },
   {
     id: 'harding-waterfront',
@@ -73,7 +73,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '2 am extension available',
     technicalNote: 'lake-effect wind is unrelenting here. stabilizing tripods with sandbags is mandatory. the vintage indoor wallpaper is a dream for super 8mm film, but audio outside will be destroyed without proper deadcat mic covers.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: '-UZ2S7Rd3Ac',
   },
   {
     id: 'casa-loma',
@@ -143,7 +143,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
     technicalNote: 'the hedge maze is photogenically stunning from the second-story balcony but useless at eye-level. coordinate with planners for upper-level access during cocktail hour to capture the wide establishing drone-style shots.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'k341XqRMhE8',
   },
   {
     id: 'the-pearle-hotel',
@@ -157,7 +157,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '2 am extension available',
     technicalNote: 'floor-to-ceiling lake-facing windows mean constant backlighting battles. you will be shooting silhouettes unless you deploy powerful continuous fill lights. the mirrored elevators offer a great enclosed, editorial portrait opportunity.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'atNWoDTZ0Qs',
   },
   {
     id: 'lune-1860',
@@ -171,7 +171,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
     technicalNote: 'a masterclass in curation. every room is painted a distinct, matte primary color. bouncing flash will turn skin tones blue or pink depending on the room. direct flash or bi-color continuous lighting is strictly necessary.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'f3L54oek57o',
   },
   {
     id: 'cranberry-creek',
@@ -199,7 +199,7 @@ export const venues: Venue[] = [
     flow: 'multi-location',
     curfew: '2 am extension available',
     technicalNote: 'rooftop views are stellar but notoriously windy. the basement screening room, however, is a hidden gem for moody groom prep. it offers absolute darkness and pinpoint spotlights, perfect for cinematic, high-contrast framing.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'cfAuSM9PdQk',
   },
   {
     id: 'broadview-hotel',
@@ -213,7 +213,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '2 am extension available',
     technicalNote: 'the lincoln room features deep green accents and east-facing windows, meaning the best natural light disappears before noon. the single elevator queue for rooftop access will inevitably delay your timeline by fifteen minutes.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'KpQA_JqfBsQ',
   },
   {
     id: 'spencers-waterfront',
@@ -227,7 +227,7 @@ export const venues: Venue[] = [
     flow: 'multi-location',
     curfew: '1 am extension available',
     technicalNote: 'the glass pavilion functions like a greenhouse. mid-summer affairs mean blazing heat and high-contrast window blowouts. the exterior observatory deck offers a flawless, unobstructed horizon line for wide sunset captures.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'q2Qw5G4M0Lc',
   },
   {
     id: 'rcyc',
@@ -269,7 +269,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
     technicalNote: 'the gracewood estate is fundamentally dusty in late summer—clean your camera sensors meticulously in post. the orchard rows create perfect, one-point perspective leading lines for the couples walk.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'yg9QuK4-Jys',
   },
   {
     id: 'archive-studio',
@@ -297,7 +297,7 @@ export const venues: Venue[] = [
     flow: 'multi-location',
     curfew: '2 am extension available',
     technicalNote: 'the 17th-floor terrace provides sweeping cityscape views with zero wind protection. the main hall\'s acoustic dampening is surprisingly good for a glass box, but to get clean speeches, you must tap directly into the dj soundboard.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'koOkRfluMIc',
   },
   {
     id: 'steam-whistle',
@@ -311,7 +311,7 @@ export const venues: Venue[] = [
     flow: 'multi-location',
     curfew: '2 am extension available',
     technicalNote: 'the massive volume of exposed brick greedily absorbs light. bouncing flash is entirely ineffective; use direct lighting or fast prime lenses wide open (f/1.4). train rumbles will occasionally ruin your audio.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'RbDwEHWiswc',
   },
   {
     id: 'royal-conservatory',
@@ -353,7 +353,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '1 am extension available',
     technicalNote: 'exposed steel, heavy timber, and enough negative space for the day to breathe. a massive room that somehow still keeps the energy grounded. bouncing light is tough with the high ceilings; rely on fast prime lenses and embrace the moody, directional fall-off.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: '3l49oQY8o1g',
   },
   {
     id: 'paletta-mansion',
