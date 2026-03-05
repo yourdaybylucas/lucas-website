@@ -595,11 +595,11 @@ export default function PrivateCollectionsPage() {
                             className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0"
                         >
                             <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-[1.1]">
-                                an honest <br/>conversation.
+                                lets connect
                             </h2>
                             
                             <p className="font-sans text-[clamp(0.95rem,1.5vw,1.125rem)] text-lucas-slate mb-10 max-w-md lowercase leading-[1.6]">
-                                zero obligation. whenever you're ready, let's set up a time to grab a coffee or jump on a video call. we'll talk about your vision for the day, discuss your film preferences, and most importantly, just see if our energies actually align.
+                                zero obligation. whenever you're ready, let's set up a time to grab a coffee or jump on a video call. we'll talk about your vision for the day, discuss your film preferences, and most importantly, get to know eachother.
                             </p>
                             
                             <a 
