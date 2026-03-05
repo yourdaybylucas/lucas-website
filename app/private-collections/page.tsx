@@ -437,8 +437,8 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 03. Logistics / FAQs */}
-                    <section id="notes" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative">
-                        <div className="bg-lucas-navy text-lucas-cream p-6 md:p-12 lg:p-24 rounded-sm shadow-2xl relative overflow-hidden w-full mt-8 lg:mt-0">
+                    <section id="notes" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-12 lg:py-16 relative">
+                        <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] rounded-sm shadow-2xl relative overflow-hidden w-full">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
                             
                             <motion.div 
@@ -448,8 +448,8 @@ export default function PrivateCollectionsPage() {
                                 viewport={{ once: true, margin: "-50px" }}
                                 className="relative z-10"
                             >
-                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-10 lg:mb-16">
-                                    <h2 className="font-sans text-2xl md:text-4xl uppercase tracking-tight font-bold">
+                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-4 lg:pb-6 mb-8 lg:mb-10">
+                                    <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold">
                                         Notes
                                     </h2>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
@@ -457,53 +457,53 @@ export default function PrivateCollectionsPage() {
                                     </span>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 lg:gap-y-16">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-16 gap-y-8 lg:gap-y-10">
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
                                             The Retainer
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
                                             to lock in the date, i require a 1/3 retainer upfront. the remaining balance is simply due two weeks before the day.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
                                             The Geography
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                            home base is guelph, ontario. miles within the province are entirely on me. there are no hidden travel fees for ontario commissions.
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
+                                            home base is guelph, ontario. travel within the province is entirely on me. there are no hidden travel fees.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
                                             The Footprint
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                            most of the time, no second shooter is needed. i document 95% of my commissions solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
+                                            most of the time, no second shooter is needed. i document 95% of my weddings solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
-                                            The Photographers
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
+                                            Collaborating with Photographers
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                            working well with your photographer is a strict priority. we have the exact same goal: collecting the best frames. i stay out of the way, shoot from different angles, and mostly, they won't even notice i'm there.
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
+                                            working well with your photographer incredibly important. we have very similar goals, and with my low-key shooting style, we can both achieve them without stepping on each-others toes.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
                                             The Delivery
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                            i prefer to edit while the feeling of the day is still fresh. average turnaround is 5 weeks, but i give myself 10 weeks in the contract just to be safe.
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
+                                            i prefer to edit while the feeling of the day is still fresh. average turnaround is about 7 weeks, and i give myself closer to 12 weeks to be safe.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-2 lg:mb-3 border-l-2 border-lucas-orange pl-3">
                                             The Standard
                                         </h3>
-                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                            absolutely inclusive. i am honored to document your connection, regardless of religion, gender, race, or sexual orientation.
+                                        <p className="font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-[1.6] text-lucas-cream/80 lowercase">
+                                            absolutely inclusive. i am honoured to document you, regardless of religion, gender, race, or sexual orientation.
                                         </p>
                                     </div>
                                 </div>
