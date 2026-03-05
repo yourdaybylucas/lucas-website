@@ -22,7 +22,7 @@ const sectionsNav = [
     { id: "collections", label: "02. Collections" },
     { id: "notes", label: "03. Notes" },
     { id: "progression", label: "04. Progression" },
-    { id: "booking", label: "05. Logistics" },
+    { id: "booking", label: "05. Next Steps" },
 ];
 
 export default function PrivateCollectionsPage() {
