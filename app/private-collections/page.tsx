@@ -1,3 +1,5 @@
+// app/private-collections/page.tsx
+
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,7 +33,9 @@ export default function PrivateCollectionsPage() {
 
     // intersection observer to highlight the active index dot
     useEffect(() => {
+        const root = document.getElementById("dossier-scroll-container");
         const sections = document.querySelectorAll("section[id]");
+        
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -40,7 +44,8 @@ export default function PrivateCollectionsPage() {
                     }
                 });
             },
-            { threshold: 0.2 }
+            // We observe the specific scroll container now, looking for when a section is 40% in view
+            { root: root, threshold: 0.4 } 
         );
 
         sections.forEach((section) => observer.observe(section));
@@ -50,7 +55,8 @@ export default function PrivateCollectionsPage() {
     const scrollTo = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+            // scrollIntoView works natively within the isolated overflow container
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
@@ -59,10 +65,11 @@ export default function PrivateCollectionsPage() {
     };
 
     return (
-        <main className="min-h-screen bg-lucas-cream flex flex-col md:flex-row relative">
+        // Locked viewport wrapper to enable the app-like scrolling architecture
+        <main className="h-[100dvh] bg-lucas-cream flex flex-col lg:flex-row relative overflow-hidden">
             
-            {/* THE DOSSIER INDEX (Sticky Left Sidebar - Desktop Only) */}
-            <aside className="hidden lg:flex flex-col sticky top-0 h-screen w-64 border-r border-lucas-navy/10 pt-[clamp(6rem,15vh,10rem)] px-8 z-50">
+            {/* THE DOSSIER INDEX (Static Left Sidebar - Desktop Only) */}
+            <aside className="hidden lg:flex flex-col h-full w-64 border-r border-lucas-navy/10 pt-[clamp(6rem,15vh,10rem)] px-8 z-50 shrink-0 relative bg-lucas-cream">
                 <div className="flex items-center gap-3 mb-16">
                     <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
@@ -110,32 +117,31 @@ export default function PrivateCollectionsPage() {
                 ))}
             </div>
 
-            {/* SCROLLING CONTENT */}
-            <div className="flex-1 w-full pt-[clamp(6rem,15vh,10rem)] pb-[clamp(6rem,10vh,12rem)] px-6 lg:px-16 overflow-hidden">
-                <div className="w-full max-w-6xl mx-auto">
+            {/* SCROLLING CONTENT (The Snapping Container) */}
+            <div 
+                id="dossier-scroll-container" 
+                className="flex-1 h-full overflow-y-auto overflow-x-hidden snap-y snap-proximity scroll-smooth px-6 lg:px-16"
+            >
+                <div className="w-full max-w-6xl mx-auto flex flex-col">
                     
                     {/* 01. The Grounded Welcome */}
-                    <section id="Intro" className="mb-[clamp(6rem,12vh,12rem)] relative pt-10">
+                    <section id="Intro" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-20 relative">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                            
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-7"
+                                className="lg:col-span-7 flex flex-col relative"
                             >
-                                <h1 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-bold uppercase tracking-tight text-lucas-navy mb-10 leading-none">
-                                    Thank you for <br/>connecting.
-                                </h1>
-
-                                <div className="font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] text-lucas-navy leading-[1.6] space-y-6 lowercase">
-                                    <p>
-                                        i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. 
-                                    </p>
-                                    <p>
-                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic">bottle exactly how it all felt</em>.
-                                    </p>
-                                    <p className="italic text-lucas-slate pt-4">
-                                        here is everything you need to know about working together.
+                                {/* The Editorial Bracket */}
+                                <div className="absolute -top-12 lg:-top-20 -left-4 lg:-left-12 text-lucas-slate/15 font-sans text-[10rem] lg:text-[14rem] font-light leading-none pointer-events-none select-none">
+                                    [
+                                </div>
+                                
+                                <div className="relative z-10 pl-2 lg:pl-6">
+                                    <p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
+                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt.</em>
                                     </p>
                                 </div>
                             </motion.div>
@@ -144,22 +150,24 @@ export default function PrivateCollectionsPage() {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-5 relative aspect-[4/3] bg-lucas-navy/5 shadow-2xl overflow-hidden"
+                                className="lg:col-span-5 relative aspect-[4/3] bg-lucas-navy/5 shadow-2xl overflow-hidden group"
                             >
+                                <div className="absolute inset-0 bg-lucas-navy/10 z-10 group-hover:bg-transparent transition-colors duration-1000"></div>
                                 <video 
                                     src="/videos/clip_10cheers.mp4" 
                                     autoPlay 
                                     loop 
                                     muted 
                                     playsInline
-                                    className="object-cover w-full h-full grayscale-[50%]"
+                                    className="object-cover w-full h-full grayscale-[50%] contrast-[1.1] group-hover:grayscale-0 transition-all duration-1000"
                                 />
                             </motion.div>
+
                         </div>
                     </section>
 
-                    {/* 02. The Collections Grid (Rewritten) */}
-                    <section id="collections" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
+                    {/* 02. The Collections Grid */}
+                    <section id="collections" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
@@ -178,7 +186,6 @@ export default function PrivateCollectionsPage() {
                                 
                                 {/* VOL 01 */}
                                 <motion.div variants={fadeUpItem} className="flex flex-col group transition-colors duration-1000 relative overflow-hidden bg-lucas-cream hover:bg-lucas-navy/5">
-                                    {/* Subtle video background on hover */}
                                     <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none">
                                         <video src="/videos/clip_digital.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
                                     </div>
@@ -385,80 +392,82 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 03. Logistics / FAQs */}
-                    <section id="notes" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24 bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 -mx-6 lg:-mx-16 lg:px-24 rounded-sm shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
-                        
-                        <motion.div 
-                            variants={fadeUpContainer}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="relative z-10"
-                        >
-                            <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-16">
-                                <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
-                                    Notes
-                                </h2>
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
-                                    [ Logistics & Parameters ]
-                                </span>
-                            </div>
+                    <section id="notes" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
+                        <div className="bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 rounded-sm shadow-2xl relative overflow-hidden w-full">
+                            <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
+                            
+                            <motion.div 
+                                variants={fadeUpContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                className="relative z-10"
+                            >
+                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-16">
+                                    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
+                                        Notes
+                                    </h2>
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
+                                        [ Logistics & Parameters ]
+                                    </span>
+                                </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Retainer
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        to lock in the date, i require a 1/3 retainer upfront. the remaining balance is simply due two weeks before the day.
-                                    </p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Retainer
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            to lock in the date, i require a 1/3 retainer upfront. the remaining balance is simply due two weeks before the day.
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Geography
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            home base is guelph, ontario. miles within the province are entirely on me. there are no hidden travel fees for ontario commissions.
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Footprint
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            most of the time, no second shooter is needed. i document 95% of my commissions solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Photographers
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            working well with your photographer is a strict priority. we have the exact same goal: collecting the best frames. i stay out of the way, shoot from different angles, and mostly, they won't even notice i'm there.
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Delivery
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            i prefer to edit while the feeling of the day is still fresh. average turnaround is 5 weeks, but i give myself 10 weeks in the contract just to be safe.
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                            The Standard
+                                        </h3>
+                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                            absolutely inclusive. i am honored to document your connection, regardless of religion, gender, race, or sexual orientation.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Geography
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        home base is guelph, ontario. miles within the province are entirely on me. there are no hidden travel fees for ontario commissions.
-                                    </p>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Footprint
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        most of the time, no second shooter is needed. i document 95% of my commissions solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
-                                    </p>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Photographers
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        working well with your photographer is a strict priority. we have the exact same goal: collecting the best frames. i stay out of the way, shoot from different angles, and mostly, they won't even notice i'm there.
-                                    </p>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Delivery
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        i prefer to edit while the feeling of the day is still fresh. average turnaround is 5 weeks, but i give myself 10 weeks in the contract just to be safe.
-                                    </p>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
-                                        The Standard
-                                    </h3>
-                                    <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
-                                        absolutely inclusive. i am honored to document your connection, regardless of religion, gender, race, or sexual orientation.
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     </section>
 
                     {/* 04. The Progression */}
-                    <section id="progression" className="mb-[clamp(6rem,12vh,12rem)] scroll-mt-24">
+                    <section id="progression" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
@@ -534,7 +543,7 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 05. The CTA */}
-                    <section id="booking" className="flex flex-col md:flex-row items-center justify-between pt-16 border-t border-lucas-navy/10 relative scroll-mt-24 gap-12 pb-12">
+                    <section id="booking" className="min-h-[100dvh] w-full snap-start flex flex-col md:flex-row items-center justify-between py-24 border-t border-lucas-navy/10 relative gap-12">
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
