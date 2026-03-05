@@ -1,235 +1,264 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const fadeUpContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.1 }
-    }
-};
-
-const fadeUpItem = {
+const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } }
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
 };
 
-const timeline = [
-    { year: "2014", title: "The Catalyst", desc: "bought a gopro to document travels. the initial spark.", img: "/images/img1.JPG", align: "left" },
-    { year: "2015", title: "The Obsession", desc: "fell completely in love with the process of bottling memories and places.", img: "/images/img1.JPG", align: "right" },
-    { year: "2016", title: "The Pivot", desc: "filmed my first wedding for a friend as a gift. everything changed.", img: "/images/img1.JPG", align: "left" },
-    { year: "2018", title: "The Detour", desc: "graduated school for business admin. (what, lol).", img: "/images/img1.JPG", align: "right" },
-    { year: "2019", title: "The Commitment", desc: "went full time. burned the boats. never looked back.", img: "/images/img1.JPG", align: "left" },
-    { year: "2021", title: "The Anchor", desc: "married heidi, the absolute love of my life.", img: "/images/img1.JPG", align: "right" },
-    { year: "2025", title: "The Legacy", desc: "welcomed our son, sam, into the world.", img: "/images/img1.JPG", align: "left" },
-    { year: "Present", title: "The Archive", desc: "over 200 weddings documented across countries and cultures. the passion remains exactly the same.", img: "/images/img1.JPG", align: "right" },
-];
-
-const principles = [
-    { num: "01", title: "Anticipation", desc: "you can't just be a fly on the wall and react to the room. you have to understand the rhythm of the day and anticipate the honest frames before they even happen." },
-    { num: "02", title: "Intentionality", desc: "i know exactly which footage actually builds your narrative. i focus my energy on the fleeting, unforced interactions rather than manufacturing a shot list." },
-    { num: "03", title: "Singular Focus", desc: "this isn't a side project or a weekend hobby. wedding cinema is my full-time profession and my primary creative outlet." },
-    { num: "04", title: "Scarcity", desc: "i strictly limit my commissions per year. keeping the calendar capped ensures my creative energy is entirely present for your weekend." },
-    { num: "05", title: "Unfading Passion", desc: "the thrill is still there. i get hyped arriving in the morning, and i still get exactly as hyped reviewing the footage the next day." }
-];
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
+};
 
 export default function AboutPage() {
+    // Parallax references
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+    const y3 = useTransform(scrollYProgress, [0, 1], [0, -250]);
+
     return (
-        <main className="min-h-[200vh] bg-lucas-cream overflow-hidden pt-[clamp(6rem,15vh,10rem)] pb-24">
+        <main className="bg-lucas-cream overflow-hidden">
             
-            {/* 01. The Header & Rewritten Bio */}
-            <section className="relative px-6 max-w-5xl mx-auto mb-[clamp(6rem,15vh,10rem)]">
+            {/* 01. THE MANIFESTO (Hero) */}
+            <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-32 pb-24 text-center">
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col items-center text-center"
+                    initial="hidden" animate="visible" variants={staggerContainer}
+                    className="max-w-5xl mx-auto flex flex-col items-center"
                 >
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-8 h-px bg-lucas-orange"></div>
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase font-bold">
-                            The Architect
+                    <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
+                        <div className="w-12 h-px bg-lucas-slate/40"></div>
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                            [ The Ethos ]
                         </span>
-                        <div className="w-8 h-px bg-lucas-orange"></div>
-                    </div>
+                        <div className="w-12 h-px bg-lucas-slate/40"></div>
+                    </motion.div>
                     
-                    <h1 className="font-sans text-[clamp(3.5rem,8vw,7rem)] uppercase font-bold text-lucas-navy leading-[0.9] tracking-tight mb-12">
-                        The Man <br/>
-                        <span className="text-lucas-slate font-light">& The Lens</span>
-                    </h1>
+                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(3.5rem,8vw,8rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-12">
+                        The Art Of <br/>
+                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">noticing.</span>
+                    </motion.h1>
 
-                    {/* The "Anti-Vendor" Rewritten Bio */}
-                    <div className="relative">
-                        <span className="absolute -top-12 -left-8 text-lucas-navy/5 font-serif text-9xl select-none hidden md:block">"</span>
-                        <p className="font-serif text-[clamp(1.25rem,2.5vw,2rem)] text-lucas-navy italic lowercase max-w-4xl mx-auto leading-[1.6]">
-                            i discovered the weight of the moving image while documenting travels. what started with a gopro in 2014 turned into a career when i filmed a friend's wedding as a gift two years later. since then, i've been lucky enough to make the art of noticing my full-time life. sending off a film and knowing it transports you right back to how the day actually felt—that's the high i'm always chasing.
+                    <motion.div variants={fadeUp} className="relative max-w-3xl mx-auto">
+                        <p className="font-serif text-[clamp(1.25rem,2.5vw,2rem)] text-lucas-navy italic lowercase leading-[1.5]">
+                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. i blend in like a friend with a camera—bringing easy energy to the room while keeping a keen eye on the honest frames. 
                         </p>
-                        <span className="absolute -bottom-20 -right-8 text-lucas-navy/5 font-serif text-9xl select-none hidden md:block">"</span>
-                    </div>
-
-                    <div className="mt-12 flex flex-col items-center">
-                        <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-4">
-                            [ Lucas Bulger ]
-                        </p>
-                        <div className="w-px h-16 bg-lucas-slate/30"></div>
+                    </motion.div>
+                </motion.div>
+                
+                {/* Scroll Indicator */}
+                <motion.div 
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+                >
+                    <div className="w-px h-16 bg-lucas-navy/20 relative overflow-hidden">
+                        <motion.div 
+                            className="absolute top-0 left-0 w-full h-1/2 bg-lucas-orange"
+                            animate={{ y: ["-100%", "200%"] }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                        />
                     </div>
                 </motion.div>
             </section>
 
-            {/* 02. The Timeline (Personal & Professional) */}
-            <section className="relative px-6 max-w-6xl mx-auto mb-[clamp(8rem,15vh,12rem)]">
+            {/* 02. THE DOSSIER (The Non-Sappy Bio) */}
+            <section className="relative px-6 py-24 md:py-32 bg-lucas-navy text-lucas-cream border-y border-lucas-navy">
+                <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none mix-blend-overlay"></div>
                 
-                <div className="flex items-center justify-between border-b border-lucas-navy/20 pb-6 mb-16 md:mb-24">
-                    <h2 className="font-sans text-2xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy">
-                        The Record
-                    </h2>
-                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                        [ 2014 — Present ]
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative z-10">
+                    
+                    {/* Left: The Portrait */}
+                    <div className="lg:col-span-5 relative">
+                        <div className="sticky top-32 w-full aspect-[4/5] bg-lucas-cream/5 border border-lucas-cream/10 p-2 shadow-2xl">
+                            <div className="relative w-full h-full bg-[#111d27] overflow-hidden group">
+                                {/* TODO: Place a cool, unposed, slightly grainy portrait of yourself here */}
+                                <Image 
+                                    src="/images/Lucas Image with background.jpg" 
+                                    alt="Lucas" 
+                                    fill 
+                                    className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000"
+                                />
+                                <div className="absolute inset-0 border border-lucas-cream/10 m-4 pointer-events-none"></div>
+                                <span className="absolute bottom-6 left-6 font-sans text-[8px] tracking-widest text-lucas-cream uppercase bg-lucas-navy/50 backdrop-blur-md px-2 py-1">
+                                    Fig. 01 — The Soloist
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right: The Data */}
+                    <div className="lg:col-span-7 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-12">
+                            <span className="w-2 h-2 bg-lucas-orange rounded-full animate-pulse"></span>
+                            <h2 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-cream/60">
+                                Identity & Origin
+                            </h2>
+                        </div>
+
+                        <p className="font-serif text-2xl md:text-3xl leading-[1.6] italic text-lucas-cream mb-16 lowercase">
+                            what started with a gopro in 2014 quietly became a life's work. over 200 narratives later, across multiple countries and cultures, the goal remains unchanged: to bottle exactly how the day felt, entirely unforced.
+                        </p>
+
+                        {/* The Inventory Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-sans text-xs uppercase tracking-widest border-t border-lucas-cream/10 pt-12">
+                            <div className="flex flex-col gap-2">
+                                <span className="text-lucas-slate text-[9px] tracking-zissou">Name</span>
+                                <span className="text-lucas-cream">Lucas Bulger</span>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <span className="text-lucas-slate text-[9px] tracking-zissou">Role</span>
+                                <span className="text-lucas-cream">Director // Editor // Soloist</span>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <span className="text-lucas-slate text-[9px] tracking-zissou">Base of Operations</span>
+                                <span className="text-lucas-cream">Guelph, Ontario (Available Worldwide)</span>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <span className="text-lucas-slate text-[9px] tracking-zissou">The Anchor</span>
+                                <span className="text-lucas-orange lowercase font-serif italic text-lg tracking-normal mt-[-4px]">
+                                    husband to heidi. father to sam.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 03. PARALLAX VISUAL BREAK (The "Show, Don't Tell" Section) */}
+            <section ref={containerRef} className="hidden md:flex relative h-[120vh] w-full items-center justify-center overflow-hidden bg-lucas-cream px-6">
+                <div className="absolute inset-0 flex items-center justify-center z-0 opacity-5">
+                    <span className="font-sans font-bold text-[15vw] text-lucas-navy tracking-tighter uppercase whitespace-nowrap">
+                        HONEST FRAMES
                     </span>
                 </div>
 
-                <div className="relative">
-                    {/* The Central Spine (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-lucas-navy/10 -translate-x-1/2"></div>
+                <div className="relative w-full max-w-7xl h-full flex items-center justify-center">
+                    {/* TODO: Add an emotional, blurry, or laughing photo of a couple */}
+                    <motion.div style={{ y: y1 }} className="absolute left-[5%] top-[20%] w-[25vw] aspect-[3/4] bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                            [ Photo: The Laugh ]
+                        </div>
+                    </motion.div>
+
+                    {/* TODO: Add a quiet, in-between moment. Maybe hands, or a dress blowing in wind */}
+                    <motion.div style={{ y: y2 }} className="absolute right-[5%] top-[10%] w-[20vw] aspect-square bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                            [ Photo: The Details ]
+                        </div>
+                    </motion.div>
+
+                    {/* TODO: Add a wide architectural shot or venue scene */}
+                    <motion.div style={{ y: y3 }} className="absolute left-[35%] bottom-[15%] w-[35vw] aspect-video bg-lucas-navy/10 shadow-2xl p-2 border border-lucas-slate/20 z-10">
+                        <div className="w-full h-full bg-lucas-navy/20 relative flex items-center justify-center text-lucas-slate text-xs uppercase tracking-zissou">
+                            [ Photo: The Scene ]
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 04. THE METHODOLOGY (Sticky Scroll Principles) */}
+            <section className="relative bg-lucas-cream py-24 md:py-40 px-6 border-t border-lucas-slate/20">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 lg:gap-32 items-start">
                     
-                    {/* The Central Spine (Mobile) */}
-                    <div className="block md:hidden absolute left-[15px] top-0 bottom-0 w-px bg-lucas-navy/10"></div>
+                    {/* Sticky Left Spine */}
+                    <div className="w-full md:w-1/3 md:sticky md:top-40 flex flex-col">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                                The Methodology
+                            </span>
+                        </div>
+                        <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
+                            How It Actually <br/> Works.
+                        </h2>
+                        <p className="font-serif text-lg text-lucas-slate lowercase italic">
+                            the internal logic behind the lens. principles built to protect the authenticity of your weekend.
+                        </p>
+                    </div>
 
-                    <div className="flex flex-col gap-16 md:gap-32 relative">
-                        {timeline.map((item, i) => (
+                    {/* Scrolling Right Content */}
+                    <div className="w-full md:w-2/3 flex flex-col gap-16 md:gap-24 relative">
+                        {/* Vertical line connecting them */}
+                        <div className="absolute left-[15px] top-8 bottom-8 w-px bg-lucas-navy/10 -z-10 hidden md:block"></div>
+
+                        {[
+                            { 
+                                num: "01", 
+                                title: "Anticipation", 
+                                desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to understand the rhythm of the room, read the energy, and anticipate the honest frames before they happen." 
+                            },
+                            { 
+                                num: "02", 
+                                title: "Intentionality", 
+                                desc: "i know which footage actually builds your narrative and captures the feeling. i focus my energy on the unforced, fleeting interactions, rather than manufacturing a 40-point shot list of stiff poses." 
+                            },
+                            { 
+                                num: "03", 
+                                title: "Singular Focus", 
+                                desc: "this isn't a side project. wedding cinema is my full-time profession and primary creative outlet. my process is entirely dedicated to this specific craft." 
+                            },
+                            { 
+                                num: "04", 
+                                title: "Scarcity", 
+                                desc: "i strictly limit the number of commissions i take per year. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus for your weekend." 
+                            },
+                            { 
+                                num: "05", 
+                                title: "Unfading Passion", 
+                                desc: "i genuinely love doing this. the thrill hasn't worn off. i get hyped arriving in the morning, and i get exactly as hyped sitting at my desk reviewing the footage the next day." 
+                            }
+                        ].map((item, idx) => (
                             <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 w-full ${
-                                    item.align === 'right' ? 'md:flex-row-reverse' : ''
-                                }`}
+                                key={idx}
+                                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+                                variants={fadeUp}
+                                className="flex gap-6 md:gap-10 group"
                             >
-                                {/* Mobile Dot */}
-                                <div className="md:hidden absolute left-[11px] w-2 h-2 bg-lucas-orange rounded-full mt-2"></div>
-
-                                {/* Content Side */}
-                                <div className={`w-full md:w-1/2 flex flex-col pl-10 md:pl-0 ${
-                                    item.align === 'left' ? 'md:items-end md:text-right' : 'md:items-start md:text-left'
-                                }`}>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold mb-2 border border-lucas-orange/20 px-2 py-0.5 rounded-sm w-fit">
-                                        {item.year}
+                                <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border border-lucas-slate/30 flex items-center justify-center bg-lucas-cream group-hover:border-lucas-orange transition-colors duration-500">
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-navy group-hover:text-lucas-orange transition-colors">
+                                        {item.num}
                                     </span>
-                                    <h3 className="font-serif text-3xl text-lucas-navy italic mb-3">
+                                </div>
+                                <div className="flex flex-col pt-1 md:pt-2">
+                                    <h3 className="font-sans text-xl uppercase tracking-widest text-lucas-navy mb-4">
                                         {item.title}
                                     </h3>
-                                    <p className="font-sans text-sm md:text-base text-lucas-slate lowercase leading-relaxed max-w-[320px]">
+                                    <p className="font-serif text-[clamp(1.125rem,2vw,1.35rem)] text-lucas-slate lowercase leading-relaxed max-w-xl">
                                         {item.desc}
                                     </p>
-                                </div>
-
-                                {/* Desktop Center Dot */}
-                                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 items-center justify-center bg-lucas-cream z-10">
-                                    <div className="w-2 h-2 bg-lucas-orange rounded-full"></div>
-                                </div>
-
-                                {/* Image Side */}
-                                <div className="w-full md:w-1/2 pl-10 md:pl-0">
-                                    <div className={`relative aspect-[4/3] w-full max-w-[400px] bg-lucas-navy/5 shadow-xl ${
-                                        item.align === 'left' ? 'mr-auto' : 'ml-auto'
-                                    }`}>
-                                        {/* Image Placeholder */}
-                                        <Image
-                                            src={item.img}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
-                                        />
-                                        {/* Corner Accents */}
-                                        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-lucas-navy/30"></div>
-                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-lucas-navy/30"></div>
-                                    </div>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
+
                 </div>
             </section>
 
-            {/* 03. The Principles (Ledger Style) */}
-            <section className="relative px-6 w-full mb-[clamp(6rem,15vh,10rem)]">
-                <div className="max-w-7xl mx-auto bg-lucas-navy text-lucas-cream border border-lucas-navy shadow-2xl relative overflow-hidden">
-                    {/* Analog Grain Overlay */}
-                    <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
-
-                    <div className="p-8 md:p-16 relative z-10">
-                        <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-cream/20 pb-8 mb-12">
-                            <div>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase">
-                                        [ The Framework ]
-                                    </span>
-                                </div>
-                                <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold">
-                                    Guiding Principles
-                                </h2>
-                            </div>
-                            <p className="font-serif italic text-lucas-cream/70 text-lg md:text-xl mt-4 md:mt-0 max-w-xs md:text-right">
-                                the internal logic behind the documentation.
-                            </p>
-                        </div>
-
-                        <motion.div 
-                            variants={fadeUpContainer}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-y border-lucas-cream/10 divide-y md:divide-y-0 lg:divide-x divide-lucas-cream/10"
-                        >
-                            {principles.map((principle, idx) => (
-                                <motion.div 
-                                    key={idx} 
-                                    variants={fadeUpItem}
-                                    className="p-6 md:p-8 hover:bg-lucas-cream/5 transition-colors duration-slow flex flex-col h-full"
-                                >
-                                    <div className="flex items-start justify-between mb-8">
-                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/30 px-2 py-0.5">
-                                            {principle.num}
-                                        </span>
-                                    </div>
-                                    <h3 className="font-sans text-lg md:text-xl uppercase tracking-widest text-lucas-cream mb-4">
-                                        {principle.title}
-                                    </h3>
-                                    <p className="font-serif text-base md:text-lg text-lucas-cream/80 lowercase leading-[1.6]">
-                                        {principle.desc}
-                                    </p>
-                                </motion.div>
-                            ))}
-                            
-                            {/* Empty grid filler for symmetry if needed (3 cols, 5 items = 1 empty) */}
-                            <div className="hidden lg:block p-6 md:p-8 bg-lucas-cream/5 relative overflow-hidden">
-                                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                                    <span className="font-sans text-[12rem] text-lucas-cream leading-none">/</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 04. Footer Teaser */}
-            <section className="px-6 flex flex-col items-center justify-center text-center">
-                <p className="font-serif text-[clamp(1.5rem,3vw,2.5rem)] text-lucas-navy italic mb-10 max-w-2xl leading-snug">
-                    if you align with the approach, i'd love to hear about the day you're planning.
+            {/* 05. THE CALL TO ACTION */}
+            <section className="relative py-32 px-6 flex flex-col items-center justify-center text-center border-t border-lucas-slate/20">
+                <div className="absolute left-1/2 top-0 w-px h-16 bg-lucas-slate/30 -translate-x-1/2"></div>
+                
+                <p className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] text-lucas-navy italic mb-10 max-w-2xl leading-snug pt-8">
+                    if you align with the approach, i'd love to hear about the day you're building.
                 </p>
+                
                 <Link 
                     href="/#contact" 
-                    className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
+                    className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] md:text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
                 >
                     <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
                     <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
-                        Inquire For Availability
+                        Check Availability
                     </span>
                 </Link>
             </section>
