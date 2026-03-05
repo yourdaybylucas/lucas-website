@@ -512,14 +512,14 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 04. The Progression */}
-                    <section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative">
+                    <section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-12 lg:py-16 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                         >
-                            <div className="flex items-center gap-4 mb-12 lg:mb-16 pt-8 lg:pt-0">
+                            <div className="flex items-center gap-4 mb-10 lg:mb-12 pt-8 lg:pt-0">
                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                 <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
                                     The Progression
@@ -541,7 +541,7 @@ export default function PrivateCollectionsPage() {
                                     className="absolute left-[14px] md:left-[23px] top-4 w-px bg-lucas-navy origin-top"
                                 ></motion.div>
 
-                                <div className="flex flex-col gap-8 md:gap-14">
+                                <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                                     {[
                                         { num: "01", title: "The Discovery", desc: "you found my work, felt a connection, and sent over an inquiry.", status: "completed" },
                                         { num: "02", title: "The Inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if we align.", status: "current" },
@@ -552,7 +552,7 @@ export default function PrivateCollectionsPage() {
                                         <motion.div 
                                             key={i} 
                                             variants={fadeUpItem}
-                                            className={`relative flex gap-5 md:gap-10 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
+                                            className={`relative flex gap-5 md:gap-8 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
                                         >
                                             <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-full border transition-colors duration-500 bg-lucas-cream ${
                                                 step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
@@ -564,8 +564,8 @@ export default function PrivateCollectionsPage() {
                                                 {step.status === 'future' && <span className="font-sans text-[9px] tracking-zissou ml-0.5">{step.num}</span>}
                                             </div>
 
-                                            <div className="flex flex-col pt-1 md:pt-3 pb-2">
-                                                <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-3">
+                                            <div className="flex flex-col pt-1 md:pt-2 pb-2">
+                                                <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-2">
                                                     <h4 className={`font-sans text-xs md:text-sm uppercase tracking-widest ${
                                                         step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
                                                     }`}>
@@ -574,7 +574,7 @@ export default function PrivateCollectionsPage() {
                                                     {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-sm">Done</span>}
                                                     {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">You are here</span>}
                                                 </div>
-                                                <p className={`font-serif text-base md:text-[1.125rem] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
+                                                <p className={`font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
                                                     {step.desc}
                                                 </p>
                                             </div>
