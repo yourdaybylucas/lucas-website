@@ -492,78 +492,81 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 04. The Progression */}
-                    <section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-12 lg:py-16 relative">
-                        <motion.div 
-                            variants={fadeUpContainer}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                        >
-                            <div className="flex items-center gap-4 mb-10 lg:mb-12 pt-8 lg:pt-0">
-                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
-                                <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
-                                    The Progression
-                                </h2>
-                                <div className="h-px bg-lucas-navy/20 flex-grow"></div>
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                                    [ the roadmap ]
-                                </span>
+<section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-12 lg:py-16 relative">
+    <motion.div 
+        variants={fadeUpContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+    >
+        <div className="flex items-center gap-4 mb-10 lg:mb-12 pt-8 lg:pt-0">
+            <span className="w-1.5 h-1.5 bg-lucas-orange rounded-none animate-pulse"></span>
+            <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
+                The Progression
+            </h2>
+            <div className="h-px bg-lucas-navy/20 flex-grow"></div>
+            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+                [ the roadmap ]
+            </span>
+        </div>
+
+        <div className="relative max-w-3xl mx-auto pl-2 sm:pl-0">
+            {/* The structural line - adjusted left values to center perfectly on the squares (15px for 30px square, 24px for 48px square) */}
+            <div className="absolute left-[15px] md:left-[24px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
+            
+            <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
+                className="absolute left-[15px] md:left-[24px] top-4 w-px bg-lucas-navy origin-top"
+            ></motion.div>
+
+            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
+                {[
+                    { num: "01", title: "the discovery", desc: "you found the work, felt something honest, and sent an inquiry.", status: "completed" },
+                    { num: "02", title: "the inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if the vibe makes sense.", status: "current" },
+                    { num: "03", title: "the intro", desc: "a quick call or email exchange. i want to hear about the day, and you can see if i'm easy company.", status: "future" },
+                    { num: "04", title: "the details", desc: "i build a custom commission for you to review, run the numbers, and place a soft hold on the date.", status: "future" },
+                    { num: "05", title: "making it official", desc: "you sign the digital paperwork, cover the retainer, and the date is locked. i'll see you there.", status: "future" }
+                ].map((step, i) => (
+                    <motion.div 
+                        key={i} 
+                        variants={fadeUpItem}
+                        className={`relative flex gap-5 md:gap-8 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
+                    >
+                        {/* Swapped rounded-full for rounded-none to create hard geometric squares */}
+                        <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-none border transition-colors duration-500 bg-lucas-cream ${
+                            step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
+                            step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.2)]' :
+                            'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy bg-lucas-cream'
+                        }`}>
+                            {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
+                            {step.status === 'current' && <span className="w-2 h-2 rounded-none bg-lucas-orange animate-pulse"></span>}
+                            {step.status === 'future' && <span className="font-sans text-[9px] tracking-zissou ml-0.5">{step.num}</span>}
+                        </div>
+
+                        <div className="flex flex-col pt-1 md:pt-2 pb-2">
+                            <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-2">
+                                <h4 className={`font-sans text-xs md:text-sm lowercase tracking-widest ${
+                                    step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
+                                }`}>
+                                    {step.title}
+                                </h4>
+                                {/* Tags kept as uppercase with wide tracking to align with the meta-data rule */}
+                                {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-none">DONE</span>}
+                                {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-none">YOU ARE HERE</span>}
                             </div>
-
-                            <div className="relative max-w-3xl mx-auto pl-2 sm:pl-0">
-                                <div className="absolute left-[14px] md:left-[23px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
-                                
-                                <motion.div 
-                                    initial={{ height: 0 }}
-                                    whileInView={{ height: "100%" }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 2.5, ease: "easeInOut" }}
-                                    className="absolute left-[14px] md:left-[23px] top-4 w-px bg-lucas-navy origin-top"
-                                ></motion.div>
-
-                                <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
-                                    {[
-                                        { num: "01", title: "The Discovery", desc: "you found my work, felt a connection, and sent over an inquiry.", status: "completed" },
-                                        { num: "02", title: "The Inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if we align.", status: "current" },
-                                        { num: "03", title: "The Intro", desc: "we jump on a quick discovery call or chat via email to get to know each other and talk logistics.", status: "future" },
-                                        { num: "04", title: "The Details", desc: "i build a custom proposal for you to review and place a soft hold on your date.", status: "future" },
-                                        { num: "05", title: "Making it Official", desc: "if we're a go, you sign the digital agreement and pay the 1/3 retainer. the date is locked.", status: "future" }
-                                    ].map((step, i) => (
-                                        <motion.div 
-                                            key={i} 
-                                            variants={fadeUpItem}
-                                            className={`relative flex gap-5 md:gap-8 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
-                                        >
-                                            <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-full border transition-colors duration-500 bg-lucas-cream ${
-                                                step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
-                                                step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.2)]' :
-                                                'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy bg-lucas-cream'
-                                            }`}>
-                                                {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
-                                                {step.status === 'current' && <span className="w-2 h-2 rounded-full bg-lucas-orange animate-pulse"></span>}
-                                                {step.status === 'future' && <span className="font-sans text-[9px] tracking-zissou ml-0.5">{step.num}</span>}
-                                            </div>
-
-                                            <div className="flex flex-col pt-1 md:pt-2 pb-2">
-                                                <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-2">
-                                                    <h4 className={`font-sans text-xs md:text-sm uppercase tracking-widest ${
-                                                        step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
-                                                    }`}>
-                                                        {step.title}
-                                                    </h4>
-                                                    {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-sm">Done</span>}
-                                                    {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">You are here</span>}
-                                                </div>
-                                                <p className={`font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
-                                                    {step.desc}
-                                                </p>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </section>
+                            <p className={`font-serif text-[clamp(0.95rem,1.5vw,1.125rem)] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
+                                {step.desc}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    </motion.div>
+</section>
 
                     {/* 05. The CTA */}
                     <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 border-t border-lucas-navy/10 relative gap-12 lg:gap-16">
