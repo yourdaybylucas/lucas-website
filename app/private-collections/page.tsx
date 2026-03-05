@@ -166,7 +166,7 @@ export default function PrivateCollectionsPage() {
                         </div>
                     </section>
 
-                    {/* 02. The Collections Grid */}
+{/* 02. The Collections Grid */}
                     <section id="collections" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
@@ -284,13 +284,14 @@ export default function PrivateCollectionsPage() {
                                                     className="overflow-hidden"
                                                 >
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-cream pt-6 border-t border-lucas-cream/10 mt-2 pb-2">
-                                                        <li className="flex items-start gap-4">
+                                                        <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span> 
-                                                            <span>presence from getting ready to the heavy dancing</span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange mt-0.5">+</span> 
-                                                            <span>5-minute narrative film</span>
+                                                            <button 
+                                                                onClick={() => setExpandedCollection('vol1')}
+                                                                className="text-left hover:text-lucas-orange transition-colors duration-300 border-b border-transparent hover:border-lucas-orange pb-0.5"
+                                                            >
+                                                                everything in vol. 01
+                                                            </button>
                                                         </li>
                                                         <li className="flex items-start gap-4">
                                                             <span className="text-lucas-orange mt-0.5">+</span> 
@@ -299,14 +300,6 @@ export default function PrivateCollectionsPage() {
                                                         <li className="flex items-start gap-4">
                                                             <span className="text-lucas-orange mt-0.5">+</span> 
                                                             <span>30-second digital reel <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ the immediate highlights, delivered before you wake up ]</span></span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange mt-0.5">+</span> 
-                                                            <span>documentary ceremony edit</span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange mt-0.5">+</span> 
-                                                            <span>the raw reception frames</span>
                                                         </li>
                                                     </ul>
                                                 </motion.div>
@@ -352,29 +345,18 @@ export default function PrivateCollectionsPage() {
                                                     className="overflow-hidden"
                                                 >
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-navy pt-6 border-t border-lucas-navy/10 mt-2 pb-2">
+                                                        <li className="flex items-start gap-4 group/link">
+                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
+                                                            <button 
+                                                                onClick={() => setExpandedCollection('vol2')}
+                                                                className="text-left hover:text-lucas-orange transition-colors duration-300 border-b border-transparent hover:border-lucas-orange pb-0.5"
+                                                            >
+                                                                everything in vol. 02
+                                                            </button>
+                                                        </li>
                                                         <li className="flex items-start gap-4">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                                             <span>multi-day presence <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ welcome party + the day ]</span></span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                                            <span>5-minute narrative film</span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                                            <span>3-minute super 8mm film <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ authentic kodak stock ]</span></span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                                            <span>30-second digital reel <br/><span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ the immediate highlights, delivered before you wake up ]</span></span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                                            <span>documentary ceremony edit</span>
-                                                        </li>
-                                                        <li className="flex items-start gap-4">
-                                                            <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                                            <span>the raw reception frames</span>
                                                         </li>
                                                         <li className="flex items-start gap-4">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span> 
