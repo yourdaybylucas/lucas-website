@@ -283,7 +283,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '1 am extension available',
     fieldNotes: 'a stark white cyclorama that acts as a perfect blank canvas. with no architecture in the way, the focus is entirely on the people. a brilliant space to embrace hard cuts, direct flash, and a highly editorial vibe.',
-    visualEmbed: 'UlfgHhx2YVU',
+    visualEmbed: 'UlfgHhx2YVU', // It is correctly set here
   },
   {
     id: 'globe-and-mail-centre',
