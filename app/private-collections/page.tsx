@@ -200,44 +200,36 @@ export default function PrivateCollectionsPage() {
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                         >
-                            <div className="flex items-center gap-4 mb-4 lg:mb-6 pt-8 lg:pt-0">
-                                <div className="h-px bg-lucas-navy/20 flex-grow"></div>
-                                <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold px-4">
+                            
+                            {/* Elevated Header & Baseline Subtitle */}
+                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 lg:mb-6 pt-8 lg:pt-0 gap-2">
+                                <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold text-lucas-navy">
                                     The Collections
                                 </h2>
-                                <div className="h-px bg-lucas-navy/20 flex-grow"></div>
+                                <p className="font-serif text-[clamp(1rem,1.5vw,1.125rem)] text-lucas-navy/90 italic">
+                                    [ the baseline: included in every collection ]
+                                </p>
                             </div>
 
                             {/* The Baseline (Ledger Style) */}
-                            <motion.div variants={fadeUpItem} className="mb-6 lg:mb-8">
-                                <div className="flex items-center gap-4 mb-3 lg:mb-4">
-                                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
-                                    <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                                        The Baseline
-                                    </h3>
-                                    <div className="h-px bg-lucas-navy/20 flex-grow"></div>
-                                    <p className="font-serif text-xs text-lucas-slate italic pr-2 hidden sm:block">
-                                        included in every commission
-                                    </p>
-                                </div>
-
-                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-y border-lucas-navy/10 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/10">
-                                    <div className="flex flex-col gap-1 p-3 lg:p-4 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                            <motion.div variants={fadeUpItem} className="mb-10 lg:mb-12">
+                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-y border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
+                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 01 ]</span>
                                         <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Unlimited Coverage</h4>
                                         <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">from getting ready to lights up.</p>
                                     </div>
-                                    <div className="flex flex-col gap-1 p-3 lg:p-4 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 02 ]</span>
                                         <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Provincial Travel</h4>
                                         <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">miles within ontario are on me.</p>
                                     </div>
-                                    <div className="flex flex-col gap-1 p-3 lg:p-4 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 03 ]</span>
                                         <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Aerial Perspectives</h4>
                                         <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">drone documentation (if permitted).</p>
                                     </div>
-                                    <div className="flex flex-col gap-1 p-3 lg:p-4 hover:bg-lucas-navy/5 transition-colors duration-slow">
+                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 04 ]</span>
                                         <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Digital Archive</h4>
                                         <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">curated online delivery of all films.</p>
@@ -383,6 +375,13 @@ export default function PrivateCollectionsPage() {
                                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                                 <span>everything in vol. 02</span>
                                             </li>
+                                            <li className="flex items-start gap-4">
+                                                <span className="text-lucas-orange/70 mt-0.5">+</span> 
+                                                <div className="flex flex-col items-start text-left">
+                                                    <span className="border-b border-transparent pb-0.5">multi-day coverage</span>
+                                                    <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ welcome party + the day ]</span>
+                                                </div>
+                                            </li>
                                             <li className="flex items-start gap-4 group/link">
                                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                                 <button onClick={() => setActiveVideo('kvLEmAzg5kQ')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
@@ -390,7 +389,6 @@ export default function PrivateCollectionsPage() {
                                                         <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
                                                         <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">weekend narrative film</span>
                                                     </span>
-                                                    <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ welcome party + the day ]</span>
                                                 </button>
                                             </li>
                                             <li className="flex items-start gap-4 mt-auto pt-2">
