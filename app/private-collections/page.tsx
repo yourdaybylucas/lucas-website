@@ -192,15 +192,15 @@ export default function PrivateCollectionsPage() {
                         </div>
                     </section>
 
-                    {/* 02. The Collections Grid */}
-                    <section id="collections" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
+{/* 02. The Collections Grid */}
+                    <section id="collections" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                         >
-                            <div className="flex items-center gap-4 mb-12">
+                            <div className="flex items-center gap-4 mb-8 lg:mb-12 pt-8 lg:pt-0">
                                 <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                                 <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold px-4">
                                     The Collections
@@ -208,7 +208,7 @@ export default function PrivateCollectionsPage() {
                                 <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                             </div>
 
-                            <div className="grid grid-cols-1 xl:grid-cols-3 border border-lucas-navy/20 divide-y xl:divide-y-0 xl:divide-x divide-lucas-navy/20 relative items-start">
+                            <div className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 relative items-stretch">
                                 
                                 {/* VOL 01 */}
                                 <motion.div variants={fadeUpItem} className="flex flex-col group transition-colors duration-1000 relative overflow-hidden bg-lucas-cream hover:bg-lucas-navy/5 h-full">
@@ -217,20 +217,20 @@ export default function PrivateCollectionsPage() {
                                     </div>
                                     <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20"></div>
                                     
-                                    <div className="p-[clamp(1.5rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
-                                        <div className="flex justify-between items-start mb-12">
+                                    <div className="p-[clamp(1.25rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
+                                        <div className="flex justify-between items-start mb-8 lg:mb-12">
                                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 01 ]</p>
                                             <p className="font-sans text-xs tracking-widest text-lucas-navy">$5,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                         </div>
-                                        <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-lucas-navy italic mb-4">
+                                        <h3 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] text-lucas-navy italic mb-4">
                                             The Essential
                                         </h3>
-                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-10 border-b border-lucas-navy/10 pb-8">
+                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-8 lg:mb-10 border-b border-lucas-navy/10 pb-6 lg:pb-8">
                                             honest, digital storytelling. focusing purely on the narrative of the day without the extra physical footprint.
                                         </p>
                                         
                                         {/* Flat Inventory */}
-                                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy">
+                                        <ul className="flex flex-col gap-4 lg:gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy pb-4 lg:pb-0">
                                             <li className="flex items-start gap-4">
                                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                                 <span>presence from getting ready to the heavy dancing</span>
@@ -268,7 +268,7 @@ export default function PrivateCollectionsPage() {
                                 </motion.div>
 
                                 {/* VOL 02 (The Offset Flagship) */}
-                                <motion.div variants={fadeUpItem} className="flex flex-col bg-lucas-navy text-lucas-cream relative z-20 xl:-translate-y-6 shadow-2xl border border-lucas-navy group overflow-hidden h-full">
+                                <motion.div variants={fadeUpItem} className="flex flex-col bg-lucas-navy text-lucas-cream relative z-20 lg:-translate-y-6 shadow-2xl border border-lucas-navy group overflow-hidden h-full">
                                     <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
                                     <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-15 transition-opacity duration-1000 pointer-events-none mix-blend-screen">
                                         <video src="/videos/clip_super8.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover filter contrast-150" />
@@ -277,20 +277,20 @@ export default function PrivateCollectionsPage() {
                                     <div className="absolute top-0 bottom-0 left-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
                                     <div className="absolute top-0 bottom-0 right-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
 
-                                    <div className="p-[clamp(1.5rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
-                                        <div className="flex justify-between items-start mb-12">
+                                    <div className="p-[clamp(1.25rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
+                                        <div className="flex justify-between items-start mb-8 lg:mb-12">
                                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
                                             <p className="font-sans text-xs tracking-widest text-lucas-cream">$6,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                         </div>
-                                        <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] italic mb-4 text-lucas-cream">
+                                        <h3 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] italic mb-4 text-lucas-cream">
                                             The Analog
                                         </h3>
-                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-10 border-b border-lucas-cream/10 pb-8">
+                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-8 lg:mb-10 border-b border-lucas-cream/10 pb-6 lg:pb-8">
                                             the flagship collection. weaving high-fidelity digital frames with the nostalgic, imperfect texture of authentic super 8mm film.
                                         </p>
 
                                         {/* Flat Inventory */}
-                                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-cream">
+                                        <ul className="flex flex-col gap-4 lg:gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-cream pb-4 lg:pb-0">
                                             <li className="flex items-start gap-4">
                                                 <span className="text-lucas-orange mt-0.5">+</span> 
                                                 <span>presence from getting ready to the heavy dancing</span>
@@ -353,20 +353,20 @@ export default function PrivateCollectionsPage() {
                                     </div>
                                     <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20"></div>
                                     
-                                    <div className="p-[clamp(1.5rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
-                                        <div className="flex justify-between items-start mb-12">
+                                    <div className="p-[clamp(1.25rem,3vw,2.5rem)] relative z-10 flex flex-col h-full">
+                                        <div className="flex justify-between items-start mb-8 lg:mb-12">
                                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 03 ]</p>
                                             <p className="font-sans text-xs tracking-widest text-lucas-navy">$8,200 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                         </div>
-                                        <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-lucas-navy italic mb-4">
+                                        <h3 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] text-lucas-navy italic mb-4">
                                             The Weekend
                                         </h3>
-                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-10 border-b border-lucas-navy/10 pb-8">
+                                        <p className="font-sans text-xs text-lucas-slate lowercase leading-relaxed mb-8 lg:mb-10 border-b border-lucas-navy/10 pb-6 lg:pb-8">
                                             for multi-day celebrations. comprehensive coverage spanning the welcome events through to the day after, finished with physical artifacts.
                                         </p>
 
                                         {/* Flat Inventory */}
-                                        <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy">
+                                        <ul className="flex flex-col gap-4 lg:gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy pb-4 lg:pb-0">
                                             <li className="flex items-start gap-4">
                                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 
                                                 <div className="flex flex-col items-start">
@@ -437,8 +437,8 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 03. Logistics / FAQs */}
-                    <section id="notes" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
-                        <div className="bg-lucas-navy text-lucas-cream p-8 md:p-16 lg:p-24 rounded-sm shadow-2xl relative overflow-hidden w-full">
+                    <section id="notes" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative">
+                        <div className="bg-lucas-navy text-lucas-cream p-6 md:p-12 lg:p-24 rounded-sm shadow-2xl relative overflow-hidden w-full mt-8 lg:mt-0">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
                             
                             <motion.div 
@@ -448,8 +448,8 @@ export default function PrivateCollectionsPage() {
                                 viewport={{ once: true, margin: "-50px" }}
                                 className="relative z-10"
                             >
-                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-16">
-                                    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
+                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-6 mb-10 lg:mb-16">
+                                    <h2 className="font-sans text-2xl md:text-4xl uppercase tracking-tight font-bold">
                                         Notes
                                     </h2>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
@@ -457,52 +457,52 @@ export default function PrivateCollectionsPage() {
                                     </span>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 lg:gap-y-16">
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Retainer
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             to lock in the date, i require a 1/3 retainer upfront. the remaining balance is simply due two weeks before the day.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Geography
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             home base is guelph, ontario. miles within the province are entirely on me. there are no hidden travel fees for ontario commissions.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Footprint
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             most of the time, no second shooter is needed. i document 95% of my commissions solo. it keeps the day feeling natural and unforced. if you have completely separate getting-ready locations or a highly complex timeline, i'm happy to bring a trusted peer along.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Photographers
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             working well with your photographer is a strict priority. we have the exact same goal: collecting the best frames. i stay out of the way, shoot from different angles, and mostly, they won't even notice i'm there.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Delivery
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             i prefer to edit while the feeling of the day is still fresh. average turnaround is 5 weeks, but i give myself 10 weeks in the contract just to be safe.
                                         </p>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-4 border-l-2 border-lucas-orange pl-3">
+                                        <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream mb-3 md:mb-4 border-l-2 border-lucas-orange pl-3">
                                             The Standard
                                         </h3>
-                                        <p className="font-serif text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
+                                        <p className="font-serif text-base md:text-[1.125rem] leading-relaxed text-lucas-cream/80 lowercase">
                                             absolutely inclusive. i am honored to document your connection, regardless of religion, gender, race, or sexual orientation.
                                         </p>
                                     </div>
@@ -512,14 +512,14 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 04. The Progression */}
-                    <section id="progression" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-24 relative">
+                    <section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                         >
-                            <div className="flex items-center gap-4 mb-16">
+                            <div className="flex items-center gap-4 mb-12 lg:mb-16 pt-8 lg:pt-0">
                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                 <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
                                     The Progression
@@ -530,7 +530,7 @@ export default function PrivateCollectionsPage() {
                                 </span>
                             </div>
 
-                            <div className="relative max-w-3xl mx-auto">
+                            <div className="relative max-w-3xl mx-auto pl-2 sm:pl-0">
                                 <div className="absolute left-[14px] md:left-[23px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
                                 
                                 <motion.div 
@@ -541,7 +541,7 @@ export default function PrivateCollectionsPage() {
                                     className="absolute left-[14px] md:left-[23px] top-4 w-px bg-lucas-navy origin-top"
                                 ></motion.div>
 
-                                <div className="flex flex-col gap-10 md:gap-14">
+                                <div className="flex flex-col gap-8 md:gap-14">
                                     {[
                                         { num: "01", title: "The Discovery", desc: "you found my work, felt a connection, and sent over an inquiry.", status: "completed" },
                                         { num: "02", title: "The Inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if we align.", status: "current" },
@@ -552,7 +552,7 @@ export default function PrivateCollectionsPage() {
                                         <motion.div 
                                             key={i} 
                                             variants={fadeUpItem}
-                                            className={`relative flex gap-6 md:gap-10 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
+                                            className={`relative flex gap-5 md:gap-10 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
                                         >
                                             <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-full border transition-colors duration-500 bg-lucas-cream ${
                                                 step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
@@ -565,7 +565,7 @@ export default function PrivateCollectionsPage() {
                                             </div>
 
                                             <div className="flex flex-col pt-1 md:pt-3 pb-2">
-                                                <div className="flex flex-wrap items-center gap-3 mb-2 md:mb-3">
+                                                <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-3">
                                                     <h4 className={`font-sans text-xs md:text-sm uppercase tracking-widest ${
                                                         step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
                                                     }`}>
