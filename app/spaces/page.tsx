@@ -52,8 +52,8 @@ export default function SpacesPage() {
                     'addressCountry': 'CA'
                 },
                 'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.technicalNote}`,
-                // reminder: ensure these images actually exist in your public folder so the schema doesn't throw errors
-                'image': `https://www.yourdaybylucas.com/images/stills/${venue.id}.jpg`, 
+                // automatically pulling the high-res youtube thumbnail for the schema
+                'image': `https://img.youtube.com/vi/${venue.visualEmbed}/maxresdefault.jpg`, 
                 'url': `https://www.yourdaybylucas.com/spaces?space=${venue.id}`
             }
         }))
