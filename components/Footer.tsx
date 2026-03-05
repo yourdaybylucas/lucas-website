@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    // --- THE DOSSIER RULE ---
+    // Hide the footer completely on private portals to maintain the closed conversion loop.
+    if (pathname === '/private-collections' || pathname === '/the-guide') {
+        return null;
+    }
+
     return (
         <footer className="relative z-10 bg-lucas-navy text-lucas-cream border-t border-lucas-slate/20">
             <div className="max-w-[1400px] mx-auto">
