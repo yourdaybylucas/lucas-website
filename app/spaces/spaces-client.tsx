@@ -61,10 +61,11 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
             </div>
         </div>
 
-        <div className="bg-lucas-sage/10 p-6 md:p-8 border-l-2 border-lucas-orange mt-auto">
+<div className="bg-lucas-sage/10 p-6 md:p-8 border-l-2 border-lucas-orange mt-auto">
             <h4 className="uppercase tracking-zissou text-[10px] text-lucas-slate mb-3">Field Observation</h4>
             <p className="prose-soul text-lucas-navy leading-loose text-base md:text-lg">
-                {venue.technicalNote}
+                {/* swap technicalNote to fieldNotes right here */}
+                {venue.fieldNotes}
             </p>
         </div>
     </motion.div>
