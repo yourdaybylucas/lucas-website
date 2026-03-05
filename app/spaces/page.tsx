@@ -1,6 +1,11 @@
-// app/spaces/page.tsx
+import { Suspense } from 'react';
+import { Metadata } from 'next';
+import { venues } from '@/data/venues';
+import SpacesClient from './spaces-client';
 
-// ... existing imports
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined }
+}
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
     const spaceQuery = searchParams?.space as string | undefined;
@@ -9,7 +14,6 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     if (activeVenue) {
         return {
             title: `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
-            // Changed technicalNote to fieldNotes
             description: `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.fieldNotes}`,
             openGraph: {
                 title: `${activeVenue.name.toUpperCase()} // THE LEDGER`,
@@ -18,7 +22,17 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
             }
         }
     }
-    // ...
+
+    // fallback for the main directory
+    return {
+        title: 'THE LEDGER : HONEST SPACES // LUCAS',
+        description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
+        openGraph: {
+            title: 'THE LEDGER // LUCAS',
+            description: 'an inventory of honest spaces across ontario and worldwide.',
+            url: 'https://www.yourdaybylucas.com/spaces',
+        }
+    }
 }
 
 export default function SpacesPage() {
@@ -29,13 +43,31 @@ export default function SpacesPage() {
             '@type': 'ListItem',
             'position': index + 1,
             'item': {
-                // ...
-                // Changed technicalNote to fieldNotes
+                '@type': 'EventVenue',
+                'name': venue.name,
+                'address': {
+                    '@type': 'PostalAddress',
+                    'addressLocality': venue.location,
+                    'addressRegion': 'ON',
+                    'addressCountry': 'CA'
+                },
                 'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.fieldNotes}`,
+                // automatically pulling the high-res youtube thumbnail for the schema
                 'image': `https://img.youtube.com/vi/${venue.visualEmbed}/maxresdefault.jpg`, 
                 'url': `https://www.yourdaybylucas.com/spaces?space=${venue.id}`
             }
         }))
     };
-    // ...
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <Suspense fallback={<div className="min-h-screen bg-lucas-cream" />}>
+                <SpacesClient venues={venues} />
+            </Suspense>
+        </>
+    );
 }
