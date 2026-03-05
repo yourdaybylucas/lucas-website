@@ -327,6 +327,16 @@ export default function PrivateCollectionsPage() {
                                             </li>
                                             <li className="flex items-start gap-4 group/link">
                                                 <span className="text-lucas-orange mt-0.5">+</span> 
+                                                <button onClick={() => setActiveVideo('q2Qw5G4M0Lc')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
+                                                    <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
+                                                        <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
+                                                        <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">5-minute narrative film</span>
+                                                    </span>
+                                                    <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ digital + super 8 ]</span>
+                                                </button>
+                                            </li>
+                                            <li className="flex items-start gap-4 group/link">
+                                                <span className="text-lucas-orange mt-0.5">+</span> 
                                                 <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                     <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                         <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
