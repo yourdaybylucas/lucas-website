@@ -1,3 +1,23 @@
+export type Geography = 'gta' | 'niagara' | 'tri-cities + west' | 'northern escapes';
+export type Scale = 'intimate' | 'standard' | 'grand';
+export type Atmosphere = 'historical estate' | 'industrial canvas' | 'modern minimal' | 'glass + nature';
+export type Footprint = 'exclusive use' | 'shared estate';
+
+export interface Venue {
+  id: string;
+  name: string;
+  location: string;
+  geography: Geography;
+  scale: Scale;
+  atmosphere: Atmosphere;
+  footprint: Footprint;
+  prep: string;
+  flow: string;
+  curfew: string;
+  technicalNote: string;
+  visualEmbed: string;
+}
+
 export const venues: Venue[] = [
   {
     id: 'langdon-hall',
@@ -19,7 +39,7 @@ export const venues: Venue[] = [
     location: 'Elora',
     geography: 'tri-cities + west',
     scale: 'standard',
-    atmosphere: 'historical estate', // corrected from glass + nature
+    atmosphere: 'historical estate',
     footprint: 'shared estate',
     prep: 'on-site suites available',
     flow: 'all-in-one',
@@ -37,7 +57,7 @@ export const venues: Venue[] = [
     footprint: 'exclusive use',
     prep: 'on-site suites available',
     flow: 'all-in-one',
-    curfew: '1 am extension available', // corrected from 11 pm hard stop
+    curfew: '1 am extension available',
     technicalNote: 'the stone terrace is basically a giant bounce card when the sun is high, causing harsh squinting. the narrow staircases mean the videographer and photographer will constantly be in each other\'s way during the procession—coordinate your angles carefully.',
     visualEmbed: '9mTq-dXKW84',
   },
@@ -142,7 +162,7 @@ export const venues: Venue[] = [
   {
     id: 'lune-1860',
     name: 'Lune 1860',
-    location: 'Goderich', // corrected from Godenhurst
+    location: 'Goderich',
     geography: 'northern escapes',
     scale: 'intimate',
     atmosphere: 'historical estate',
@@ -159,7 +179,7 @@ export const venues: Venue[] = [
     location: 'Delhi',
     geography: 'tri-cities + west',
     scale: 'standard',
-    atmosphere: 'historical estate', // corrected from glass + nature
+    atmosphere: 'historical estate',
     footprint: 'exclusive use',
     prep: 'on-site suites available',
     flow: 'all-in-one',
@@ -215,8 +235,8 @@ export const venues: Venue[] = [
     location: 'Toronto Island',
     geography: 'gta',
     scale: 'standard',
-    atmosphere: 'historical estate', // corrected from glass + nature
-    footprint: 'shared estate', // corrected from exclusive use
+    atmosphere: 'historical estate',
+    footprint: 'shared estate',
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '11 pm hard stop',
