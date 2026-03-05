@@ -3,29 +3,39 @@ import { Metadata } from 'next';
 import { venues } from '@/data/venues';
 import SpacesClient from './spaces-client';
 
-export const metadata: Metadata = {
-    title: 'THE LEDGER : HONEST SPACES // LUCAS',
-    description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
-    openGraph: {
-        title: 'THE LEDGER // LUCAS',
-        description: 'an inventory of honest spaces across ontario and worldwide.',
-        url: 'https://lucasfilm.com/spaces',
-        siteName: 'LUCAS : Wedding Filmmaker',
-        images: [
-            {
-                url: '/og-ledger.jpg', 
-                width: 1200,
-                height: 630,
-            },
-        ],
-        locale: 'en_CA',
-        type: 'website',
-    },
-};
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+    const spaceQuery = searchParams?.space as string | undefined;
+    const activeVenue = spaceQuery ? venues.find(v => v.id === spaceQuery) : null;
+
+    if (activeVenue) {
+        return {
+            title: `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
+            description: `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.technicalNote}`,
+            openGraph: {
+                title: `${activeVenue.name.toUpperCase()} // THE LEDGER`,
+                description: `field notes and visual documentation from ${activeVenue.name}.`,
+                url: `https://www.yourdaybylucas.com/spaces?space=${activeVenue.id}`,
+            }
+        }
+    }
+
+    // fallback for the main directory
+    return {
+        title: 'THE LEDGER : HONEST SPACES // LUCAS',
+        description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
+        openGraph: {
+            title: 'THE LEDGER // LUCAS',
+            description: 'an inventory of honest spaces across ontario and worldwide.',
+            url: 'https://www.yourdaybylucas.com/spaces',
+        }
+    }
+}
 
 export default function SpacesPage() {
-    // the json-ld payload for the bots. 
-    // it bottles the data without compromising our visual aesthetic.
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
@@ -42,9 +52,9 @@ export default function SpacesPage() {
                     'addressCountry': 'CA'
                 },
                 'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.technicalNote}`,
-                // reminder: generate these thumbnails later
-                'image': `https://lucasfilm.com/assets/stills/${venue.id}.jpg`, 
-                'url': `https://lucasfilm.com/spaces?space=${venue.id}`
+                // reminder: ensure these images actually exist in your public folder so the schema doesn't throw errors
+                'image': `https://www.yourdaybylucas.com/images/stills/${venue.id}.jpg`, 
+                'url': `https://www.yourdaybylucas.com/spaces?space=${venue.id}`
             }
         }))
     };
