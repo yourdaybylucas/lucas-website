@@ -603,7 +603,7 @@ export default function PrivateCollectionsPage() {
                             </p>
                             
                             <a 
-                                href="https://calendly.com/your-day-by-lucas" 
+                                href="https://calendar.app.google/rWPfdFg7or81U9YD6" 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
