@@ -36,7 +36,7 @@ export default function AboutPage() {
     return (
         <main className="bg-lucas-cream overflow-hidden">
             
-{/* 01. THE INTRODUCTION (Hero) */}
+            {/* 01. THE INTRODUCTION (Hero) */}
             <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-24 max-w-7xl mx-auto gap-12 md:gap-24">
                 
                 {/* The Portrait */}
@@ -76,23 +76,25 @@ export default function AboutPage() {
                         <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
                     </motion.h1>
 
-                    {/* Scaled down slightly for better breathing room */}
                     <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
                         <p>
-                            it started with a quiet obsession for visual composition. the geometry of a space, the way light falls across a room, and documenting exactly what is in front of me with absolute intentionality. 
+                            it started with a simple obsession: trying to translate the beauty of what was in front of me—travel landscapes, at the time—into something tangible. the drive was always to render an environment as close to reality as possible.
                         </p>
                         <p>
-                            wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, authentic interactions that actually carry weight.
+                            wedding cinema became the natural progression of that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, human interactions that actually carry weight.
                         </p>
                         <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and document that elusive feeling.
+                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and collect that elusive feeling.
                         </p>
                     </motion.div>
                 </motion.div>
                 
                 {/* Interactive Scroll Indicator (Reverse Triangle) */}
                 <motion.button 
-                    onClick={() => document.getElementById('archive')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => {
+                        const el = document.getElementById('archive');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
                     className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group cursor-pointer p-4"
                     aria-label="Scroll to archive"
@@ -100,7 +102,6 @@ export default function AboutPage() {
                     <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
                         [ Proceed ]
                     </span>
-                    {/* Solid Geometric Triangle */}
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-lucas-orange transform group-hover:translate-y-1.5 transition-transform duration-500 ease-[0.16,1,0.3,1]">
                         <polygon points="12,21 2,5 22,5" />
                     </svg>
@@ -108,7 +109,7 @@ export default function AboutPage() {
             </section>
 
             {/* 02. HORIZONTAL SCROLL GALLERY (The "Magic") */}
-            <section ref={horizontalScrollRef} className="relative h-[300vh] bg-lucas-navy">
+            <section id="archive" ref={horizontalScrollRef} className="relative h-[300vh] bg-lucas-navy">
                 <div className="sticky top-0 flex h-screen items-center overflow-hidden">
                     <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none"></div>
                     
