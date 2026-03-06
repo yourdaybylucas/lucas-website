@@ -492,7 +492,7 @@ export default function PrivateCollectionsPage() {
                     </section>
 
 {/* 04. The Blueprint / Progression */}
-<section id="progression" className="h-auto w-full flex flex-col justify-start lg:justify-center py-10 md:py-16 lg:py-24 relative bg-lucas-cream overflow-hidden">
+<section id="progression" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative bg-lucas-cream overflow-hidden">
     <motion.div 
         variants={fadeUpContainer}
         initial="hidden"
@@ -501,7 +501,7 @@ export default function PrivateCollectionsPage() {
         className="w-full max-w-6xl mx-auto px-6 lg:px-16"
     >
         {/* Compressed Header */}
-        <div className="mb-8 md:mb-12 pt-8 lg:pt-0 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
+        <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
             <div>
                 <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-[10px] mb-2">
                     [ the blueprint ]
