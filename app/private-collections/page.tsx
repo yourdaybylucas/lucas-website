@@ -491,9 +491,8 @@ export default function PrivateCollectionsPage() {
                         </div>
                     </section>
 
-{/* 04. The Progression */}
-{/* Small Screen Fix: We remove snap-y and snap-proximity from this specific parent container to allow fluid scrolling on smaller viewports. */}
-<section id="progression" className="h-auto w-full flex flex-col justify-start lg:justify-center py-10 md:py-16 lg:py-24 relative bg-lucas-cream border-t border-lucas-navy/10 overflow-hidden">
+{/* 04. The Blueprint / Progression */}
+<section id="progression" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative bg-lucas-cream overflow-hidden">
     <motion.div 
         variants={fadeUpContainer}
         initial="hidden"
@@ -501,143 +500,160 @@ export default function PrivateCollectionsPage() {
         viewport={{ once: true, margin: "-50px" }}
         className="w-full max-w-6xl mx-auto px-6 lg:px-16"
     >
-        {/* Section Header */}
-        <div className="flex items-center gap-4 mb-10 lg:mb-16 pt-8 lg:pt-0">
-            <span className="w-1.5 h-1.5 bg-lucas-orange rounded-none animate-pulse"></span>
-            <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
-                The Progression
-            </h2>
-            <div className="h-px bg-lucas-navy/20 flex-grow"></div>
-            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                [ the roadmap ]
-            </span>
-        </div>
-
-        <div className="relative max-w-3xl mx-auto pl-2 sm:pl-0">
-            {/* The structural line - adjusted left values to center perfectly on the squares */}
-            <div className="absolute left-[15px] md:left-[24px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
-            
-            <motion.div 
-                initial={{ height: 0 }}
-                whileInView={{ height: "100%" }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 2.5, ease: "easeInOut" }}
-                className="absolute left-[15px] md:left-[24px] top-4 w-px bg-lucas-navy origin-top"
-            ></motion.div>
-
-            {/* Tightened gaps for better flow on 13-inch screens */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 relative z-10">
-                {[
-                    { num: "01", title: "the discovery", desc: "you connected with my work and sent an inquiry. the best news: the calendar aligned, and i'm available for your date.", status: "completed" },
-                    { num: "02", title: "the inventory", desc: "reviewing the collections, running the numbers, and looking into next steps.", status: "current" },
-                    { num: "03", title: "the intro", desc: "a quick video call. i want to hear about the day, answer questions, and we can see if it's a good fit.", status: "future" },
-                    { num: "04", title: "the details", desc: "i draft a custom proposal. you review the logistics, and I place a soft hold on the date.", status: "future" },
-                    { num: "05", title: "making it official", desc: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future" }
-                ].map((step, i) => (
-                    <motion.div 
-                        key={i} 
-                        variants={fadeUpItem}
-                        className={`relative flex gap-5 md:gap-8 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
-                    >
-                        {/* Swapped rounded-full for rounded-none to create hard geometric squares */}
-                        <div className={`relative flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-none border transition-colors duration-500 bg-lucas-cream ${
-                            step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
-                            step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.15)]' :
-                            'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy'
-                        }`}>
-                            {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
-                            {step.status === 'current' && <span className="w-2 h-2 rounded-none bg-lucas-orange animate-pulse"></span>}
-                            {step.status === 'future' && <span className="font-sans text-[9px] md:text-[10px] tracking-zissou ml-0.5">{step.num}</span>}
-                        </div>
-
-                        <div className="flex flex-col pt-1 md:pt-2 pb-2">
-                            <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-2">
-                                <h4 className={`font-sans text-xs md:text-sm lowercase tracking-widest ${
-                                    step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
-                                }`}>
-                                    {step.title}
-                                </h4>
-                                {/* Tags kept as uppercase with wide tracking to align with the meta-data rule */}
-                                {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-none">FILED</span>}
-                                {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-none">YOU ARE HERE</span>}
-                            </div>
-                            <p className={`font-serif text-[clamp(1rem,1.5vw,1.25rem)] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
-                                {step.desc}
-                            </p>
-                        </div>
-                    </motion.div>
-                ))}
+        {/* Compressed Header */}
+        <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
+            <div>
+                <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-[10px] mb-2">
+                    [ the blueprint ]
+                </p>
+                <h2 className="font-sans font-bold text-3xl md:text-4xl text-lucas-navy uppercase tracking-tight">
+                    How This Works.
+                </h2>
+            </div>
+            <div className="flex flex-col md:items-end">
+                <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
+                <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy">LC-PRG-2026</span>
             </div>
         </div>
+
+        {/* The Compact Ledger List */}
+        <div className="flex flex-col">
+            {[
+                { indicator: "filed", title: "the discovery", description: "you connected with my work and sent an inquiry. the best news: the calendar aligned.", status: "past", ref: "01" },
+                { indicator: "you are here", title: "the inventory", description: "reviewing the collections, running the numbers, and looking into next steps.", status: "active", ref: "02" },
+                { indicator: "pending", title: "the intro", description: "a quick video call. i want to hear about the day, answer questions, and see if it's a fit.", status: "future", ref: "03" },
+                { indicator: "pending", title: "the details", description: "i draft a custom proposal. you review the logistics, and i place a soft hold on the date.", status: "future", ref: "04" },
+                { indicator: "pending", title: "making it official", description: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future", ref: "05" }
+            ].map((step, index) => (
+                <motion.div 
+                    key={index}
+                    variants={fadeUpItem}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-5 border-b border-dashed border-lucas-navy/20 group hover:bg-lucas-navy/5 transition-colors duration-500 relative px-4 -mx-4"
+                >
+                    
+                    {/* Meta / Geometric Status Box */}
+                    <div className="md:col-span-3 flex items-center gap-4">
+                        <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center border border-lucas-navy/30 rounded-none bg-lucas-cream">
+                            {step.status === 'past' && <div className="w-full h-full bg-lucas-slate/40"></div>}
+                            {step.status === 'active' && <div className="w-2 h-2 bg-lucas-orange animate-pulse"></div>}
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="font-sans text-[9px] text-lucas-slate tracking-zissou uppercase mb-0.5">[{step.ref}]</span>
+                            <span className={`font-sans uppercase tracking-[0.2em] text-[10px] font-bold transition-colors duration-500 ${
+                                step.status === 'active' 
+                                    ? 'text-lucas-orange' 
+                                    : step.status === 'past' 
+                                        ? 'text-lucas-slate/60 line-through' 
+                                        : 'text-lucas-slate/60'
+                            }`}>
+                                {step.indicator}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Title */}
+                    <div className="md:col-span-3 flex items-center">
+                        <h3 className={`font-sans font-medium text-xl md:text-2xl lowercase ${
+                            step.status === 'past' ? 'text-lucas-navy/50' : 'text-lucas-navy'
+                        }`}>
+                            {step.title}
+                        </h3>
+                    </div>
+
+                    {/* Description (The Soul) */}
+                    <div className="md:col-span-5 flex items-center">
+                        <p className={`font-serif italic text-[clamp(1rem,1.2vw,1.125rem)] leading-snug ${
+                            step.status === 'past' ? 'text-lucas-navy/60' : 'text-lucas-navy'
+                        }`}>
+                            {step.description}
+                        </p>
+                    </div>
+
+                    {/* Visual Anchor (The Zissou Touch) */}
+                    <div className="hidden md:flex md:col-span-1 items-center justify-end">
+                        {step.status === 'active' ? (
+                            <div className="w-8 h-8 relative border border-lucas-orange/30 overflow-hidden mix-blend-multiply transition-transform duration-500 group-hover:scale-110">
+                                <img src="/images/img1.JPG" alt="current step" className="object-cover w-full h-full grayscale opacity-60" />
+                            </div>
+                        ) : (
+                            <div className="w-8 h-8 border border-lucas-slate/10 flex items-center justify-center transition-colors duration-500 group-hover:border-lucas-slate/30">
+                                <div className="w-1 h-1 rounded-full bg-lucas-slate/20"></div>
+                            </div>
+                        )}
+                    </div>
+
+                </motion.div>
+            ))}
+        </div>
     </motion.div>
 </section>
 
-{/* 05. The Intro (CTA) */}
-<section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
-    <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8 }}
-        className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
-    >
-        <div className="flex items-center gap-3 mb-6">
-            <span className="w-2 h-2 bg-lucas-orange rounded-none animate-pulse"></span>
-            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                [ 05 // Next Steps ]
-            </span>
-        </div>
-        
-        {/* Fixed Typography: Heavy Sans-Serif Uppercase */}
-        <h2 className="font-sans font-bold text-[clamp(3rem,5vw,4.5rem)] uppercase text-lucas-navy mb-6 leading-[0.9] tracking-tight">
-            Let's Talk.
-        </h2>
-        
-        {/* Fixed Typography: Serif Italic lowercase for the soul */}
-        <p className="font-serif italic text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy/85 mb-10 max-w-md lowercase leading-relaxed">
-            zero obligation. we jump on a video call, run through the logistics of the day, and most importantly—make sure i'm actually someone you want hanging around.
-        </p>
-        
-        <a 
-            href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden bg-lucas-cream rounded-none"
-        >
-            {/* The orange slide-up fill to add that sudden pop of energy */}
-            <span className="absolute inset-0 w-full h-full bg-lucas-orange transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0"></span>
-            <span className="relative z-10 flex items-center gap-4 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
-                Access The Calendar
-                <span className="text-lucas-slate group-hover:text-lucas-cream/70 transition-colors">→</span >
-            </span>
-        </a>
-    </motion.div>
+                    {/* 05. The Intro (CTA) */}
+                    <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <span className="w-2 h-2 bg-lucas-orange rounded-none animate-pulse"></span>
+                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                                    [ 05 // Next Steps ]
+                                </span>
+                            </div>
+                            
+                            {/* Fixed Typography: Heavy Sans-Serif Uppercase */}
+                            <h2 className="font-sans font-bold text-[clamp(3rem,5vw,4.5rem)] uppercase text-lucas-navy mb-6 leading-[0.9] tracking-tight">
+                                Let's Talk.
+                            </h2>
+                            
+                            {/* Fixed Typography: Serif Italic lowercase for the soul */}
+                            <p className="font-serif italic text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy/85 mb-10 max-w-md lowercase leading-relaxed">
+                                zero obligation. we jump on a video call, run through the logistics of the day, and most importantly—make sure i'm actually someone you want hanging around.
+                            </p>
+                            
+                            <a 
+                                href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden bg-lucas-cream rounded-none"
+                            >
+                                {/* The orange slide-up fill to add that sudden pop of energy */}
+                                <span className="absolute inset-0 w-full h-full bg-lucas-orange transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0"></span>
+                                <span className="relative z-10 flex items-center gap-4 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
+                                    Access The Calendar
+                                    <span className="text-lucas-slate group-hover:text-lucas-cream/70 transition-colors">→</span >
+                                </span>
+                            </a>
+                        </motion.div>
 
-    <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="w-full md:w-1/2 relative aspect-[3/4] lg:aspect-[4/5] bg-lucas-navy/5 shadow-2xl group overflow-hidden border border-lucas-navy/10"
-    >
-        {/* Inventory Tags overlaid on the image */}
-        <div className="absolute top-5 left-5 z-20 flex flex-col gap-1.5 mix-blend-difference">
-            <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 border border-lucas-cream/20 px-1.5 py-0.5 w-fit">
-                [ Fig. 01 ]
-            </span>
-        </div>
-        
-        {/* Viewfinder brackets */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className="w-full md:w-1/2 relative aspect-[3/4] lg:aspect-[4/5] bg-lucas-navy/5 shadow-2xl group overflow-hidden border border-lucas-navy/10"
+                        >
+                            {/* Inventory Tags overlaid on the image */}
+                            <div className="absolute top-5 left-5 z-20 flex flex-col gap-1.5 mix-blend-difference">
+                                <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 border border-lucas-cream/20 px-1.5 py-0.5 w-fit">
+                                    [ Fig. 01 ]
+                                </span>
+                            </div>
+                            
+                            {/* Viewfinder brackets */}
+                            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
+                            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
 
-        <img 
-            src="/images/img1.JPG" 
-            alt="lucas bulger - filmmaker" 
-            className="object-cover w-full h-full grayscale contrast-125 brightness-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2000ms] ease-out"
-        />
-    </motion.div>
-</section>
+                            <img 
+                                src="/images/img1.JPG" 
+                                alt="lucas bulger - filmmaker" 
+                                className="object-cover w-full h-full grayscale contrast-125 brightness-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2000ms] ease-out"
+                            />
+                        </motion.div>
+                    </section>
 
                 </div>
             </div>
