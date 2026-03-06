@@ -37,75 +37,82 @@ export default function AboutPage() {
         <main className="bg-lucas-cream overflow-hidden">
             
             {/* 01. THE INTRODUCTION (Hero) */}
-            <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-24 max-w-7xl mx-auto gap-12 md:gap-24">
+            {/* Swapped min-h-screen for min-h-[100svh] and added flex-col to manage the layout stack natively */}
+            <section className="relative min-h-[100svh] flex flex-col justify-center pt-32 pb-8 w-full">
                 
-                {/* The Portrait */}
-                <motion.div 
-                    initial={{ opacity: 0, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full md:w-1/2 relative aspect-[4/5] md:aspect-[3/4] bg-lucas-navy/5 shadow-2xl p-2 md:p-4 border border-lucas-slate/20 mt-12 md:mt-0"
-                >
-                    <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
-                        <Image 
-                            src="/images/Lucas Image with background.jpg" 
-                            alt="Lucas Bulger" 
-                            fill 
-                            className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
-                        />
-                    </div>
-                    {/* Zissou Meta Tag */}
-                    <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10 shadow-xl">
-                        Fig. 00 — The Director
-                    </div>
-                </motion.div>
-
-                {/* The Narrative (The Passion) */}
-                <motion.div 
-                    initial="hidden" animate="visible" variants={staggerContainer}
-                    className="w-full md:w-1/2 flex flex-col items-start text-left"
-                >
-                    <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">
-                            [ The Introduction ]
-                        </span>
+                <div className="flex-1 flex flex-col md:flex-row items-center justify-center px-6 max-w-7xl mx-auto gap-12 md:gap-20 w-full">
+                    {/* The Portrait */}
+                    {/* Added max-w-[420px] and adjusted width ratio so it never outgrows the screen height */}
+                    <motion.div 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full md:w-5/12 max-w-[420px] relative aspect-[4/5] bg-lucas-navy/5 shadow-2xl p-2 md:p-4 border border-lucas-slate/20 mt-8 md:mt-0 shrink-0"
+                    >
+                        <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
+                            <Image 
+                                src="/images/Lucas Image with background.jpg" 
+                                alt="Lucas Bulger" 
+                                fill 
+                                className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
+                            />
+                        </div>
+                        {/* Zissou Meta Tag */}
+                        <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10 shadow-xl">
+                            Fig. 00 — The Director
+                        </div>
                     </motion.div>
-                    
-                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.5rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
-                        A Quiet <br/>
-                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
-                    </motion.h1>
 
-                    <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
-                        <p>
-                            it started with a simple obsession: trying to translate the beauty of what was in front of me—travel landscapes, at the time—into something tangible. the drive was always to render an environment as close to reality as possible.
-                        </p>
-                        <p>
-                            wedding cinema became the natural progression of that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, human interactions that actually carry weight.
-                        </p>
-                        <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and collect that elusive feeling.
-                        </p>
+                    {/* The Narrative (The Passion) */}
+                    <motion.div 
+                        initial="hidden" animate="visible" variants={staggerContainer}
+                        className="w-full md:w-7/12 flex flex-col items-start text-left shrink-0"
+                    >
+                        <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">
+                                [ The Introduction ]
+                            </span>
+                        </motion.div>
+                        
+                        <motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.5rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
+                            A Quiet <br/>
+                            <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
+                        </motion.h1>
+
+                        <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
+                            <p>
+                                it started with a simple obsession: trying to translate the beauty of what was in front of me—travel landscapes, at the time—into something tangible. the drive was always to render an environment as close to reality as possible.
+                            </p>
+                            <p>
+                                wedding cinema became the natural progression of that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, human interactions that actually carry weight.
+                            </p>
+                            <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
+                                i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and document that elusive feeling.
+                            </p>
+                        </motion.div>
                     </motion.div>
-                </motion.div>
+                </div>
                 
                 {/* Interactive Scroll Indicator (Reverse Triangle) */}
-                <motion.button 
-                    onClick={() => {
-                        const el = document.getElementById('archive');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group cursor-pointer p-4"
-                    aria-label="Scroll to archive"
-                >
-                    <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
-                        [ Proceed ]
-                    </span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-lucas-orange transform group-hover:translate-y-1.5 transition-transform duration-500 ease-[0.16,1,0.3,1]">
-                        <polygon points="12,21 2,5 22,5" />
-                    </svg>
-                </motion.button>
+                {/* Removed absolute positioning. mt-auto forces it to the bottom if there is extra space, mt-12 acts as a buffer if it's tight */}
+                <div className="w-full flex justify-center mt-12 md:mt-auto shrink-0 z-10 pt-8">
+                    <motion.button 
+                        onClick={() => {
+                            const el = document.getElementById('archive');
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
+                        className="flex flex-col items-center gap-3 group cursor-pointer p-4"
+                        aria-label="Scroll to archive"
+                    >
+                        <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
+                            [ Proceed ]
+                        </span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-lucas-orange transform group-hover:translate-y-1.5 transition-transform duration-500 ease-[0.16,1,0.3,1]">
+                            <polygon points="12,21 2,5 22,5" />
+                        </svg>
+                    </motion.button>
+                </div>
             </section>
 
             {/* 02. HORIZONTAL SCROLL GALLERY (The "Magic") */}
