@@ -524,11 +524,11 @@ export default function PrivateCollectionsPage() {
 
             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                 {[
-                    { num: "01", title: "the discovery", desc: "you found the work, felt something honest, and sent an inquiry.", status: "completed" },
-                    { num: "02", title: "the inventory", desc: "you are here. reviewing the collections, watching the films, and seeing if the vibe makes sense.", status: "current" },
-                    { num: "03", title: "the intro", desc: "a quick call or email exchange. i want to hear about the day, and you can see if i'm easy company.", status: "future" },
-                    { num: "04", title: "the details", desc: "i build a custom commission for you to review, run the numbers, and place a soft hold on the date.", status: "future" },
-                    { num: "05", title: "making it official", desc: "you sign the digital paperwork, cover the retainer, and the date is locked. i'll see you there.", status: "future" }
+                    { num: "01", title: "the discovery", desc: "you connected with my work and sent an inquiry. the best news: the calendar aligned, and i'm available for your date.", status: "completed" },
+                    { num: "02", title: "the inventory", desc: "reviewing the collections, running the numbers, and looking into next steps.", status: "current" },
+                    { num: "03", title: "the intro", desc: "a quick video call. i want to hear about the day, answer questions, and we can see if it's a good fit.", status: "future" },
+                    { num: "04", title: "the details", desc: "i draft a custom proposal. you review the logistics, and I place a soft hold on the date.", status: "future" },
+                    { num: "05", title: "making it official", desc: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future" }
                 ].map((step, i) => (
                     <motion.div 
                         key={i} 
