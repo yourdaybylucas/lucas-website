@@ -36,7 +36,7 @@ export default function AboutPage() {
     return (
         <main className="bg-lucas-cream overflow-hidden">
             
-            {/* 01. THE INTRODUCTION (Hero) */}
+{/* 01. THE INTRODUCTION (Hero) */}
             <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-24 max-w-7xl mx-auto gap-12 md:gap-24">
                 
                 {/* The Portrait */}
@@ -48,46 +48,43 @@ export default function AboutPage() {
                 >
                     <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
                         <Image 
-                            src="/images/lucas-portrait.JPG" 
+                            src="/images/Lucas Image with background.jpg" 
                             alt="Lucas Bulger" 
                             fill 
                             className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
                         />
                     </div>
                     {/* Zissou Meta Tag */}
-                    <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10">
+                    <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10 shadow-xl">
                         Fig. 00 — The Director
                     </div>
                 </motion.div>
 
-                {/* The Narrative */}
+                {/* The Narrative (The Passion) */}
                 <motion.div 
                     initial="hidden" animate="visible" variants={staggerContainer}
                     className="w-full md:w-1/2 flex flex-col items-start text-left"
                 >
                     <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
                         <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">
-                            [ The Origin ]
+                            [ The Introduction ]
                         </span>
                     </motion.div>
                     
                     <motion.h1 variants={fadeUp} className="font-sans text-[clamp(3rem,5vw,5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
-                        The Honest <br/>
-                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">timeline.</span>
+                        A Quiet <br/>
+                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
                     </motion.h1>
 
                     <motion.div variants={fadeUp} className="font-serif text-[clamp(1.125rem,2vw,1.35rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
                         <p>
-                            i bought a gopro in 2014 to document some travels. by 2015, keeping a camera in my hand felt permanent. in 2016, i filmed a friend's wedding as a gift, and everything just clicked.
+                            i've always been hyper-fixated on how fast things move. how a room feels for a fraction of a second before the energy completely shifts.
                         </p>
                         <p>
-                            i graduated school for business admin in 2018 (what, lol). but by 2019, i burned the boats and took this full time.
+                            wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to simply pay attention. to document the fleeting, unforced interactions that actually carry weight.
                         </p>
-                        <p className="text-lucas-slate italic">
-                            personally? i married heidi, the absolute love of my life, in 2021. we welcomed our son, sam, in 2025.
-                        </p>
-                        <p>
-                            professionally? over 200 narratives collected across different countries and cultures. the goal remains exactly the same: to hang out, let the day breathe, and bottle exactly how it all felt.
+                        <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
+                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and bottle the day exactly as you lived it.
                         </p>
                     </motion.div>
                 </motion.div>
