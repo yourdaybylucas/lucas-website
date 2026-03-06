@@ -71,37 +71,40 @@ export default function AboutPage() {
                         </span>
                     </motion.div>
                     
-                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(3rem,5vw,5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
+                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.5rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
                         A Quiet <br/>
                         <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
                     </motion.h1>
 
-                    <motion.div variants={fadeUp} className="font-serif text-[clamp(1.125rem,2vw,1.35rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
+                    {/* Scaled down slightly for better breathing room */}
+                    <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
                         <p>
-                            i've always been hyper-fixated on how fast things move. how a room feels for a fraction of a second before the energy completely shifts.
+                            it started with a quiet obsession for visual composition. the geometry of a space, the way light falls across a room, and documenting exactly what is in front of me with absolute intentionality. 
                         </p>
                         <p>
-                            wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to simply pay attention. to document the fleeting, unforced interactions that actually carry weight.
+                            wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, authentic interactions that actually carry weight.
                         </p>
                         <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and bottle the day exactly as you lived it.
+                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and collect that elusive feeling.
                         </p>
                     </motion.div>
                 </motion.div>
                 
-                {/* Scroll Indicator */}
-                <motion.div 
+                {/* Interactive Scroll Indicator (Reverse Triangle) */}
+                <motion.button 
+                    onClick={() => document.getElementById('archive')?.scrollIntoView({ behavior: 'smooth' })}
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+                    className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group cursor-pointer p-4"
+                    aria-label="Scroll to archive"
                 >
-                    <div className="w-px h-16 bg-lucas-navy/20 relative overflow-hidden">
-                        <motion.div 
-                            className="absolute top-0 left-0 w-full h-1/2 bg-lucas-orange"
-                            animate={{ y: ["-100%", "200%"] }}
-                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                        />
-                    </div>
-                </motion.div>
+                    <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
+                        [ Proceed ]
+                    </span>
+                    {/* Solid Geometric Triangle */}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-lucas-orange transform group-hover:translate-y-1.5 transition-transform duration-500 ease-[0.16,1,0.3,1]">
+                        <polygon points="12,21 2,5 22,5" />
+                    </svg>
+                </motion.button>
             </section>
 
             {/* 02. HORIZONTAL SCROLL GALLERY (The "Magic") */}
