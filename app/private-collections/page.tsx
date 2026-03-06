@@ -571,50 +571,75 @@ export default function PrivateCollectionsPage() {
     </motion.div>
 </section>
 
-                    {/* 05. The CTA */}
-                    <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 border-t border-lucas-navy/10 relative gap-12 lg:gap-16">
-                        <motion.div 
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.8 }}
-                            className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0"
-                        >
-                            <h2 className="font-serif italic text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy mb-6 leading-[1.1]">
-                                lets connect
-                            </h2>
-                            
-                            <p className="font-sans text-[clamp(0.95rem,1.5vw,1.125rem)] text-lucas-slate mb-10 max-w-md lowercase leading-[1.6]">
-                                zero obligation. whenever you're ready, let's set up a time to grab a coffee or jump on a video call. we'll talk about your vision for the day, discuss your film preferences, and most importantly, get to know eachother.
-                            </p>
-                            
-                            <a 
-                                href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative inline-flex items-center justify-center px-10 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
-                            >
-                                <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
-                                <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
-                                    Find A Time
-                                </span>
-                            </a>
-                        </motion.div>
+{/* 05. The Intro (CTA) */}
+<section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
+    <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
+    >
+        <div className="flex items-center gap-3 mb-6">
+            <span className="w-2 h-2 bg-lucas-orange rounded-none animate-pulse"></span>
+            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                [ 05 // Next Steps ]
+            </span>
+        </div>
+        
+        {/* Fixed Typography: Heavy Sans-Serif Uppercase */}
+        <h2 className="font-sans font-bold text-[clamp(3rem,5vw,4.5rem)] uppercase text-lucas-navy mb-6 leading-[0.9] tracking-tight">
+            Let's Talk.
+        </h2>
+        
+        {/* Fixed Typography: Serif Italic lowercase for the soul */}
+        <p className="font-serif italic text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy/85 mb-10 max-w-md lowercase leading-relaxed">
+            zero obligation. we jump on a video call, run through the logistics of the day, and most importantly—make sure i'm actually someone you want hanging around.
+        </p>
+        
+        <a 
+            href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden bg-lucas-cream rounded-none"
+        >
+            {/* The orange slide-up fill to add that sudden pop of energy */}
+            <span className="absolute inset-0 w-full h-full bg-lucas-orange transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0"></span>
+            <span className="relative z-10 flex items-center gap-4 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
+                Access The Calendar
+                <span className="text-lucas-slate group-hover:text-lucas-cream/70 transition-colors">→</span >
+            </span>
+        </a>
+    </motion.div>
 
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1 }}
-                            className="w-full md:w-1/2 relative aspect-[4/5] bg-lucas-navy/5 shadow-xl"
-                        >
-                            <img 
-                                src="/images/img1.JPG" 
-                                alt="Lucas" 
-                                className="object-cover w-full h-full grayscale contrast-125 brightness-90"
-                            />
-                        </motion.div>
-                    </section>
+    <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="w-full md:w-1/2 relative aspect-[3/4] lg:aspect-[4/5] bg-lucas-navy/5 shadow-2xl group overflow-hidden border border-lucas-navy/10"
+    >
+        {/* Inventory Tags overlaid on the image */}
+        <div className="absolute top-5 left-5 z-20 flex flex-col gap-1.5 mix-blend-difference">
+            <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 border border-lucas-cream/20 px-1.5 py-0.5 w-fit">
+                [ Fig. 01 ]
+            </span>
+            <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 bg-lucas-cream/10 px-1.5 py-0.5 w-fit backdrop-blur-sm">
+                Lucas Studio
+            </span>
+        </div>
+        
+        {/* Viewfinder brackets */}
+        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
+
+        <img 
+            src="/images/img1.JPG" 
+            alt="lucas bulger - filmmaker" 
+            className="object-cover w-full h-full grayscale contrast-125 brightness-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2000ms] ease-out"
+        />
+    </motion.div>
+</section>
 
                 </div>
             </div>
