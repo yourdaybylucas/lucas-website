@@ -36,28 +36,58 @@ export default function AboutPage() {
     return (
         <main className="bg-lucas-cream overflow-hidden">
             
-            {/* 01. THE MANIFESTO (Hero) */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 text-center">
+            {/* 01. THE INTRODUCTION (Hero) */}
+            <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-24 max-w-7xl mx-auto gap-12 md:gap-24">
+                
+                {/* The Portrait */}
+                <motion.div 
+                    initial={{ opacity: 0, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full md:w-1/2 relative aspect-[4/5] md:aspect-[3/4] bg-lucas-navy/5 shadow-2xl p-2 md:p-4 border border-lucas-slate/20 mt-12 md:mt-0"
+                >
+                    <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
+                        <Image 
+                            src="/images/lucas-portrait.JPG" 
+                            alt="Lucas Bulger" 
+                            fill 
+                            className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
+                        />
+                    </div>
+                    {/* Zissou Meta Tag */}
+                    <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10">
+                        Fig. 00 — The Director
+                    </div>
+                </motion.div>
+
+                {/* The Narrative */}
                 <motion.div 
                     initial="hidden" animate="visible" variants={staggerContainer}
-                    className="max-w-5xl mx-auto flex flex-col items-center"
+                    className="w-full md:w-1/2 flex flex-col items-start text-left"
                 >
                     <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-px bg-lucas-slate/40"></div>
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                            [ The Ethos ]
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">
+                            [ The Origin ]
                         </span>
-                        <div className="w-12 h-px bg-lucas-slate/40"></div>
                     </motion.div>
                     
-                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(3.5rem,8vw,8rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-12">
-                        The Art Of <br/>
-                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">noticing.</span>
+                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(3rem,5vw,5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
+                        The Honest <br/>
+                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">timeline.</span>
                     </motion.h1>
 
-                    <motion.div variants={fadeUp} className="relative max-w-3xl mx-auto">
-                        <p className="font-serif text-[clamp(1.25rem,2.5vw,2rem)] text-lucas-navy italic lowercase leading-[1.5]">
-                            i don't run a production set, and i don't shoot for the algorithm. my approach is simpler: i'm there to celebrate with you. i blend in like a friend with a camera—bringing easy energy to the room while keeping a keen eye on the honest frames. 
+                    <motion.div variants={fadeUp} className="font-serif text-[clamp(1.125rem,2vw,1.35rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
+                        <p>
+                            i bought a gopro in 2014 to document some travels. by 2015, keeping a camera in my hand felt permanent. in 2016, i filmed a friend's wedding as a gift, and everything just clicked.
+                        </p>
+                        <p>
+                            i graduated school for business admin in 2018 (what, lol). but by 2019, i burned the boats and took this full time.
+                        </p>
+                        <p className="text-lucas-slate italic">
+                            personally? i married heidi, the absolute love of my life, in 2021. we welcomed our son, sam, in 2025.
+                        </p>
+                        <p>
+                            professionally? over 200 narratives collected across different countries and cultures. the goal remains exactly the same: to hang out, let the day breathe, and bottle exactly how it all felt.
                         </p>
                     </motion.div>
                 </motion.div>
@@ -65,7 +95,7 @@ export default function AboutPage() {
                 {/* Scroll Indicator */}
                 <motion.div 
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+                    className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
                 >
                     <div className="w-px h-16 bg-lucas-navy/20 relative overflow-hidden">
                         <motion.div 
