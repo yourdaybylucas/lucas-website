@@ -491,76 +491,102 @@ export default function PrivateCollectionsPage() {
                         </div>
                     </section>
 
-                    {/* 04. The Blueprint / Progression */}
-                    <section id="progression" className="h-auto w-full flex flex-col justify-start lg:justify-center py-10 md:py-16 lg:py-24 relative bg-lucas-cream overflow-hidden">
-                        <motion.div 
-                            variants={fadeUpContainer}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="w-full mx-auto"
-                        >
-                            {/* Section Header */}
-                            <div className="mb-16 md:mb-24 pt-8 lg:pt-0">
-                                <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-sm mb-4">
-                                    [ THE BLUEPRINT ]
-                                </p>
-                                <h2 className="font-sans font-bold text-4xl md:text-5xl text-lucas-navy uppercase">
-                                    HOW THIS WORKS.
-                                </h2>
+{/* 04. The Blueprint / Progression */}
+<section id="progression" className="h-auto w-full flex flex-col justify-start lg:justify-center py-10 md:py-16 lg:py-24 relative bg-lucas-cream overflow-hidden">
+    <motion.div 
+        variants={fadeUpContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="w-full max-w-6xl mx-auto px-6 lg:px-16"
+    >
+        {/* Compressed Header */}
+        <div className="mb-8 md:mb-12 pt-8 lg:pt-0 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
+            <div>
+                <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-[10px] mb-2">
+                    [ the blueprint ]
+                </p>
+                <h2 className="font-sans font-bold text-3xl md:text-4xl text-lucas-navy uppercase tracking-tight">
+                    How This Works.
+                </h2>
+            </div>
+            <div className="flex flex-col md:items-end">
+                <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
+                <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy">LC-PRG-2026</span>
+            </div>
+        </div>
+
+        {/* The Compact Ledger List */}
+        <div className="flex flex-col">
+            {[
+                { indicator: "filed", title: "the discovery", description: "you connected with my work and sent an inquiry. the best news: the calendar aligned.", status: "past", ref: "01" },
+                { indicator: "you are here", title: "the inventory", description: "reviewing the collections, running the numbers, and looking into next steps.", status: "active", ref: "02" },
+                { indicator: "pending", title: "the intro", description: "a quick video call. i want to hear about the day, answer questions, and see if it's a fit.", status: "future", ref: "03" },
+                { indicator: "pending", title: "the details", description: "i draft a custom proposal. you review the logistics, and i place a soft hold on the date.", status: "future", ref: "04" },
+                { indicator: "pending", title: "making it official", description: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future", ref: "05" }
+            ].map((step, index) => (
+                <motion.div 
+                    key={index}
+                    variants={fadeUpItem}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-5 border-b border-dashed border-lucas-navy/20 group hover:bg-lucas-navy/5 transition-colors duration-500 relative px-4 -mx-4"
+                >
+                    
+                    {/* Meta / Geometric Status Box */}
+                    <div className="md:col-span-3 flex items-center gap-4">
+                        <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center border border-lucas-navy/30 rounded-none bg-lucas-cream">
+                            {step.status === 'past' && <div className="w-full h-full bg-lucas-slate/40"></div>}
+                            {step.status === 'active' && <div className="w-2 h-2 bg-lucas-orange animate-pulse"></div>}
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="font-sans text-[9px] text-lucas-slate tracking-zissou uppercase mb-0.5">[{step.ref}]</span>
+                            <span className={`font-sans uppercase tracking-[0.2em] text-[10px] font-bold transition-colors duration-500 ${
+                                step.status === 'active' 
+                                    ? 'text-lucas-orange' 
+                                    : step.status === 'past' 
+                                        ? 'text-lucas-slate/60 line-through' 
+                                        : 'text-lucas-slate/60'
+                            }`}>
+                                {step.indicator}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Title */}
+                    <div className="md:col-span-3 flex items-center">
+                        <h3 className={`font-sans font-medium text-xl md:text-2xl lowercase ${
+                            step.status === 'past' ? 'text-lucas-navy/50' : 'text-lucas-navy'
+                        }`}>
+                            {step.title}
+                        </h3>
+                    </div>
+
+                    {/* Description (The Soul) */}
+                    <div className="md:col-span-5 flex items-center">
+                        <p className={`font-serif italic text-[clamp(1rem,1.2vw,1.125rem)] leading-snug ${
+                            step.status === 'past' ? 'text-lucas-navy/60' : 'text-lucas-navy'
+                        }`}>
+                            {step.description}
+                        </p>
+                    </div>
+
+                    {/* Visual Anchor (The Zissou Touch) */}
+                    <div className="hidden md:flex md:col-span-1 items-center justify-end">
+                        {step.status === 'active' ? (
+                            <div className="w-8 h-8 relative border border-lucas-orange/30 overflow-hidden mix-blend-multiply transition-transform duration-500 group-hover:scale-110">
+                                <img src="/images/img1.JPG" alt="current step" className="object-cover w-full h-full grayscale opacity-60" />
                             </div>
-
-                            {/* The Inventory List */}
-                            <div className="flex flex-col border-t border-lucas-slate/30">
-                                {[
-                                    { indicator: "FILED", title: "the discovery", description: "you connected with my work and sent an inquiry. the best news: the calendar aligned, and i'm available for your date.", status: "past" },
-                                    { indicator: "YOU ARE HERE", title: "the inventory", description: "reviewing the collections, running the numbers, and looking into next steps.", status: "active" },
-                                    { indicator: "03", title: "the intro", description: "a quick video call. i want to hear about the day, answer questions, and we can see if it's a good fit.", status: "future" },
-                                    { indicator: "04", title: "the details", description: "i draft a custom proposal. you review the logistics, and i place a soft hold on the date.", status: "future" },
-                                    { indicator: "05", title: "making it official", description: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future" }
-                                ].map((step, index) => (
-                                    <motion.div 
-                                        key={index}
-                                        variants={fadeUpItem}
-                                        className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-10 border-b border-lucas-slate/30 group"
-                                    >
-                                        
-                                        {/* Meta / Status Indicator */}
-                                        <div className="md:col-span-3 flex items-start pt-1">
-                                            <span className={`font-sans uppercase tracking-[0.2em] text-sm font-medium transition-colors duration-500 ${
-                                                step.status === 'active' 
-                                                    ? 'text-lucas-orange' 
-                                                    : step.status === 'past' 
-                                                        ? 'text-lucas-slate/60 line-through decoration-lucas-slate/40' 
-                                                        : 'text-lucas-slate'
-                                            }`}>
-                                                {step.indicator}
-                                            </span>
-                                        </div>
-
-                                        {/* Title */}
-                                        <div className="md:col-span-4 flex items-start">
-                                            <h3 className={`font-sans font-medium text-2xl lowercase ${
-                                                step.status === 'past' ? 'text-lucas-navy/50' : 'text-lucas-navy'
-                                            }`}>
-                                                {step.title}
-                                            </h3>
-                                        </div>
-
-                                        {/* Description (The Soul) */}
-                                        <div className="md:col-span-5 flex items-start">
-                                            <p className={`font-serif italic text-lg leading-relaxed ${
-                                                step.status === 'past' ? 'text-lucas-navy/60' : 'text-lucas-navy'
-                                            }`}>
-                                                {step.description}
-                                            </p>
-                                        </div>
-
-                                    </motion.div>
-                                ))}
+                        ) : (
+                            <div className="w-8 h-8 border border-lucas-slate/10 flex items-center justify-center transition-colors duration-500 group-hover:border-lucas-slate/30">
+                                <div className="w-1 h-1 rounded-full bg-lucas-slate/20"></div>
                             </div>
-                        </motion.div>
-                    </section>
+                        )}
+                    </div>
+
+                </motion.div>
+            ))}
+        </div>
+    </motion.div>
+</section>
 
                     {/* 05. The Intro (CTA) */}
                     <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
