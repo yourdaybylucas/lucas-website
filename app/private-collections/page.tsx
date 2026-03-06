@@ -492,7 +492,8 @@ export default function PrivateCollectionsPage() {
                     </section>
 
 {/* 04. The Progression */}
-<section id="progression" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-16 lg:py-24 relative bg-lucas-sage border-y border-lucas-navy/10">
+{/* Small Screen Fix: We remove snap-y and snap-proximity from this specific parent container to allow fluid scrolling on smaller viewports. */}
+<section id="progression" className="h-auto w-full flex flex-col justify-start lg:justify-center py-10 md:py-16 lg:py-24 relative bg-lucas-cream border-t border-lucas-navy/10 overflow-hidden">
     <motion.div 
         variants={fadeUpContainer}
         initial="hidden"
@@ -501,19 +502,19 @@ export default function PrivateCollectionsPage() {
         className="w-full max-w-6xl mx-auto px-6 lg:px-16"
     >
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-12 lg:mb-16 pt-8 lg:pt-0">
-            <span className="w-2 h-2 bg-lucas-orange rounded-none"></span>
+        <div className="flex items-center gap-4 mb-10 lg:mb-16 pt-8 lg:pt-0">
+            <span className="w-1.5 h-1.5 bg-lucas-orange rounded-none animate-pulse"></span>
             <h2 className="font-sans text-xs tracking-zissou uppercase text-lucas-navy font-bold">
                 The Progression
             </h2>
             <div className="h-px bg-lucas-navy/20 flex-grow"></div>
-            <span className="font-sans text-[10px] tracking-zissou text-lucas-navy/60 uppercase hidden md:block">
+            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
                 [ the roadmap ]
             </span>
         </div>
 
         <div className="relative max-w-3xl mx-auto pl-2 sm:pl-0">
-            {/* The structural line */}
+            {/* The structural line - adjusted left values to center perfectly on the squares */}
             <div className="absolute left-[15px] md:left-[24px] top-4 bottom-4 w-px bg-lucas-navy/10"></div>
             
             <motion.div 
@@ -524,43 +525,43 @@ export default function PrivateCollectionsPage() {
                 className="absolute left-[15px] md:left-[24px] top-4 w-px bg-lucas-navy origin-top"
             ></motion.div>
 
-            <div className="flex flex-col gap-8 md:gap-12 lg:gap-14">
+            {/* Tightened gaps for better flow on 13-inch screens */}
+            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 relative z-10">
                 {[
-                    { num: "01", title: "the discovery", desc: "you connected with the films and sent an inquiry. the best news: the calendar aligned, and i'm actually available for your date.", status: "completed" },
-                    { num: "02", title: "the inventory", desc: "reviewing the collections, running the numbers, and deciding if the vibe makes sense.", status: "current" },
-                    { num: "03", title: "the intro", desc: "a quick call or email thread. we talk about the day, and you make sure i'm actually easy company.", status: "future" },
-                    { num: "04", title: "the commission", desc: "i draft a custom proposal. you review the logistics, and we place a soft hold on the calendar.", status: "future" },
-                    { num: "05", title: "the paperwork", desc: "digital signatures and the retainer. the date is officially yours. i'll pack the super 8.", status: "future" }
+                    { num: "01", title: "the discovery", desc: "you connected with my work and sent an inquiry. the best news: the calendar aligned, and i'm available for your date.", status: "completed" },
+                    { num: "02", title: "the inventory", desc: "reviewing the collections, running the numbers, and looking into next steps.", status: "current" },
+                    { num: "03", title: "the intro", desc: "a quick video call. i want to hear about the day, answer questions, and we can see if it's a good fit.", status: "future" },
+                    { num: "04", title: "the details", desc: "i draft a custom proposal. you review the logistics, and I place a soft hold on the date.", status: "future" },
+                    { num: "05", title: "making it official", desc: "you sign the digital paperwork, cover the retainer, and the date is locked.", status: "future" }
                 ].map((step, i) => (
                     <motion.div 
                         key={i} 
                         variants={fadeUpItem}
-                        className={`relative flex gap-6 md:gap-8 group ${step.status === 'completed' ? 'opacity-60' : ''}`}
+                        className={`relative flex gap-5 md:gap-8 group ${step.status === 'completed' ? 'opacity-50 grayscale' : ''}`}
                     >
-                        {/* The Index Square - completely flat, geometric, no glows */}
-                        <div className={`relative z-10 flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-none border transition-colors duration-500 ${
-                            step.status === 'completed' ? 'bg-lucas-cream border-lucas-navy/30 text-lucas-navy/50' :
-                            step.status === 'current' ? 'bg-lucas-orange border-lucas-orange text-lucas-cream' :
-                            'bg-lucas-cream border-lucas-navy/20 text-lucas-navy hover:border-lucas-navy'
+                        {/* Swapped rounded-full for rounded-none to create hard geometric squares */}
+                        <div className={`relative flex-shrink-0 flex items-center justify-center w-[30px] h-[30px] md:w-[48px] md:h-[48px] rounded-none border transition-colors duration-500 bg-lucas-cream ${
+                            step.status === 'completed' ? 'border-lucas-slate/40 text-lucas-slate' :
+                            step.status === 'current' ? 'border-lucas-orange text-lucas-orange shadow-[0_0_15px_rgba(214,90,49,0.15)]' :
+                            'border-lucas-navy/20 text-lucas-slate hover:border-lucas-navy'
                         }`}>
-                            {step.status === 'completed' && <Check size={18} strokeWidth={2} />}
-                            {step.status === 'current' && <span className="font-sans text-[10px] md:text-xs font-bold tracking-zissou ml-0.5">{step.num}</span>}
+                            {step.status === 'completed' && <Check size={16} strokeWidth={1.5} />}
+                            {step.status === 'current' && <span className="w-2 h-2 rounded-none bg-lucas-orange animate-pulse"></span>}
                             {step.status === 'future' && <span className="font-sans text-[9px] md:text-[10px] tracking-zissou ml-0.5">{step.num}</span>}
                         </div>
 
                         <div className="flex flex-col pt-1 md:pt-2 pb-2">
                             <div className="flex flex-wrap items-center gap-3 mb-1 md:mb-2">
-                                <h4 className={`font-sans text-sm md:text-base lowercase tracking-widest ${
-                                    step.status === 'current' ? 'text-lucas-navy font-bold' : 'text-lucas-navy'
+                                <h4 className={`font-sans text-xs md:text-sm lowercase tracking-widest ${
+                                    step.status === 'current' ? 'text-lucas-orange font-bold' : 'text-lucas-navy'
                                 }`}>
                                     {step.title}
                                 </h4>
-                                
-                                {/* Flat, brutalist tags */}
-                                {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-navy/60 uppercase border border-lucas-navy/20 bg-lucas-navy/5 px-2 py-0.5 rounded-none">FILED</span>}
-                                {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange bg-lucas-cream px-2 py-0.5 rounded-none">YOU ARE HERE</span>}
+                                {/* Tags kept as uppercase with wide tracking to align with the meta-data rule */}
+                                {step.status === 'completed' && <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase border border-lucas-slate/20 px-2 py-0.5 rounded-none">FILED</span>}
+                                {step.status === 'current' && <span className="font-sans text-[8px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 bg-lucas-orange/5 px-2 py-0.5 rounded-none">YOU ARE HERE</span>}
                             </div>
-                            <p className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] leading-relaxed lowercase text-lucas-navy/85 max-w-xl">
+                            <p className={`font-serif text-[clamp(1rem,1.5vw,1.25rem)] leading-relaxed lowercase ${step.status === 'completed' ? 'text-lucas-slate' : 'text-lucas-navy/80'}`}>
                                 {step.desc}
                             </p>
                         </div>
@@ -623,9 +624,6 @@ export default function PrivateCollectionsPage() {
         <div className="absolute top-5 left-5 z-20 flex flex-col gap-1.5 mix-blend-difference">
             <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 border border-lucas-cream/20 px-1.5 py-0.5 w-fit">
                 [ Fig. 01 ]
-            </span>
-            <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 bg-lucas-cream/10 px-1.5 py-0.5 w-fit backdrop-blur-sm">
-                Lucas Studio
             </span>
         </div>
         
