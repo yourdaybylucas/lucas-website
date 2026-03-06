@@ -85,7 +85,7 @@ export default function AboutPage() {
                             wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, authentic interactions that actually carry weight.
                         </p>
                         <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and collect that elusive feeling.
+                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and document that elusive feeling.
                         </p>
                     </motion.div>
                 </motion.div>
