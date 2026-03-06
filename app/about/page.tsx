@@ -115,46 +115,70 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 02. HORIZONTAL SCROLL GALLERY (The "Magic") */}
-            <section id="archive" ref={horizontalScrollRef} className="relative h-[300vh] bg-lucas-navy">
+            {/* 02. HORIZONTAL SCROLL GALLERY (The "Archive") */}
+            {/* Adjusted height to 250vh for better pacing with 3 items */}
+            <section ref={horizontalScrollRef} className="relative h-[250vh] bg-lucas-navy">
                 <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-                    <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
                     
-                    <div className="absolute top-12 left-6 md:left-12 flex items-center gap-4 z-10 text-lucas-cream">
-                        <div className="w-12 h-px bg-lucas-orange"></div>
-                        <span className="font-sans text-[10px] tracking-zissou uppercase">
-                            [ The Archive ]
-                        </span>
+                    {/* The Zissou Meta Header & Progress Track */}
+                    <div className="absolute top-12 left-6 md:left-12 right-6 md:right-12 flex items-center justify-between z-10">
+                        <div className="flex items-center gap-4 text-lucas-cream">
+                            <div className="w-12 h-px bg-lucas-orange"></div>
+                            <span className="font-sans text-[10px] tracking-zissou uppercase">
+                                [ The Archive ]
+                            </span>
+                        </div>
+                        
+                        {/* Structural Progress Bar */}
+                        <div className="hidden md:flex items-center gap-4 w-48">
+                            <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase">01</span>
+                            <div className="relative flex-1 h-px bg-lucas-slate/30">
+                                <motion.div 
+                                    className="absolute top-0 left-0 h-full bg-lucas-orange"
+                                    style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                                />
+                            </div>
+                            <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase">03</span>
+                        </div>
                     </div>
 
-                    <motion.div style={{ x }} className="flex gap-12 md:gap-24 px-6 md:px-24 w-max">
-                        {/* Frame 1 */}
-                        <div className="w-[85vw] md:w-[50vw] h-[60vh] md:h-[70vh] relative shrink-0 bg-lucas-cream/5 border border-lucas-cream/10 p-2 md:p-4">
-                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
-                                <Image src="/images/img1.JPG" alt="The Energy" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" />
-                                <div className="absolute bottom-6 left-6 font-sans text-[8px] md:text-[10px] tracking-widest text-lucas-cream uppercase bg-lucas-navy/50 backdrop-blur-md px-3 py-1.5 border border-lucas-cream/10">
-                                    Fig. 01 — Unforced Energy
-                                </div>
+                    {/* Adjusted translation map to end exactly when the last image hits the right padding */}
+                    <motion.div style={{ x }} className="flex gap-12 md:gap-24 px-6 md:px-24 w-max relative z-10">
+                        
+                        {/* Frame 01 */}
+                        <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 flex flex-col justify-between group">
+                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                <Image src="/images/img1.JPG" alt="Unforced Energy" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                            </div>
+                            {/* Inventory Tag */}
+                            <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
+                                Fig. 01 — Unforced Energy
                             </div>
                         </div>
-                        {/* Frame 2 */}
-                        <div className="w-[85vw] md:w-[50vw] h-[60vh] md:h-[70vh] relative shrink-0 bg-lucas-cream/5 border border-lucas-cream/10 p-2 md:p-4 mt-12 md:mt-24">
-                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
-                                <Image src="/images/img1.JPG" alt="The Quiet" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" />
-                                <div className="absolute bottom-6 left-6 font-sans text-[8px] md:text-[10px] tracking-widest text-lucas-cream uppercase bg-lucas-navy/50 backdrop-blur-md px-3 py-1.5 border border-lucas-cream/10">
-                                    Fig. 02 — The In-Between
-                                </div>
+
+                        {/* Frame 02 (Offset slightly for staggered architectural rhythm) */}
+                        <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 mt-12 md:mt-24 flex flex-col justify-between group">
+                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                <Image src="/images/img1.JPG" alt="The In-Between" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                            </div>
+                            {/* Inventory Tag */}
+                            <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
+                                Fig. 02 — The Quiet
                             </div>
                         </div>
-                        {/* Frame 3 */}
-                        <div className="w-[85vw] md:w-[50vw] h-[60vh] md:h-[70vh] relative shrink-0 bg-lucas-cream/5 border border-lucas-cream/10 p-2 md:p-4">
-                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
-                                <Image src="/images/img1.JPG" alt="The Subject" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" />
-                                <div className="absolute bottom-6 left-6 font-sans text-[8px] md:text-[10px] tracking-widest text-lucas-cream uppercase bg-lucas-navy/50 backdrop-blur-md px-3 py-1.5 border border-lucas-cream/10">
-                                    Fig. 03 — The Soloist
-                                </div>
+
+                        {/* Frame 03 */}
+                        <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 flex flex-col justify-between group">
+                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                <Image src="/images/img1.JPG" alt="The Soloist" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                            </div>
+                            {/* Inventory Tag */}
+                            <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
+                                Fig. 03 — The Soloist
                             </div>
                         </div>
+
                     </motion.div>
                 </div>
             </section>
