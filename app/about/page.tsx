@@ -73,9 +73,10 @@ export default function AboutPage() {
                         </span>
                     </motion.div>
                     
-                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.5rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.85] tracking-tight mb-8">
-                        A Quiet <br/>
-                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">obsession.</span>
+<motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.25rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.9] tracking-tight mb-8">
+                        A Hobby.<br className="md:hidden" />
+                        An Obsession.<br/>
+                        <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">a way of life.</span>
                     </motion.h1>
 
                     <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
