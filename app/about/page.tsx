@@ -54,7 +54,8 @@ export default function AboutPage() {
     });
 
     return (
-        <main className="bg-lucas-cream overflow-hidden">
+        // swapped to overflow-x-hidden so sticky children actually stick
+        <main className="bg-lucas-cream overflow-x-hidden">
             
             {/* 01. THE INTRODUCTION (Hero) */}
             <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-24 max-w-7xl mx-auto gap-12 md:gap-24">
@@ -207,7 +208,8 @@ export default function AboutPage() {
                     </div>
 
                     {/* The Active Frame */}
-                    <div className="relative w-full max-w-6xl mx-auto flex items-center mt-12">
+                    {/* added a min-h to prevent layout snapping during crossfades */}
+                    <div className="relative w-full max-w-6xl mx-auto flex items-center mt-12 min-h-[500px]">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
@@ -215,10 +217,10 @@ export default function AboutPage() {
                                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                 exit={{ opacity: 0, y: -40, filter: "blur(4px)" }}
                                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24"
+                                className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 absolute inset-0 md:relative"
                             >
                                 {/* Left Side: The Metadata & Narrative */}
-                                <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1">
+                                <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1 pt-12 md:pt-0">
                                     <div className="flex items-center justify-between mb-8 border-b border-lucas-navy/10 pb-4">
                                         <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
                                             Fig. {timeline[activeIndex].id}
@@ -234,7 +236,7 @@ export default function AboutPage() {
 
                                 {/* Right Side: The Visual Evidence */}
                                 <div className="w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-2">
-                                    <div className="relative w-full max-w-[320px] md:max-w-[450px] aspect-square p-2 md:p-3 bg-lucas-cream border border-lucas-slate/30 shadow-2xl">
+                                    <div className="relative w-full max-w-[320px] md:max-w-[450px] aspect-[4/5] md:aspect-square p-2 md:p-3 bg-lucas-cream border border-lucas-slate/30 shadow-2xl">
                                         <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
                                             <Image 
                                                 src={timeline[activeIndex].img} 
