@@ -46,7 +46,7 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { label: "About", path: "/#about" },
+        { label: "About", path: "/about" },
         { label: "Archive", path: "/#films" },
         { label: "Collections", path: "/collections" },
     ];
