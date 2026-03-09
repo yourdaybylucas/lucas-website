@@ -212,7 +212,7 @@ export default function AboutPage() {
                                 <div className="flex items-center justify-between mb-4">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase">
                                         Fig. {item.id}
-                                   </span>
+                                    </span>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-2 py-0.5">
                                         {item.year}
                                     </span>
@@ -222,9 +222,9 @@ export default function AboutPage() {
                                     {item.desc}
                                 </p>
 
-                                {/* Mobile Only Image (Shows inline on small screens) */}
-                                <div className="block md:hidden relative w-full aspect-[4/3] mt-6 bg-[#0a1118] border border-lucas-slate/20 p-2">
-                                    <div className="relative w-full h-full">
+                                {/* Mobile Only Image (Shows inline on small screens, capped width, perfect square) */}
+                                <div className="block md:hidden relative w-full max-w-[280px] aspect-square mt-6 bg-lucas-cream border border-lucas-slate/30 p-1.5 self-start">
+                                    <div className="relative w-full h-full bg-[#0a1118]">
                                         <Image src={item.img} alt={`Archive entry ${item.year}`} fill className="object-cover" />
                                     </div>
                                 </div>
@@ -232,9 +232,9 @@ export default function AboutPage() {
                         ))}
                     </motion.div>
 
-                    {/* Right Side: The Sticky Viewfinder (Desktop Only) */}
-                    <div className="hidden md:block w-full md:w-1/2 relative h-full">
-                        <div className="sticky top-40 w-full aspect-[4/5] p-2 bg-lucas-cream border border-lucas-slate/30 shadow-xl overflow-hidden">
+                    {/* Right Side: The Sticky Viewfinder (Desktop Only, strict square dimension) */}
+                    <div className="hidden md:flex w-full md:w-1/2 relative h-full justify-end lg:justify-center">
+                        <div className="sticky top-40 w-full max-w-[320px] lg:max-w-[400px] aspect-square p-2 bg-lucas-cream border border-lucas-slate/30 shadow-xl overflow-hidden">
                             <div className="relative w-full h-full bg-[#0a1118]">
                                 {/* We map through all images and crossfade opacity based on active state */}
                                 {timeline.map((item, i) => (
