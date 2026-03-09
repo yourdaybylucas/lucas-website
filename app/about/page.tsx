@@ -56,7 +56,7 @@ export default function AboutPage() {
                             src="/images/about/about_1.jpg" 
                             alt="Lucas Bulger" 
                             fill 
-                            className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
+                            className="object-cover transition-all duration-1000" 
                         />
                     </div>
                     {/* Zissou Meta Tag */}
@@ -143,7 +143,7 @@ export default function AboutPage() {
                         {/* Frame 01 */}
                         <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 flex flex-col justify-between group">
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
-                                <Image src="/images/img1.JPG" alt="Unforced Energy" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                                <Image src="/images/img1.JPG" alt="Unforced Energy" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
                             {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
@@ -154,7 +154,7 @@ export default function AboutPage() {
                         {/* Frame 02 (Offset slightly for staggered architectural rhythm) */}
                         <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 mt-12 md:mt-24 flex flex-col justify-between group">
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
-                                <Image src="/images/img1.JPG" alt="The In-Between" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                                <Image src="/images/img1.JPG" alt="The In-Between" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
                             {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
@@ -165,7 +165,7 @@ export default function AboutPage() {
                         {/* Frame 03 */}
                         <div className="w-[85vw] md:w-[45vw] h-[60vh] md:h-[65vh] relative shrink-0 bg-lucas-cream/5 p-3 md:p-5 border border-lucas-slate/20 flex flex-col justify-between group">
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
-                                <Image src="/images/img1.JPG" alt="The Soloist" fill className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
+                                <Image src="/images/img1.JPG" alt="The Soloist" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
                             {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
@@ -212,7 +212,7 @@ export default function AboutPage() {
                                 <div className="flex items-center justify-between mb-4">
                                     <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase">
                                         Fig. {item.id}
-                                    </span>
+                                   </span>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-2 py-0.5">
                                         {item.year}
                                     </span>
@@ -225,7 +225,7 @@ export default function AboutPage() {
                                 {/* Mobile Only Image (Shows inline on small screens) */}
                                 <div className="block md:hidden relative w-full aspect-[4/3] mt-6 bg-[#0a1118] border border-lucas-slate/20 p-2">
                                     <div className="relative w-full h-full">
-                                        <Image src={item.img} alt={`Archive entry ${item.year}`} fill className="object-cover grayscale contrast-125" />
+                                        <Image src={item.img} alt={`Archive entry ${item.year}`} fill className="object-cover" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -234,8 +234,8 @@ export default function AboutPage() {
 
                     {/* Right Side: The Sticky Viewfinder (Desktop Only) */}
                     <div className="hidden md:block w-full md:w-1/2 relative h-full">
-                        <div className="sticky top-40 w-full aspect-[4/5] bg-lucas-cream p-4 border border-lucas-slate/30 shadow-xl">
-                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                        <div className="sticky top-40 w-full aspect-[4/5] p-2 bg-lucas-cream border border-lucas-slate/30 shadow-xl overflow-hidden">
+                            <div className="relative w-full h-full bg-[#0a1118]">
                                 {/* We map through all images and crossfade opacity based on active state */}
                                 {timeline.map((item, i) => (
                                     <Image
@@ -244,18 +244,11 @@ export default function AboutPage() {
                                         alt={`Evidence ${item.id}`}
                                         fill
                                         className={`object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] ${
-                                            activeImg === item.img ? "opacity-100 grayscale-0 scale-100 z-10" : "opacity-0 grayscale contrast-125 scale-105 z-0"
+                                            activeImg === item.img ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
                                         }`}
                                     />
                                 ))}
                             </div>
-                            
-                            {/* Static Viewfinder UI elements */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lucas-cream px-4 font-sans text-[10px] tracking-zissou text-lucas-navy uppercase z-20 border border-lucas-slate/30">
-                                Visual Evidence
-                            </div>
-                            <div className="absolute top-8 left-8 w-4 h-4 border-t-2 border-l-2 border-lucas-cream/50 z-20 mix-blend-overlay"></div>
-                            <div className="absolute bottom-8 right-8 w-4 h-4 border-b-2 border-r-2 border-lucas-cream/50 z-20 mix-blend-overlay"></div>
                         </div>
                     </div>
 
