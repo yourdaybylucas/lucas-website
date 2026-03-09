@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,6 +34,9 @@ export default function AboutPage() {
     
     // natively calculates the exact width of the items and stops flush with the right viewport edge
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]); 
+
+    // state for the sticky viewfinder
+    const [activeImg, setActiveImg] = useState(timeline[0].img);
 
     return (
         <main className="bg-lucas-cream overflow-hidden">
@@ -174,7 +177,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-           {/* 03. THE RECORD (The Archival Ledger & Viewfinder) */}
+            {/* 03. THE RECORD (The Archival Ledger & Viewfinder) */}
             <section className="relative px-6 py-24 md:py-32 max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-12 gap-4">
@@ -240,19 +243,19 @@ export default function AboutPage() {
                                         src={item.img}
                                         alt={`Evidence ${item.id}`}
                                         fill
-                                        className={`object-cover transition-opacity duration-700 ease-[0.16,1,0.3,1] ${
-                                            activeImg === item.img ? "opacity-100 grayscale-0 scale-100" : "opacity-0 grayscale contrast-125 scale-105"
+                                        className={`object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] ${
+                                            activeImg === item.img ? "opacity-100 grayscale-0 scale-100 z-10" : "opacity-0 grayscale contrast-125 scale-105 z-0"
                                         }`}
                                     />
                                 ))}
                             </div>
                             
                             {/* Static Viewfinder UI elements */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lucas-cream px-4 font-sans text-[10px] tracking-zissou text-lucas-navy uppercase z-10 border border-lucas-slate/30">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lucas-cream px-4 font-sans text-[10px] tracking-zissou text-lucas-navy uppercase z-20 border border-lucas-slate/30">
                                 Visual Evidence
                             </div>
-                            <div className="absolute top-8 left-8 w-4 h-4 border-t-2 border-l-2 border-lucas-cream/50 z-10 mix-blend-overlay"></div>
-                            <div className="absolute bottom-8 right-8 w-4 h-4 border-b-2 border-r-2 border-lucas-cream/50 z-10 mix-blend-overlay"></div>
+                            <div className="absolute top-8 left-8 w-4 h-4 border-t-2 border-l-2 border-lucas-cream/50 z-20 mix-blend-overlay"></div>
+                            <div className="absolute bottom-8 right-8 w-4 h-4 border-b-2 border-r-2 border-lucas-cream/50 z-20 mix-blend-overlay"></div>
                         </div>
                     </div>
 
