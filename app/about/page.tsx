@@ -17,13 +17,13 @@ const staggerContainer: Variants = {
 };
 
 const timeline = [
-    { year: "2014", title: "The Catalyst", desc: "bought a gopro to document travels. the initial spark that started it all.", img: "/images/img1.JPG", align: "left" },
-    { year: "2016", title: "The Pivot", desc: "filmed a friend's wedding as a gift. everything changed. realized this was the medium.", img: "/images/img1.JPG", align: "right" },
-    { year: "2018", title: "The Detour", desc: "graduated school for business admin. (what, lol).", img: "/images/img1.JPG", align: "left" },
-    { year: "2019", title: "The Commitment", desc: "went full time. burned the boats. never looked back.", img: "/images/img1.JPG", align: "right" },
-    { year: "2021", title: "The Anchor", desc: "married heidi, the absolute love of my life.", img: "/images/img1.JPG", align: "left" },
-    { year: "2025", title: "The Legacy", desc: "welcomed our son, sam, into the world.", img: "/images/img1.JPG", align: "right" },
-    { year: "Present", title: "The Archive", desc: "over 200 narratives documented worldwide. the passion remains exactly the same.", img: "/images/img1.JPG", align: "left" },
+    { year: "2014", title: "The Catalyst", desc: "bought a gopro to document travels. the initial spark that started it all.", img: "/images/about/about_2.jpg", align: "left" },
+    { year: "2016", title: "The Pivot", desc: "filmed a friend's wedding as a gift. everything changed. realized this was the medium.", img: "/images/about/about_3.jpg", align: "right" },
+    { year: "2018", title: "The Detour", desc: "graduated school for business admin. (what, lol).", img: "/images/about/about_4.jpg", align: "left" },
+    { year: "2019", title: "The Commitment", desc: "went full time. burned the boats. never looked back.", img: "/images/about/about_5.jpg", align: "right" },
+    { year: "2021", title: "The Anchor", desc: "married heidi, the absolute love of my life.", img: "/images/about/about_6.jpg", align: "left" },
+    { year: "2025", title: "The Legacy", desc: "welcomed our son, sam, into the world.", img: "/images/about/about_7.jpg", align: "right" },
+    { year: "Present", title: "The Archive", desc: "over 200 narratives documented worldwide. the passion remains exactly the same.", img: "/images/about/about_8.jpg", align: "left" },
 ];
 
 export default function AboutPage() {
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 >
                     <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
                         <Image 
-                            src="/images/Lucas Image with background.jpg" 
+                            src="/images/about/about_1.jpg" 
                             alt="Lucas Bulger" 
                             fill 
                             className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000" 
@@ -226,7 +226,7 @@ export default function AboutPage() {
 
                                 {/* Image Side */}
                                 <div className="w-full md:w-1/2 pl-10 md:pl-0">
-                                    <div className={`relative aspect-[4/3] w-full max-w-[400px] bg-lucas-navy/5 shadow-xl ${
+                                    <div className={`relative aspect-square w-full max-w-[400px] bg-lucas-navy/5 shadow-xl ${
                                         item.align === 'left' ? 'mr-auto' : 'ml-auto'
                                     }`}>
                                         <Image src={item.img} alt={item.title} fill className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" />
