@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-// Explicitly typing as Variants for strict Vercel builds
+// explicitly typing as Variants for strict Vercel builds
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
@@ -16,23 +16,23 @@ const staggerContainer: Variants = {
     visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
 };
 
-// stripped the titles. just the honest facts.
+// stripped the bloat. just the honest facts, cataloged.
 const timeline = [
-    { year: "2014", desc: "bought a gopro to document travels. the initial spark that started it all.", img: "/images/about/about_2.jpg", align: "left" },
-    { year: "2015", desc: "became obsessed. purchased a camera.", img: "/images/about/about_3.jpg", align: "right" },
-    { year: "2016", desc: "filmed a friend's wedding as a gift. everything changed. shoutout lindsay and seth.", img: "/images/about/about_4.jpg", align: "left" },
-    { year: "2019", desc: "went full time.", img: "/images/about/about_5.jpg", align: "right" },
-    { year: "2021", desc: "married heidi, the love of my life.", img: "/images/about/about_6.jpg", align: "left" },
-    { year: "2021", desc: "filmed my 100th wedding.", img: "/images/about/about_7.jpg", align: "right" },
-    { year: "Present", desc: "over 200 narratives documented worldwide. the passion remains exactly the same.", img: "/images/about/about_8.jpg", align: "left" },
+    { id: "01", year: "2014", desc: "bought a gopro to document travels. the initial spark.", img: "/images/about/about_2.jpg" },
+    { id: "02", year: "2015", desc: "became obsessed. purchased a proper camera.", img: "/images/about/about_3.jpg" },
+    { id: "03", year: "2016", desc: "filmed a friend's wedding as a gift. everything changed.", img: "/images/about/about_4.jpg" },
+    { id: "04", year: "2019", desc: "went full time.", img: "/images/about/about_5.jpg" },
+    { id: "05", year: "2021", desc: "married heidi, the love of my life.", img: "/images/about/about_6.jpg" },
+    { id: "06", year: "2021", desc: "documented the 100th narrative.", img: "/images/about/about_7.jpg" },
+    { id: "07", year: "Present", desc: "over 200 narratives collected. the passion remains exactly the same.", img: "/images/about/about_8.jpg" },
 ];
 
 export default function AboutPage() {
-    // Horizontal Scroll Reference
+    // horizontal scroll reference
     const horizontalScrollRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({ target: horizontalScrollRef });
     
-    // Natively calculates the exact width of the items and stops flush with the right viewport edge
+    // natively calculates the exact width of the items and stops flush with the right viewport edge
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]); 
 
     return (
@@ -73,7 +73,7 @@ export default function AboutPage() {
                         </span>
                     </motion.div>
                     
-<motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.25rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.9] tracking-tight mb-8">
+                    <motion.h1 variants={fadeUp} className="font-sans text-[clamp(2.25rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.9] tracking-tight mb-8">
                         A Hobby.<br className="md:hidden" />
                         An Obsession.<br/>
                         <span className="text-lucas-orange italic font-serif font-light tracking-normal lowercase pr-4">a way of life.</span>
@@ -174,8 +174,8 @@ export default function AboutPage() {
                 </div>
             </section>
 
-           {/* 03. THE RECORD (The Archival Ledger) */}
-            <section className="relative px-6 py-24 max-w-4xl mx-auto">
+            {/* 03. THE RECORD (The Archival Ledger) */}
+            <section className="relative px-6 py-24 md:py-32 max-w-4xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-8 gap-4">
                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
