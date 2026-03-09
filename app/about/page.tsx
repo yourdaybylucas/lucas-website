@@ -274,81 +274,80 @@ export default function AboutPage() {
             </section>
 
 {/* 03. THE METHODOLOGY (The Ledger) */}
-            <section className="relative bg-lucas-sage py-24 md:py-32 px-6 border-t border-lucas-slate/20 overflow-hidden">
-                {/* physical texture layer */}
-                <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
-                
-                <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
-                    
-                    {/* Ledger Header */}
-                    <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
-                                [ The Methodology ]
-                            </span>
-                            <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
-                        </div>
-                        <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
-                            How It Works.
-                        </h2>
-                        <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic max-w-xl text-center">
-                            the internal logic behind the lens. four principles built to protect the
-                            authenticity of your weekend.
-                        </p>
-                    </div>
+<section className="relative bg-lucas-cream py-24 md:py-32 px-6 border-t border-lucas-slate/20 overflow-hidden">
+    {/* physical texture layer */}
+    <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
-                    {/* The Grid / Matrix */}
-                    <motion.div 
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={staggerContainer}
-                        className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-transparent shadow-2xl"
-                    >
-                        {[
-                            {
-                                num: "01",
-                                title: "Anticipation",
-                                desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the energy and anticipate the honest frames before they happen.",
-                            },
-                            {
-                                num: "02",
-                                title: "Intentionality",
-                                desc: "i focus my energy on the unforced, fleeting interactions that build your narrative, rather than manufacturing a 40-point shot list of stiff poses.",
-                            },
-                            {
-                                num: "03",
-                                title: "Singular Focus",
-                                desc: "this isn't a side project. wedding cinema is my full-time profession. my process is entirely dedicated to this specific craft.",
-                            },
-                            {
-                                num: "04",
-                                title: "Scarcity",
-                                desc: "i strictly limit the number of commissions i take. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus.",
-                            },
-                        ].map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                variants={fadeUp}
-                                className="border-r border-b border-lucas-navy/15 p-8 md:p-12 group hover:bg-lucas-cream transition-colors duration-slow flex flex-col justify-between min-h-[280px]"
-                            >
-                                <div className="flex justify-between items-start mb-8">
-                                    <h3 className="font-sans text-xl uppercase tracking-widest text-lucas-navy">
-                                        {item.title}
-                                    </h3>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-navy/50 group-hover:text-lucas-orange transition-colors duration-slow">
-                                        Fig. {item.num}
-                                    </span>
-                                </div>
-                                <p className="font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy lowercase leading-relaxed">
-                                    {item.desc}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
+    <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+        {/* Ledger Header */}
+        <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
+            <div className="flex items-center gap-4 mb-6">
+                <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
+                <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
+                    [ The Methodology ]
+                </span>
+                <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
+            </div>
+            <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
+                How It Works.
+            </h2>
+            <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic max-w-xl text-center">
+                the internal logic behind the lens. four principles built to protect the
+                authenticity of your weekend.
+            </p>
+        </div>
+
+        {/* The Grid / Matrix */}
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-lucas-sage shadow-2xl"
+        >
+            {[
+                {
+                    num: "01",
+                    title: "Anticipation",
+                    desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the energy and anticipate the honest frames before they happen.",
+                },
+                {
+                    num: "02",
+                    title: "Intentionality",
+                    desc: "i focus my energy on the unforced, fleeting interactions that build your narrative, rather than manufacturing a 40-point shot list of stiff poses.",
+                },
+                {
+                    num: "03",
+                    title: "Singular Focus",
+                    desc: "this isn't a side project. wedding cinema is my full-time profession. my process is entirely dedicated to this specific craft.",
+                },
+                {
+                    num: "04",
+                    title: "Scarcity",
+                    desc: "i strictly limit the number of commissions i take. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus.",
+                },
+            ].map((item, idx) => (
+                <motion.div
+                    key={idx}
+                    variants={fadeUp}
+                    className="border-r border-b border-lucas-navy/15 p-8 md:p-12 group hover:bg-lucas-cream transition-colors duration-slow flex flex-col justify-between min-h-[280px]"
+                >
+                    <div className="flex justify-between items-start mb-8">
+                        <h3 className="font-sans text-xl uppercase tracking-widest text-lucas-navy">
+                            {item.title}
+                        </h3>
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-navy/50 group-hover:text-lucas-orange transition-colors duration-slow">
+                            Fig. {item.num}
+                        </span>
+                    </div>
+                    <p className="font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy lowercase leading-relaxed">
+                        {item.desc}
+                    </p>
+                </motion.div>
+            ))}
+        </motion.div>
+    </div>
+</section>
 
             {/* 04. THE CALL TO ACTION */}
             <section className="relative py-32 px-6 flex flex-col items-center justify-center text-center border-t border-lucas-slate/20 bg-lucas-cream">
