@@ -289,11 +289,10 @@ export default function AboutPage() {
                 <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
             </div>
             <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
-                How It Works.
+                How I Work.
             </h2>
             <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic max-w-xl text-center">
-                the internal logic behind the lens. four principles built to protect the
-                authenticity of your weekend.
+                the internal logic behind the lens.
             </p>
         </div>
 
@@ -309,12 +308,12 @@ export default function AboutPage() {
                 {
                     num: "01",
                     title: "Anticipation",
-                    desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the energy and anticipate the honest frames before they happen.",
+                    desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the room and anticipate.",
                 },
                 {
                     num: "02",
                     title: "Intentionality",
-                    desc: "i focus my energy on the unforced, fleeting interactions that build your narrative, rather than manufacturing a 40-point shot list of stiff poses.",
+                    desc: "i focus my energy on what matters for your film. find me capturing the smiles during cocktail hour, instead of your family photos.",
                 },
                 {
                     num: "03",
