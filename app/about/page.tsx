@@ -174,69 +174,64 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 03. THE RECORD (The Personal Timeline) */}
-            <section className="relative px-6 py-24 md:py-40 max-w-6xl mx-auto">
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/20 pb-6 mb-16 md:mb-24 gap-4">
-                    <h2 className="font-sans text-3xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy">
+           {/* 03. THE RECORD (The Archival Ledger) */}
+            <section className="relative px-6 py-24 max-w-4xl mx-auto">
+                {/* Section Header */}
+                <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-8 gap-4">
+                    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
                         The Record
                     </h2>
-                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                        [ 2014 — Present ]
-                    </span>
-                </div>
-
-                <div className="relative">
-                    {/* The Central Spine (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-lucas-navy/10 -translate-x-1/2"></div>
-                    
-                    {/* The Spine (Mobile) */}
-                    <div className="block md:hidden absolute left-[15px] top-0 bottom-0 w-px bg-lucas-navy/10"></div>
-
-                    <div className="flex flex-col gap-16 md:gap-32 relative">
-                        {timeline.map((item, i) => (
-                            <motion.div 
-                                key={i}
-                                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-                                variants={fadeUp}
-                                className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 w-full ${
-                                    item.align === 'right' ? 'md:flex-row-reverse' : ''
-                                }`}
-                            >
-                                {/* Mobile Dot */}
-                                <div className="md:hidden absolute left-[11px] w-2 h-2 bg-lucas-orange rounded-full mt-2"></div>
-
-                                {/* Content Side */}
-                                <div className={`w-full md:w-1/2 flex flex-col pl-10 md:pl-0 ${
-                                    item.align === 'left' ? 'md:items-end md:text-right' : 'md:items-start md:text-left'
-                                }`}>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold mb-4 border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm w-fit">
-                                        {item.year}
-                                    </span>
-                                    {/* Without the heading, the text carries the visual weight here */}
-                                    <p className="font-serif text-2xl md:text-3xl text-lucas-navy lowercase italic leading-relaxed max-w-[320px]">
-                                        {item.desc}
-                                    </p>
-                                </div>
-
-                                {/* Desktop Center Dot */}
-                                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 items-center justify-center bg-lucas-cream z-10">
-                                    <div className="w-2 h-2 bg-lucas-orange rounded-full"></div>
-                                </div>
-
-                                {/* Image Side */}
-                                <div className="w-full md:w-1/2 pl-10 md:pl-0">
-                                    <div className={`relative aspect-square w-full max-w-[400px] bg-lucas-navy/5 shadow-xl ${
-                                        item.align === 'left' ? 'mr-auto' : 'ml-auto'
-                                    }`}>
-                                        <Image src={item.img} alt={`Archive entry from ${item.year}`} fill className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" />
-                                        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-lucas-navy/30"></div>
-                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-lucas-navy/30"></div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="flex items-center gap-4">
+                        <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                            [ Documented History ]
+                        </span>
                     </div>
                 </div>
+
+                {/* The Ledger Container */}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={staggerContainer}
+                    className="flex flex-col border border-lucas-navy/20 bg-lucas-cream shadow-sm"
+                >
+                    {timeline.map((item, i) => (
+                        <motion.div
+                            key={i}
+                            variants={fadeUp}
+                            className="group flex flex-row items-center justify-between p-4 md:p-6 border-b border-lucas-navy/10 last:border-b-0 hover:bg-lucas-navy/5 transition-colors duration-slow cursor-default"
+                        >
+                            {/* Inventory Meta */}
+                            <div className="w-20 md:w-32 flex flex-col shrink-0">
+                                <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-1">
+                                    Fig. {item.id}
+                                </span>
+                                <span className="font-sans text-[10px] md:text-xs tracking-zissou text-lucas-orange font-bold uppercase">
+                                    {item.year}
+                                </span>
+                            </div>
+
+                            {/* The Narrative (The Soul) */}
+                            <p className="font-serif text-base md:text-xl text-lucas-navy lowercase italic flex-1 pr-4 md:px-8 leading-snug">
+                                {item.desc}
+                            </p>
+
+                            {/* The Visual Evidence (Thumbnail) */}
+                            <div className="relative w-12 h-12 md:w-16 md:h-16 shrink-0 bg-[#0a1118] border border-lucas-slate/30 p-1">
+                                <div className="relative w-full h-full overflow-hidden">
+                                    <Image
+                                        src={item.img}
+                                        alt={`Archive entry from ${item.year}`}
+                                        fill
+                                        className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[600ms] ease-[0.16,1,0.3,1]"
+                                    />
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </section>
 
             {/* 04. THE METHODOLOGY (Sticky Scroll) */}
