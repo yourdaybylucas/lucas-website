@@ -50,7 +50,7 @@ const timeline = [
     {
         id: "04",
         year: "2019",
-        desc: "went full time.",
+        desc: "went full time. never looked back",
         img: "/images/about/about_6.jpg",
     },
     {
