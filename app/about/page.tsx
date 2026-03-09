@@ -44,7 +44,7 @@ const timeline = [
     {
         id: "03",
         year: "2016",
-        desc: "filmed a friend's wedding as a gift. everything changed. S/O Lindsay + Seth",
+        desc: "filmed a friend's wedding as a gift. everything changed. shoutout Lindsay + Seth",
         img: "/images/about/about_3.jpg",
     },
     {
