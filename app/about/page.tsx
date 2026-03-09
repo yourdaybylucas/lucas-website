@@ -112,7 +112,7 @@ export default function AboutPage() {
                     </div>
 
                     <div className="absolute -bottom-4 -right-2 md:-right-6 bg-lucas-cream border border-lucas-navy px-4 py-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy z-10 shadow-xl">
-                        Fig. 00 — The Director
+                        Fig. 00 — LUCAS
                     </div>
                 </motion.div>
 
