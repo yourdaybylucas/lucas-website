@@ -16,14 +16,15 @@ const staggerContainer: Variants = {
     visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
 };
 
+// stripped the titles. just the honest facts.
 const timeline = [
-    { year: "2014", title: "The Catalyst", desc: "bought a gopro to document travels. the initial spark that started it all.", img: "/images/about/about_2.jpg", align: "left" },
-    { year: "2016", title: "The Pivot", desc: "filmed a friend's wedding as a gift. everything changed. realized this was the medium.", img: "/images/about/about_3.jpg", align: "right" },
-    { year: "2018", title: "The Detour", desc: "graduated school for business admin. (what, lol).", img: "/images/about/about_4.jpg", align: "left" },
-    { year: "2019", title: "The Commitment", desc: "went full time. burned the boats. never looked back.", img: "/images/about/about_5.jpg", align: "right" },
-    { year: "2021", title: "The Anchor", desc: "married heidi, the absolute love of my life.", img: "/images/about/about_6.jpg", align: "left" },
-    { year: "2025", title: "The Legacy", desc: "welcomed our son, sam, into the world.", img: "/images/about/about_7.jpg", align: "right" },
-    { year: "Present", title: "The Archive", desc: "over 200 narratives documented worldwide. the passion remains exactly the same.", img: "/images/about/about_8.jpg", align: "left" },
+    { year: "2014", desc: "bought a gopro to document travels. the initial spark that started it all.", img: "/images/about/about_2.jpg", align: "left" },
+    { year: "2015", desc: "became obsessed. purchased a camera.", img: "/images/about/about_3.jpg", align: "right" },
+    { year: "2016", desc: "filmed a friend's wedding as a gift. everything changed. shoutout lindsay and seth.", img: "/images/about/about_4.jpg", align: "left" },
+    { year: "2019", desc: "went full time.", img: "/images/about/about_5.jpg", align: "right" },
+    { year: "2021", desc: "married heidi, the love of my life.", img: "/images/about/about_6.jpg", align: "left" },
+    { year: "2021", desc: "filmed my 100th wedding.", img: "/images/about/about_7.jpg", align: "right" },
+    { year: "Present", desc: "over 200 narratives documented worldwide. the passion remains exactly the same.", img: "/images/about/about_8.jpg", align: "left" },
 ];
 
 export default function AboutPage() {
@@ -107,7 +108,6 @@ export default function AboutPage() {
             </section>
 
             {/* 02. HORIZONTAL SCROLL GALLERY (The "Archive") */}
-            {/* Reduced from 250vh to 200vh for a 1:1 scroll ratio on 3 items */}
             <section ref={horizontalScrollRef} id="archive" className="relative h-[200vh] bg-lucas-navy">
                 <div className="sticky top-0 flex h-screen items-center overflow-hidden">
                     <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
@@ -208,13 +208,11 @@ export default function AboutPage() {
                                 <div className={`w-full md:w-1/2 flex flex-col pl-10 md:pl-0 ${
                                     item.align === 'left' ? 'md:items-end md:text-right' : 'md:items-start md:text-left'
                                 }`}>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold mb-2 border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm w-fit">
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold mb-4 border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm w-fit">
                                         {item.year}
                                     </span>
-                                    <h3 className="font-serif text-3xl text-lucas-navy italic mb-3">
-                                        {item.title}
-                                    </h3>
-                                    <p className="font-sans text-sm md:text-base text-lucas-slate lowercase leading-relaxed max-w-[320px]">
+                                    {/* Without the heading, the text carries the visual weight here */}
+                                    <p className="font-serif text-2xl md:text-3xl text-lucas-navy lowercase italic leading-relaxed max-w-[320px]">
                                         {item.desc}
                                     </p>
                                 </div>
@@ -229,7 +227,7 @@ export default function AboutPage() {
                                     <div className={`relative aspect-square w-full max-w-[400px] bg-lucas-navy/5 shadow-xl ${
                                         item.align === 'left' ? 'mr-auto' : 'ml-auto'
                                     }`}>
-                                        <Image src={item.img} alt={item.title} fill className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" />
+                                        <Image src={item.img} alt={`Archive entry from ${item.year}`} fill className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" />
                                         <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-lucas-navy/30"></div>
                                         <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-lucas-navy/30"></div>
                                     </div>
