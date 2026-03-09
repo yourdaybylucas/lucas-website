@@ -19,12 +19,12 @@ const staggerContainer: Variants = {
 // stripped the bloat. just the honest facts, cataloged.
 const timeline = [
     { id: "01", year: "2014", desc: "bought a gopro to document travels. the initial spark.", img: "/images/about/about_2.jpg" },
-    { id: "02", year: "2015", desc: "became obsessed. purchased a proper camera.", img: "/images/about/about_3.jpg" },
-    { id: "03", year: "2016", desc: "filmed a friend's wedding as a gift. everything changed.", img: "/images/about/about_4.jpg" },
-    { id: "04", year: "2019", desc: "went full time.", img: "/images/about/about_5.jpg" },
-    { id: "05", year: "2021", desc: "married heidi, the love of my life.", img: "/images/about/about_6.jpg" },
-    { id: "06", year: "2021", desc: "documented the 100th narrative.", img: "/images/about/about_7.jpg" },
-    { id: "07", year: "Present", desc: "over 200 narratives collected. the passion remains exactly the same.", img: "/images/about/about_8.jpg" },
+    { id: "02", year: "2015", desc: "became obsessed. purchased a proper camera.", img: "/images/about/about_4.jpg" },
+    { id: "03", year: "2016", desc: "filmed a friend's wedding as a gift. everything changed. S/O Lindsay + Seth", img: "/images/about/about_3.jpg" },
+    { id: "04", year: "2019", desc: "went full time.", img: "/images/about/about_6.jpg" },
+    { id: "05", year: "2021", desc: "married heidi, the love of my life.", img: "/images/about/about_5.jpg" },
+    { id: "06", year: "2025", desc: "welcomed our son Sam to the world.", img: "/images/about/about_7.jpg" },
+    { id: "07", year: "Present", desc: "over 200 weddings filmed. the passion remains exactly the same.", img: "/images/about/about_8.jpg" },
 ];
 
 export default function AboutPage() {
