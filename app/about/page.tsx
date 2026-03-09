@@ -174,10 +174,10 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 03. THE RECORD (The Archival Ledger) */}
-            <section className="relative px-6 py-24 md:py-32 max-w-4xl mx-auto">
+           {/* 03. THE RECORD (The Archival Ledger & Viewfinder) */}
+            <section className="relative px-6 py-24 md:py-32 max-w-7xl mx-auto">
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-8 gap-4">
+                <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-12 gap-4">
                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
                         The Record
                     </h2>
@@ -189,49 +189,74 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                {/* The Ledger Container */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    variants={staggerContainer}
-                    className="flex flex-col border border-lucas-navy/20 bg-lucas-cream shadow-sm"
-                >
-                    {timeline.map((item, i) => (
-                        <motion.div
-                            key={i}
-                            variants={fadeUp}
-                            className="group flex flex-row items-center justify-between p-4 md:p-6 border-b border-lucas-navy/10 last:border-b-0 hover:bg-lucas-navy/5 transition-colors duration-slow cursor-default"
-                        >
-                            {/* Inventory Meta */}
-                            <div className="w-20 md:w-32 flex flex-col shrink-0">
-                                <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-1">
-                                    Fig. {item.id}
-                                </span>
-                                <span className="font-sans text-[10px] md:text-xs tracking-zissou text-lucas-orange font-bold uppercase">
-                                    {item.year}
-                                </span>
-                            </div>
-
-                            {/* The Narrative (The Soul) */}
-                            <p className="font-serif text-base md:text-xl text-lucas-navy lowercase italic flex-1 pr-4 md:px-8 leading-snug">
-                                {item.desc}
-                            </p>
-
-                            {/* The Visual Evidence (Thumbnail) */}
-                            <div className="relative w-12 h-12 md:w-16 md:h-16 shrink-0 bg-[#0a1118] border border-lucas-slate/30 p-1">
-                                <div className="relative w-full h-full overflow-hidden">
-                                    <Image
-                                        src={item.img}
-                                        alt={`Archive entry from ${item.year}`}
-                                        fill
-                                        className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[600ms] ease-[0.16,1,0.3,1]"
-                                    />
+                <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
+                    
+                    {/* Left Side: The Ledger */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        variants={staggerContainer}
+                        className="w-full md:w-1/2 flex flex-col border-t border-lucas-navy/20"
+                    >
+                        {timeline.map((item, i) => (
+                            <motion.div
+                                key={i}
+                                variants={fadeUp}
+                                onMouseEnter={() => setActiveImg(item.img)}
+                                className="group flex flex-col py-6 border-b border-lucas-navy/10 hover:bg-lucas-navy/5 transition-colors duration-slow cursor-default px-4 -mx-4 md:mx-0 md:px-6"
+                            >
+                                <div className="flex items-center justify-between mb-4">
+                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase">
+                                        Fig. {item.id}
+                                    </span>
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-2 py-0.5">
+                                        {item.year}
+                                    </span>
                                 </div>
+
+                                <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic leading-relaxed pr-8">
+                                    {item.desc}
+                                </p>
+
+                                {/* Mobile Only Image (Shows inline on small screens) */}
+                                <div className="block md:hidden relative w-full aspect-[4/3] mt-6 bg-[#0a1118] border border-lucas-slate/20 p-2">
+                                    <div className="relative w-full h-full">
+                                        <Image src={item.img} alt={`Archive entry ${item.year}`} fill className="object-cover grayscale contrast-125" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Right Side: The Sticky Viewfinder (Desktop Only) */}
+                    <div className="hidden md:block w-full md:w-1/2 relative h-full">
+                        <div className="sticky top-40 w-full aspect-[4/5] bg-lucas-cream p-4 border border-lucas-slate/30 shadow-xl">
+                            <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                {/* We map through all images and crossfade opacity based on active state */}
+                                {timeline.map((item, i) => (
+                                    <Image
+                                        key={i}
+                                        src={item.img}
+                                        alt={`Evidence ${item.id}`}
+                                        fill
+                                        className={`object-cover transition-opacity duration-700 ease-[0.16,1,0.3,1] ${
+                                            activeImg === item.img ? "opacity-100 grayscale-0 scale-100" : "opacity-0 grayscale contrast-125 scale-105"
+                                        }`}
+                                    />
+                                ))}
                             </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            
+                            {/* Static Viewfinder UI elements */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lucas-cream px-4 font-sans text-[10px] tracking-zissou text-lucas-navy uppercase z-10 border border-lucas-slate/30">
+                                Visual Evidence
+                            </div>
+                            <div className="absolute top-8 left-8 w-4 h-4 border-t-2 border-l-2 border-lucas-cream/50 z-10 mix-blend-overlay"></div>
+                            <div className="absolute bottom-8 right-8 w-4 h-4 border-b-2 border-r-2 border-lucas-cream/50 z-10 mix-blend-overlay"></div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
 
             {/* 04. THE METHODOLOGY (Sticky Scroll) */}
