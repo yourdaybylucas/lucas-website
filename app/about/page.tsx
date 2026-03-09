@@ -302,7 +302,7 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-lucas-sage shadow-2xl"
+            className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-lucas-slate shadow-2xl"
         >
             {[
                 {
