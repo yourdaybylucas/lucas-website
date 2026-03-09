@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, useScroll, useTransform, Variants, AnimatePresence, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,15 +28,30 @@ const timeline = [
 ];
 
 export default function AboutPage() {
-    // horizontal scroll reference
+    // 01. horizontal scroll reference (the archive)
     const horizontalScrollRef = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({ target: horizontalScrollRef });
-    
-    // natively calculates the exact width of the items and stops flush with the right viewport edge
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]); 
+    const { scrollYProgress: horizontalProgress } = useScroll({ target: horizontalScrollRef });
+    const x = useTransform(horizontalProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]); 
 
-    // state for the sticky viewfinder
-    const [activeImg, setActiveImg] = useState(timeline[0].img);
+    // 02. vertical sticky scroll reference (the record)
+    const recordRef = useRef<HTMLElement>(null);
+    const { scrollYProgress: recordScroll } = useScroll({
+        target: recordRef,
+        offset: ["start start", "end end"]
+    });
+
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    // listen to the scroll progress and update the active index
+    useMotionValueEvent(recordScroll, "change", (latest) => {
+        const newIndex = Math.min(
+            Math.floor(latest * timeline.length),
+            timeline.length - 1
+        );
+        if (newIndex !== activeIndex) {
+            setActiveIndex(newIndex);
+        }
+    });
 
     return (
         <main className="bg-lucas-cream overflow-hidden">
@@ -131,7 +146,7 @@ export default function AboutPage() {
                             <div className="relative flex-1 h-px bg-lucas-slate/30">
                                 <motion.div 
                                     className="absolute top-0 left-0 h-full bg-lucas-orange"
-                                    style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                                    style={{ scaleX: horizontalProgress, transformOrigin: "left" }}
                                 />
                             </div>
                             <span className="font-sans text-[8px] tracking-zissou text-lucas-slate uppercase">03</span>
@@ -145,7 +160,6 @@ export default function AboutPage() {
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
                                 <Image src="/images/img1.JPG" alt="Unforced Energy" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
-                            {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
                                 Fig. 01 — Unforced Energy
                             </div>
@@ -156,7 +170,6 @@ export default function AboutPage() {
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
                                 <Image src="/images/img1.JPG" alt="The In-Between" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
-                            {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
                                 Fig. 02 — The Quiet
                             </div>
@@ -167,7 +180,6 @@ export default function AboutPage() {
                             <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
                                 <Image src="/images/img1.JPG" alt="The Soloist" fill className="object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] scale-105 group-hover:scale-100" />
                             </div>
-                            {/* Inventory Tag */}
                             <div className="absolute -right-3 -bottom-3 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-3 py-1.5 border border-lucas-navy shadow-lg z-20">
                                 Fig. 03 — The Soloist
                             </div>
@@ -177,79 +189,80 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 03. THE RECORD (The Archival Ledger & Viewfinder) */}
-            <section className="relative px-6 py-24 md:py-32 max-w-7xl mx-auto">
-                {/* Section Header */}
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-lucas-navy/30 pb-4 mb-12 gap-4">
-                    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
-                        The Record
-                    </h2>
-                    <div className="flex items-center gap-4">
-                        <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                            [ Documented History ]
-                        </span>
-                    </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
+            {/* 03. THE RECORD (The Sticky Viewfinder) */}
+            <section ref={recordRef} className="relative bg-lucas-cream border-t border-lucas-slate/20" style={{ height: `${timeline.length * 100}vh` }}>
+                <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-6 overflow-hidden">
                     
-                    {/* Left Side: The Ledger */}
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        variants={staggerContainer}
-                        className="w-full md:w-1/2 flex flex-col border-t border-lucas-navy/20"
-                    >
-                        {timeline.map((item, i) => (
+                    {/* Section Header - Locked to Top */}
+                    <div className="absolute top-24 left-6 md:left-12 right-6 md:right-12 flex justify-between items-start md:items-center border-b border-lucas-navy/30 pb-4 z-20">
+                        <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
+                            The Record
+                        </h2>
+                        <div className="flex items-center gap-4">
+                            <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                                [ Documented History ]
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* The Active Frame */}
+                    <div className="relative w-full max-w-6xl mx-auto flex items-center mt-12">
+                        <AnimatePresence mode="wait">
                             <motion.div
-                                key={i}
-                                variants={fadeUp}
-                                onMouseEnter={() => setActiveImg(item.img)}
-                                className="group flex flex-col py-6 border-b border-lucas-navy/10 hover:bg-lucas-navy/5 transition-colors duration-slow cursor-default px-4 -mx-4 md:mx-0 md:px-6"
+                                key={activeIndex}
+                                initial={{ opacity: 0, y: 40, filter: "blur(4px)" }}
+                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                exit={{ opacity: 0, y: -40, filter: "blur(4px)" }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24"
                             >
-                                <div className="flex items-center justify-between mb-4">
-                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase">
-                                        Fig. {item.id}
-                                    </span>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-2 py-0.5">
-                                        {item.year}
-                                    </span>
+                                {/* Left Side: The Metadata & Narrative */}
+                                <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1">
+                                    <div className="flex items-center justify-between mb-8 border-b border-lucas-navy/10 pb-4">
+                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                                            Fig. {timeline[activeIndex].id}
+                                        </span>
+                                        <span className="font-sans text-[12px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-3 py-1 bg-lucas-orange/5">
+                                            {timeline[activeIndex].year}
+                                        </span>
+                                    </div>
+                                    <p className="font-serif text-2xl md:text-4xl text-lucas-navy lowercase italic leading-relaxed md:leading-snug pr-0 md:pr-12">
+                                        {timeline[activeIndex].desc}
+                                    </p>
                                 </div>
 
-                                <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic leading-relaxed pr-8">
-                                    {item.desc}
-                                </p>
-
-                                {/* Mobile Only Image (Shows inline on small screens, capped width, perfect square) */}
-                                <div className="block md:hidden relative w-full max-w-[280px] aspect-square mt-6 bg-lucas-cream border border-lucas-slate/30 p-1.5 self-start">
-                                    <div className="relative w-full h-full bg-[#0a1118]">
-                                        <Image src={item.img} alt={`Archive entry ${item.year}`} fill className="object-cover" />
+                                {/* Right Side: The Visual Evidence */}
+                                <div className="w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-2">
+                                    <div className="relative w-full max-w-[320px] md:max-w-[450px] aspect-square p-2 md:p-3 bg-lucas-cream border border-lucas-slate/30 shadow-2xl">
+                                        <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                            <Image 
+                                                src={timeline[activeIndex].img} 
+                                                alt={`Evidence ${timeline[activeIndex].id}`} 
+                                                fill 
+                                                className="object-cover scale-105"
+                                                priority
+                                            />
+                                        </div>
+                                        {/* Progress Indicator */}
+                                        <div className="absolute -bottom-4 -left-4 bg-lucas-navy text-lucas-cream font-sans text-[9px] tracking-zissou uppercase px-4 py-2 shadow-xl z-20">
+                                            Frame {activeIndex + 1} / {timeline.length}
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
-                        ))}
-                    </motion.div>
+                        </AnimatePresence>
+                    </div>
 
-                    {/* Right Side: The Sticky Viewfinder (Desktop Only, strict square dimension) */}
-                    <div className="hidden md:flex w-full md:w-1/2 relative h-full justify-end lg:justify-center">
-                        <div className="sticky top-40 w-full max-w-[320px] lg:max-w-[400px] aspect-square p-2 bg-lucas-cream border border-lucas-slate/30 shadow-xl overflow-hidden">
-                            <div className="relative w-full h-full bg-[#0a1118]">
-                                {/* We map through all images and crossfade opacity based on active state */}
-                                {timeline.map((item, i) => (
-                                    <Image
-                                        key={i}
-                                        src={item.img}
-                                        alt={`Evidence ${item.id}`}
-                                        fill
-                                        className={`object-cover transition-all duration-[800ms] ease-[0.16,1,0.3,1] ${
-                                            activeImg === item.img ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
-                                        }`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                    {/* Scroll Progress Track (Bottom) */}
+                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-px bg-lucas-slate/20 hidden md:block">
+                        <motion.div 
+                            className="absolute top-0 left-0 h-full bg-lucas-orange"
+                            style={{ 
+                                width: `${((activeIndex + 1) / timeline.length) * 100}%`,
+                                transition: "width 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
+                            }}
+                        />
                     </div>
 
                 </div>
