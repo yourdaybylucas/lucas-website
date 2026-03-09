@@ -80,13 +80,13 @@ export default function AboutPage() {
 
                     <motion.div variants={fadeUp} className="font-serif text-[clamp(1rem,1.5vw,1.25rem)] text-lucas-navy lowercase leading-relaxed space-y-6 max-w-lg">
                         <p>
-                            it started with a quiet obsession for visual composition. the geometry of a space, the way light falls across a room, and documenting exactly what is in front of me with absolute intentionality. 
+                            it started with a simple obsession: trying to translate the beauty of what was in front of me—travel landscapes, at the time—into something tangible. the drive was always to render an environment as close to reality as possible.
                         </p>
                         <p>
-                            wedding cinema became the ultimate outlet for that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, authentic interactions that actually carry weight.
+                            wedding cinema became the natural progression of that. not to orchestrate a 40-point shot list, but to pay attention. to frame the unforced, human interactions that actually carry weight.
                         </p>
                         <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and document that elusive feeling.
+                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out, keep things grounded, and collect that elusive feeling.
                         </p>
                     </motion.div>
                 </motion.div>
