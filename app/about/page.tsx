@@ -199,18 +199,18 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
                 <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-6 z-10">
-                    {/* Section Header - Locked to Top */}
-                    <div className="absolute top-24 left-6 md:left-12 right-6 md:right-12 flex justify-between items-start md:items-center border-b border-lucas-cream/20 pb-4">
-                        <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
-                            The Record
-                        </h2>
-                        <div className="flex items-center gap-4">
-                            <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                [ Documented History ]
-                            </span>
-                        </div>
-                    </div>
+    {/* Section Header - Locked to Top */}
+<div className="absolute top-32 md:top-40 left-6 md:left-12 right-6 md:right-12 flex justify-between items-start md:items-center border-b border-lucas-cream/20 pb-4">
+    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
+        The Record
+    </h2>
+    <div className="flex items-center gap-4">
+        <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+            [ Documented History ]
+        </span>
+    </div>
+</div>
 
                     {/* The Active Frame */}
                     <div className="relative w-full max-w-6xl mx-auto flex items-center mt-12">
