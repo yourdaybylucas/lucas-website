@@ -273,15 +273,18 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 03. THE METHODOLOGY (The Ledger) */}
-            <section className="relative bg-lucas-cream py-24 md:py-32 px-6 border-t border-lucas-slate/20">
-                <div className="max-w-6xl mx-auto flex flex-col items-center">
+{/* 03. THE METHODOLOGY (The Ledger) */}
+            <section className="relative bg-lucas-sage py-24 md:py-32 px-6 border-t border-lucas-slate/20 overflow-hidden">
+                {/* physical texture layer */}
+                <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
+                
+                <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
                     
                     {/* Ledger Header */}
                     <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
                         <div className="flex items-center gap-4 mb-6">
                             <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
                                 [ The Methodology ]
                             </span>
                             <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
@@ -289,7 +292,7 @@ export default function AboutPage() {
                         <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
                             How It Works.
                         </h2>
-                        <p className="font-serif text-lg md:text-xl text-lucas-slate lowercase italic max-w-xl text-center">
+                        <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic max-w-xl text-center">
                             the internal logic behind the lens. four principles built to protect the
                             authenticity of your weekend.
                         </p>
@@ -301,7 +304,7 @@ export default function AboutPage() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
                         variants={staggerContainer}
-                        className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-slate/20 bg-lucas-cream"
+                        className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-transparent shadow-2xl"
                     >
                         {[
                             {
@@ -328,13 +331,13 @@ export default function AboutPage() {
                             <motion.div
                                 key={idx}
                                 variants={fadeUp}
-                                className="border-r border-b border-lucas-slate/20 p-8 md:p-12 group hover:bg-lucas-navy/5 transition-colors duration-500 flex flex-col justify-between min-h-[280px]"
+                                className="border-r border-b border-lucas-navy/15 p-8 md:p-12 group hover:bg-lucas-cream transition-colors duration-slow flex flex-col justify-between min-h-[280px]"
                             >
                                 <div className="flex justify-between items-start mb-8">
                                     <h3 className="font-sans text-xl uppercase tracking-widest text-lucas-navy">
                                         {item.title}
                                     </h3>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-navy/50 group-hover:text-lucas-orange transition-colors duration-slow">
                                         Fig. {item.num}
                                     </span>
                                 </div>
