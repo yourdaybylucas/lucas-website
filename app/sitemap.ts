@@ -1,5 +1,7 @@
+// app/sitemap.ts
 import { MetadataRoute } from 'next';
 import { venues } from '@/data/venues';
+import { journalEntries } from '@/data/journal';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.yourdaybylucas.com';
@@ -28,7 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/spaces`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.9, // high priority, it's an active ledger
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/journal`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
     },
   ];
 
@@ -40,5 +48,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...routes, ...spaceRoutes];
+  // dynamically append every film in the journal
+  const journalRoutes = journalEntries.map((post) => ({
+    url: `${baseUrl}/journal/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8, // High priority because these contain heavy venue keywords
+  }));
+
+  return [...routes, ...spaceRoutes, ...journalRoutes];
 }
