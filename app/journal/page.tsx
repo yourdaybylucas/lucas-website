@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { journalEntries } from "@/data/journal";
 
-// The Fade Configurations
 const fadeUpContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,50 +23,6 @@ const fadeUpItem = {
     }
 };
 
-// Mock Inventory Data (Strict Gallery Layout)
-const journalEntries = [
-    {
-        id: "042",
-        slug: "kristen-frankie-spencers",
-        title: "kristen & frankie",
-        location: "Spencer's at the Waterfront",
-        date: "Oct. 12, 2025",
-        format: "Digital + Super 8mm",
-        excerpt: "the rain held off just long enough. a study in quiet moments, heavy tears, and a timeline that we eventually just threw out the window.",
-        videoId: "q2Qw5G4M0Lc", 
-    },
-    {
-        id: "041",
-        slug: "melanie-kevin-graydon",
-        title: "melanie & kevin",
-        location: "Graydon Hall Manor",
-        date: "Sep. 28, 2025",
-        format: "Digital",
-        excerpt: "european architecture dropped into the heart of the city. the clear tent reception felt like a greenhouse as the evening set in.",
-        videoId: "GHhmsEs_8x8",
-    },
-    {
-        id: "040",
-        slug: "olivia-max-paletta",
-        title: "olivia & max",
-        location: "Paletta Mansion",
-        date: "Sep. 14, 2025",
-        format: "Hybrid + Physical",
-        excerpt: "lake winds and untamed energy. we spent most of the afternoon wandering the estate grounds letting the dresses blow out.",
-        videoId: "kXRULOzL9AQ",
-    },
-    {
-        id: "039",
-        slug: "the-analog-process",
-        title: "why super 8mm?",
-        location: "The Studio",
-        date: "Aug. 02, 2025",
-        format: "Editorial / Notes",
-        excerpt: "thoughts on why the imperfections, light leaks, and raw grain of true kodak film stock will always carry more weight than a digital sensor.",
-        videoId: "Ozy1MUKZZR4", 
-    }
-];
-
 export default function JournalPage() {
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 overflow-hidden relative">
@@ -76,7 +32,7 @@ export default function JournalPage() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 
-{/* 01. The Header (Compressed Ledger Style) */}
+                {/* 01. The Header (Compressed Ledger Style) */}
                 <motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -136,7 +92,6 @@ export default function JournalPage() {
 
                             {/* The Museum Label (Data Compartment) */}
                             <div className="flex flex-col flex-grow justify-between">
-                                
                                 <div>
                                     {/* The Soul (Title) & Fig Marker */}
                                     <div className="flex justify-between items-start mb-6">
