@@ -45,7 +45,7 @@ export const journalEntries: JournalEntry[] = [
             { name: "Your Wedding Officiant", role: "Officiant", url: "https://yourweddingofficiant.ca/" },
             { name: "Elora Mill Hotel & Spa", role: "Venue", url: "https://eloramill.ca/" }
         ]
-    }
+    },
     {
         id: "042",
         slug: "kristen-frankie-spencers",
