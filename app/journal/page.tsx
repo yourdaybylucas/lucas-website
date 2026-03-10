@@ -76,32 +76,21 @@ export default function JournalPage() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 
-                {/* 01. The Header (Ledger Style) */}
+{/* 01. The Header (Compressed Ledger Style) */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 border-b border-lucas-navy/20 pb-8 gap-8"
+                    className="flex justify-between items-end border-b-2 border-lucas-navy pb-4 mb-12 md:mb-16"
                 >
-                    <div className="flex flex-col">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="w-2 h-2 bg-lucas-orange rounded-none"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                [ The Archive ]
-                            </span>
-                        </div>
-                        <h1 className="font-sans text-5xl md:text-7xl font-bold uppercase tracking-tight text-lucas-navy leading-none">
-                            Field Notes
-                        </h1>
+                    <div className="flex items-center gap-4 font-sans text-[10px] md:text-xs tracking-zissou uppercase text-lucas-navy font-bold">
+                        <span className="w-2 h-2 bg-lucas-orange flex-shrink-0 animate-pulse"></span>
+                        <span>[ The Archive ]</span>
                     </div>
                     
-                    <div className="flex flex-col items-start md:items-end text-left md:text-right gap-2">
-                        <p className="font-serif italic text-xl md:text-2xl text-lucas-navy/80 lowercase">
-                            observations, films, and quiet moments.
-                        </p>
-                        <p className="font-sans text-[9px] tracking-widest uppercase text-lucas-slate">
-                            Document Ref // LC-JRNL-01
-                        </p>
+                    <div className="flex flex-col items-end text-right font-sans text-[8px] md:text-[9px] tracking-widest uppercase text-lucas-slate">
+                        <span>Doc Ref // LC-JRNL-01</span>
+                        <span className="mt-1">Inventory Count: {journalEntries.length}</span>
                     </div>
                 </motion.div>
 
