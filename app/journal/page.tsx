@@ -23,7 +23,7 @@ const fadeUpItem = {
     }
 };
 
-// Mock Inventory Data (Wired with YouTube IDs for the reference prints)
+// Mock Inventory Data (Strict Gallery Layout)
 const journalEntries = [
     {
         id: "042",
@@ -33,9 +33,7 @@ const journalEntries = [
         date: "Oct. 12, 2025",
         format: "Digital + Super 8mm",
         excerpt: "the rain held off just long enough. a study in quiet moments, heavy tears, and a timeline that we eventually just threw out the window.",
-        image: "/images/about/about_3.jpg", 
         videoId: "q2Qw5G4M0Lc", 
-        featured: true,
     },
     {
         id: "041",
@@ -45,9 +43,7 @@ const journalEntries = [
         date: "Sep. 28, 2025",
         format: "Digital",
         excerpt: "european architecture dropped into the heart of the city. the clear tent reception felt like a greenhouse as the evening set in.",
-        image: "/images/about/about_5.jpg",
         videoId: "GHhmsEs_8x8",
-        featured: false,
     },
     {
         id: "040",
@@ -57,9 +53,7 @@ const journalEntries = [
         date: "Sep. 14, 2025",
         format: "Hybrid + Physical",
         excerpt: "lake winds and untamed energy. we spent most of the afternoon wandering the estate grounds letting the dresses blow out.",
-        image: "/images/about/about_6.jpg",
         videoId: "kXRULOzL9AQ",
-        featured: false,
     },
     {
         id: "039",
@@ -69,9 +63,7 @@ const journalEntries = [
         date: "Aug. 02, 2025",
         format: "Editorial / Notes",
         excerpt: "thoughts on why the imperfections, light leaks, and raw grain of true kodak film stock will always carry more weight than a digital sensor.",
-        image: "/images/about/about_2.jpg",
         videoId: "Ozy1MUKZZR4", 
-        featured: false,
     }
 ];
 
@@ -113,35 +105,36 @@ export default function JournalPage() {
                     </div>
                 </motion.div>
 
-                {/* 02. The Inventory Grid */}
+                {/* 02. The High-End Gallery Grid */}
                 <motion.div 
                     variants={fadeUpContainer}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-lucas-navy/15 bg-lucas-cream shadow-2xl"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-lucas-navy/15 bg-lucas-slate shadow-2xl"
                 >
                     {journalEntries.map((post) => (
                         <motion.article 
                             key={post.id}
                             variants={fadeUpItem}
-                            className={`group relative flex flex-col border-r border-b border-lucas-navy/15 bg-lucas-cream hover:bg-[#EAE4D3] transition-colors duration-700 overflow-hidden ${post.featured ? 'md:col-span-2 md:flex-row' : ''}`}
+                            className="group relative flex flex-col border-r border-b border-lucas-navy/15 bg-lucas-cream hover:bg-[#EAE4D3] transition-colors duration-700 p-6 md:p-8 lg:p-10 overflow-hidden"
                         >
                             {/* Top Orange Interaction Line */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-30"></div>
 
-                            {/* Image Compartment */}
-                            <Link href={`/journal/${post.slug}`} className={`relative bg-lucas-navy/5 overflow-hidden block ${post.featured ? 'w-full md:w-3/5 aspect-[4/3] md:aspect-auto md:min-h-[500px]' : 'w-full aspect-[4/3] md:aspect-[4/3]'}`}>
+                            {/* The Film Slide (YouTube Thumbnail Hero) */}
+                            <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
-                                    src={post.image} 
+                                    src={`https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`}
                                     alt={post.title}
                                     fill
-                                    className="object-cover grayscale-[30%] contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1200ms] ease-out z-0"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    className="object-cover grayscale contrast-110 brightness-90 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[1200ms] ease-out z-0"
                                 />
                                 
                                 {/* Structural Viewfinder Overlay */}
                                 <div className="absolute inset-0 pointer-events-none z-10 p-4 opacity-50 group-hover:opacity-100 transition-opacity duration-700">
-                                    <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-lucas-cream/70"></div>
-                                    <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-lucas-cream/70"></div>
+                                    <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-lucas-cream/70"></div>
+                                    <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-lucas-cream/70"></div>
                                 </div>
 
                                 {/* Hover Badge */}
@@ -152,58 +145,49 @@ export default function JournalPage() {
                                 </div>
                             </Link>
 
-                            {/* Data Compartment */}
-                            <div className={`flex flex-col flex-grow justify-between p-6 md:p-8 lg:p-10 ${post.featured ? 'w-full md:w-2/5' : 'w-full'}`}>
+                            {/* The Museum Label (Data Compartment) */}
+                            <div className="flex flex-col flex-grow justify-between">
                                 
                                 <div>
-                                    {/* Meta Header with Reference Print Stamp */}
-                                    <div className="flex justify-between items-start mb-8 border-b border-lucas-navy/10 pb-4">
-                                        <div className="flex flex-col gap-1">
-                                            <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase font-bold">
-                                                {post.date}
-                                            </span>
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                                [ {post.location} ]
-                                            </span>
-                                            <span className="font-sans text-[8px] tracking-widest text-lucas-navy/40 uppercase mt-2">
-                                                Fig. {post.id}
-                                            </span>
+                                    {/* The Soul (Title) & Fig Marker */}
+                                    <div className="flex justify-between items-start mb-6">
+                                        <Link href={`/journal/${post.slug}`}>
+                                            <h2 className="font-serif text-[clamp(1.75rem,2vw,2.5rem)] text-lucas-navy italic lowercase leading-[1.1] group-hover:text-lucas-orange transition-colors duration-500 pr-4">
+                                                {post.title}
+                                            </h2>
+                                        </Link>
+                                        <span className="font-sans text-[8px] tracking-widest text-lucas-slate uppercase border border-lucas-navy/10 px-2 py-1 bg-lucas-navy/5 shrink-0 mt-1">
+                                            Fig. {post.id}
+                                        </span>
+                                    </div>
+
+                                    {/* The Structure ("Small Letters" Metadata Ledger) */}
+                                    <div className="flex flex-col gap-3 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase text-lucas-slate border-t border-lucas-navy/10 pt-5 mb-6">
+                                        <div className="flex justify-between items-start">
+                                            <span className="w-20 shrink-0">Venue //</span>
+                                            <span className="text-right text-lucas-navy">{post.location}</span>
                                         </div>
-                                        
-                                        {/* The B&W Thumbnail Stamp */}
-                                        <div className="relative w-16 h-16 md:w-20 md:h-14 border border-lucas-navy/10 bg-lucas-navy/5 p-1 flex-shrink-0 group-hover:border-lucas-orange/40 transition-colors duration-700">
-                                            <Image 
-                                                src={`https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`}
-                                                alt={`Reference frame for ${post.title}`}
-                                                fill
-                                                sizes="80px"
-                                                className="object-cover grayscale contrast-125 brightness-90 mix-blend-multiply opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700"
-                                            />
-                                            {/* subtle crosshairs */}
-                                            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-lucas-navy/30"></div>
-                                            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-lucas-navy/30"></div>
+                                        <div className="flex justify-between items-start">
+                                            <span className="w-20 shrink-0">Date //</span>
+                                            <span className="text-right text-lucas-orange">{post.date}</span>
+                                        </div>
+                                        <div className="flex justify-between items-start">
+                                            <span className="w-20 shrink-0">Format //</span>
+                                            <span className="text-right text-lucas-navy">{post.format}</span>
                                         </div>
                                     </div>
 
-                                    {/* Title (The Soul) */}
-                                    <Link href={`/journal/${post.slug}`}>
-                                        <h2 className="font-serif text-[clamp(2rem,3vw,3rem)] text-lucas-navy italic lowercase leading-[1.1] mb-6 group-hover:text-lucas-orange transition-colors duration-500">
-                                            {post.title}
-                                        </h2>
-                                    </Link>
-
                                     {/* Narrative Excerpt */}
-                                    <p className="font-serif text-lg text-lucas-navy/80 leading-relaxed lowercase">
+                                    <p className="font-serif text-base text-lucas-navy/80 leading-relaxed lowercase">
                                         {post.excerpt}
                                     </p>
                                 </div>
 
                                 {/* Bottom Anchor */}
-                                <div className="mt-12 flex items-center justify-between pt-4 border-t border-lucas-navy/10">
-                                    <div className="flex items-center gap-3">
-                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
-                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-navy">{post.format}</span>
-                                    </div>
+                                <div className="mt-10 pt-4 border-t border-lucas-navy/10 flex items-center justify-between">
+                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">
+                                        End of entry
+                                    </span>
                                     <Link href={`/journal/${post.slug}`} className="text-lucas-slate group-hover:text-lucas-orange transform group-hover:translate-x-1 transition-all duration-300">
                                         <ArrowRight size={16} strokeWidth={1.5} />
                                     </Link>
