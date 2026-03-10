@@ -56,7 +56,7 @@ export default function CollectionsPage() {
                         </h3>
                         <div className="h-px bg-lucas-navy/20 flex-grow"></div>
                         <p className="font-serif text-sm text-lucas-slate italic pr-2">
-                            included in every commission
+                            included in every collection
                         </p>
                     </div>
 
