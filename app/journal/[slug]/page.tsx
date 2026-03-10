@@ -1,36 +1,32 @@
+// app/journal/[slug]/page.tsx
 "use client";
 
+import { use } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-// eventually, we will pull this from a central data file or CMS. 
-// for now, we mock the specific post data.
-import { use } from "react";
+import { notFound } from "next/navigation";
+import { journalEntries } from "@/data/journal";
 
 export default function JournalPostPage({ params }: { params: Promise<{ slug: string }> }) {
-    // next.js 15 requires unwrapping the params promise
+    // next.js 15 dynamic routing requirement
     const resolvedParams = use(params);
     const slug = resolvedParams.slug;
 
-    // mock data fetch based on slug
-    const post = {
-        id: "042",
-        title: "kristen & frankie",
-        location: "Spencer's at the Waterfront",
-        date: "Oct. 12, 2025",
-        format: "Digital + Super 8mm",
-        stock: "Kodak Vision3 500T",
-        videoId: "q2Qw5G4M0Lc",
-        fieldNotes: [
-            "the rain held off just long enough. a study in quiet moments, heavy tears, and a timeline that we eventually just threw out the window.",
-            "they entirely abandoned the traditional shot list. instead, we spent the afternoon just wandering the grounds, letting the lake winds dictate the movement of the dresses and the hair. it felt unforced, grounded, and entirely like them.",
-            "the super 8mm frames from the evening reception are some of my favourites. the raw grain handles the low light of the glass pavilion beautifully."
-        ]
-    };
+    // reach into the ledger and find the matching film
+    const post = journalEntries.find(entry => entry.slug === slug);
+
+    if (!post) {
+        notFound();
+    }
 
     return (
-        <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12">
-            <div className="max-w-6xl mx-auto">
+        <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 relative overflow-hidden">
+            
+            {/* Global Texture */}
+            <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
+
+            <div className="max-w-6xl mx-auto relative z-10">
                 
                 {/* 01. The Navigation / Back Anchor */}
                 <motion.div 
@@ -58,7 +54,7 @@ export default function JournalPostPage({ params }: { params: Promise<{ slug: st
                         <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-4">
                             Record // {post.id}
                         </span>
-                        <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] text-lucas-navy italic lowercase leading-none">
+                        <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] text-lucas-navy italic lowercase leading-[1.1] md:leading-none max-w-2xl">
                             {post.title}
                         </h1>
                     </div>
@@ -119,7 +115,7 @@ export default function JournalPostPage({ params }: { params: Promise<{ slug: st
                             </h3>
                         </div>
                         
-                        <div className="flex flex-col gap-6 font-serif text-[clamp(1.125rem,1.5vw,1.25rem)] text-lucas-navy/90 leading-[1.8] lowercase">
+                        <div className="flex flex-col gap-6 font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy/90 leading-[1.8] lowercase">
                             {post.fieldNotes.map((paragraph, idx) => (
                                 <p key={idx}>{paragraph}</p>
                             ))}
