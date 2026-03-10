@@ -5,6 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+// The Fade Configurations (Only defined once, with TypeScript tuple fix)
+const fadeUpContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+    }
+};
+
 const fadeUpItem = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -12,11 +21,6 @@ const fadeUpItem = {
         y: 0, 
         transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
     }
-};
-
-const fadeUpItem = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
 // Mock Inventory Data (Replace with your CMS later)
@@ -80,7 +84,7 @@ export default function JournalPage() {
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
                     className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 border-b border-lucas-navy/20 pb-8 gap-8"
                 >
                     <div className="flex flex-col">
