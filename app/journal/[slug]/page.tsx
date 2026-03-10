@@ -1,129 +1,70 @@
 // app/journal/[slug]/page.tsx
-"use client";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { journalEntries } from '@/data/journal';
+import JournalPostClient from './journal-post-client';
 
-import { use } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { notFound } from "next/navigation";
-import { journalEntries } from "@/data/journal";
+type Props = {
+    params: Promise<{ slug: string }>
+}
 
-export default function JournalPostPage({ params }: { params: Promise<{ slug: string }> }) {
-    // next.js 15 dynamic routing requirement
-    const resolvedParams = use(params);
-    const slug = resolvedParams.slug;
+// 1. DYNAMIC SEO METADATA
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const resolvedParams = await params;
+    const post = journalEntries.find(p => p.slug === resolvedParams.slug);
 
-    // reach into the ledger and find the matching film
-    const post = journalEntries.find(entry => entry.slug === slug);
+    if (!post) {
+        return { title: 'Record Not Found // LUCAS' };
+    }
+
+    // prioritizing the venue in the title for google search ranking
+    return {
+        title: `${post.location.toUpperCase()} WEDDING FILM // ${post.title.toUpperCase()} : LUCAS`,
+        description: `honest, nostalgic wedding cinema for ${post.title} at ${post.location}. shot on ${post.format}. ${post.excerpt}`,
+        openGraph: {
+            title: `${post.location} Wedding Film // LUCAS`,
+            description: post.excerpt,
+            url: `https://www.yourdaybylucas.com/journal/${post.slug}`,
+            images: [`https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`],
+        }
+    }
+}
+
+export default async function JournalPostPage({ params }: Props) {
+    const resolvedParams = await params;
+    const post = journalEntries.find(p => p.slug === resolvedParams.slug);
 
     if (!post) {
         notFound();
     }
 
+    // 2. JSON-LD SCHEMA (Tells Google this is a video shot at a specific physical place)
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        'name': `${post.title} - ${post.location} Wedding Film`,
+        'description': post.excerpt,
+        'thumbnailUrl': `https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`,
+        'uploadDate': new Date(post.date).toISOString(),
+        'embedUrl': `https://www.youtube.com/embed/${post.videoId}`,
+        'locationCreated': {
+            '@type': 'Place',
+            'name': post.location
+        },
+        'author': {
+            '@type': 'Person',
+            'name': 'Lucas Bulger'
+        }
+    };
+
     return (
-        <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 relative overflow-hidden">
-            
-            {/* Global Texture */}
-            <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
-
-            <div className="max-w-6xl mx-auto relative z-10">
-                
-                {/* 01. The Navigation / Back Anchor */}
-                <motion.div 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-12"
-                >
-                    <Link href="/journal" className="inline-flex items-center gap-3 text-lucas-slate hover:text-lucas-orange transition-colors duration-300 group">
-                        <ArrowLeft size={14} className="transform group-hover:-translate-x-1 transition-transform duration-300" />
-                        <span className="font-sans text-[10px] tracking-zissou uppercase">
-                            [ Return to Archive ]
-                        </span>
-                    </Link>
-                </motion.div>
-
-                {/* 02. The Header Ledger */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-lucas-navy/20 pb-8 mb-12 gap-8"
-                >
-                    <div className="flex flex-col">
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-4">
-                            Record // {post.id}
-                        </span>
-                        <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] text-lucas-navy italic lowercase leading-[1.1] md:leading-none max-w-2xl">
-                            {post.title}
-                        </h1>
-                    </div>
-                    
-                    <div className="flex flex-col items-start md:items-end gap-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy">
-                        <span className="text-lucas-orange">{post.date}</span>
-                        <span>{post.location}</span>
-                    </div>
-                </motion.div>
-
-                {/* 03. The Main Screen (Video Embed) */}
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full aspect-video bg-[#0a1118] shadow-2xl mb-16 lg:mb-24 border border-lucas-navy/10 relative z-10"
-                >
-                    <iframe
-                        src={`https://www.youtube.com/embed/${post.videoId}?autoplay=0&color=white&rel=0&modestbranding=1&playsinline=1`}
-                        title={post.title}
-                        className="w-full h-full absolute top-0 left-0 border-none"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                </motion.div>
-
-                {/* 04. The Data & Field Notes */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
-                    
-                    {/* Left Column: Tech Specs */}
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="md:col-span-4 flex flex-col gap-6 font-sans text-[10px] tracking-widest uppercase border-t md:border-t-0 md:border-l border-lucas-navy/20 pt-8 md:pt-0 md:pl-8"
-                    >
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lucas-slate">Format //</span>
-                            <span className="text-lucas-navy">{post.format}</span>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <span className="text-lucas-slate">Film Stock //</span>
-                            <span className="text-lucas-navy">{post.stock}</span>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Column: The Story */}
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="md:col-span-8"
-                    >
-                        <div className="flex items-center gap-3 mb-8">
-                            <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
-                            <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                                Field Notes
-                            </h3>
-                        </div>
-                        
-                        <div className="flex flex-col gap-6 font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy/90 leading-[1.8] lowercase">
-                            {post.fieldNotes.map((paragraph, idx) => (
-                                <p key={idx}>{paragraph}</p>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                </div>
-            </div>
-        </main>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            {/* pass the data down to the animated client file */}
+            <JournalPostClient post={post} />
+        </>
     );
 }
