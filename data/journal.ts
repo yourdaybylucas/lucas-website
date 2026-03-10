@@ -38,11 +38,11 @@ export const journalEntries: JournalEntry[] = [
         ],
         vendors: [
             { name: "Clement & Co Events", role: "Planner", url: "https://www.clementandcoevents.com/" },
-            { name: "Chris Copeland", role: "Photography", url: "https://chriscopelandphotography.com/" },
-            { name: "White Oak Flower Co.", role: "Florals", url: "https://www.whiteoakflowerco.com/" },
+            { name: "Chris Copeland", role: "Photography", url: "https://chriscopelandphotography.co.uk/" },
+            { name: "White Oak Flower Co.", role: "Florals", url: "https://www.whiteoakflower.co/" },
             { name: "Simply Beautiful Decor", role: "Decor", url: "https://simplybeautifuldecor.ca/" },
             { name: "Pink Peony Press", role: "Stationery", url: "https://pinkpeonypress.com/" },
-            { name: "Your Wedding Officiant", role: "Officiant", url: "https://yourweddingofficiant.ca/" },
+            { name: "Your Wedding Officiant", role: "Officiant", url: "https://www.yourweddingofficiant.ca/" },
             { name: "Elora Mill Hotel & Spa", role: "Venue", url: "https://eloramill.ca/" }
         ]
     },
