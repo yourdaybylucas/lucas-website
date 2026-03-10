@@ -1,5 +1,11 @@
 // data/journal.ts
 
+export interface Vendor {
+    name: string;
+    role: string;
+    url: string;
+}
+
 export interface JournalEntry {
     id: string;
     slug: string;
@@ -11,6 +17,7 @@ export interface JournalEntry {
     excerpt: string;
     videoId: string;
     fieldNotes: string[];
+    vendors?: Vendor[];
 }
 
 export const journalEntries: JournalEntry[] = [
@@ -38,12 +45,19 @@ export const journalEntries: JournalEntry[] = [
         date: "Sep. 28, 2025",
         format: "Digital",
         stock: "Sensor Only",
-        excerpt: "european architecture dropped into the heart of the city. the clear tent reception felt like a greenhouse as the evening set in.",
+        excerpt: "twelve years in the making. a story that started at a penny press machine on a high school trip, brought to life under the stone terraces of graydon hall.",
         videoId: "GHhmsEs_8x8",
         fieldNotes: [
-            "european architecture dropped into the heart of the city. the clear tent reception felt like a greenhouse as the evening set in.",
-            "we focused heavily on the ambient audio during the outdoor cocktail hour. the string quartet echoing off the stone walls added a massive amount of weight to the final edit.",
-            "no directed portraits were necessary; the environment did all the heavy lifting."
+            "twelve years in the making. it started at a penny press machine during a high school trip to an aquarium in philadelphia, and ended up here, exchanging promises in the gardens of graydon hall manor.",
+            "they are the rare and beautiful story of high school sweethearts who actually made it. growing up alongside each other, their love transitioned from a sweet, shy crush to something deeply rooted and genuine.",
+            "the space feels like a european villa dropped directly into toronto. the stone terrace bounced the natural light beautifully, and working alongside emily mickelson and the team at forever wildfield kept the entire day feeling effortless and grounded.",
+            "i didn't need to orchestrate a single moment. their connection genuinely feels like a honeymoon phase that never ends. i just stayed close, paid attention, and collected the honest frames."
+        ],
+        vendors: [
+            { name: "Graydon Hall Manor", role: "Venue", url: "https://www.graydonhall.com/" },
+            { name: "Emily Mickelson", role: "Photography", url: "https://www.emilymickelson.com/" },
+            { name: "Forever Wildfield", role: "Florals", url: "https://foreverwildfield.com/" },
+            { name: "Your Day by Lucas", role: "Videography", url: "https://www.yourdaybylucas.com/" }
         ]
     },
     {
