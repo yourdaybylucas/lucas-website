@@ -1,3 +1,4 @@
+// app/journal/[slug]/journal-post-client.tsx
 "use client";
 
 import { motion } from "framer-motion";
