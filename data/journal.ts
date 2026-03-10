@@ -22,6 +22,31 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "043", // adjust to the next sequential number in your inventory
+        slug: "megan-mike-elora-mill",
+        title: "megan & mike",
+        location: "Elora Mill",
+        date: "Feb. 16, 2025",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a massive winter storm and a pivot from an ireland destination. an incredibly grounded day anchored by heavy, honest vows.",
+        videoId: "CYWJBr73jrk", 
+        fieldNotes: [
+            "they originally planned an ireland destination, but pivoted to elora to ensure family could be present. a massive winter storm rolled in that morning, completely isolating the mill and giving the room a quiet, intentional weight.",
+            "for a couple that spends their time ice climbing and trekking through colombia, the day itself was remarkably still. no rushing, no heavy timelines. just candle-lit spaces and a focus on the people who braved the drive.",
+            "the spoken words carried the entire film. 'you're home to me.' i didn't need to manufacture a single moment. i just kept the lav mics tight to cut through the ambient roar of the gorge outside, stayed close, and collected the honest frames."
+        ],
+        vendors: [
+            { name: "Clement & Co Events", role: "Planner", url: "https://www.clementandcoevents.com/" },
+            { name: "Chris Copeland", role: "Photography", url: "https://chriscopelandphotography.com/" },
+            { name: "White Oak Flower Co.", role: "Florals", url: "https://www.whiteoakflowerco.com/" },
+            { name: "Simply Beautiful Decor", role: "Decor", url: "https://simplybeautifuldecor.ca/" },
+            { name: "Pink Peony Press", role: "Stationery", url: "https://pinkpeonypress.com/" },
+            { name: "Your Wedding Officiant", role: "Officiant", url: "https://yourweddingofficiant.ca/" },
+            { name: "Elora Mill Hotel & Spa", role: "Venue", url: "https://eloramill.ca/" }
+        ]
+    }
+    {
         id: "042",
         slug: "kristen-frankie-spencers",
         title: "kristen & frankie",
