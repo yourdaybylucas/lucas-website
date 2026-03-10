@@ -215,7 +215,7 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
 
                     <aside className="lg:col-span-3 lg:sticky lg:top-32">
                         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">The Ledger</h1>
-                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of honest spaces.</p>
+                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of ontarios best.</p>
 
                         <FilterSection
                             title="Geography"
