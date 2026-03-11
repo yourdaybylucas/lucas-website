@@ -303,15 +303,14 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* 03. THE METHODOLOGY (The Ledger) */}
-            <section className="relative bg-lucas-sage py-24 md:py-32 px-6 border-t border-lucas-navy overflow-hidden">
-                {/* physical texture layer */}
+          {/* 03. THE METHODOLOGY (The Ledger) */}
+            <section className="relative z-10 bg-lucas-cream py-24 md:py-32 px-6 md:px-12 border-t border-lucas-slate/20">
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
-
-                <div className="relative z-10 max-w-6xl mx-auto flex flex-col">
+                
+                <div className="max-w-6xl mx-auto relative z-10">
                     
                     {/* The Zissou Compressed Header */}
-                    <div className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-6 gap-4">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b-2 border-lucas-navy pb-6">
                         <div>
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
@@ -319,24 +318,23 @@ export default function AboutPage() {
                                     [ System Process ]
                                 </span>
                             </div>
-                            <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-none tracking-tight">
-                                The Methodology.
+                            <h2 className="text-lucas-navy font-sans font-bold text-4xl md:text-5xl uppercase tracking-tight">
+                                How I Work.
                             </h2>
                         </div>
                         <div className="flex flex-col md:items-end text-left md:text-right">
-                            <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-navy/70">Document Ref //</span>
+                            <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
                             <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy font-bold">LC-MTHD-01</span>
                         </div>
                     </div>
 
-                    {/* The Strict Grid Ledger */}
-                    <motion.div
+                    {/* The Field Notes Horizontal Scroll */}
+                    <motion.div 
+                        variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
-                        variants={staggerContainer}
-                        /* gap-px with a navy background creates perfect 1px structural borders between items */
-                        className="grid grid-cols-1 md:grid-cols-2 bg-lucas-navy gap-px border border-lucas-navy shadow-2xl"
+                        className="flex overflow-x-auto border-l border-t border-lucas-navy/20 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                     >
                         {[
                             {
@@ -360,32 +358,28 @@ export default function AboutPage() {
                                 desc: "i strictly limit the number of commissions i take. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus.",
                             },
                         ].map((item, idx) => (
-                            <motion.div
-                                key={idx}
+                            <motion.div 
+                                key={idx} 
                                 variants={fadeUp}
-                                className="group relative bg-lucas-sage hover:bg-lucas-cream transition-colors duration-slow flex flex-col p-8 md:p-12 min-h-[320px] justify-between z-10"
+                                className="flex-none w-[85vw] md:w-[400px] group border-r border-b border-lucas-navy/20 p-8 md:p-10 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[320px] snap-start bg-lucas-cream"
                             >
-                                {/* Top Meta / Indexing */}
-                                <div className="flex justify-between items-start mb-12">
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-navy font-bold uppercase px-2 py-1 border border-lucas-navy/30 group-hover:border-lucas-orange group-hover:text-lucas-orange transition-colors duration-slow">
-                                        Fig. {item.num}
+                                <div className="flex justify-between items-start mb-8">
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
+                                            {item.title}
+                                        </span>
+                                        <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
+                                            [ Principle ]
+                                        </span>
+                                    </div>
+                                    <span className="text-lucas-slate font-sans text-xs group-hover:text-lucas-navy transition-colors duration-500">
+                                        {item.num}
                                     </span>
-                                    {/* Geometric detail */}
-                                    <div className="w-2.5 h-2.5 border border-lucas-navy/40 group-hover:bg-lucas-orange group-hover:border-lucas-orange transition-all duration-slow"></div>
                                 </div>
 
-                                {/* The Soul (Content) */}
-                                <div>
-                                    <h3 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold text-lucas-navy mb-4 group-hover:translate-x-2 transition-transform duration-slow flex items-center gap-4">
-                                        {item.title}
-                                        <span className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-slow text-lucas-orange text-xl">
-                                            ↗
-                                        </span>
-                                    </h3>
-                                    <p className="font-serif text-[clamp(1.125rem,1.4vw,1.35rem)] text-lucas-navy lowercase leading-relaxed italic pr-4">
-                                        {item.desc}
-                                    </p>
-                                </div>
+                                <p className="font-serif text-[1.15rem] md:text-[1.25rem] leading-[1.6] text-lucas-navy italic lowercase pr-4">
+                                    {item.desc}
+                                </p>
                             </motion.div>
                         ))}
                     </motion.div>
