@@ -22,6 +22,30 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "044",
+        slug: "alex-parm-elle-by-stella",
+        title: "alex & parm",
+        location: "Elle by Stella",
+        date: "Mon. DD, YYYY", // Don't forget to update this!
+        format: "Digital + Super 8mm",
+        stock: "Kodak Vision3 200T",
+        excerpt: "the beautiful second chapter of parminder and alex's wedding celebrations, highlighted by a heartfelt western ceremony at elle by stella.",
+        videoId: "kvLEmAzg5kQ",
+        fieldNotes: [
+            "this was 'round two' for parminder and alex. having filmed their energetic indian wedding just four weeks prior, it was incredibly special to capture this elegant western ceremony and tell their story holistically.",
+            "their first look was pure magic—alex’s reaction perfectly set the tone for an incredibly emotional, genuine day.",
+            "the speeches perfectly encapsulated their seven-year journey, highlighting the quiet, everyday ways they show up for each other with patience, forgiveness, and unconditional support."
+        ],
+        vendors: [
+            { name: "Elle by Stella", role: "Venue", url: "https://www.ellebystella.ca/" },
+            { name: "Your Day By Lucas", role: "Videography", url: "https://www.yourdaybylucas.com/" },
+            { name: "Bryn's Photography", role: "Photography", url: "https://www.brynsphotography.com/" },
+            { name: "Plan It Right Events", role: "Planning", url: "https://planitrightevents.ca/" },
+            { name: "De Reves Studio", role: "Decor/Florals", url: "https://www.derevesstudio.com/" },
+            { name: "Nitro Music", role: "DJ", url: "https://www.instagram.com/nitromusicpro/?hl=en" }
+        ]
+    },
+    {
         id: "043", // adjust to the next sequential number in your inventory
         slug: "megan-mike-elora-mill",
         title: "megan & mike",
