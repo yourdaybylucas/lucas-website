@@ -14,7 +14,7 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.3 }}
-        className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm h-full"
+        className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm min-h-full"
     >
         <div className="mb-8">
             <h2 className="uppercase tracking-[0.2em] font-bold text-2xl md:text-3xl leading-tight">
@@ -61,10 +61,9 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
             </div>
         </div>
 
-<div className="bg-lucas-sage/10 p-6 md:p-8 border-l-2 border-lucas-orange mt-auto">
+        <div className="bg-lucas-sage/10 p-6 md:p-8 border-l-2 border-lucas-orange mt-auto">
             <h4 className="uppercase tracking-zissou text-[10px] text-lucas-slate mb-3">Field Observation</h4>
             <p className="prose-soul text-lucas-navy leading-loose text-base md:text-lg">
-                {/* swap technicalNote to fieldNotes right here */}
                 {venue.fieldNotes}
             </p>
         </div>
@@ -310,7 +309,7 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
                         </div>
                     </section>
 
-                    <section className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32">
+                    <section className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32 h-[calc(100vh-10rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                         <AnimatePresence mode="wait">
                             {activeVenue ? (
                                 <DossierCard venue={activeVenue} />
