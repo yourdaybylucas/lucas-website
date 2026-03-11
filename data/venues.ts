@@ -170,7 +170,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'a total masterclass in curation. every room features a distinct, matte primary color that gives the footage an immediate editorial feel. use direct flash or continuous light to make the subjects pop effortlessly against the bold backdrops.',
+    fieldNotes: 'a total masterclass in curation, and easily one of my personal favourite venues. every room has its own distinct matte colour palette, giving the footage an immediate editorial feel, and the new reception space is just as stunning. direct flash or continuous light works especially well here, letting people pop effortlessly against the bold backdrops.',
     visualEmbed: 'f3L54oek57o',
   },
   {
@@ -184,7 +184,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'the white chapel is wonderfully intimate. throw on a 24mm or 16mm lens to really emphasize the cozy scale of the room. the nearby creek is a beautiful spot to wander for afternoon frames before the evening settles in.',
+    fieldNotes: 'a bit of a hidden gem, with beautiful gardens and a chapel that give the whole place a quiet, intimate feel. it has a lot of charm without feeling overdone, and the grounds photograph beautifully throughout the day.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -192,13 +192,13 @@ export const venues: Venue[] = [
     name: 'Hotel X',
     location: 'Toronto',
     geography: 'gta',
-    scale: 'grand',
+    scale: 'standard',
     atmosphere: 'modern minimal',
     footprint: 'shared estate',
     prep: 'on-site suites available',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    fieldNotes: 'the rooftop gives you sweeping, structural views of the toronto skyline. down below, the basement screening room is a hidden gem—absolute darkness and pinpoint spotlights make for incredibly moody, high-contrast prep frames.',
+    fieldNotes: 'the rooftop gives you sweeping, structural views of the toronto skyline. the all-glass room really comes alive in the evening, when the light starts coming up from the floor and gives the space a really unique look. one tradeoff is that it can be a bit echoey during speeches.',
     visualEmbed: 'cfAuSM9PdQk',
   },
   {
@@ -212,7 +212,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '2 am extension available',
-    fieldNotes: 'the lincoln room’s deep green accents and east-facing windows are perfect for catching that soft, early morning light. the rooftop access gives a great urban vantage point—just factor a little extra time to hang out by the elevator.',
+    fieldNotes: 'more than anything, broadview feels like a vibe. exposed brick, skyline views, and all the character of an old toronto building give it that perfect mix of moody, stylish, and lived-in. can enjoy your ceremony + reception outdoors and take advantage of the beautiful terrace for cocktail hour.',
     visualEmbed: 'KpQA_JqfBsQ',
   },
   {
@@ -220,13 +220,13 @@ export const venues: Venue[] = [
     name: 'Spencer’s Waterfront',
     location: 'Burlington',
     geography: 'gta',
-    scale: 'standard',
+    scale: 'intimate',
     atmosphere: 'modern minimal',
     footprint: 'shared estate',
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '1 am extension available',
-    fieldNotes: 'the glass pavilion lets the natural environment pour in, giving you that bright, high-contrast summer energy. step out to the observatory deck for a flawless, unobstructed horizon line for wide sunset frames.',
+    fieldNotes: 'a modern glass space right on the water that feels especially good once everyone’s gathered in close. the light pours in all day, and by evening the room takes on a really beautiful glow without losing that clean, open feel.',
     visualEmbed: 'q2Qw5G4M0Lc',
   },
   {
@@ -240,7 +240,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '11 pm hard stop',
-    fieldNotes: 'getting there by ferry forces you to slow down and pack exactly what you need. the southern porch features repeating column shadows that are absolutely perfect for a slow, structural super 8mm tracking shot.',
+    fieldNotes: 'a waterfront venue that feels like a quiet escape from the city, even with the skyline right in front of you. between the boat access, harbour views, and classic clubhouse feel, it gives the day something that feels both relaxed and distinctly toronto.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -254,7 +254,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'the a-frame architecture is brilliant—it channels sound so well that you can notice quiet whispers from across the room. the dense tree cover brings twilight in early, giving you a head start on that moody evening energy.',
+    fieldNotes: 'a European-inspired venue with a soft, refined feel and plenty of variety throughout the day. from the courtyard to the riverside, it gives you multiple ceremony options without losing that intimate, tucked-away atmosphere.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -268,7 +268,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'the gracewood estate has a beautiful, earthy texture to it in late summer. the orchard rows create perfect, one-point perspective leading lines—ideal for letting you both just walk and be present in the frame.',
+    fieldNotes: 'the gracewood estate is heavily desired for a reason. the combo of the ceremony space by the oak tree, cocktail hour infront of the estate, and open air reception (with a tented rain plan) is truly unmatched. oh - and the garden is perfect for portaits.',
     visualEmbed: 'yg9QuK4-Jys',
   },
   {
@@ -282,7 +282,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    fieldNotes: 'a stark white cyclorama that acts as a perfect blank canvas. with no architecture in the way, the focus is entirely on the people. a brilliant space to embrace hard cuts, direct flash, and a highly editorial vibe.',
+    fieldNotes: 'a stark white cyclorama that feels like a true blank canvas. with no architecture pulling focus, everything stays centred on the people. a great fit for hard cuts, direct flash, and a more editorial approach. perfect for intimate weddings in the city.',
     visualEmbed: 'UlfgHhx2YVU', // It is correctly set here
   },
   {
@@ -296,7 +296,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    fieldNotes: 'the 17th-floor terrace offers massive, sweeping cityscape views with a great open-air feel. inside, the glass box is surprisingly well-damped for sound—just tap into the board to collect those crisp, honest speeches.',
+    fieldNotes: 'the 17th-floor terrace offers once of the best skyline views in the toronto. inside, the glass box is a beautiful, blank canvas with unlimited potential. note - there is little variety once you're up there, so plan to do portaits pre ceremony and save the skyline for sunset.',
     visualEmbed: 'koOkRfluMIc',
   },
   {
@@ -310,7 +310,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    fieldNotes: 'the massive volume of exposed brick brings a rich, industrial weight to the frames. it’s a great space to throw on a fast prime lens and embrace the moody, directional fall-off. the occasional train rolling by just adds to the authentic city pulse.',
+    fieldNotes: 'a historic downtown venue with a strong industrial feel. exposed brick, timber beams, and tall ceilings give it a lot of character, while the big windows and open layout keep it from feeling too dark or heavy. incredible city portrait oppurtunities await just outside',
     visualEmbed: 'RbDwEHWiswc',
   },
   {
@@ -352,7 +352,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    fieldNotes: 'exposed steel, heavy timber, and plenty of negative space for the day to breathe. bouncing light off the high ceilings is secondary to just throwing on a fast prime lens and leaning into the natural, moody directional light.',
+    fieldNotes: 'a restored industrial space with a lot of character. the exposed brick, steel, and tall ceilings give it a clean, modern feel, while the large windows and open layout make it easy for a wedding day to breathe. note - the grand hall is massive, and can feel empty without a significant guest count',
     visualEmbed: '3l49oQY8o1g',
   },
   {
@@ -366,7 +366,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    fieldNotes: 'an old estate right on the water that feels like a quiet step away from the noise. intimate rooms for the heavy tears, and wide grounds to wander. the lakefront breeze brings great natural movement to hair and dresses during the ceremony.',
+    fieldNotes: 'a beautiful lakefront estate with a calm, private feel. the rooms inside are distinct and elegant - great for getting ready. the grounds give you plenty of space and variety for portraits. one thing to note - it's common for people to have a picnic on the lawn overlooking the water.',
     visualEmbed: 'kXRULOzL9AQ',
   }
 ];
