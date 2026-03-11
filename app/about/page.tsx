@@ -308,70 +308,82 @@ export default function AboutPage() {
                 {/* physical texture layer */}
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
-                <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
-                    {/* Ledger Header */}
-                    <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
-                                [ The Methodology ]
-                            </span>
-                            <span className="w-1 h-1 bg-lucas-orange rounded-full"></span>
+                <div className="relative z-10 max-w-6xl mx-auto flex flex-col">
+                    
+                    {/* The Zissou Compressed Header */}
+                    <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-6 gap-4">
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
+                                <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase">
+                                    [ The Methodology ]
+                                </span>
+                            </div>
+                            <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-none tracking-tight">
+                                How I Work.
+                            </h2>
                         </div>
-                        <h2 className="font-sans text-4xl md:text-5xl uppercase font-bold text-lucas-navy leading-[1] mb-6">
-                            How I Work.
-                        </h2>
-                        <p className="font-serif text-lg md:text-xl text-lucas-navy lowercase italic max-w-xl text-center">
-                            the internal logic behind the lens.
-                        </p>
+                        <div className="flex flex-col md:items-end text-left md:text-right">
+                            <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
+                            <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy">LC-MTHD-01</span>
+                        </div>
                     </div>
 
-                    {/* The Grid / Matrix */}
+                    {/* The Horizontal Ledger List */}
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, margin: "-50px" }}
                         variants={staggerContainer}
-                        className="grid grid-cols-1 md:grid-cols-2 w-full border-t border-l border-lucas-navy/15 bg-lucas-slate shadow-2xl"
+                        className="flex flex-col border-t border-lucas-navy/20"
                     >
                         {[
                             {
                                 num: "01",
-                                title: "Observation",
-                                desc: "you can't simply react to a room; by then, the feeling has already passed. the craft lies in noticing—anticipating the quiet exhales, the heavy tears, and the unscripted laughs before they even happen.",
+                                title: "Anticipation",
+                                desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the room and anticipate.",
                             },
                             {
                                 num: "02",
-                                title: "Easy Company",
-                                desc: "no massive crews, no bright lights, no staging. i blend in like a friend who happens to have a camera. the truest, most honest frames surface the exact moment you forget i'm even in the room.",
+                                title: "Intentionality",
+                                desc: "i focus my energy on what matters for your film. find me capturing the smiles during cocktail hour, instead of your family photos.",
                             },
                             {
                                 num: "03",
-                                title: "Heirlooms, Not Content",
-                                desc: "i don't shoot for the algorithm or a viral fifteen-second trend. i'm here to build a nostalgic, enduring record of your history. a raw, physical archive meant to carry weight long after the day fades.",
+                                title: "Singular Focus",
+                                desc: "this isn't a side project. wedding cinema is my full-time profession. my process is entirely dedicated to this specific craft.",
                             },
                             {
                                 num: "04",
-                                title: "Bandwidth",
-                                desc: "documenting a day like this requires genuine emotional investment. i strictly cap my commissions each year to ensure my creative energy remains heavy, fresh, and entirely focused on you.",
+                                title: "Scarcity",
+                                desc: "i strictly limit the number of commissions i take. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus.",
                             },
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
                                 variants={fadeUp}
-                                className="border-r border-b border-lucas-navy/15 p-8 md:p-12 group hover:bg-lucas-cream transition-colors duration-slow flex flex-col justify-between min-h-[280px]"
+                                className="group relative flex flex-col md:flex-row md:items-center py-8 md:py-12 border-b border-lucas-navy/20 hover:bg-lucas-navy/5 transition-colors duration-500 px-4 md:px-8 -mx-4 md:-mx-8"
                             >
-                                <div className="flex justify-between items-start mb-8">
-                                    <h3 className="font-sans text-xl uppercase tracking-widest text-lucas-navy">
-                                        {item.title}
-                                    </h3>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-navy/50 group-hover:text-lucas-orange transition-colors duration-slow">
-                                        Fig. {item.num}
+                                {/* The Metadata Tag */}
+                                <div className="md:w-2/12 mb-3 md:mb-0">
+                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500 font-bold uppercase">
+                                        [ Fig. {item.num} ]
                                     </span>
                                 </div>
-                                <p className="font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy lowercase leading-relaxed">
-                                    {item.desc}
-                                </p>
+
+                                {/* The Structural Title */}
+                                <div className="md:w-3/12 mb-4 md:mb-0">
+                                    <h3 className="font-sans text-2xl md:text-3xl uppercase tracking-tight text-lucas-navy group-hover:translate-x-2 transition-transform duration-500">
+                                        {item.title}
+                                    </h3>
+                                </div>
+
+                                {/* The Soul (Description) */}
+                                <div className="md:w-7/12 md:pl-12 md:border-l border-lucas-navy/10">
+                                    <p className="font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy lowercase leading-relaxed italic">
+                                        {item.desc}
+                                    </p>
+                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
