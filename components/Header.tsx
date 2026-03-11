@@ -45,10 +45,11 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    // [ Updated Inventory ]
     const navLinks = [
         { label: "About", path: "/about" },
-        { label: "Archive", path: "/#films" },
         { label: "Collections", path: "/collections" },
+        { label: "Journal", path: "/journal" },
     ];
 
     useEffect(() => {
