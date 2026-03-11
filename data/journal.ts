@@ -91,20 +91,25 @@ export const journalEntries: JournalEntry[] = [
             { name: "Your Day by Lucas", role: "Videography", url: "https://www.yourdaybylucas.com/" }
         ]
     },
-    {
+{
         id: "040",
         slug: "olivia-max-paletta",
         title: "olivia & max",
         location: "Paletta Mansion",
         date: "Sep. 14, 2025",
-        format: "Hybrid + Physical",
-        stock: "Kodak Tri-X 7266 (B&W)",
-        excerpt: "lake winds and untamed energy. we spent most of the afternoon wandering the estate grounds letting the dresses blow out.",
+        format: "Digital + Super 8mm",
+        stock: "Kodak Vision3 200T",
+        excerpt: "a story that started with a late-night a&w run, brought to life seven years later on the burlington waterfront. an intimate summer day anchored by private vows and a sparkler exit.",
         videoId: "kXRULOzL9AQ",
         fieldNotes: [
-            "lake winds and untamed energy. we spent most of the afternoon wandering the estate grounds letting the dresses blow out.",
-            "this was a masterclass in trusting the process. instead of pulling them away for golden hour, i just stayed close to the head table and let them experience the speeches undisturbed.",
-            "the black and white 8mm stock paired perfectly with the overcast, moody sky rolling in off the lake."
+            "it started with a last-ditch effort to find a late-night burger at a&w, and ended up here, seven years later, on the burlington waterfront. seventy of their closest people gathered at paletta mansion for a hot, heavy summer day.",
+            "the approach was completely unforced. they opted for a first look and private vows outside, keeping the heavy promises between just the two of them. i just stayed close with the 200t stock, bottling the quiet strength of their connection as the natural light bounced off the estate.",
+            "the speeches brought equal parts laughter and tears, but their easy energy carried the film. they closed out the evening with a first dance under sparklers and, fittingly, an a&w late-night snack. you couldn't script a more honest full-circle moment."
+        ],
+        vendors: [
+            { name: "Paletta Mansion", role: "Venue", url: "https://palettamansion.com/" },
+            { name: "Nymph Floral", role: "Florals", url: "https://nymphfloral.com/" },
+            { name: "Fancy Films", role: "Content Creation", url: "https://www.stylemepretty.com/vendor-profile/fancy-films" }
         ]
     },
     {
