@@ -254,7 +254,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'a European-inspired venue with a soft, refined feel and plenty of variety throughout the day. from the courtyard to the riverside, it gives you multiple ceremony options without losing that intimate, tucked-away atmosphere.',
+    fieldNotes: 'a european-inspired venue with a soft, refined feel and plenty of variety throughout the day. from the courtyard to the riverside, it gives you multiple ceremony options without losing that intimate, tucked-away atmosphere.',
     visualEmbed: '9mTq-dXKW84',
   },
   {
@@ -268,7 +268,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
-    fieldNotes: 'the gracewood estate is heavily desired for a reason. the combo of the ceremony space by the oak tree, cocktail hour infront of the estate, and open air reception (with a tented rain plan) is truly unmatched. oh - and the garden is perfect for portaits.',
+    fieldNotes: 'the gracewood estate is heavily desired for a reason. the combo of the ceremony space by the oak tree, cocktail hour in front of the estate, and open air reception (with a tented rain plan) is truly unmatched. oh - and the garden is perfect for portraits.',
     visualEmbed: 'yg9QuK4-Jys',
   },
   {
@@ -283,7 +283,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '1 am extension available',
     fieldNotes: 'a stark white cyclorama that feels like a true blank canvas. with no architecture pulling focus, everything stays centred on the people. a great fit for hard cuts, direct flash, and a more editorial approach. perfect for intimate weddings in the city.',
-    visualEmbed: 'UlfgHhx2YVU', // It is correctly set here
+    visualEmbed: 'UlfgHhx2YVU',
   },
   {
     id: 'globe-and-mail-centre',
@@ -296,7 +296,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    fieldNotes: 'the 17th-floor terrace offers once of the best skyline views in the toronto. inside, the glass box is a beautiful, blank canvas with unlimited potential. note - there is little variety once you're up there, so plan to do portaits pre ceremony and save the skyline for sunset.',
+    fieldNotes: 'the 17th-floor terrace offers once of the best skyline views in toronto. inside, the glass box is a beautiful, blank canvas with unlimited potential. note - there is little variety once you\'re up there, so plan to do portraits pre-ceremony and save the skyline for sunset.',
     visualEmbed: 'koOkRfluMIc',
   },
   {
@@ -310,7 +310,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'multi-location',
     curfew: '2 am extension available',
-    fieldNotes: 'a historic downtown venue with a strong industrial feel. exposed brick, timber beams, and tall ceilings give it a lot of character, while the big windows and open layout keep it from feeling too dark or heavy. incredible city portrait oppurtunities await just outside',
+    fieldNotes: 'a historic downtown venue with a strong industrial feel. exposed brick, timber beams, and tall ceilings give it a lot of character, while the big windows and open layout keep it from feeling too dark or heavy. incredible city portrait opportunities await just outside.',
     visualEmbed: 'RbDwEHWiswc',
   },
   {
@@ -352,7 +352,7 @@ export const venues: Venue[] = [
     prep: 'off-site required',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    fieldNotes: 'a restored industrial space with a lot of character. the exposed brick, steel, and tall ceilings give it a clean, modern feel, while the large windows and open layout make it easy for a wedding day to breathe. note - the grand hall is massive, and can feel empty without a significant guest count',
+    fieldNotes: 'a restored industrial space with a lot of character. the exposed brick, steel, and tall ceilings give it a clean, modern feel, while the large windows and open layout make it easy for a wedding day to breathe. note - the grand hall is massive, and can feel empty without a significant guest count.',
     visualEmbed: '3l49oQY8o1g',
   },
   {
@@ -366,7 +366,7 @@ export const venues: Venue[] = [
     prep: 'on-site suites available',
     flow: 'all-in-one',
     curfew: '1 am extension available',
-    fieldNotes: 'a beautiful lakefront estate with a calm, private feel. the rooms inside are distinct and elegant - great for getting ready. the grounds give you plenty of space and variety for portraits. one thing to note - it's common for people to have a picnic on the lawn overlooking the water.',
+    fieldNotes: 'a beautiful lakefront estate with a calm, private feel. the rooms inside are distinct and elegant - great for getting ready. the grounds give you plenty of space and variety for portraits. one thing to note - it\'s common for people to have a picnic on the lawn overlooking the water.',
     visualEmbed: 'kXRULOzL9AQ',
   }
 ];
