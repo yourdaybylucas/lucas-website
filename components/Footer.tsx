@@ -51,7 +51,9 @@ export default function Footer() {
                         </span>
                         <nav className="flex flex-col gap-5 font-sans text-xs tracking-widest uppercase">
                             <Link href="/" className="hover:text-lucas-orange transition-colors w-fit">Home</Link>
+                            <Link href="/about" className="hover:text-lucas-orange transition-colors w-fit">About</Link>
                             <Link href="/collections" className="hover:text-lucas-orange transition-colors w-fit">Collections</Link>
+                            <Link href="/journal" className="hover:text-lucas-orange transition-colors w-fit">Journal</Link>
                             <Link href="/spaces" className="hover:text-lucas-orange transition-colors w-fit">Spaces</Link>
                         </nav>
                     </div>
