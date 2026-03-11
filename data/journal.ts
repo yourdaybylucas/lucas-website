@@ -26,7 +26,7 @@ export const journalEntries: JournalEntry[] = [
         slug: "alex-parm-elle-by-stella",
         title: "alex & parm",
         location: "Elle by Stella",
-        date: "Mon. DD, YYYY", // Don't forget to update this!
+        date: "Aug. 22, 2025", // Don't forget to update this!
         format: "Digital + Super 8mm",
         stock: "Kodak Vision3 200T",
         excerpt: "the beautiful second chapter of parminder and alex's wedding celebrations, highlighted by a heartfelt western ceremony at elle by stella.",
