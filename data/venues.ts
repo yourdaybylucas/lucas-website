@@ -360,7 +360,7 @@ export const venues: Venue[] = [
     name: 'Paletta Mansion',
     location: 'Burlington',
     geography: 'gta',
-    scale: 'standard',
+    scale: 'intimate',
     atmosphere: 'historical estate',
     footprint: 'exclusive use',
     prep: 'on-site suites available',
