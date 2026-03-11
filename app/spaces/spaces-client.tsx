@@ -14,7 +14,8 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.3 }}
-        className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm min-h-full"
+        // changed to h-fit so the card expands naturally to its content
+        className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm h-fit"
     >
         <div className="mb-8">
             <h2 className="uppercase tracking-[0.2em] font-bold text-2xl md:text-3xl leading-tight">
@@ -308,8 +309,12 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
                             total spaces: {filteredVenues.length}
                         </div>
                     </section>
-
-                    <section className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32 h-[calc(100vh-10rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    
+                    {/* The critical fix is right here: data-lenis-prevent */}
+                    <section 
+                        className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32 h-[calc(100vh-10rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                        data-lenis-prevent
+                    >
                         <AnimatePresence mode="wait">
                             {activeVenue ? (
                                 <DossierCard venue={activeVenue} />
