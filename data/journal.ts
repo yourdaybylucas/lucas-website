@@ -53,13 +53,19 @@ export const journalEntries: JournalEntry[] = [
         location: "Spencer's at the Waterfront",
         date: "Oct. 12, 2025",
         format: "Digital + Super 8mm",
-        stock: "Kodak Vision3 500T",
-        excerpt: "the rain held off just long enough. a study in quiet moments, heavy tears, and a timeline that we eventually just threw out the window.",
+        stock: "Kodak Vision3 200T",
+        excerpt: "fourteen years in the making. an honest, high-energy day built on the anticipation of high school sweethearts finally making it official.",
         videoId: "q2Qw5G4M0Lc", 
         fieldNotes: [
-            "the rain held off just long enough. a study in quiet moments, heavy tears, and a timeline that we eventually just threw out the window.",
-            "they entirely abandoned the traditional shot list. instead, we spent the afternoon just wandering the grounds, letting the lake winds dictate the movement of the dresses and the hair. it felt unforced, grounded, and entirely like them.",
-            "the super 8mm frames from the evening reception are some of my favourites. the raw grain handles the low light of the glass pavilion beautifully."
+            "fourteen years of dating and engagement leads to a very specific kind of energy. they've been together since high school, growing up side by side. you could feel the anticipation mixed with pure excitement all day.",
+            "the spoken words anchored the film. from surviving a stint living in a van to joking about farts during the vows—it was the perfect balance of heavy, honest promises and unapologetic laughter. love, when done right, is equal parts laughter, trust, and mischief.",
+            "the transition from the ceremony to the reception was seamless, shifting into a massive party at spencer's. the kodak 200t stock handled the shift from the lakefront afternoon into the glass pavilion beautifully, keeping everything feeling raw and unforced."
+        ],
+        vendors: [
+            { name: "586 Event Group", role: "DJ / Entertainment", url: "https://www.586eventgroup.com/" },
+            { name: "515 Photo Co.", role: "Photography", url: "https://515photoco.com/" },
+            { name: "Andria Sgromo Designs", role: "Decor", url: "https://www.andriasgromodesigns.com/" },
+            { name: "Windflower Florals", role: "Florals", url: "https://www.windflowerflorals.com/" }
         ]
     },
     {
