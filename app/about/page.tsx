@@ -337,23 +337,23 @@ export default function AboutPage() {
                         {[
                             {
                                 num: "01",
-                                title: "Anticipation",
-                                desc: "you can't just be a fly on the wall and react to moments; by then, they're gone. you have to read the room and anticipate.",
+                                title: "Observation",
+                                desc: "you can't simply react to a room; by then, the feeling has already passed. the craft lies in noticing—anticipating the quiet exhales, the heavy tears, and the unscripted laughs before they even happen.",
                             },
                             {
                                 num: "02",
-                                title: "Intentionality",
-                                desc: "i focus my energy on what matters for your film. find me capturing the smiles during cocktail hour, instead of your family photos.",
+                                title: "Easy Company",
+                                desc: "no massive crews, no bright lights, no staging. i blend in like a friend who happens to have a camera. the truest, most honest frames surface the exact moment you forget i'm even in the room.",
                             },
                             {
                                 num: "03",
-                                title: "Singular Focus",
-                                desc: "this isn't a side project. wedding cinema is my full-time profession. my process is entirely dedicated to this specific craft.",
+                                title: "Heirlooms, Not Content",
+                                desc: "i don't shoot for the algorithm or a viral fifteen-second trend. i'm here to build a nostalgic, enduring record of your history. a raw, physical archive meant to carry weight long after the day fades.",
                             },
                             {
                                 num: "04",
-                                title: "Scarcity",
-                                desc: "i strictly limit the number of commissions i take. keeping the calendar capped ensures my creative energy is fresh, and you get my absolute, undivided focus.",
+                                title: "Bandwidth",
+                                desc: "documenting a day like this requires genuine emotional investment. i strictly cap my commissions each year to ensure my creative energy remains heavy, fresh, and entirely focused on you.",
                             },
                         ].map((item, idx) => (
                             <motion.div
