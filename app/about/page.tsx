@@ -1,12 +1,11 @@
+// app/about/page.tsx
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
     motion,
-    useScroll,
     Variants,
     AnimatePresence,
-    useMotionValueEvent,
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -74,22 +73,7 @@ const timeline = [
 ];
 
 export default function AboutPage() {
-    const recordRef = useRef<HTMLElement>(null);
-    const { scrollYProgress: recordScroll } = useScroll({
-        target: recordRef,
-        offset: ["start start", "end end"],
-    });
-
     const [activeIndex, setActiveIndex] = useState(0);
-
-    useMotionValueEvent(recordScroll, "change", (latest) => {
-        const newIndex = Math.min(
-            Math.floor(latest * timeline.length),
-            timeline.length - 1
-        );
-
-        setActiveIndex((prev) => (prev !== newIndex ? newIndex : prev));
-    });
 
     return (
         <main className="bg-lucas-cream">
@@ -189,87 +173,133 @@ export default function AboutPage() {
                 </motion.button>
             </section>
 
-            {/* 02. THE RECORD */}
-            <section
-                id="record"
-                ref={recordRef}
-                className="relative bg-lucas-navy border-t border-lucas-slate/20"
-                style={{ height: `${timeline.length * 65}vh` }}
-            >
+            {/* 02. THE RECORD (The Ledger View) */}
+            <section id="record" className="relative bg-lucas-navy border-t border-lucas-slate/20 py-24 md:py-32 px-6">
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
-                <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-6 z-10">
-                    {/* Section Header - Locked to Top */}
-                    <div className="absolute top-32 md:top-40 left-6 md:left-12 right-6 md:right-12 flex justify-between items-start md:items-center border-b border-lucas-cream/20 pb-4">
-                        <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
-                            The Record
-                        </h2>
-                        <div className="flex items-center gap-4">
-                            <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row gap-16 lg:gap-24">
+                    
+                    {/* Left Column: The Scrolling Ledger */}
+                    <div className="w-full md:w-1/2 flex flex-col relative">
+                        
+                        {/* Section Header - Sticky so it stays visible while scrolling the list */}
+                        <div className="mb-12 md:mb-16 border-b border-lucas-slate/20 pb-6 flex items-end justify-between sticky top-24 bg-lucas-navy/90 backdrop-blur-md z-30 pt-4">
+                            <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
+                                The Record
+                            </h2>
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
                                 [ Documented History ]
                             </span>
                         </div>
+
+                        {/* The Timeline Spine */}
+                        <div className="relative">
+                            {/* The physical line (desktop only) */}
+                            <div className="absolute left-[15px] top-4 bottom-12 w-px bg-lucas-slate/20 z-0 hidden md:block"></div>
+
+                            {timeline.map((item, idx) => (
+                                <motion.div
+                                    key={item.id}
+                                    // Triggers when the item is roughly in the middle of the viewport
+                                    onViewportEnter={() => setActiveIndex(idx)}
+                                    viewport={{ margin: "-45% 0px -45% 0px" }}
+                                    className={`relative z-10 flex gap-6 md:gap-8 py-10 md:py-16 transition-all duration-700 ${
+                                        activeIndex === idx ? 'opacity-100' : 'opacity-40 blur-[1px] md:blur-none'
+                                    }`}
+                                >
+                                    {/* Desktop Indicator Node */}
+                                    <div className="hidden md:flex flex-col items-center pt-1">
+                                        <div className={`w-8 h-8 rounded-none border flex items-center justify-center bg-lucas-navy transition-colors duration-500 relative z-10 ${
+                                            activeIndex === idx ? 'border-lucas-orange' : 'border-lucas-slate/30'
+                                        }`}>
+                                            <div className={`w-2 h-2 transition-all duration-500 ${
+                                                activeIndex === idx ? 'bg-lucas-orange scale-100' : 'bg-transparent scale-0'
+                                            }`}></div>
+                                        </div>
+                                    </div>
+
+                                    {/* Text & Content */}
+                                    <div className="flex flex-col w-full">
+                                        <div className="flex items-center justify-between mb-4 border-b border-lucas-slate/10 pb-3">
+                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
+                                                Fig. {item.id}
+                                            </span>
+                                            <span className={`font-sans text-[11px] tracking-zissou uppercase transition-colors duration-500 border px-2 py-1 ${
+                                                activeIndex === idx ? 'text-lucas-orange border-lucas-orange/30 bg-lucas-orange/10 font-bold' : 'text-lucas-cream border-transparent'
+                                            }`}>
+                                                {item.year}
+                                            </span>
+                                        </div>
+                                        <p className={`font-serif text-2xl md:text-[clamp(1.75rem,2vw,2rem)] lowercase italic leading-relaxed transition-colors duration-500 ${
+                                            activeIndex === idx ? 'text-lucas-cream' : 'text-lucas-cream/70'
+                                        }`}>
+                                            {item.desc}
+                                        </p>
+
+                                        {/* Mobile Inline Image (Only shows on small screens) */}
+                                        <div className="md:hidden mt-8 relative w-full aspect-square p-2 bg-lucas-cream/5 border border-lucas-slate/20 shadow-xl overflow-hidden">
+                                            <div className="relative w-full h-full bg-[#0a1118]">
+                                                <Image
+                                                    src={item.img}
+                                                    alt={item.year}
+                                                    fill
+                                                    className="object-cover scale-105"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* The Active Frame */}
-                    <div className="relative w-full max-w-6xl mx-auto flex items-center mt-12">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeIndex}
-                                initial={{ opacity: 0, y: 40, filter: "blur(4px)" }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                exit={{ opacity: 0, y: -40, filter: "blur(4px)" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24"
-                            >
-                                {/* Left Side: The Metadata & Narrative */}
-                                <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1">
-                                    <div className="flex items-center justify-between mb-8 border-b border-lucas-cream/10 pb-4">
-                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                            Fig. {timeline[activeIndex].id}
-                                        </span>
-                                        <span className="font-sans text-[12px] tracking-zissou text-lucas-orange font-bold uppercase border border-lucas-orange/20 px-3 py-1 bg-lucas-orange/10">
-                                            {timeline[activeIndex].year}
-                                        </span>
-                                    </div>
-                                    <p className="font-serif text-2xl md:text-4xl text-lucas-cream lowercase italic leading-relaxed md:leading-snug pr-0 md:pr-12">
-                                        {timeline[activeIndex].desc}
-                                    </p>
-                                </div>
+                    {/* Right Column: The Visual Anchor (Sticky on Desktop) */}
+                    <div className="hidden md:block w-full md:w-1/2 relative">
+                        <div className="sticky top-[25vh] pt-4">
+                            {/* The Structural Frame */}
+                            <div className="relative w-full max-w-[420px] ml-auto aspect-[4/5] bg-lucas-cream/5 p-3 border border-lucas-slate/20 shadow-2xl backdrop-blur-sm group">
+                                
+                                {/* Decorative crosshairs */}
+                                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-lucas-cream/40"></div>
+                                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-lucas-cream/40"></div>
+                                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-lucas-cream/40"></div>
+                                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-lucas-cream/40"></div>
 
-                                {/* Right Side: The Visual Evidence */}
-                                <div className="w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-2">
-                                    <div className="relative w-full max-w-[320px] md:max-w-[450px] aspect-square p-2 md:p-3 bg-lucas-cream/5 border border-lucas-cream/20 shadow-2xl backdrop-blur-sm">
-                                        <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                <div className="relative w-full h-full bg-[#0a1118] overflow-hidden">
+                                    <AnimatePresence>
+                                        <motion.div
+                                            key={activeIndex}
+                                            initial={{ opacity: 0, scale: 1.05, filter: "blur(4px)" }}
+                                            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                                            exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                            className="absolute inset-0"
+                                        >
                                             <Image
                                                 src={timeline[activeIndex].img}
                                                 alt={`Evidence ${timeline[activeIndex].id}`}
                                                 fill
-                                                className="object-cover scale-105"
+                                                className="object-cover"
                                                 priority
                                             />
-                                        </div>
-
-                                        <div className="absolute -bottom-4 -left-4 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-4 py-2 shadow-xl z-20">
-                                            Frame {activeIndex + 1} / {timeline.length}
-                                        </div>
-                                    </div>
+                                        </motion.div>
+                                    </AnimatePresence>
                                 </div>
-                            </motion.div>
-                        </AnimatePresence>
+
+                                {/* Dynamic Metadata Tab */}
+                                <motion.div 
+                                    key={`meta-${activeIndex}`}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="absolute -bottom-4 -left-4 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-4 py-2 shadow-xl z-20 flex flex-col gap-1 border border-lucas-navy/10"
+                                >
+                                    <span>Ref // {timeline[activeIndex].id}</span>
+                                    <span className="text-lucas-orange font-bold">Year {timeline[activeIndex].year}</span>
+                                </motion.div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Scroll Progress Track (Bottom) */}
-                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-px bg-lucas-slate/30 hidden md:block">
-                        <motion.div
-                            className="absolute top-0 left-0 h-full bg-lucas-orange"
-                            style={{
-                                width: `${((activeIndex + 1) / timeline.length) * 100}%`,
-                                transition: "width 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
-                            }}
-                        />
-                    </div>
                 </div>
             </section>
 
