@@ -20,9 +20,9 @@ const fadeUpItem = {
 };
 
 const sectionsNav = [
-    { id: "welcome", label: "01. The Welcome" },
-    { id: "blueprint", label: "02. The Blueprint" },
-    { id: "environment", label: "03. The Environment" },
+    { id: "welcome", label: "01. Welcome" },
+    { id: "blueprint", label: "02. What's Next" },
+    { id: "environment", label: "03. Environment Crafting" },
     { id: "trusted-peers", label: "04. Trusted Peers" },
 ];
 
@@ -30,20 +30,19 @@ const trustedPeers = [
     {
         category: "Photographers",
         peers: [
-            { name: "Kaela Leone Weddings", url: "https://kaelaleoneweddings.com/" },
+            { name: "Kaela Leone Weddings", url: "https://www.kaelaleone.com/" },
             { name: "Lydia Ivy Photography", url: "https://lydiaivy.com/" },
             { name: "Eric Cheng", url: "https://ericcheng.ca/" },
             { name: "Kendra Ruth Photography", url: "https://kendraruthphotography.com/" },
             { name: "Catherine Goce Photo", url: "https://catherinegoce.com/" },
             { name: "Byrns Photography", url: "https://www.brynsphotography.com/" },
-            { name: "Alyssa Marie", url: "https://alyssamariephoto.com/" }
         ]
     },
     {
         category: "Planners & Coordinators",
         peers: [
             { name: "Clement and Co Events", url: "https://www.clementandcoevents.com/" },
-            { name: "Samantha Nicolas Events", url: "https://samanthanicolasevents.com/" },
+            { name: "Samantha Nicholas Events", url: "https://www.samanthanicholas.ca/" },
             { name: "LQ Events", url: "https://lqevents.ca/" },
             { name: "Confetti and Co", url: "https://confettiand.co/" },
             { name: "W Events & Decor", url: "https://www.weventsanddecor.com/" }
@@ -53,7 +52,6 @@ const trustedPeers = [
         category: "Florals",
         peers: [
             { name: "Forever Wildfield", url: "https://foreverwildfield.com/" },
-            { name: "White Oak Flower Co.", url: "https://www.whiteoakflower.co/" },
             { name: "Nymph Floral", url: "https://nymphfloral.com/" },
             { name: "Windflower Florals", url: "https://www.windflowerflorals.com/" },
             { name: "De Rêves Studio", url: "https://www.derevesstudio.com/" }
@@ -62,9 +60,9 @@ const trustedPeers = [
     {
         category: "Officiants",
         peers: [
-            { name: "Jeff Maeck", url: "https://maeckweddings.com/" },
-            { name: "Your Wedding Officiant", url: "https://yourweddingofficiant.ca/" },
-            { name: "Bcause Love", url: "https://bcauselove.com/" }
+            { name: "Jeff Maeck", url: "https://maeckweddings.com/officiating" },
+            { name: "Your Wedding Officiant", url: "https://www.yourweddingofficiant.ca/" },
+            { name: "Bcause Love", url: "https://bcauslove.com/" }
         ]
     }
 ];
@@ -174,9 +172,9 @@ export default function TheGuidePage() {
                                 </div>
                                 
                                 <div className="relative z-10 pl-2 lg:pl-6">
-                                    <p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
-                                        the hard part is over. this guide is here to keep us on the exact same page, <em className="italic text-lucas-orange/90">ensure the day breathes</em>, and help you build an environment where the honest frames happen naturally.
-                                    </p>
+<p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
+    first, thank you. i don't take it lightly that you trust me to to document your day. the hard part is over. this guide is here to keep us on the exact same page, <em className="italic text-lucas-orange/90">ensure the day breathes</em>, and help you build an environment where you can be present.
+</p>
                                 </div>
                             </motion.div>
 
@@ -228,10 +226,10 @@ export default function TheGuidePage() {
                             {/* The Vertical Ledger */}
                             <div className="flex flex-col">
                                 {[
-                                    { step: "01", title: "the quiet period", description: "you're officially in the calendar. i fade into the background while you both build the day. (music note: i don't ask you to pick your soundtrack now. we choose the music after the day, tailoring it perfectly to the energy you actually brought to the room)." },
-                                    { step: "02", title: "the logistics", subtitle: "[ 2 months out ]", description: "i'll send over a brief digital form. this is just to collect the structural data—addresses, key contacts, and your final timeline." },
-                                    { step: "03", title: "the final sync", subtitle: "[ 2 weeks out ]", description: "a quick video call to run through the flow, confirm the curfew, and make sure my footprint is entirely aligned with your vision." },
-                                    { step: "04", title: "the day", description: "i show up, blend in, and we just hang out. no shot lists, no forced direction." }
+                                    { step: "01", title: "the quiet period", description: "you're officially in the calendar. i'm here as a sounding board if you need me, but otherwise, i step back and let you build the day. send over all the instporation, or just radio silence - both work perfectly." },
+                                    { step: "02", title: "the logistics", subtitle: "[ 1 month out ]", description: "i'll touch base to gather your timeline. from there, we can jump on a quick video call to align, or keep it entirely in the inbox. whatever feels easiest for you both." },
+                                    { step: "03", title: "the final ledger", subtitle: "[ 2 weeks out ]", description: "your remaining balance is settled. an automated nudge goes out beforehand so you don't have to carry it in your mental load." },
+                                    { step: "04", title: "the day", description: "i show up, blend in, and we celebrate." }
                                 ].map((item, index) => (
                                     <motion.div 
                                         key={index}
