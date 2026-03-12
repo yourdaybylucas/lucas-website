@@ -10,7 +10,11 @@
   --font-sans: var(--font-general-sans), "General Sans", system-ui, sans-serif;
   --font-serif: var(--font-cormorant), serif;
 
+  /* Mapping the Zissou aesthetic */
   --tracking-zissou: 0.2em;
+  
+  /* Mapping the deliberate, unhurried animations */
+  --transition-duration-slow: 400ms;
 }
 
 @layer base {
@@ -19,10 +23,8 @@
   }
 
   body {
-    background-color: #F4ECD8;
-    /* the canvas */
-    color: #182836;
-    /* the ink */
+    background-color: #F4ECD8; /* the canvas */
+    color: #182836; /* the ink */
     font-family: var(--font-general-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -30,8 +32,7 @@
   }
 
   ::selection {
-    background-color: #D65A31;
-    /* the energy */
+    background-color: #D65A31; /* the energy */
     color: #F4ECD8;
   }
 }
@@ -43,7 +44,8 @@
     line-height: 1.75;
   }
 
+  /* Upgraded local utility pointing to your new SVG */
   .bg-grain {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-image: url('/noise.svg');
   }
 }
