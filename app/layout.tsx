@@ -53,7 +53,7 @@ export default function RootLayout({
           <CustomCursor />
           
           {/* analog grain overlay */}
-          <div className="fixed inset-0 z-50 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-multiply"></div>
+          <div className="fixed inset-0 z-50 pointer-events-none bg-[url('noise.svg')] opacity-[0.15] mix-blend-multiply"></div>
 
           <Header />
           <main className="relative z-10 min-h-screen">
