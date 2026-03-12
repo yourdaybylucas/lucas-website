@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
+import CinematicPlayer from "@/components/CinematicPlayer";
 
 const partners = [
   { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
