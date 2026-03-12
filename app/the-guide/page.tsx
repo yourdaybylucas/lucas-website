@@ -168,7 +168,7 @@ export default function TheGuidePage() {
                                 
                                 <div className="relative z-10 pl-2 lg:pl-6">
                                     <p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
-                                        the hard part is over. you have the date, you have the venue, and i am locked in to document it. this guide is simply here to keep us on the exact same page, <em className="italic text-lucas-orange/90">ensure the day breathes</em>, and help you build an environment where the honest frames happen naturally.
+                                        the hard part is over. this guide is here to keep us on the exact same page, <em className="italic text-lucas-orange/90">ensure the day breathes</em>, and help you build an environment where the honest frames happen naturally.
                                     </p>
                                 </div>
                             </motion.div>
