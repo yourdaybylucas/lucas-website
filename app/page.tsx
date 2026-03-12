@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
@@ -62,8 +62,6 @@ const fadeUpItem = {
 };
 
 export default function Home() {
-  const [activeFilm, setActiveFilm] = useState<string | null>(null);
-  
   // the tripwire setup
   const contactRef = useRef(null);
   const isContactInView = useInView(contactRef, { once: true, margin: "800px" });
@@ -193,38 +191,7 @@ export default function Home() {
                 className={`group flex-col w-full ${index >= 2 ? 'hidden md:flex' : 'flex'}`}
               >
                 
-                <div 
-                  className="relative aspect-video w-full bg-[#0a1118] overflow-hidden cursor-pointer shadow-2xl"
-                  onClick={() => setActiveFilm(film.id)}
-                >
-                  {activeFilm === film.id ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${film.id}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
-                      title={film.names}
-                      className="w-full h-full absolute top-0 left-0 border-none"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  ) : (
-                    <>
-                      <Image
-                        src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
-                        alt={film.names}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-                      />
-                      
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-lucas-orange/90 backdrop-blur-md flex items-center justify-center text-lucas-cream transform group-hover:scale-110 transition-transform duration-500 ease-out shadow-xl">
-                          <svg className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
+                <CinematicPlayer videoId={film.id} altText={film.names} />
 
                 <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4 border-t border-lucas-slate/10 pt-6">
                   <div>
