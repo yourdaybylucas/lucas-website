@@ -43,7 +43,7 @@ const timeline = [
     {
         id: "03",
         year: "2016",
-        desc: "filmed a friend's wedding as a gift. everything changed. shoutout Lindsay + Seth",
+        desc: "filmed a friend's wedding as a gift. everything changed. shoutout lindsay + seth",
         img: "/images/about/about_3.jpg",
     },
     {
@@ -61,7 +61,7 @@ const timeline = [
     {
         id: "06",
         year: "2025",
-        desc: "welcomed our son Sam to the world.",
+        desc: "welcomed our son sam to the world.",
         img: "/images/about/about_7.jpg",
     },
     {
@@ -179,65 +179,71 @@ export default function AboutPage() {
 
                 <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row gap-16 lg:gap-24">
                     
-                    {/* Left Column: The Scrolling Ledger */}
+                    {/* Left Column: The Spreadsheet Ledger */}
                     <div className="w-full md:w-1/2 flex flex-col relative">
                         
-                        {/* Section Header - Sticky so it stays visible while scrolling the list */}
-                        <div className="mb-12 md:mb-16 border-b border-lucas-slate/20 pb-6 flex items-end justify-between sticky top-24 bg-lucas-navy/90 backdrop-blur-md z-30 pt-4">
-                            <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
-                                The Record
-                            </h2>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                                [ Documented History ]
-                            </span>
+                        {/* Unified Sticky Header Group */}
+                        <div className="sticky top-24 z-30 bg-lucas-navy/95 backdrop-blur-md pt-4 pb-4 border-b border-lucas-slate/20 mb-4">
+                            <div className="flex items-end justify-between mb-8">
+                                <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
+                                    The Record
+                                </h2>
+                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+                                    [ Documented History ]
+                                </span>
+                            </div>
+
+                            {/* Spreadsheet Column Headers (Desktop) */}
+                            <div className="hidden md:flex items-center gap-8 font-sans text-[9px] tracking-zissou uppercase text-lucas-slate">
+                                <div className="flex items-center gap-6 w-1/3 shrink-0 pl-6">
+                                    <span className="w-12">Ref</span>
+                                    <span>Timestamp</span>
+                                </div>
+                                <div className="flex-1">
+                                    <span>Observation</span>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* The Timeline Spine */}
-                        <div className="relative">
-                            {/* The physical line (desktop only) */}
-                            <div className="absolute left-[15px] top-4 bottom-12 w-px bg-lucas-slate/20 z-0 hidden md:block"></div>
-
+                        {/* The Ledger Rows */}
+                        <div className="relative flex flex-col">
                             {timeline.map((item, idx) => (
                                 <motion.div
                                     key={item.id}
-                                    // Triggers when the item is roughly in the middle of the viewport
+                                    // Trigger window shifted slightly to accommodate shorter rows
                                     onViewportEnter={() => setActiveIndex(idx)}
-                                    viewport={{ margin: "-45% 0px -45% 0px" }}
-                                    className={`relative z-10 flex gap-6 md:gap-8 py-10 md:py-16 transition-all duration-700 ${
-                                        activeIndex === idx ? 'opacity-100' : 'opacity-40 blur-[1px] md:blur-none'
+                                    viewport={{ margin: "-40% 0px -40% 0px" }}
+                                    className={`group relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 py-8 md:py-10 border-b border-lucas-slate/10 transition-all duration-700 ${
+                                        activeIndex === idx ? 'opacity-100 bg-lucas-cream/[0.03]' : 'opacity-40 hover:opacity-70'
                                     }`}
                                 >
-                                    {/* Desktop Indicator Node */}
-                                    <div className="hidden md:flex flex-col items-center pt-1">
-                                        <div className={`w-8 h-8 rounded-none border flex items-center justify-center bg-lucas-navy transition-colors duration-500 relative z-10 ${
-                                            activeIndex === idx ? 'border-lucas-orange' : 'border-lucas-slate/30'
+                                    {/* Active Row Accent Line */}
+                                    <div className={`absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500 ${
+                                        activeIndex === idx ? 'bg-lucas-orange' : 'bg-transparent group-hover:bg-lucas-slate/20'
+                                    }`}></div>
+
+                                    {/* Spreadsheet Cells */}
+                                    <div className="flex items-center md:items-start gap-6 md:w-1/3 shrink-0 pl-4 md:pl-6 pt-1">
+                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase w-12">
+                                            [{item.id}]
+                                        </span>
+                                        <span className={`font-sans text-[11px] tracking-widest uppercase transition-colors duration-500 ${
+                                            activeIndex === idx ? 'text-lucas-orange font-bold' : 'text-lucas-cream'
                                         }`}>
-                                            <div className={`w-2 h-2 transition-all duration-500 ${
-                                                activeIndex === idx ? 'bg-lucas-orange scale-100' : 'bg-transparent scale-0'
-                                            }`}></div>
-                                        </div>
+                                            {item.year}
+                                        </span>
                                     </div>
 
-                                    {/* Text & Content */}
-                                    <div className="flex flex-col w-full">
-                                        <div className="flex items-center justify-between mb-4 border-b border-lucas-slate/10 pb-3">
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                                Fig. {item.id}
-                                            </span>
-                                            <span className={`font-sans text-[11px] tracking-zissou uppercase transition-colors duration-500 border px-2 py-1 ${
-                                                activeIndex === idx ? 'text-lucas-orange border-lucas-orange/30 bg-lucas-orange/10 font-bold' : 'text-lucas-cream border-transparent'
-                                            }`}>
-                                                {item.year}
-                                            </span>
-                                        </div>
-                                        <p className={`font-serif text-2xl md:text-[clamp(1.75rem,2vw,2rem)] lowercase italic leading-relaxed transition-colors duration-500 ${
+                                    {/* The Entry */}
+                                    <div className="flex-1 pl-4 md:pl-0 pr-4">
+                                        <p className={`font-serif text-[1.25rem] md:text-[1.35rem] lowercase italic leading-relaxed transition-colors duration-500 ${
                                             activeIndex === idx ? 'text-lucas-cream' : 'text-lucas-cream/70'
                                         }`}>
                                             {item.desc}
                                         </p>
 
                                         {/* Mobile Inline Image (Only shows on small screens) */}
-                                        <div className="md:hidden mt-8 relative w-full aspect-square p-2 bg-lucas-cream/5 border border-lucas-slate/20 shadow-xl overflow-hidden">
+                                        <div className="md:hidden mt-8 relative w-full aspect-[4/5] p-2 bg-lucas-cream/5 border border-lucas-slate/20 shadow-xl overflow-hidden">
                                             <div className="relative w-full h-full bg-[#0a1118]">
                                                 <Image
                                                     src={item.img}
