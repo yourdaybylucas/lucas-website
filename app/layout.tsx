@@ -39,7 +39,6 @@ const generalSans = localFont({
 export const metadata: Metadata = {
   title: 'LUCAS : Wedding Filmmaker',
   description: 'honest, nostalgic wedding cinema. digital + super 8mm. home is ontario // worldwide.',
-  verification: {
 };
 
 export default function RootLayout({
