@@ -365,7 +365,7 @@ export default function TheGuidePage() {
                                     </p>
                                 </div>
                                 <p className="font-serif text-lg italic text-lucas-navy/80 lowercase max-w-md md:text-right leading-snug">
-                                    working with vendors who share the same ethos changes the entire feeling of the day. this is a curated inventory of peers who prioritize an unforced, grounded approach.
+                                    working with vendors who share the same ethos changes the entire feeling of the day. this is a curated inventory of peers who prioritize a similar, unforced approach.
                                 </p>
                             </div>
 
