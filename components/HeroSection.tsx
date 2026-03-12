@@ -67,7 +67,7 @@ const FloatingClip = ({ data, mouseX, mouseY }: any) => {
                     className="object-cover w-full h-full opacity-90 grayscale-[20%] contrast-[1.1] mix-blend-multiply"
                 />
                 {/* Subtle grain overlay */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.25] mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.25] mix-blend-overlay"></div>
             </div>
             
             {/* The Label */}
