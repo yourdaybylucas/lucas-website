@@ -119,7 +119,7 @@ export default function CollectionsPage() {
 
                     {/* VOL 02 - The Flagship */}
                     <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 lg:scale-[1.03] shadow-2xl border border-lucas-navy group">
-                        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.08] pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-grain opacity-[0.08] pointer-events-none mix-blend-overlay"></div>
                         
                         <div className="flex justify-between items-start mb-12 relative z-10">
                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
