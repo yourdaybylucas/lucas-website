@@ -45,7 +45,7 @@ const trustedPeers = [
             { name: "Samantha Nicholas Events", url: "https://www.samanthanicholas.ca/" },
             { name: "LQ Events", url: "https://lqevents.ca/" },
             { name: "Confetti and Co", url: "https://confettiand.co/" },
-            { name: "W Events & Decor", url: "https://www.weventsanddecor.com/" }
+            { name: "W Events & Decor", url: "https://www.weventsanddecor.com/" },
             { name: "Perfectly Designed Events", url: "https://www.perfectlydesignedevents.com/" },
         ]
     },
