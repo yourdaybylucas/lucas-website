@@ -1,3 +1,4 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -14,25 +15,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/post/megan-mike-winter-elora-mill-wedding',
+        destination: '/journal/megan-mike-elora-mill',
+        permanent: true, // This tells Google it's a 301 redirect
+      },
+      {
         source: '/blog',
         destination: '/journal',
         permanent: true,
       },
       {
-        source: '/faq',
-        destination: '/private-collections#notes', // Sending them to your logistics section
-        permanent: true,
-      },
-      // Catch-all for old blog posts to send them to the main journal
-      {
-        source: '/post/:slug*',
-        destination: '/journal', 
-        permanent: true,
-      },
-      // Clean up old duplicated pages
-      {
-        source: '/copy-of-home',
-        destination: '/',
+        source: '/packages',
+        destination: '/collections',
         permanent: true,
       }
     ];
