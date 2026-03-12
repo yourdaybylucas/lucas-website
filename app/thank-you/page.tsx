@@ -44,7 +44,7 @@ export default function ThankYouPage() {
                     </div>
                     
                     <h1 className="font-sans text-[clamp(2.5rem,5vw,4.5rem)] font-bold uppercase tracking-tight text-lucas-navy leading-[0.9] mb-8">
-                        Inquiry Logged.
+                        Thank you.
                     </h1>
                     
                     {/* The Soul (Copy) */}
