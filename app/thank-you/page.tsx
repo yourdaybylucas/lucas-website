@@ -49,7 +49,7 @@ export default function ThankYouPage() {
                     
                     {/* The Soul (Copy) */}
                     <p className="font-serif text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy/85 italic lowercase leading-relaxed max-w-xl mx-auto">
-                        i've received your details. i'll review the calendar and reach out shortly to talk about the day. 
+                        i've received your details. i'll review the calendar and reach out shortly - look forward to connecting.
                     </p>
                 </motion.div>
 
