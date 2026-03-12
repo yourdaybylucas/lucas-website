@@ -1,17 +1,27 @@
 "use client";
 
 import { motion, useSpring, useMotionValue } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CustomCursor() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
+    const [isMounted, setIsMounted] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     // Smooth springs for fluid trailing effect
     const cursorX = useSpring(mouseX, { damping: 20, stiffness: 100, mass: 0.5 });
     const cursorY = useSpring(mouseY, { damping: 20, stiffness: 100, mass: 0.5 });
 
     useEffect(() => {
+        setIsMounted(true);
+        
+        // Detect if the primary input is a touch screen (mobile/tablet)
+        if (window.matchMedia("(pointer: coarse)").matches) {
+            setIsTouchDevice(true);
+            return;
+        }
+
         const moveMouse = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
@@ -20,6 +30,9 @@ export default function CustomCursor() {
         window.addEventListener("mousemove", moveMouse);
         return () => window.removeEventListener("mousemove", moveMouse);
     }, [mouseX, mouseY]);
+
+    // Do not render on the server, and do not render if it's a touch screen
+    if (!isMounted || isTouchDevice) return null;
 
     return (
         <motion.div
