@@ -23,41 +23,48 @@ const sectionsNav = [
     { id: "welcome", label: "01. The Welcome" },
     { id: "blueprint", label: "02. The Blueprint" },
     { id: "environment", label: "03. The Environment" },
-    { id: "network", label: "04. The Network" },
+    { id: "trusted-peers", label: "04. Trusted Peers" },
 ];
 
 const trustedPeers = [
     {
         category: "Photographers",
         peers: [
-            { name: "Chris Copeland", url: "https://chriscopelandphotography.co.uk/" },
-            { name: "Emily Mickelson", url: "https://www.emilymickelson.com/" },
-            { name: "515 Photo Co.", url: "https://515photoco.com/" },
-            { name: "Bryn's Photography", url: "https://www.brynsphotography.com/" }
+            { name: "Kaela Leone Weddings", url: "https://kaelaleoneweddings.com/" },
+            { name: "Lydia Ivy Photography", url: "https://lydiaivy.com/" },
+            { name: "Eric Cheng", url: "https://ericcheng.ca/" },
+            { name: "Kendra Ruth Photography", url: "https://kendraruthphotography.com/" },
+            { name: "Catherine Goce Photo", url: "https://catherinegoce.com/" },
+            { name: "Byrns Photography", url: "https://www.brynsphotography.com/" },
+            { name: "Alyssa Marie", url: "https://alyssamariephoto.com/" }
         ]
     },
     {
         category: "Planners & Coordinators",
         peers: [
-            { name: "Clement & Co Events", url: "https://www.clementandcoevents.com/" },
-            { name: "Kari Lywood Events", url: "https://karilywoodevents.com/" },
-            { name: "Plan It Right Events", url: "https://planitrightevents.ca/" }
+            { name: "Clement and Co Events", url: "https://www.clementandcoevents.com/" },
+            { name: "Samantha Nicolas Events", url: "https://samanthanicolasevents.com/" },
+            { name: "LQ Events", url: "https://lqevents.ca/" },
+            { name: "Confetti and Co", url: "https://confettiand.co/" },
+            { name: "W Events & Decor", url: "https://www.weventsanddecor.com/" }
         ]
     },
     {
-        category: "Florals & Environments",
+        category: "Florals",
         peers: [
             { name: "Forever Wildfield", url: "https://foreverwildfield.com/" },
             { name: "White Oak Flower Co.", url: "https://www.whiteoakflower.co/" },
             { name: "Nymph Floral", url: "https://nymphfloral.com/" },
-            { name: "Simply Beautiful Decor", url: "https://simplybeautifuldecor.ca/" }
+            { name: "Windflower Florals", url: "https://www.windflowerflorals.com/" },
+            { name: "De Rêves Studio", url: "https://www.derevesstudio.com/" }
         ]
     },
     {
-        category: "Sound & Energy",
+        category: "Officiants",
         peers: [
-            { name: "586 Event Group", url: "https://www.586eventgroup.com/" },
-            { name: "Nitro Music", url: "https://www.instagram.com/nitromusicpro/" }
+            { name: "Jeff Maeck", url: "https://maeckweddings.com/" },
+            { name: "Your Wedding Officiant", url: "https://yourweddingofficiant.ca/" },
+            { name: "Bcause Love", url: "https://bcauselove.com/" }
         ]
     }
 ];
@@ -342,8 +349,8 @@ export default function TheGuidePage() {
                         </div>
                     </section>
 
-                    {/* 04. THE NETWORK */}
-                    <section id="network" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative">
+                    {/* 04. THE NETWORK -> TRUSTED PEERS */}
+                    <section id="trusted-peers" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
