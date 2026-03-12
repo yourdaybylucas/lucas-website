@@ -309,7 +309,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-          {/* 03. THE METHODOLOGY (The Ledger) */}
+        {/* 03. THE METHODOLOGY (The Ledger Grid) */}
             <section className="relative z-10 bg-lucas-cream py-24 md:py-32 px-6 md:px-12 border-t border-lucas-slate/20">
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
                 
@@ -334,13 +334,13 @@ export default function AboutPage() {
                         </div>
                     </div>
 
-                    {/* The Field Notes Horizontal Scroll */}
+                    {/* The Field Notes Architectural Grid */}
                     <motion.div 
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
-                        className="flex overflow-x-auto border-l border-t border-lucas-navy/20 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-l border-t border-lucas-navy/20"
                     >
                         {[
                             {
@@ -351,7 +351,7 @@ export default function AboutPage() {
                             {
                                 num: "02",
                                 title: "Intentionality",
-                                desc: "i focus my energy on what matters for your film. find me capturing the smiles during cocktail hour, instead of your family photos.",
+                                desc: "i focus my energy on what matters for your film. find me documenting the smiles during cocktail hour, instead of your family photos.",
                             },
                             {
                                 num: "03",
@@ -367,14 +367,14 @@ export default function AboutPage() {
                             <motion.div 
                                 key={idx} 
                                 variants={fadeUp}
-                                className="flex-none w-[85vw] md:w-[400px] group border-r border-b border-lucas-navy/20 p-8 md:p-10 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[320px] snap-start bg-lucas-cream"
+                                className="group border-r border-b border-lucas-navy/20 p-6 lg:p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[280px] lg:min-h-[320px] bg-lucas-cream"
                             >
                                 <div className="flex justify-between items-start mb-8">
                                     <div className="flex flex-col gap-1">
-                                        <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
+                                        <span className="text-lucas-navy font-sans uppercase tracking-zissou text-[11px] lg:text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
                                             {item.title}
                                         </span>
-                                        <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
+                                        <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[9px] lg:text-[10px]">
                                             [ Principle ]
                                         </span>
                                     </div>
@@ -383,7 +383,7 @@ export default function AboutPage() {
                                     </span>
                                 </div>
 
-                                <p className="font-serif text-[1.15rem] md:text-[1.25rem] leading-[1.6] text-lucas-navy italic lowercase pr-4">
+                                <p className="font-serif text-[1.1rem] xl:text-[1.15rem] leading-[1.6] text-lucas-navy italic lowercase pr-2">
                                     {item.desc}
                                 </p>
                             </motion.div>
