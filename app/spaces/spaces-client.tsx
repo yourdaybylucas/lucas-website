@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Venue, Geography, Scale, Atmosphere, Footprint } from '@/data/venues';
 import { MapPin, Users, Building, Lock, X } from 'lucide-react';
+import CinematicPlayer from "@/components/CinematicPlayer";
 
 const DossierCard = ({ venue }: { venue: Venue }) => (
     <motion.div
@@ -14,7 +15,6 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.3 }}
-        // changed to h-fit so the card expands naturally to its content
         className="bg-lucas-cream border border-lucas-slate/20 p-6 md:p-10 flex flex-col shadow-sm h-fit"
     >
         <div className="mb-8">
@@ -26,14 +26,8 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
             </p>
         </div>
 
-        <div className="relative aspect-video w-full bg-[#0a1118] mb-10 overflow-hidden shadow-md group">
-            <iframe
-                src={`https://www.youtube.com/embed/${venue.visualEmbed}?autoplay=0&color=white&rel=0&modestbranding=1&playsinline=1`}
-                title={`Lucas Film at ${venue.name}`}
-                className="w-full h-full absolute top-0 left-0 border-none"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            ></iframe>
+        <div className="mb-10 w-full">
+            <CinematicPlayer videoId={venue.visualEmbed} altText={`Lucas Film at ${venue.name}`} />
         </div>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 mb-10 text-sm">
@@ -215,7 +209,7 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
 
                     <aside className="lg:col-span-3 lg:sticky lg:top-32">
                         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">The Ledger</h1>
-                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of ontarios best.</p>
+                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of ontario's best.</p>
 
                         <FilterSection
                             title="Geography"
@@ -310,7 +304,6 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
                         </div>
                     </section>
                     
-                    {/* The critical fix is right here: data-lenis-prevent */}
                     <section 
                         className="hidden lg:block lg:col-span-5 lg:sticky lg:top-32 h-[calc(100vh-10rem)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                         data-lenis-prevent
