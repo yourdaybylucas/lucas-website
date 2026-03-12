@@ -1,10 +1,10 @@
-// app/journal/[slug]/journal-post-client.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { JournalEntry } from "@/data/journal";
+import CinematicPlayer from "@/components/CinematicPlayer";
 
 export default function JournalPostClient({ post }: { post: JournalEntry }) {
     return (
@@ -53,15 +53,9 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full aspect-video bg-[#0a1118] shadow-2xl mb-16 lg:mb-24 border border-lucas-navy/10 relative z-10"
+                    className="w-full mb-16 lg:mb-24 relative z-10"
                 >
-                    <iframe
-                        src={`https://www.youtube.com/embed/${post.videoId}?autoplay=0&color=white&rel=0&modestbranding=1&playsinline=1`}
-                        title={post.title}
-                        className="w-full h-full absolute top-0 left-0 border-none"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+                    <CinematicPlayer videoId={post.videoId} altText={post.title} />
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
