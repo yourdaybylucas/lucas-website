@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 // --- THE ZISSOU CONFETTI (Subtle, Geometric, Restrained) ---
 const ZissouConfetti = () => {
@@ -468,26 +468,49 @@ export default function TheGuidePage() {
                                 </p>
                             </div>
 
-                            {/* Minimalist Text-Heavy Directory */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+                            {/* The Inventory Grid */}
+                            <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.03)]">
                                 {trustedPeers.map((group, idx) => (
-                                    <motion.div key={idx} variants={fadeUpItem} className="flex flex-col">
-                                        <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-6 border-b border-lucas-slate/20 pb-3">
-                                            [ {group.category} ]
-                                        </h3>
-                                        <ul className="flex flex-col gap-4">
+                                    <motion.div 
+                                        key={idx} 
+                                        variants={fadeUpItem} 
+                                        className="border-r border-b border-lucas-navy/20 p-8 lg:p-12 flex flex-col bg-lucas-cream hover:bg-[#FAF8F2] transition-colors duration-700 relative overflow-hidden group/box"
+                                    >
+                                        {/* Zissou corner crosshairs */}
+                                        <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
+                                        <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
+
+                                        <div className="flex items-end justify-between border-b border-lucas-navy/10 pb-4 mb-6">
+                                            <h3 className="font-sans text-[11px] tracking-zissou uppercase text-lucas-navy font-bold">
+                                                {group.category}
+                                            </h3>
+                                            <span className="font-sans text-[8px] tracking-widest text-lucas-slate uppercase">
+                                                [ Cat. 0{idx + 1} ]
+                                            </span>
+                                        </div>
+
+                                        <ul className="flex flex-col">
                                             {group.peers.map((peer, peerIdx) => (
-                                                <li key={peerIdx}>
+                                                <li key={peerIdx} className="border-b border-lucas-navy/5 last:border-0 relative">
                                                     <a 
                                                         href={peer.url} 
                                                         target="_blank" 
                                                         rel="noopener noreferrer"
-                                                        className="group inline-flex items-center gap-3 font-serif text-2xl md:text-[1.75rem] text-lucas-navy lowercase italic transition-all duration-500 hover:text-lucas-orange hover:line-through decoration-lucas-orange/50"
+                                                        className="group/link flex items-center justify-between py-4 w-full"
                                                     >
-                                                        <span className="font-sans text-xs tracking-normal text-lucas-orange opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none not-italic line-through-none">
-                                                            {'{'}
-                                                        </span>
-                                                        {peer.name}
+                                                        <div className="flex items-center gap-4">
+                                                            <span className="font-sans text-[9px] tracking-widest text-lucas-slate opacity-50 group-hover/link:text-lucas-orange group-hover/link:opacity-100 transition-colors duration-300">
+                                                                {String(peerIdx + 1).padStart(2, '0')}
+                                                            </span>
+                                                            <span className="font-serif text-[1.35rem] md:text-2xl text-lucas-navy lowercase italic group-hover/link:text-lucas-orange transition-colors duration-300">
+                                                                {peer.name}
+                                                            </span>
+                                                        </div>
+                                                        <ArrowUpRight 
+                                                            size={14} 
+                                                            strokeWidth={1.5}
+                                                            className="text-lucas-slate transform -translate-x-2 translate-y-2 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:translate-y-0 group-hover/link:text-lucas-orange transition-all duration-300 ease-[0.16,1,0.3,1]"
+                                                        />
                                                     </a>
                                                 </li>
                                             ))}
