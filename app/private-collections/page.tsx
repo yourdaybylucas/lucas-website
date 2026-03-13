@@ -505,7 +505,7 @@ export default function PrivateCollectionsPage() {
                                                             <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-orange">Analog Heavy</span>
                                                         </div>
 
-                                                        <p className="font-serif text-[clamp(1.1rem,1.25vw,1.25rem)] leading-[1.6] text-lucas-navy/80 lowercase italic">
+                                                        <p className="font-serif text-[clamp(0.95rem,1vw,1.1rem)] leading-[1.5] text-lucas-navy/80 lowercase italic">
                                                             for couples who don't want a heavily produced highlight film. entirely unforced. driven by the raw, nostalgic weight of authentic super 8mm and full-length documentary edits. anchored by a 60-second digital reel delivered in one week.
                                                         </p>
                                                     </div>
