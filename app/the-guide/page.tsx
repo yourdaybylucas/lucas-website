@@ -126,33 +126,39 @@ const trustedPeers = [
 const environmentNotes = [
     {
         id: "01",
-        title: "The Margin",
-        subtitle: "build in breathing room",
-        content: "build empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the magic happens."
+        title: "Schedule Empty Space",
+        subtitle: "the timeline margin",
+        content: "build empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the unforced magic happens."
     },
     {
         id: "02",
-        title: "The Footprint",
-        subtitle: "limit the transit",
-        content: "limit the location hopping. the less time we spend in transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people."
+        title: "Minimize Transit",
+        subtitle: "the location footprint",
+        content: "limit the location hopping. the less time we spend in cars or transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people."
     },
     {
         id: "03",
-        title: "The Roster",
-        subtitle: "ditch the clipboard",
-        content: "exhaustive, 40-point family photo combinations drain your energy and pull you away from the party. keep the formal roster tight—immediate family only—and let the rest of the day remain unforced."
+        title: "Keep Formal Photos Tight",
+        subtitle: "ditch the clipboard roster",
+        content: "exhaustive, 40-point family photo combinations drain your energy and pull you away from the party. keep the formal roster tight—immediate family only—and let the rest of the day remain completely unforced."
     },
     {
         id: "04",
-        title: "The Audio Backbone",
-        subtitle: "words carry weight",
-        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
+        title: "Protect The Audio",
+        subtitle: "words carry the narrative weight",
+        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing iphone screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
     },
     {
         id: "05",
-        title: "The Micro-Details",
+        title: "Ignore The Micro-Details",
         subtitle: "let go of the steering wheel",
         content: "nobody remembers the napkin folds. they remember the energy in the room. don't let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go and let the day unfold."
+    },
+    {
+        id: "06",
+        title: "Make It Your Own",
+        subtitle: "tradition is entirely optional",
+        content: "write personal vows. have a friend officiate. skip the cake cutting. get ready together. do whatever makes you feel the most comfortable. the more the day actually reflects the two of you, the more honest and cinematic the final film will be."
     }
 ];
 
@@ -404,7 +410,8 @@ export default function TheGuidePage() {
                     </section>
 
                     {/* 03. THE ENVIRONMENT */}
-                    <section id="environment" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-12 lg:py-16 relative">
+                    {/* Changed from justify-center to justify-start with pt-24 so the accordion doesn't break the layout vertically */}
+                    <section id="environment" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start pt-24 lg:pt-32 pb-16 lg:pb-24 relative">
                         <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] shadow-2xl relative overflow-hidden w-full border border-lucas-navy">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
                             
@@ -434,9 +441,9 @@ export default function TheGuidePage() {
                                         <div key={note.id} className="border-b border-lucas-cream/20 flex flex-col">
                                             <button
                                                 onClick={() => setActiveEnvNote(activeEnvNote === note.id ? "" : note.id)}
-                                                className="w-full py-6 lg:py-8 flex items-center justify-between text-left focus:outline-none group/btn"
+                                                className="w-full py-6 lg:py-8 flex flex-col md:flex-row md:items-center justify-between text-left focus:outline-none group/btn gap-4"
                                             >
-                                                <div className="flex items-center gap-6 lg:gap-12">
+                                                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 lg:gap-12">
                                                     <span className={`font-sans text-[10px] tracking-zissou font-bold transition-colors duration-500 ${activeEnvNote === note.id ? 'text-lucas-orange' : 'text-lucas-cream/40 group-hover/btn:text-lucas-orange/70'}`}>
                                                         [ {note.id} ]
                                                     </span>
@@ -446,7 +453,7 @@ export default function TheGuidePage() {
                                                 </div>
                                                 
                                                 {/* Geometric Zissou Toggle Icon */}
-                                                <div className={`relative w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0 ml-4 ${activeEnvNote === note.id ? 'border-lucas-orange bg-lucas-orange/10 text-lucas-orange rotate-45' : 'border-lucas-cream/20 text-lucas-cream/50 group-hover/btn:border-lucas-orange/50 group-hover/btn:text-lucas-orange'}`}>
+                                                <div className={`hidden md:flex relative w-8 h-8 rounded-full border items-center justify-center transition-all duration-500 shrink-0 ml-4 ${activeEnvNote === note.id ? 'border-lucas-orange bg-lucas-orange/10 text-lucas-orange rotate-45' : 'border-lucas-cream/20 text-lucas-cream/50 group-hover/btn:border-lucas-orange/50 group-hover/btn:text-lucas-orange'}`}>
                                                     <div className="absolute w-3 h-[1px] bg-current"></div>
                                                     <div className={`absolute h-3 w-[1px] bg-current transition-transform duration-500 ${activeEnvNote === note.id ? 'rotate-90 opacity-0' : ''}`}></div>
                                                 </div>
@@ -461,7 +468,7 @@ export default function TheGuidePage() {
                                                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                                                         className="overflow-hidden"
                                                     >
-                                                        <div className="pb-8 lg:pb-10 pl-14 lg:pl-[5.5rem] pr-4 lg:pr-16 flex flex-col md:flex-row gap-4 md:gap-12 items-start">
+                                                        <div className="pb-8 lg:pb-10 md:pl-[4.5rem] lg:pl-[5.5rem] md:pr-16 flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-12 items-start">
                                                             <div className="flex items-center gap-2 mt-1 shrink-0">
                                                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                                 <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-cream/50 whitespace-nowrap">
