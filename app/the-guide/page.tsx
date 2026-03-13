@@ -289,69 +289,77 @@ export default function TheGuidePage() {
                         </div>
                     </section>
 
-                    {/* 02. THE BLUEPRINT */}
-                    <section id="blueprint" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative bg-lucas-cream overflow-hidden">
+{/* 02. THE BLUEPRINT */}
+                    <section id="blueprint" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-16 lg:py-24 relative bg-lucas-cream z-10">
+                        {/* Subtle local grain for texture depth */}
+                        <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
+
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
-                            className="w-full"
+                            className="w-full relative z-10"
                         >
-                            {/* Compressed Header */}
-                            <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
+                            {/* High-End Architectural Header */}
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b-2 border-lucas-navy pb-6 mb-12 md:mb-16 gap-6">
                                 <div>
-                                    <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-[10px] mb-2">
-                                        [ System Process ]
-                                    </p>
-                                    <h2 className="font-sans font-bold text-3xl md:text-4xl text-lucas-navy uppercase tracking-tight">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
+                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase font-bold">
+                                            [ System Process ]
+                                        </span>
+                                    </div>
+                                    <h2 className="font-sans text-4xl md:text-5xl uppercase tracking-tight font-bold text-lucas-navy">
                                         The Blueprint.
                                     </h2>
                                 </div>
-                                <div className="flex flex-col md:items-end">
+                                <div className="flex flex-col text-left md:text-right">
                                     <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
-                                    <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy">LC-GD-BP</span>
+                                    <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy font-bold">LC-GD-BP</span>
                                 </div>
                             </div>
 
-                            {/* The Vertical Ledger */}
-                            <div className="flex flex-col">
+                            {/* The Ledger Grid (Replaces the vertical list) */}
+                            <div className="grid grid-cols-1 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.05)]">
                                 {[
-                                    { step: "01", title: "the quiet period", description: "you're officially in the calendar. i'm here as a sounding board if you need me, but otherwise, i step back and let you build the day. send over all the instporation, or just radio silence - both work perfectly." },
-                                    { step: "02", title: "the logistics", subtitle: "[ 1 month out ]", description: "i'll touch base to gather your timeline. from there, we can jump on a quick video call to align, or keep it entirely in the inbox. whatever feels easiest for you both." },
-                                    { step: "03", title: "the final ledger", subtitle: "[ 2 weeks out ]", description: "your remaining balance is settled. an automated nudge goes out beforehand so you don't have to carry it in your mental load." },
-                                    { step: "04", title: "the day", description: "i show up, blend in, and we celebrate." }
+                                    { step: "01", timeline: "Immediate", title: "the quiet period", description: "you're officially in the calendar. i'm here as a sounding board if you need me, but otherwise, i step back and let you build the day. send over all the inspiration, or just radio silence - both work perfectly." },
+                                    { step: "02", timeline: "30 days out", title: "the logistics", description: "i'll touch base to gather your timeline. from there, we can jump on a quick video call to align, or keep it entirely in the inbox. whatever feels easiest for you both." },
+                                    { step: "03", timeline: "14 days out", title: "the final ledger", description: "your remaining balance is settled. an automated nudge goes out beforehand so you don't have to carry it in your mental load." },
+                                    { step: "04", timeline: "Zero Hour", title: "the day", description: "i show up, blend in, and we celebrate. no forced staging, no heavy footprint—just honest documentation of the environment you've built." }
                                 ].map((item, index) => (
                                     <motion.div 
                                         key={index}
                                         variants={fadeUpItem}
-                                        className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-6 lg:py-8 border-b border-dashed border-lucas-navy/20 group hover:bg-lucas-navy/5 transition-colors duration-500 relative px-4 -mx-4"
+                                        className="group grid grid-cols-1 lg:grid-cols-12 border-b border-r border-lucas-navy/20 relative overflow-hidden bg-lucas-cream hover:bg-[#FAF8F2] transition-colors duration-700"
                                     >
-                                        {/* Geometric Step Box */}
-                                        <div className="md:col-span-3 flex items-start gap-4 pt-1">
-                                            <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center border border-lucas-navy/30 bg-lucas-cream group-hover:border-lucas-orange transition-colors duration-500">
-                                                <div className="w-1.5 h-1.5 bg-lucas-navy group-hover:bg-lucas-orange transition-colors duration-500"></div>
-                                            </div>
-                                            <div className="flex flex-col">
-                                                <span className="font-sans text-[9px] text-lucas-slate tracking-zissou uppercase mb-0.5">Step // {item.step}</span>
+                                        {/* Hover Accent Line */}
+                                        <div className="absolute top-0 left-0 w-1 h-full bg-lucas-orange transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-10"></div>
+
+                                        {/* Col 1: Metadata / Time */}
+                                        <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-6 md:p-8 flex flex-col justify-between bg-lucas-cream/50 group-hover:bg-transparent transition-colors duration-700">
+                                            <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
+                                                Phase // {item.step}
+                                            </span>
+                                            <div className="mt-8 lg:mt-0 font-sans text-[9px] tracking-widest uppercase text-lucas-navy border border-lucas-navy/10 px-3 py-1.5 bg-lucas-navy/5 w-fit shadow-sm">
+                                                [ {item.timeline} ]
                                             </div>
                                         </div>
 
-                                        {/* Title */}
-                                        <div className="md:col-span-3 flex flex-col items-start pt-0.5">
-                                            <h3 className="font-sans font-medium text-xl md:text-2xl lowercase text-lucas-navy">
+                                        {/* Col 2: The Soul (Title) */}
+                                        <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-6 md:p-8 flex items-center">
+                                            <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] italic text-lucas-navy lowercase leading-none">
                                                 {item.title}
                                             </h3>
-                                            {item.subtitle && (
-                                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mt-1">
-                                                    {item.subtitle}
-                                                </span>
-                                            )}
                                         </div>
 
-                                        {/* Description */}
-                                        <div className="md:col-span-6 flex items-start pt-1">
-                                            <p className="font-serif italic text-[clamp(1.1rem,1.5vw,1.25rem)] leading-relaxed text-lucas-navy/90 lowercase pr-4">
+                                        {/* Col 3: The Structure (Description) */}
+                                        <div className="lg:col-span-5 p-6 md:p-8 flex items-center relative">
+                                            {/* Subtle technical crosshair on hover */}
+                                            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 text-lucas-orange/40 font-sans text-xs">
+                                                +
+                                            </div>
+                                            <p className="font-serif text-[clamp(1.05rem,1.2vw,1.15rem)] leading-relaxed text-lucas-navy/80 lowercase pr-2 md:pr-4">
                                                 {item.description}
                                             </p>
                                         </div>
