@@ -324,7 +324,7 @@ export default function TheGuidePage() {
                             <div className="grid grid-cols-1 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.05)]">
                                 {[
                                     { step: "01", timeline: "Immediate", title: "the quiet period", description: "you're officially in the calendar. i'm here as a sounding board if you need me. send over all the inspiration, or just radio silence - both work perfectly." },
-                                    { step: "02", timeline: "30 days out", title: "the logistics", description: "i'll touch base to gather your timeline. from there, we can jump on a quick video call to align, or keep it entirely in the inbox. whatever feels easiest for you both." },
+                                    { step: "02", timeline: "30 days out", title: "the logistics", description: "i'll touch base to gather your timeline. from there, we can jump on a quick video call to align, or keep it entirely in the inbox. whatever feels easiest for you." },
                                     { step: "03", timeline: "14 days out", title: "the final ledger", description: "your remaining balance is settled. an automated nudge goes out beforehand so you don't have to carry it in your mental load." },
                                     { step: "04", timeline: "Zero Hour", title: "the day", description: "i show up, blend in, and we celebrate. no forced staging, no heavy footprint—just honest documentation of the environment you've built." }
                                 ].map((item, index) => (
