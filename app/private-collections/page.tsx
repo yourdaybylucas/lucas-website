@@ -266,8 +266,8 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </motion.div>
 
-                            {/* The Tab Content Wrapper - Fixed min-heights prevent the scroll-snap jump during toggles */}
-                            <div className="relative w-full min-h-[1100px] lg:min-h-[480px]">
+                            {/* The Tab Content Wrapper */}
+                            <div className="relative w-full min-h-[700px] lg:min-h-[480px]">
                                 <AnimatePresence mode="popLayout" initial={false}>
                                     {activeTab === 'narrative' ? (
                                         <motion.div 
@@ -459,7 +459,9 @@ export default function PrivateCollectionsPage() {
                                         >
                                             <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange"></div>
                                             
-                                            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
+                                            {/* THE NEW 3-COLUMN ARCHITECTURE */}
+                                            <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
+                                                
                                                 {/* Left: The Philosophy */}
                                                 <div className="p-8 lg:p-12 flex flex-col justify-between">
                                                     <div>
@@ -471,22 +473,22 @@ export default function PrivateCollectionsPage() {
                                                             <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,200 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                         </div>
                                                         
-                                                        <h3 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy italic mb-6 leading-none">
+                                                        <h3 className="font-serif text-[clamp(2.5rem,3.5vw,3rem)] text-lucas-navy italic mb-6 leading-none">
                                                             The Purist
                                                         </h3>
                                                         
                                                         <div className="flex items-center gap-3 mb-8 border-b border-lucas-navy/10 pb-6">
                                                             <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-slate">Format //</span>
-                                                            <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-orange">Analog Heavy / Low Intervention</span>
+                                                            <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-orange">Analog Heavy</span>
                                                         </div>
 
-                                                        <p className="font-serif text-[clamp(1.125rem,1.5vw,1.25rem)] leading-[1.6] text-lucas-navy/80 lowercase italic max-w-md">
+                                                        <p className="font-serif text-[clamp(1.1rem,1.25vw,1.25rem)] leading-[1.6] text-lucas-navy/80 lowercase italic">
                                                             for couples who don't want a heavily produced highlight film. entirely unforced. driven by the raw, nostalgic weight of authentic super 8mm and full-length documentary edits. anchored by a 60-second digital reel delivered in one week.
                                                         </p>
                                                     </div>
                                                 </div>
 
-                                                {/* Right: The Inventory */}
+                                                {/* Middle: The Inventory */}
                                                 <div className="p-8 lg:p-12 bg-lucas-navy/5 flex flex-col relative">
                                                     <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none mix-blend-overlay z-0"></div>
 
@@ -500,7 +502,7 @@ export default function PrivateCollectionsPage() {
                                                             <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                                 <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                                     <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-minute super 8mm core film</span>
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-min super 8mm core film</span>
                                                                 </span>
                                                                 <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ authentic kodak stock ]</span>
                                                             </button>
@@ -535,31 +537,39 @@ export default function PrivateCollectionsPage() {
                                                             </button>
                                                         </li>
                                                     </ul>
-
-                                                    {/* Modular Add-ons */}
-                                                    <div className="mt-10 pt-6 border-t border-lucas-navy/10 relative z-10">
-                                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-4 block">
-                                                            [ Modular Additions ]
-                                                        </span>
-                                                        <ul className="flex flex-col gap-3 font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
-                                                            <li className="flex justify-between items-end border-b border-lucas-navy/5 pb-2">
-                                                                <div className="flex flex-col items-start text-left">
-                                                                    <span>+ Extra Super 8mm Roll</span>
-                                                                    <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal mt-0.5">[ brings the core film to 6 minutes ]</span>
-                                                                </div>
-                                                                <span className="text-lucas-orange">$800</span>
-                                                            </li>
-                                                            <li className="flex justify-between items-end border-b border-lucas-navy/5 pb-2">
-                                                                <div className="flex flex-col items-start text-left">
-                                                                    <span>+ Additional Time</span>
-                                                                    <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal mt-0.5">[ per extra hour ]</span>
-                                                                </div>
-                                                                <span className="text-lucas-orange">$300</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
                                                 </div>
+
+                                                {/* Right: Modular Additions */}
+                                                <div className="p-8 lg:p-12 bg-lucas-cream flex flex-col relative">
+                                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-8 block">
+                                                        [ The Additions ]
+                                                    </span>
+                                                    
+                                                    <ul className="flex flex-col gap-6 font-sans text-[10px] uppercase tracking-widest text-lucas-navy flex-grow">
+                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group hover:bg-lucas-navy/5 transition-colors p-2 -mx-2 rounded-sm cursor-default">
+                                                            <div className="flex justify-between items-end mb-1">
+                                                                <span className="font-bold text-lucas-navy group-hover:text-lucas-orange transition-colors">+ Extra Super 8mm Roll</span>
+                                                                <span className="text-lucas-orange">$800</span>
+                                                            </div>
+                                                            <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal">[ brings the core film to 6 minutes ]</span>
+                                                        </li>
+                                                        
+                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group hover:bg-lucas-navy/5 transition-colors p-2 -mx-2 rounded-sm cursor-default">
+                                                            <div className="flex justify-between items-end mb-1">
+                                                                <span className="font-bold text-lucas-navy group-hover:text-lucas-orange transition-colors">+ Additional Time</span>
+                                                                <span className="text-lucas-orange">$300</span>
+                                                            </div>
+                                                            <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal">[ per extra hour ]</span>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div className="mt-8 pt-6 border-t border-lucas-navy/20">
+                                                        <p className="font-serif text-[13px] text-lucas-slate lowercase italic leading-relaxed">
+                                                            all modular additions are completely optional and can be decided upon one month prior to the day.
+                                                        </p>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </motion.div>
                                     )}
