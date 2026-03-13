@@ -212,7 +212,7 @@ export default function TheGuidePage() {
             >
                 <div className="w-full max-w-6xl mx-auto flex flex-col">
                     
-                    {/* 01. THE WELCOME */}
+{/* 01. THE WELCOME */}
                     <section id="welcome" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-20 relative">
                         {/* The Subtle Zissou Celebration */}
                         <ZissouConfetti />
@@ -275,13 +275,19 @@ export default function TheGuidePage() {
 
                                     {/* Handwriting / Notations */}
                                     <div className="absolute bottom-5 md:bottom-7 left-5 md:left-6 flex flex-col">
-                                        <span className="font-serif italic text-xl md:text-2xl text-lucas-navy/80 tracking-tight">let's build the day.</span>
+                                        <span className="font-serif italic text-sm md:text-base text-lucas-navy/80 tracking-tight">cheers. let's make this one for the books.</span>
                                     </div>
-                                    <div className="absolute bottom-6 md:bottom-8 right-5 md:right-6">
+                                    <div className="absolute bottom-5 md:bottom-7 right-5 md:right-6 flex items-end">
                                         <span className="font-sans text-[8px] md:text-[9px] tracking-widest uppercase text-lucas-slate/50">
                                             Fig. 01
                                         </span>
                                     </div>
+
+                                </div>
+                            </motion.div>
+
+                        </div>
+                    </section>
 
                                 </div>
                             </motion.div>
