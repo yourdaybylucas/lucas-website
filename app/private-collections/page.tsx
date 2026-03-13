@@ -467,7 +467,7 @@ export default function PrivateCollectionsPage() {
                                                             <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 00 ]</span>
                                                             <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                         </div>
-                                                        <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,200 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
+                                                        <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,400 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                     </div>
                                                     
                                                     <h3 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy italic mb-6 leading-none">
@@ -480,7 +480,7 @@ export default function PrivateCollectionsPage() {
                                                     </div>
 
                                                     <p className="font-serif text-[clamp(1.125rem,1.5vw,1.25rem)] leading-[1.6] text-lucas-navy/80 lowercase italic max-w-md">
-                                                        for couples who don't want a heavily produced highlight film. entirely unforced. driven by the raw, nostalgic weight of authentic super 8mm and full-length documentary edits.
+                                                        for couples who don't want a heavily produced highlight film. entirely unforced. driven by the nostalgia of authentic super 8mm and full-length documentary edits. finished with a 60-second digital reel, delivered within the week.
                                                     </p>
                                                 </div>
                                             </div>
