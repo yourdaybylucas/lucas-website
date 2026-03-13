@@ -94,14 +94,14 @@ const trustedPeers = [
         ]
     },
     {
-        category: "Planners & Coordinators",
+        category: "Planners & Co.",
         peers: [
-            { name: "Clement and Co Events", url: "https://www.clementandcoevents.com/" },
-            { name: "Samantha Nicholas Events", url: "https://www.samanthanicholas.ca/" },
+            { name: "Clement and Co", url: "https://www.clementandcoevents.com/" },
+            { name: "Samantha Nicholas", url: "https://www.samanthanicholas.ca/" },
             { name: "LQ Events", url: "https://lqevents.ca/" },
             { name: "Confetti and Co", url: "https://confettiand.co/" },
             { name: "W Events & Decor", url: "https://www.weventsanddecor.com/" },
-            { name: "Perfectly Designed Events", url: "https://www.perfectlydesignedevents.com/" },
+            { name: "Perfectly Designed", url: "https://www.perfectlydesignedevents.com/" },
         ]
     },
     {
@@ -117,7 +117,7 @@ const trustedPeers = [
         category: "Officiants",
         peers: [
             { name: "Jeff Maeck", url: "https://maeckweddings.com/officiating" },
-            { name: "Your Wedding Officiant", url: "https://www.yourweddingofficiant.ca/" },
+            { name: "Wedding Officiant", url: "https://www.yourweddingofficiant.ca/" },
             { name: "Bcause Love", url: "https://bcauslove.com/" }
         ]
     }
@@ -320,7 +320,7 @@ export default function TheGuidePage() {
                                 </div>
                             </div>
 
-                            {/* The Ledger Grid (Replaces the vertical list) */}
+                            {/* The Ledger Grid */}
                             <div className="grid grid-cols-1 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.05)]">
                                 {[
                                     { step: "01", timeline: "Immediate", title: "the quiet period", description: "you're officially in the calendar. i'm here as a sounding board if you need me. send over all the inspiration, or just radio silence - both work perfectly." },
@@ -337,7 +337,7 @@ export default function TheGuidePage() {
                                         <div className="absolute top-0 left-0 w-1 h-full bg-lucas-orange transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-10"></div>
 
                                         {/* Col 1: Metadata / Time */}
-                                        <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-6 md:p-8 flex flex-col justify-between bg-lucas-cream/50 group-hover:bg-transparent transition-colors duration-700">
+                                        <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-5 md:p-6 flex flex-col justify-between bg-lucas-cream/50 group-hover:bg-transparent transition-colors duration-700">
                                             <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
                                                 Phase // {item.step}
                                             </span>
@@ -347,14 +347,14 @@ export default function TheGuidePage() {
                                         </div>
 
                                         {/* Col 2: The Soul (Title) */}
-                                        <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-6 md:p-8 flex items-center">
+                                        <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-5 md:p-6 flex items-center">
                                             <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] italic text-lucas-navy lowercase leading-none">
                                                 {item.title}
                                             </h3>
                                         </div>
 
                                         {/* Col 3: The Structure (Description) */}
-                                        <div className="lg:col-span-5 p-6 md:p-8 flex items-center relative">
+                                        <div className="lg:col-span-5 p-5 md:p-6 flex items-center relative">
                                             {/* Subtle technical crosshair on hover */}
                                             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 text-lucas-orange/40 font-sans text-xs">
                                                 +
@@ -447,14 +447,15 @@ export default function TheGuidePage() {
                     </section>
 
                     {/* 04. THE NETWORK -> TRUSTED PEERS */}
-                    <section id="trusted-peers" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative">
+                    <section id="trusted-peers" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-10 lg:py-16 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
+                            className="w-full flex flex-col my-auto"
                         >
-                            <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 mb-12 gap-4">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 mb-8 lg:mb-12 gap-4">
                                 <div>
                                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy">
                                         Trusted Peers //
@@ -464,23 +465,23 @@ export default function TheGuidePage() {
                                     </p>
                                 </div>
                                 <p className="font-serif text-lg italic text-lucas-navy/80 lowercase max-w-md md:text-right leading-snug">
-                                    working with vendors who share the same ethos changes the entire feeling of the day. this is a curated inventory of peers who prioritize a similar, unforced approach.
+                                    working with vendors who share the same ethos changes the entire feeling of the day. this is a curated inventory of peers.
                                 </p>
                             </div>
 
-                            {/* The Inventory Grid */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.03)]">
+                            {/* The Inventory Grid - Horizontal scroll on mobile, 4-col on desktop */}
+                            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.03)] overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                                 {trustedPeers.map((group, idx) => (
                                     <motion.div 
                                         key={idx} 
                                         variants={fadeUpItem} 
-                                        className="border-r border-b border-lucas-navy/20 p-8 lg:p-12 flex flex-col bg-lucas-cream hover:bg-[#FAF8F2] transition-colors duration-700 relative overflow-hidden group/box"
+                                        className="flex-none w-[85vw] md:w-auto snap-start border-r border-b border-lucas-navy/20 p-6 lg:p-8 flex flex-col bg-lucas-cream hover:bg-[#FAF8F2] transition-colors duration-700 relative overflow-hidden group/box"
                                     >
                                         {/* Zissou corner crosshairs */}
                                         <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
 
-                                        <div className="flex items-end justify-between border-b border-lucas-navy/10 pb-4 mb-6">
+                                        <div className="flex items-end justify-between border-b border-lucas-navy/10 pb-4 mb-5">
                                             <h3 className="font-sans text-[11px] tracking-zissou uppercase text-lucas-navy font-bold">
                                                 {group.category}
                                             </h3>
@@ -496,20 +497,20 @@ export default function TheGuidePage() {
                                                         href={peer.url} 
                                                         target="_blank" 
                                                         rel="noopener noreferrer"
-                                                        className="group/link flex items-center justify-between py-4 w-full"
+                                                        className="group/link flex items-center justify-between py-2.5 w-full"
                                                     >
-                                                        <div className="flex items-center gap-4">
-                                                            <span className="font-sans text-[9px] tracking-widest text-lucas-slate opacity-50 group-hover/link:text-lucas-orange group-hover/link:opacity-100 transition-colors duration-300">
+                                                        <div className="flex items-center gap-3">
+                                                            <span className="font-sans text-[8px] tracking-widest text-lucas-slate opacity-40 group-hover/link:text-lucas-orange group-hover/link:opacity-100 transition-colors duration-300">
                                                                 {String(peerIdx + 1).padStart(2, '0')}
                                                             </span>
-                                                            <span className="font-serif text-[1.35rem] md:text-2xl text-lucas-navy lowercase italic group-hover/link:text-lucas-orange transition-colors duration-300">
+                                                            <span className="font-serif text-[1.1rem] md:text-[1.15rem] text-lucas-navy lowercase italic group-hover/link:text-lucas-orange transition-colors duration-300 pr-2">
                                                                 {peer.name}
                                                             </span>
                                                         </div>
                                                         <ArrowUpRight 
-                                                            size={14} 
+                                                            size={12} 
                                                             strokeWidth={1.5}
-                                                            className="text-lucas-slate transform -translate-x-2 translate-y-2 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:translate-y-0 group-hover/link:text-lucas-orange transition-all duration-300 ease-[0.16,1,0.3,1]"
+                                                            className="text-lucas-slate shrink-0 transform -translate-x-2 translate-y-2 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:translate-y-0 group-hover/link:text-lucas-orange transition-all duration-300 ease-[0.16,1,0.3,1]"
                                                         />
                                                     </a>
                                                 </li>
@@ -520,7 +521,7 @@ export default function TheGuidePage() {
                             </div>
 
                             {/* Footer Anchor */}
-                            <motion.div variants={fadeUpItem} className="mt-24 pt-8 border-t border-lucas-navy/10 flex items-center justify-between text-lucas-slate">
+                            <motion.div variants={fadeUpItem} className="mt-12 lg:mt-16 pt-6 border-t border-lucas-navy/10 flex items-center justify-between text-lucas-slate">
                                 <span className="font-sans text-[8px] tracking-widest uppercase">
                                     End of guide
                                 </span>
