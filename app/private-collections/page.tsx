@@ -1,3 +1,4 @@
+// app/private-collections/page.tsx
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -235,13 +236,17 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </div>
 
-                            {/* The Baseline (Ledger Style) - Present in both philosophies */}
+                            {/* The Baseline (Ledger Style) - Dynamic based on philosophy */}
                             <motion.div variants={fadeUpItem} className="mb-10 lg:mb-12">
                                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-y border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
                                     <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 01 ]</span>
-                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Unlimited Coverage</h4>
-                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">from getting ready to lights up.</p>
+                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">
+                                            {activeTab === 'narrative' ? 'Unlimited Coverage' : '8 Hours Coverage'}
+                                        </h4>
+                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">
+                                            {activeTab === 'narrative' ? 'from getting ready to lights up.' : 'the core framework. options to extend.'}
+                                        </p>
                                     </div>
                                     <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
                                         <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 02 ]</span>
@@ -462,7 +467,7 @@ export default function PrivateCollectionsPage() {
                                                             <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 00 ]</span>
                                                             <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                         </div>
-                                                        <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,000 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
+                                                        <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,200 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                     </div>
                                                     
                                                     <h3 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] text-lucas-navy italic mb-6 leading-none">
@@ -489,16 +494,12 @@ export default function PrivateCollectionsPage() {
                                                 </span>
                                                 
                                                 <ul className="flex flex-col gap-6 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow relative z-10">
-                                                    <li className="flex items-start gap-4 opacity-60">
-                                                        <span className="text-lucas-orange mt-0.5">+</span> 
-                                                        <span>unlimited coverage</span>
-                                                    </li>
                                                     <li className="flex items-start gap-4 group/link">
                                                         <span className="text-lucas-orange mt-0.5">+</span> 
                                                         <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                             <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                                 <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">super 8mm core film</span>
+                                                                <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-minute super 8mm core film</span>
                                                             </span>
                                                             <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ authentic kodak stock ]</span>
                                                         </button>
@@ -522,7 +523,7 @@ export default function PrivateCollectionsPage() {
                                                             <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ speeches & first dances ]</span>
                                                         </button>
                                                     </li>
-                                                    <li className="flex items-start gap-4 group/link mt-auto pt-2">
+                                                    <li className="flex items-start gap-4 group/link">
                                                         <span className="text-lucas-orange mt-0.5">+</span> 
                                                         <button onClick={() => setActiveVideo('hUOVbTsxAho')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                             <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
@@ -533,6 +534,30 @@ export default function PrivateCollectionsPage() {
                                                         </button>
                                                     </li>
                                                 </ul>
+
+                                                {/* Modular Add-ons */}
+                                                <div className="mt-10 pt-6 border-t border-lucas-navy/10 relative z-10">
+                                                    <span className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-4 block">
+                                                        [ Modular Additions ]
+                                                    </span>
+                                                    <ul className="flex flex-col gap-3 font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
+                                                        <li className="flex justify-between items-end border-b border-lucas-navy/5 pb-2">
+                                                            <div className="flex flex-col items-start text-left">
+                                                                <span>+ Extra Super 8mm Roll</span>
+                                                                <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal mt-0.5">[ brings the core film to 6 minutes ]</span>
+                                                            </div>
+                                                            <span className="text-lucas-orange">$800</span>
+                                                        </li>
+                                                        <li className="flex justify-between items-end border-b border-lucas-navy/5 pb-2">
+                                                            <div className="flex flex-col items-start text-left">
+                                                                <span>+ Additional Time</span>
+                                                                <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal mt-0.5">[ per extra hour ]</span>
+                                                            </div>
+                                                            <span className="text-lucas-orange">$300</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </motion.div>
