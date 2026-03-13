@@ -1,7 +1,7 @@
 // app/the-guide/page.tsx
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -126,45 +126,44 @@ const trustedPeers = [
 const environmentNotes = [
     {
         id: "01",
-        title: "Schedule Empty Space",
-        subtitle: "the timeline margin",
+        title: "The Margin",
+        subtitle: "schedule empty space",
         content: "build empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the unforced magic happens."
     },
     {
         id: "02",
-        title: "Minimize Transit",
-        subtitle: "the location footprint",
+        title: "The Footprint",
+        subtitle: "minimize transit",
         content: "limit the location hopping. the less time we spend in cars or transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people."
     },
     {
         id: "03",
-        title: "Keep Formal Photos Tight",
-        subtitle: "ditch the clipboard roster",
+        title: "The Roster",
+        subtitle: "keep formal photos tight",
         content: "exhaustive, 40-point family photo combinations drain your energy and pull you away from the party. keep the formal roster tight—immediate family only—and let the rest of the day remain completely unforced."
     },
     {
         id: "04",
-        title: "Protect The Audio",
-        subtitle: "words carry the narrative weight",
-        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing iphone screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
+        title: "The Audio Backbone",
+        subtitle: "words carry weight",
+        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
     },
     {
         id: "05",
-        title: "Ignore The Micro-Details",
+        title: "The Micro-Details",
         subtitle: "let go of the steering wheel",
         content: "nobody remembers the napkin folds. they remember the energy in the room. don't let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go and let the day unfold."
     },
     {
         id: "06",
-        title: "Make It Your Own",
-        subtitle: "tradition is entirely optional",
-        content: "write personal vows. have a friend officiate. skip the cake cutting. get ready together. do whatever makes you feel the most comfortable. the more the day actually reflects the two of you, the more honest and cinematic the final film will be."
+        title: "The Rulebook",
+        subtitle: "make the day your own",
+        content: "write personal vows. have a friend officiate. skip the cake cutting. do anything you can to make it feel like you. the more the day actually reflects who you both are, the more honest and cinematic your final film will be."
     }
 ];
 
 export default function TheGuidePage() {
     const [activeSection, setActiveSection] = useState("welcome");
-    const [activeEnvNote, setActiveEnvNote] = useState("01");
 
     // Intersection observer to highlight the active index dot
     useEffect(() => {
@@ -410,9 +409,8 @@ export default function TheGuidePage() {
                     </section>
 
                     {/* 03. THE ENVIRONMENT */}
-                    {/* Changed from justify-center to justify-start with pt-24 so the accordion doesn't break the layout vertically */}
-                    <section id="environment" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start pt-24 lg:pt-32 pb-16 lg:pb-24 relative">
-                        <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] shadow-2xl relative overflow-hidden w-full border border-lucas-navy">
+                    <section id="environment" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-12 lg:py-16 relative">
+                        <div className="bg-lucas-navy text-lucas-cream shadow-2xl relative overflow-hidden w-full border border-lucas-navy flex flex-col py-[clamp(1.5rem,4vw,3.5rem)]">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
                             
                             <motion.div 
@@ -420,72 +418,58 @@ export default function TheGuidePage() {
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-50px" }}
-                                className="relative z-10"
+                                className="relative z-10 flex flex-col w-full"
                             >
-                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-4 lg:pb-6 mb-6 lg:mb-8">
-                                    <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
-                                        The Environment
-                                    </h2>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
-                                        [ Presence over Perfection ]
-                                    </span>
+                                {/* Header text container */}
+                                <div className="px-[clamp(1.5rem,4vw,3.5rem)] w-full max-w-6xl mx-auto mb-10 md:mb-16">
+                                    <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-4 lg:pb-6 mb-6 lg:mb-8">
+                                        <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
+                                            The Environment
+                                        </h2>
+                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
+                                            [ Presence over Perfection ]
+                                        </span>
+                                    </div>
+
+                                    <p className="font-serif text-[clamp(1.1rem,1.5vw,1.3rem)] text-lucas-cream/80 lowercase leading-relaxed max-w-2xl">
+                                        i want to ease any concerns right out of the gate. the little things you do to protect your time dictate how the day actually feels. here is an inventory of things to consider to keep you present.
+                                    </p>
                                 </div>
 
-                                <p className="font-serif text-[clamp(1.1rem,1.5vw,1.3rem)] text-lucas-cream/80 lowercase leading-relaxed mb-10 max-w-2xl">
-                                    i want to ease any concerns right out of the gate. the little things you do to protect your time dictate how the day actually feels. here is an interactive field guide to staying present.
-                                </p>
-
-                                {/* Interactive Dossier Accordion */}
-                                <div className="flex flex-col border-t border-lucas-cream/20">
-                                    {environmentNotes.map((note) => (
-                                        <div key={note.id} className="border-b border-lucas-cream/20 flex flex-col">
-                                            <button
-                                                onClick={() => setActiveEnvNote(activeEnvNote === note.id ? "" : note.id)}
-                                                className="w-full py-6 lg:py-8 flex flex-col md:flex-row md:items-center justify-between text-left focus:outline-none group/btn gap-4"
+                                {/* The Horizontal Slider Strip */}
+                                <div className="w-full relative z-10 pl-[clamp(1.5rem,4vw,3.5rem)]">
+                                    <div className="flex overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4 md:gap-6 pr-[clamp(1.5rem,4vw,3.5rem)] pb-8">
+                                        {environmentNotes.map((note) => (
+                                            <motion.div 
+                                                key={note.id}
+                                                variants={fadeUpItem} 
+                                                className="flex-none w-[85vw] md:w-[380px] lg:w-[420px] group border border-lucas-cream/20 p-6 md:p-8 hover:bg-lucas-cream/5 transition-colors duration-500 flex flex-col justify-between min-h-[300px] lg:min-h-[320px] snap-start bg-lucas-navy relative overflow-hidden"
                                             >
-                                                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 lg:gap-12">
-                                                    <span className={`font-sans text-[10px] tracking-zissou font-bold transition-colors duration-500 ${activeEnvNote === note.id ? 'text-lucas-orange' : 'text-lucas-cream/40 group-hover/btn:text-lucas-orange/70'}`}>
-                                                        [ {note.id} ]
-                                                    </span>
-                                                    <h3 className={`font-sans text-xl md:text-2xl lg:text-3xl uppercase tracking-tight transition-colors duration-500 ${activeEnvNote === note.id ? 'text-lucas-orange' : 'text-lucas-cream'}`}>
-                                                        {note.title}
+                                                {/* Accent Line */}
+                                                <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10"></div>
+
+                                                <div className="flex flex-col mb-8 relative z-10">
+                                                    <div className="flex items-center justify-between mb-6">
+                                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">
+                                                            [ {note.id} ]
+                                                        </span>
+                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-cream/60 border-b border-lucas-cream/20 pb-1">
+                                                            {note.title}
+                                                        </span>
+                                                    </div>
+                                                    <h3 className="font-sans text-xl md:text-2xl uppercase tracking-tight text-lucas-cream">
+                                                        {note.subtitle}
                                                     </h3>
                                                 </div>
-                                                
-                                                {/* Geometric Zissou Toggle Icon */}
-                                                <div className={`hidden md:flex relative w-8 h-8 rounded-full border items-center justify-center transition-all duration-500 shrink-0 ml-4 ${activeEnvNote === note.id ? 'border-lucas-orange bg-lucas-orange/10 text-lucas-orange rotate-45' : 'border-lucas-cream/20 text-lucas-cream/50 group-hover/btn:border-lucas-orange/50 group-hover/btn:text-lucas-orange'}`}>
-                                                    <div className="absolute w-3 h-[1px] bg-current"></div>
-                                                    <div className={`absolute h-3 w-[1px] bg-current transition-transform duration-500 ${activeEnvNote === note.id ? 'rotate-90 opacity-0' : ''}`}></div>
-                                                </div>
-                                            </button>
-                                            
-                                            <AnimatePresence>
-                                                {activeEnvNote === note.id && (
-                                                    <motion.div
-                                                        initial={{ height: 0, opacity: 0 }}
-                                                        animate={{ height: "auto", opacity: 1 }}
-                                                        exit={{ height: 0, opacity: 0 }}
-                                                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                                                        className="overflow-hidden"
-                                                    >
-                                                        <div className="pb-8 lg:pb-10 md:pl-[4.5rem] lg:pl-[5.5rem] md:pr-16 flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-12 items-start">
-                                                            <div className="flex items-center gap-2 mt-1 shrink-0">
-                                                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
-                                                                <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-cream/50 whitespace-nowrap">
-                                                                    [ {note.subtitle} ]
-                                                                </span>
-                                                            </div>
-                                                            <p className="font-serif text-[clamp(1.1rem,1.5vw,1.25rem)] leading-[1.6] text-lucas-cream/90 lowercase italic max-w-2xl">
-                                                                {note.content}
-                                                            </p>
-                                                        </div>
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
-                                    ))}
+                                                <p className="font-serif text-[clamp(1.05rem,1.2vw,1.15rem)] leading-[1.6] text-lucas-cream/80 lowercase italic relative z-10">
+                                                    {note.content}
+                                                </p>
+                                            </motion.div>
+                                        ))}
+                                        {/* End Buffer to allow last card to scroll nicely */}
+                                        <div className="flex-none w-[4vw] md:w-[10vw] snap-start"></div>
+                                    </div>
                                 </div>
-
                             </motion.div>
                         </div>
                     </section>
