@@ -268,7 +268,7 @@ export default function TheGuidePage() {
                                 <div className="flex items-center gap-3 mb-8 lg:mb-12 pl-2 lg:pl-6">
                                     <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase font-bold">
-                                        [ Status // Locked ]
+                                        [ Status // Booked ]
                                     </span>
                                 </div>
 
