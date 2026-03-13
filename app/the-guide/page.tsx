@@ -212,7 +212,7 @@ export default function TheGuidePage() {
             >
                 <div className="w-full max-w-6xl mx-auto flex flex-col">
                     
-{/* 01. THE WELCOME */}
+                    {/* 01. THE WELCOME */}
                     <section id="welcome" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-20 relative">
                         {/* The Subtle Zissou Celebration */}
                         <ZissouConfetti />
@@ -282,12 +282,6 @@ export default function TheGuidePage() {
                                             Fig. 01
                                         </span>
                                     </div>
-
-                                </div>
-                            </motion.div>
-
-                        </div>
-                    </section>
 
                                 </div>
                             </motion.div>
