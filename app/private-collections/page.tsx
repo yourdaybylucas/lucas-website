@@ -493,7 +493,7 @@ export default function PrivateCollectionsPage() {
                                                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 00 ]</span>
                                                                 <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                             </div>
-                                                            <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,200 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
+                                                            <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,400 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                         </div>
 
                                                         <h3 className="font-serif text-[clamp(2.5rem,3.5vw,3rem)] text-lucas-navy italic mb-6 leading-none">
