@@ -4,6 +4,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, X, Maximize } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
