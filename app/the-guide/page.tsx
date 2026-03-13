@@ -1,7 +1,7 @@
 // app/the-guide/page.tsx
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -123,8 +123,42 @@ const trustedPeers = [
     }
 ];
 
+const environmentNotes = [
+    {
+        id: "01",
+        title: "The Margin",
+        subtitle: "build in breathing room",
+        content: "build empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the magic happens."
+    },
+    {
+        id: "02",
+        title: "The Footprint",
+        subtitle: "limit the transit",
+        content: "limit the location hopping. the less time we spend in transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people."
+    },
+    {
+        id: "03",
+        title: "The Roster",
+        subtitle: "ditch the clipboard",
+        content: "exhaustive, 40-point family photo combinations drain your energy and pull you away from the party. keep the formal roster tight—immediate family only—and let the rest of the day remain unforced."
+    },
+    {
+        id: "04",
+        title: "The Audio Backbone",
+        subtitle: "words carry weight",
+        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
+    },
+    {
+        id: "05",
+        title: "The Micro-Details",
+        subtitle: "let go of the steering wheel",
+        content: "nobody remembers the napkin folds. they remember the energy in the room. don't let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go and let the day unfold."
+    }
+];
+
 export default function TheGuidePage() {
     const [activeSection, setActiveSection] = useState("welcome");
+    const [activeEnvNote, setActiveEnvNote] = useState("01");
 
     // Intersection observer to highlight the active index dot
     useEffect(() => {
@@ -381,67 +415,70 @@ export default function TheGuidePage() {
                                 viewport={{ once: true, margin: "-50px" }}
                                 className="relative z-10"
                             >
-                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-4 lg:pb-6 mb-8 lg:mb-12">
+                                <div className="flex items-center justify-between border-b border-lucas-cream/20 pb-4 lg:pb-6 mb-6 lg:mb-8">
                                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold">
                                         The Environment
                                     </h2>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
-                                        [ Crafting The Frame ]
+                                        [ Presence over Perfection ]
                                     </span>
                                 </div>
 
-                                {/* 2x2 Grid for Educational Blocks */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-16 gap-y-12">
-                                    
-                                    <div className="flex flex-col group">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">[ 01 ]</span>
-                                            <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream border-b border-lucas-orange/30 pb-1">
-                                                Chasing The Light
-                                            </h3>
-                                        </div>
-                                        <p className="font-serif text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-lucas-cream/80 lowercase group-hover:text-lucas-cream transition-colors duration-500">
-                                            both super 8mm film and digital sensors thrive on natural light. for prep, choose a room with large windows and turn off the overhead tungsten lights. let the natural shadows fall where they may.
-                                        </p>
-                                    </div>
+                                <p className="font-serif text-[clamp(1.1rem,1.5vw,1.3rem)] text-lucas-cream/80 lowercase leading-relaxed mb-10 max-w-2xl">
+                                    i want to ease any concerns right out of the gate. the little things you do to protect your time dictate how the day actually feels. here is an interactive field guide to staying present.
+                                </p>
 
-                                    <div className="flex flex-col group">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">[ 02 ]</span>
-                                            <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream border-b border-lucas-orange/30 pb-1">
-                                                The Footprint
-                                            </h3>
+                                {/* Interactive Dossier Accordion */}
+                                <div className="flex flex-col border-t border-lucas-cream/20">
+                                    {environmentNotes.map((note) => (
+                                        <div key={note.id} className="border-b border-lucas-cream/20 flex flex-col">
+                                            <button
+                                                onClick={() => setActiveEnvNote(activeEnvNote === note.id ? "" : note.id)}
+                                                className="w-full py-6 lg:py-8 flex items-center justify-between text-left focus:outline-none group/btn"
+                                            >
+                                                <div className="flex items-center gap-6 lg:gap-12">
+                                                    <span className={`font-sans text-[10px] tracking-zissou font-bold transition-colors duration-500 ${activeEnvNote === note.id ? 'text-lucas-orange' : 'text-lucas-cream/40 group-hover/btn:text-lucas-orange/70'}`}>
+                                                        [ {note.id} ]
+                                                    </span>
+                                                    <h3 className={`font-sans text-xl md:text-2xl lg:text-3xl uppercase tracking-tight transition-colors duration-500 ${activeEnvNote === note.id ? 'text-lucas-orange' : 'text-lucas-cream'}`}>
+                                                        {note.title}
+                                                    </h3>
+                                                </div>
+                                                
+                                                {/* Geometric Zissou Toggle Icon */}
+                                                <div className={`relative w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0 ml-4 ${activeEnvNote === note.id ? 'border-lucas-orange bg-lucas-orange/10 text-lucas-orange rotate-45' : 'border-lucas-cream/20 text-lucas-cream/50 group-hover/btn:border-lucas-orange/50 group-hover/btn:text-lucas-orange'}`}>
+                                                    <div className="absolute w-3 h-[1px] bg-current"></div>
+                                                    <div className={`absolute h-3 w-[1px] bg-current transition-transform duration-500 ${activeEnvNote === note.id ? 'rotate-90 opacity-0' : ''}`}></div>
+                                                </div>
+                                            </button>
+                                            
+                                            <AnimatePresence>
+                                                {activeEnvNote === note.id && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                                        className="overflow-hidden"
+                                                    >
+                                                        <div className="pb-8 lg:pb-10 pl-14 lg:pl-[5.5rem] pr-4 lg:pr-16 flex flex-col md:flex-row gap-4 md:gap-12 items-start">
+                                                            <div className="flex items-center gap-2 mt-1 shrink-0">
+                                                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
+                                                                <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-cream/50 whitespace-nowrap">
+                                                                    [ {note.subtitle} ]
+                                                                </span>
+                                                            </div>
+                                                            <p className="font-serif text-[clamp(1.1rem,1.5vw,1.25rem)] leading-[1.6] text-lucas-cream/90 lowercase italic max-w-2xl">
+                                                                {note.content}
+                                                            </p>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
                                         </div>
-                                        <p className="font-serif text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-lucas-cream/80 lowercase group-hover:text-lucas-cream transition-colors duration-500">
-                                            limit the location hopping. the less time we spend in transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people.
-                                        </p>
-                                    </div>
-
-                                    <div className="flex flex-col group">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">[ 03 ]</span>
-                                            <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream border-b border-lucas-orange/30 pb-1">
-                                                The Audio Backbone
-                                            </h3>
-                                        </div>
-                                        <p className="font-serif text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-lucas-cream/80 lowercase group-hover:text-lucas-cream transition-colors duration-500">
-                                            the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing iphone screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic.
-                                        </p>
-                                    </div>
-
-                                    <div className="flex flex-col group">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">[ 04 ]</span>
-                                            <h3 className="font-sans text-xs tracking-zissou uppercase text-lucas-cream border-b border-lucas-orange/30 pb-1">
-                                                The Anti-Shot List
-                                            </h3>
-                                        </div>
-                                        <p className="font-serif text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-lucas-cream/80 lowercase group-hover:text-lucas-cream transition-colors duration-500">
-                                            put the pinterest boards away. the goal isn't to orchestrate a 40-point checklist of manufactured poses. trust the process, ignore the camera, and let the unforced magic happen.
-                                        </p>
-                                    </div>
-
+                                    ))}
                                 </div>
+
                             </motion.div>
                         </div>
                     </section>
