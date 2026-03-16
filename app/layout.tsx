@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from 'next';
 import { Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -37,6 +38,7 @@ const generalSans = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.yourdaybylucas.com'), // Ensures all meta images/links resolve correctly
   title: 'LUCAS : Wedding Filmmaker',
   description: 'honest, nostalgic wedding cinema. digital + super 8mm. home is ontario // worldwide.',
 };
@@ -48,6 +50,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${generalSans.variable}`}>
+      <head>
+        {/* This explicitly tells AI crawlers where to find your brand guidelines */}
+        <link rel="llms" href="/llms.txt" />
+      </head>
       <body className="bg-lucas-cream text-lucas-navy font-sans antialiased selection:bg-lucas-orange selection:text-lucas-cream relative">
         <SmoothScrollProvider>
           <CustomCursor />
