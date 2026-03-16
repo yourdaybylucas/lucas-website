@@ -3,42 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-// 1. The Magnetic Physics Wrapper
-function MagneticWrap({ children }: { children: React.ReactNode }) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-
-    const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
-        const { clientX, clientY } = e;
-        const { height, width, left, top } = ref.current!.getBoundingClientRect();
-        const middleX = clientX - (left + width / 2);
-        const middleY = clientY - (top + height / 2);
-        
-        // 0.3 is the "pull" strength. keeps it heavy and deliberate.
-        setPosition({ x: middleX * 0.3, y: middleY * 0.3 });
-    };
-
-    const reset = () => {
-        setPosition({ x: 0, y: 0 });
-    };
-
-    return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouse}
-            onMouseLeave={reset}
-            animate={{ x: position.x, y: position.y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-            className="relative flex cursor-pointer"
-        >
-            {children}
-        </motion.div>
-    );
-}
 
 export default function Header() {
     const pathname = usePathname();
@@ -83,19 +50,17 @@ export default function Header() {
             <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${headerBg}`}>
                 <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                     
-                    {/* Brand (Now Magnetic) */}
-                    <MagneticWrap>
-                        <Link href="/" className="hover:opacity-70 transition-opacity flex items-center py-4 z-[101] relative">
-                            <Image 
-                                src="/logos/L Blue Transparent.png" 
-                                alt="LUCAS" 
-                                width={50} 
-                                height={50} 
-                                className="object-contain"
-                                priority
-                            />
-                        </Link>
-                    </MagneticWrap>
+                    {/* Brand (Static / Grounded) */}
+                    <Link href="/" className="hover:opacity-70 transition-opacity flex items-center py-4 z-[101] relative">
+                        <Image 
+                            src="/logos/L Blue Transparent.png" 
+                            alt="LUCAS" 
+                            width={50} 
+                            height={50} 
+                            className="object-contain"
+                            priority
+                        />
+                    </Link>
 
                     {/* Desktop Nav (Zissou Bracket Hover) */}
                     <nav className="hidden md:flex items-center gap-12">
@@ -127,16 +92,14 @@ export default function Header() {
 
                     {/* Right Action Area */}
                     <div className="flex items-center gap-6">
-                        {/* Desktop CTA (Magnetic Geometric Rectangle) */}
+                        {/* Desktop CTA (Static / Grounded) */}
                         <div className="hidden md:flex items-center">
-                            <MagneticWrap>
-                                <Link
-                                    href="/#contact"
-                                    className="font-sans text-[10px] tracking-widest uppercase border border-lucas-navy px-8 py-3.5 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow bg-transparent"
-                                >
-                                    Inquire
-                                </Link>
-                            </MagneticWrap>
+                            <Link
+                                href="/#contact"
+                                className="font-sans text-[10px] tracking-widest uppercase border border-lucas-navy px-8 py-3.5 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow bg-transparent"
+                            >
+                                Inquire
+                            </Link>
                         </div>
 
                         {/* Mobile Menu Toggle */}
