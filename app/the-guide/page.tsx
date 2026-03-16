@@ -128,37 +128,37 @@ const environmentNotes = [
         id: "01",
         title: "The Margin",
         subtitle: "schedule empty space",
-        content: "build empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the unforced magic happens."
+        content: "try building empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the unforced magic happens."
     },
     {
         id: "02",
         title: "The Footprint",
         subtitle: "minimize transit",
-        content: "limit the location hopping. the less time we spend in cars or transit, the more time you spend actually being present. the best narrative moments happen when you just sit still and exist with your people."
+        content: "keeping location hopping to a minimum means less time in transit and more time actually being present. the best narrative moments usually happen when you just sit still and exist with your people."
     },
     {
         id: "03",
         title: "The Roster",
         subtitle: "keep formal photos tight",
-        content: "exhaustive, 40-point family photo combinations drain your energy and pull you away from the party. keep the formal roster tight—immediate family only—and let the rest of the day remain completely unforced."
+        content: "long, exhaustive family photo lists can quickly drain your energy and pull you away from the party. keeping the formal roster tight—immediate family only—lets the rest of the day remain completely unforced."
     },
     {
         id: "04",
         title: "The Audio Backbone",
         subtitle: "words carry weight",
-        content: "the spoken words carry the film. write honest, handwritten promises rather than reading off a glowing screen. for speeches, keep the roster tight. three meaningful toasts will always carry more weight than an open mic."
+        content: "the spoken words anchor the film. honest, handwritten promises usually carry more weight than reading from a screen. for speeches, keeping the roster tight with a few meaningful toasts will always outshine an open mic."
     },
     {
         id: "05",
         title: "The Micro-Details",
         subtitle: "let go of the steering wheel",
-        content: "nobody remembers the napkin folds. they remember the energy in the room. don't let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go and let the day unfold."
+        content: "it's rare that anyone remembers the napkin folds, but they always remember the energy in the room. try not to let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go of the steering wheel and let it unfold."
     },
     {
         id: "06",
         title: "The Rulebook",
         subtitle: "make the day your own",
-        content: "write personal vows. have a friend officiate. skip the cake cutting. do anything you can to make it feel like you. the more the day actually reflects who you both are, the more honest and cinematic your final film will be."
+        content: "there are no actual rules. have a friend officiate. skip the cake cutting. do whatever it takes to make the day feel like you. the more the environment reflects who you both are, the more honest the final film will be."
     }
 ];
 
@@ -432,7 +432,7 @@ export default function TheGuidePage() {
                                     </div>
 
                                     <p className="font-serif text-[clamp(1.1rem,1.5vw,1.3rem)] text-lucas-cream/80 lowercase leading-relaxed max-w-2xl">
-                                        i want to ease any concerns right out of the gate. the little things you do to protect your time dictate how the day actually feels. here is an inventory of things to consider to keep you present.
+                                        the best films don't come from perfect timelines or heavily curated details. they come from you both actually being present. when you bring your own genuine energy and just have fun, the film naturally reflects that. these notes aren't a list of rules—they are simply a framework to help protect your time, keep you grounded, and allow you to actually enjoy the party.
                                     </p>
                                 </div>
 
