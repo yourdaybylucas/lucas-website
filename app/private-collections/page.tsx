@@ -505,7 +505,7 @@ export default function PrivateCollectionsPage() {
                                                             <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-orange">Analog Heavy</span>
                                                         </div>
 
-                                                        <p className="font-serif text-[clamp(0.95rem,1vw,1.1rem)] leading-[1.5] text-lucas-navy/80 lowercase italic">
+                                                        <p className="font-serif text-[clamp(0.85rem,1vw,0.95rem)] leading-[1.6] text-lucas-navy/80 lowercase italic pr-4">
                                                             for couples who don't want a heavily produced highlight film. entirely unforced. driven by the raw, nostalgic weight of authentic super 8mm and full-length documentary edits. anchored by a 60-second digital reel delivered in one week.
                                                         </p>
                                                     </div>
@@ -584,7 +584,7 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                     </ul>
 
-                                                    <div className="mt-auto pt-6 border-t border-lucas-navy/20">
+                                                    <div className="mt-8 pt-6 border-t border-lucas-navy/20">
                                                         <p className="font-serif text-[13px] text-lucas-slate lowercase italic leading-relaxed">
                                                             all modular additions are completely optional and can be decided upon one month prior to the day.
                                                         </p>
