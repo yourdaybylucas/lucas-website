@@ -301,7 +301,7 @@ export default function PrivateCollectionsPage() {
                                             animate={{ opacity: 1, y: 0, zIndex: 10 }}
                                             exit={{ opacity: 0, y: -15, zIndex: 0 }}
                                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                            className="col-start-1 row-start-1 grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 relative items-stretch w-full"
+                                            className="col-start-1 row-start-1 grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 relative items-stretch w-full h-full"
                                         >
                                             {/* VOL 01 */}
                                             <div className="flex flex-col group transition-colors duration-1000 relative overflow-hidden bg-lucas-cream hover:bg-lucas-navy/5 h-full w-full">
@@ -315,7 +315,7 @@ export default function PrivateCollectionsPage() {
                                                         <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 01 ]</p>
                                                         <p className="font-sans text-xs tracking-widest text-lucas-navy">$5,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
-                                                    <h3 className="font-serif text-[clamp(1.5rem,2.5vw,2rem)] text-lucas-navy italic mb-2">
+                                                    <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] text-lucas-navy italic mb-2">
                                                         The Essential
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-navy/10 pb-4 lg:pb-6">
@@ -374,7 +374,7 @@ export default function PrivateCollectionsPage() {
                                                         </div>
                                                         <p className="font-sans text-xs tracking-widest text-lucas-cream">$6,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
-                                                    <h3 className="font-serif text-[clamp(1.5rem,2.5vw,2rem)] italic mb-2 text-lucas-cream">
+                                                    <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] italic mb-2 text-lucas-cream">
                                                         The Analog
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-cream/10 pb-4 lg:pb-6">
@@ -433,7 +433,7 @@ export default function PrivateCollectionsPage() {
                                                         <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 03 ]</p>
                                                         <p className="font-sans text-xs tracking-widest text-lucas-navy">$8,200 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
-                                                    <h3 className="font-serif text-[clamp(1.5rem,2.5vw,2rem)] text-lucas-navy italic mb-2">
+                                                    <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] text-lucas-navy italic mb-2">
                                                         The Weekend
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-navy/10 pb-4 lg:pb-6">
@@ -462,7 +462,7 @@ export default function PrivateCollectionsPage() {
                                                                 </span>
                                                             </button>
                                                         </li>
-                                                        <li className="flex items-start gap-4 mt-auto pt-2">
+                                                        <li className="flex items-start gap-4 pt-2">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
                                                             <div className="flex flex-col items-start">
                                                                 <span>the physical artifacts</span>
@@ -481,12 +481,12 @@ export default function PrivateCollectionsPage() {
                                             animate={{ opacity: 1, y: 0, zIndex: 10 }}
                                             exit={{ opacity: 0, y: -15, zIndex: 0 }}
                                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                            className="col-start-1 row-start-1 border border-lucas-navy/20 bg-lucas-cream relative overflow-hidden shadow-sm w-full"
+                                            className="col-start-1 row-start-1 border border-lucas-navy/20 bg-lucas-cream relative overflow-hidden shadow-sm w-full h-full"
                                         >
                                             <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange"></div>
 
-                                            <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
-                                                <div className="p-8 lg:p-12 flex flex-col justify-between">
+                                            <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 h-full w-full">
+                                                <div className="p-8 lg:p-12 flex flex-col justify-between h-full">
                                                     <div>
                                                         <div className="flex justify-between items-start mb-10">
                                                             <div className="flex items-center gap-2">
@@ -496,7 +496,7 @@ export default function PrivateCollectionsPage() {
                                                             <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,400 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                         </div>
 
-                                                        <h3 className="font-serif text-[clamp(2.5rem,3.5vw,3rem)] text-lucas-navy italic mb-6 leading-none">
+                                                        <h3 className="font-serif text-[clamp(1.75rem,2.5vw,2.25rem)] text-lucas-navy italic mb-6 leading-none">
                                                             The Purist
                                                         </h3>
 
@@ -511,7 +511,7 @@ export default function PrivateCollectionsPage() {
                                                     </div>
                                                 </div>
 
-                                                <div className="p-8 lg:p-12 bg-lucas-navy/5 flex flex-col relative">
+                                                <div className="p-8 lg:p-12 bg-lucas-navy/5 flex flex-col relative h-full">
                                                     <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none mix-blend-overlay z-0"></div>
 
                                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-8 relative z-10">
@@ -561,7 +561,7 @@ export default function PrivateCollectionsPage() {
                                                     </ul>
                                                 </div>
 
-                                                <div className="p-8 lg:p-12 bg-lucas-cream flex flex-col relative">
+                                                <div className="p-8 lg:p-12 bg-lucas-cream flex flex-col relative h-full">
                                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-8 block">
                                                         [ The Additions ]
                                                     </span>
@@ -584,7 +584,7 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                     </ul>
 
-                                                    <div className="mt-8 pt-6 border-t border-lucas-navy/20">
+                                                    <div className="mt-auto pt-6 border-t border-lucas-navy/20">
                                                         <p className="font-serif text-[13px] text-lucas-slate lowercase italic leading-relaxed">
                                                             all modular additions are completely optional and can be decided upon one month prior to the day.
                                                         </p>
