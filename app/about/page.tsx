@@ -88,7 +88,7 @@ export default function AboutPage() {
                 >
                     <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
                         <Image
-                            src="/images/about/about_1.jpg"
+                            src="/images/about/about_1.2.jpg"
                             alt="Lucas Bulger"
                             fill
                             className="object-cover transition-all duration-1000"
