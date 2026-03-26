@@ -137,8 +137,8 @@ export default function AboutPage() {
                     >
                         <p>
                             it started with a simple obsession: trying to translate the beauty of what was
-                            in front of me - (travel landscapes at the time) into something tangible. the
-                            drive was always to render an environment as close to reality as possible.
+                            in front of me (travel landscapes at the time) into something tangible. the
+                            goal was always to render an environment as close to reality as possible.
                         </p>
                         <p>
                             wedding cinema became the natural progression of that. not to orchestrate a
