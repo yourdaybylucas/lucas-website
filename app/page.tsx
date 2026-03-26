@@ -18,7 +18,7 @@ const partners = [
   { name: "Samantha Nicholas", url: "https://www.samanthanicholas.ca/" },
   { name: "Jessii Vee", url: "https://www.instagram.com/jessiivee/?hl=en" },
   { name: "Olivia Dipede", url: "https://www.instagram.com/oliviadipede/?hl=en" },
-  { name: "St. Marys", url: "https://www.stmaryswedding.ca/",
+  { name: "St. Marys", url: "https://www.stmaryswedding.ca/" },
   { name: "Elle by Stella", url: "https://www.ellebystella.ca/" },
 ];
 
