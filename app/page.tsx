@@ -299,7 +299,7 @@ export default function Home() {
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2027</span>
-                <span className="text-lucas-cream">Limited Availibility</span>
+                <span className="text-lucas-cream">Limited Remaining Availibility</span>
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2028</span>
@@ -339,7 +339,10 @@ export default function Home() {
                   />
                 ) : (
                   // structural placeholder so the layout doesn't shift when it finally loads
-                  <div className="w-full h-[700px] bg-[#111d27]"></div>
+                  <div className="w-full h-[700px] bg-[#111d27] flex flex-col items-center justify-center font-sans text-[10px] tracking-zissou uppercase text-lucas-slate/50">
+                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse mb-3"></span>
+                    [ establishing secure connection ... ]
+                  </div>
                 )}
               </div>
             </div>
