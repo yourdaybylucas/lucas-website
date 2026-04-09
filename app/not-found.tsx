@@ -21,18 +21,18 @@ export default function NotFound() {
         <div className="flex items-center gap-3 mb-8">
           <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
           <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase font-bold">
-              [ Status // 404 Error ]
+              [ 404 Error ]
           </span>
         </div>
         
         {/* 02. The Headline */}
         <h1 className="font-sans text-[clamp(2.5rem,5vw,4.5rem)] uppercase font-bold text-lucas-navy mb-6 tracking-tight leading-[0.9]">
-          Record Not Found.
+          Page Not Found.
         </h1>
         
         {/* 03. The Narrative */}
         <p className="font-serif text-[clamp(1.25rem,2vw,1.5rem)] italic text-lucas-navy/85 lowercase mb-12 leading-relaxed">
-          the page you are looking for has been moved, or simply doesn't exist in the current ledger.
+          the page you are looking for has been moved, or doesn't exist.
         </p>
         
         {/* 04. The Action */}
