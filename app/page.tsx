@@ -209,7 +209,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* field notes (the ledger) */}
+      {/* notes (the ledger) */}
       <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
         <div className="max-w-7xl mx-auto">
           
