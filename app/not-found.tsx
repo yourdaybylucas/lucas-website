@@ -14,10 +14,10 @@ export default function NotFound() {
         Record Not Found.
       </h1>
       <p className="font-serif text-xl italic text-lucas-navy/80 lowercase mb-10">
-        the archive you are looking for has been moved or does not exist.
+        the page you are looking for has been moved or does not exist.
       </p>
       <Link href="/" className="font-sans text-[10px] tracking-zissou uppercase border border-lucas-navy px-8 py-3 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow">
-        Return to Base
+        Return to Home
       </Link>
     </main>
   );
