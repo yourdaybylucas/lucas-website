@@ -92,14 +92,6 @@ export default function Home() {
       {/* about & philosophy */}
       <section id="about" className="relative z-10 flex min-h-screen items-center justify-center bg-lucas-cream px-6 py-32 overflow-hidden">
         
-        <motion.div 
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="absolute bottom-32 left-10 lg:left-32 w-3 h-3 rounded-full bg-lucas-orange hidden md:block"
-        />
-
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-24 lg:gap-16 w-full">
           
           <motion.div 
@@ -309,6 +301,7 @@ export default function Home() {
                 <span>2027</span>
                 <span className="text-lucas-cream">Limited Remaining Availibility</span>
               </div>
+              <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2028</span>
                 <span className="text-lucas-cream">Open</span>
               </div>
