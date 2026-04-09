@@ -63,7 +63,7 @@ export default function CollectionsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-y border-lucas-navy/10 divide-y md:divide-y-0 md:divide-x divide-lucas-navy/10">
                         <div className="flex flex-col gap-2 p-[clamp(1.25rem,2vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
                             <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
-                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">Unlimited Coverage</h4>
+                            <h4 className="font-sans text-xs uppercase tracking-widest text-lucas-navy">All-day Coverage</h4>
                             <p className="font-serif text-sm text-lucas-slate italic">from getting ready to lights up.</p>
                         </div>
                         <div className="flex flex-col gap-2 p-[clamp(1.25rem,2vw,1.5rem)] hover:bg-lucas-navy/5 transition-colors duration-slow">
