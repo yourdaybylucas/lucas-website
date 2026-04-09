@@ -307,6 +307,9 @@ export default function Home() {
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2027</span>
+                <span className="text-lucas-cream">Limited Remaining Availibility</span>
+              </div>
+                <span>2028</span>
                 <span className="text-lucas-cream">Open</span>
               </div>
               <div className="flex justify-between pb-3 border-b border-lucas-slate/10">
