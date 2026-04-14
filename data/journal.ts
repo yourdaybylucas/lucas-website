@@ -18,6 +18,7 @@ export interface JournalEntry {
     videoId: string;
     fieldNotes: string[];
     vendors?: Vendor[];
+    secondaryVideoId?: string; // Add this line
 }
 
 export const journalEntries: JournalEntry[] = [
