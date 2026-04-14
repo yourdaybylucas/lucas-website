@@ -26,12 +26,12 @@ const fadeUpItem = {
 export default function JournalPage() {
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 overflow-hidden relative">
-            
+
             {/* Global Texture */}
             <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                
+
                 {/* 01. The Header (Compressed Ledger Style) */}
                 <motion.div 
                     initial={{ opacity: 0 }}
@@ -43,7 +43,7 @@ export default function JournalPage() {
                         <span className="w-2 h-2 bg-lucas-orange flex-shrink-0 animate-pulse"></span>
                         <span>[ The Archive ]</span>
                     </div>
-                    
+
                     <div className="flex flex-col items-end text-right font-sans text-[8px] md:text-[9px] tracking-widest uppercase text-lucas-slate">
                         <span>Doc Ref // LC-JRNL-01</span>
                         <span className="mt-1">Inventory Count: {journalEntries.length}</span>
@@ -75,7 +75,7 @@ export default function JournalPage() {
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     className="object-cover grayscale contrast-110 brightness-90 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[1200ms] ease-out z-0"
                                 />
-                                
+
                                 {/* Structural Viewfinder Overlay */}
                                 <div className="absolute inset-0 pointer-events-none z-10 p-4 opacity-50 group-hover:opacity-100 transition-opacity duration-700">
                                     <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-lucas-cream/70"></div>

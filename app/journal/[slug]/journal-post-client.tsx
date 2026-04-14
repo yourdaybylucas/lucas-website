@@ -124,6 +124,22 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                                 <p key={idx}>{paragraph}</p>
                             ))}
                         </div>
+
+                        {post.secondaryVideoId && (
+                            <div className="mt-16 pt-12 border-t border-lucas-navy/10">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
+                                    <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
+                                        Digital Reel
+                                    </h3>
+                                </div>
+                                <CinematicPlayer 
+                                    videoId={post.secondaryVideoId} 
+                                    altText={`${post.title} Digital Reel`} 
+                                />
+                            </div>
+                        )}
+
                     </motion.div>
 
                 </div>
