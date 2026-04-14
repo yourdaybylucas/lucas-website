@@ -23,6 +23,30 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        "id": "045",
+        "slug": "monica-luka-old-mill-toronto",
+        "title": "monica & luka",
+        "location": "Old Mill Toronto",
+        "date": "Feb. 28, 2026",
+        "format": "Digital + Super 8mm",
+        "stock": "Kodak Vision3 500T",
+        "excerpt": "an emotional and elegant day with a grounded focus on family, bottled beautifully on super 8.",
+        "videoId": "Vt9qMqQPnlQ",
+        "secondaryVideoId": "4gFlIIgFD1c",
+        "fieldNotes": [
+            "the historic venue and elegant styling created an incredible energy, perfectly complemented by live strings.",
+            "they thoughtfully moved their date forward so monica’s dad could be there to celebrate with them, giving the whole day this beautiful, grounded focus.",
+            "it was a perfect mix of meaningful, quiet moments and a lot of laughs with their favourite people. we also cut a 60-second digital reel to preserve the fast-paced energy of the party."
+        ],
+        "vendors": [
+            { "name": "Muse Event Co", "role": "Planner", "url": "https://www.instagram.com/museeventco/" },
+            { "name": "Paige Thompson", "role": "Photography", "url": "https://www.instagram.com/paigethompsonphoto/" },
+            { "name": "Blush and Bloom", "role": "Florals", "url": "https://www.instagram.com/blushandbloom/" },
+            { "name": "Old Mill Toronto", "role": "Venue", "url": "https://www.instagram.com/oldmilltoronto/" },
+            { "name": "Wellington Music", "role": "Strings", "url": "https://www.instagram.com/wellington.music/" }
+        ]
+    },
+    {
         id: "044",
         slug: "alex-parm-elle-by-stella",
         title: "alex & parm",
