@@ -38,7 +38,7 @@ const generalSans = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.yourdaybylucas.com'),
+  metadataBase: new URL('https://www.yourdaybylucas.com'), // Ensures all meta images/links resolve correctly
   title: 'Your Day By Lucas : Wedding Filmmaker',
   description: 'your day by lucas. honest, nostalgic wedding cinema. blending digital and super 8mm, skipping the heavy production footprint. home is ontario // worldwide.',
   openGraph: {
@@ -63,6 +63,39 @@ export default function RootLayout({
         <link rel="llms" href="/llms.txt" />
       </head>
       <body className="bg-lucas-cream text-lucas-navy font-sans antialiased selection:bg-lucas-orange selection:text-lucas-cream relative">
+        
+        {/* Schema markup for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfessionalService',
+              'name': 'Your Day By Lucas',
+              'alternateName': 'LUCAS : Wedding Filmmaker',
+              'url': 'https://www.yourdaybylucas.com',
+              'logo': 'https://www.yourdaybylucas.com/logos/Logo%20LUCAS%20Transparent.png',
+              'image': 'https://www.yourdaybylucas.com/opengraph-image.png',
+              'description': 'honest, nostalgic wedding cinema. blending digital and super 8mm, skipping the heavy production footprint to simply hang out and keep things grounded.',
+              'address': {
+                '@type': 'PostalAddress',
+                'addressLocality': 'Guelph',
+                'addressRegion': 'ON',
+                'addressCountry': 'CA'
+              },
+              'founder': {
+                '@type': 'Person',
+                'name': 'Lucas Bulger'
+              },
+              'sameAs': [
+                'https://www.instagram.com/yourdaybylucas/',
+                'https://www.tiktok.com/@yourdaybylucas',
+                'https://www.youtube.com/channel/UCzxBX7qRbMssCqBtgd4ndQw'
+              ]
+            })
+          }}
+        />
+
         <SmoothScrollProvider>
           <CustomCursor />
           
