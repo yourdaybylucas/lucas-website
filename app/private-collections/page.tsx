@@ -335,7 +335,7 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('pjG38GNQOxQ')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
+                                                            <button onClick={() => setActiveVideo('ZbMe6X3OAQ8')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                                 <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                                     <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary ceremony edit</span>
@@ -344,7 +344,7 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('Fn9sr1eJESY')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
+                                                            <button onClick={() => setActiveVideo('Ys5aHnB63aU')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                                 <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                                     <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary reception edit</span>
