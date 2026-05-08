@@ -328,12 +328,12 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
 
-              {/* iframe locked to 670px height across all viewports */}
-              <div className="w-full h-full min-h-[670px] overflow-hidden">
+              {/* iframe locked to 730px height across all viewports */}
+              <div className="w-full h-full min-h-[730px] overflow-hidden">
                 {isContactInView ? (
                   <iframe 
                     src="https://app.lemlii.com/inquiry/your-day-by-lucas" 
-                    className="w-full h-[670px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
+                    className="w-full h-[730px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
                     title="commission lucas"
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
