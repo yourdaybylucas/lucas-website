@@ -328,8 +328,8 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
 
-              {/* iframe locked to 700px height across all viewports */}
-              <div className="w-full h-full min-h-[700px] overflow-hidden">
+              {/* iframe locked to 670px height across all viewports */}
+              <div className="w-full h-full min-h-[670px] overflow-hidden">
                 {isContactInView ? (
                   <iframe 
                     src="https://app.lemlii.com/inquiry/your-day-by-lucas" 
