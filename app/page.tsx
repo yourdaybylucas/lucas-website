@@ -333,7 +333,7 @@ export default function Home() {
                 {isContactInView ? (
                   <iframe 
                     src="https://app.lemlii.com/inquiry/your-day-by-lucas" 
-                    className="w-full h-[700px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
+                    className="w-full h-[670px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
                     title="commission lucas"
                     style={{ border: 'none', margin: 0, padding: 0 }}
                   />
