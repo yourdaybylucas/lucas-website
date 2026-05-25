@@ -108,7 +108,7 @@ const trustedPeers = [
         category: "Florals",
         peers: [
             { name: "Forever Wildfield", url: "https://foreverwildfield.com/" },
-            { name: "Nymph Floral", url: "https://nymphfloral.com/" },
+            { name: "Wild Vogel Works", url: "https://www.wildvogelworks.com/" },
             { name: "Windflower Florals", url: "https://www.windflowerflorals.com/" },
             { name: "De Rêves Studio", url: "https://www.derevesstudio.com/" }
         ]
@@ -116,9 +116,9 @@ const trustedPeers = [
     {
         category: "Officiants",
         peers: [
-            { name: "Jeff Maeck", url: "https://maeckweddings.com/officiating" },
-            { name: "Wedding Officiant", url: "https://www.yourweddingofficiant.ca/" },
-            { name: "Bcause Love", url: "https://bcauslove.com/" }
+            { name: "Bryan Causarano", url: "https://bcauslove.com/" },
+            { name: "Molly Johnson", url: "https://www.yourweddingofficiant.ca/" },
+            { name: "Jeff Maeck", url: "https://maeckweddings.com/officiating" }
         ]
     }
 ];
