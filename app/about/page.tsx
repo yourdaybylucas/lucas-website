@@ -95,14 +95,14 @@ export default function AboutPage() {
                         />
                     </div>
 
-<div className="absolute -bottom-4 -right-2 md:-right-6 flex flex-col bg-lucas-cream border border-lucas-navy px-4 py-2 z-10 shadow-xl">
-    <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-        Fig. 00 — On Location
-    </span>
-    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate mt-0.5">
-        Documented by a guest
-    </span>
-</div>
+                    <div className="absolute -bottom-4 -right-2 md:-right-6 flex flex-col bg-lucas-cream border border-lucas-navy px-4 py-2 z-10 shadow-xl">
+                        <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
+                            Fig. 00 — On Location
+                        </span>
+                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate mt-0.5">
+                            Documented by a guest
+                        </span>
+                    </div>
                 </motion.div>
 
                 {/* The Narrative (The Passion) */}
@@ -215,7 +215,6 @@ export default function AboutPage() {
                             {timeline.map((item, idx) => (
                                 <motion.div
                                     key={item.id}
-                                    // Trigger window shifted slightly to accommodate shorter rows
                                     onViewportEnter={() => setActiveIndex(idx)}
                                     viewport={{ margin: "-40% 0px -40% 0px" }}
                                     className={`group relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 py-8 md:py-10 border-b border-lucas-slate/10 transition-all duration-700 ${
@@ -247,7 +246,7 @@ export default function AboutPage() {
                                             {item.desc}
                                         </p>
 
-                                        {/* Mobile Inline Image (Only shows on small screens) */}
+                                        {/* Mobile Inline Image */}
                                         <div className="md:hidden mt-8 relative w-full aspect-[4/5] p-2 bg-lucas-cream/5 border border-lucas-slate/20 shadow-xl overflow-hidden">
                                             <div className="relative w-full h-full bg-[#0a1118]">
                                                 <Image
@@ -264,7 +263,7 @@ export default function AboutPage() {
                         </div>
                     </div>
 
-                    {/* Right Column: The Visual Anchor (Sticky on Desktop) */}
+                    {/* Right Column: The Visual Anchor */}
                     <div className="hidden md:block w-full md:w-1/2 relative">
                         <div className="sticky top-[25vh] pt-4">
                             {/* The Structural Frame */}
@@ -320,22 +319,15 @@ export default function AboutPage() {
                 
                 <div className="max-w-6xl mx-auto relative z-10">
                     
-                    {/* The Zissou Compressed Header */}
+                    {/* The Interm Adjusted Header (Awaiting Field Notes Structure) */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b-2 border-lucas-navy pb-6">
-                        <div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-navy uppercase font-bold">
-                                    [ System Process ]
-                                </span>
-                            </div>
-                            <h2 className="text-lucas-navy font-sans font-bold text-4xl md:text-5xl uppercase tracking-tight">
+                        <div className="flex items-end justify-between w-full">
+                            <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
                                 How I Work.
                             </h2>
-                        </div>
-                        <div className="flex flex-col md:items-end text-left md:text-right">
-                            <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
-                            <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy font-bold">LC-MTHD-01</span>
+                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
+                                [ System Process ]
+                            </span>
                         </div>
                     </div>
 
