@@ -117,7 +117,7 @@ export default function HeroSection() {
                     Ontario // Worldwide
                 </motion.p>
 
-                <motion.h1
+                <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -135,7 +135,7 @@ export default function HeroSection() {
                             .
                         </span>
                     </div>
-                </motion.h1>
+                </motion.div>
             </div>
         </section>
     );

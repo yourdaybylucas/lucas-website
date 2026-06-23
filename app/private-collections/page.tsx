@@ -238,7 +238,7 @@ export default function PrivateCollectionsPage() {
                                     </p>
                                 </div>
 
-                                <div className="flex bg-lucas-cream border border-lucas-navy/20 p-1 relative w-full md:w-auto shadow-sm">
+                                <div className="flex bg-lucas-cream border border-lucas-navy/20 p-1 relative w-full md:w-fit md:self-start xl:self-auto shadow-sm">
                                     <div 
                                         className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-lucas-navy transition-all duration-500 ease-[0.16,1,0.3,1]"
                                         style={{ left: activeTab === 'narrative' ? '4px' : 'calc(50%)' }}
@@ -246,13 +246,13 @@ export default function PrivateCollectionsPage() {
                                     
                                     <button 
                                         onClick={() => setActiveTab('narrative')}
-                                        className={`relative z-10 flex-1 md:flex-none px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase transition-colors duration-500 ${activeTab === 'narrative' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-navy'}`}
+                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap transition-colors duration-500 ${activeTab === 'narrative' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-navy'}`}
                                     >
                                         The Narrative
                                     </button>
                                     <button 
                                         onClick={() => setActiveTab('purist')}
-                                        className={`relative z-10 flex-1 md:flex-none px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase transition-colors duration-500 ${activeTab === 'purist' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-orange'}`}
+                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap transition-colors duration-500 ${activeTab === 'purist' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-orange'}`}
                                     >
                                         The Purist
                                     </button>

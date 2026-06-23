@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Venue, Geography, Scale, Atmosphere, Footprint } from '@/data/venues';
@@ -65,11 +65,14 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
     </motion.div>
 );
 
-export default function SpacesClient({ venues }: { venues: Venue[] }) {
+export default function SpacesClient({
+    venues,
+    activeVenueId,
+}: {
+    venues: Venue[];
+    activeVenueId?: string;
+}) {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    
-    const spaceQuery = searchParams.get('space');
     
     const [activeFilters, setActiveFilters] = useState<{
         geography: Geography | null;
@@ -94,8 +97,8 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
     }, [activeFilters, venues]);
 
     const activeVenue = useMemo(() => {
-        return spaceQuery ? venues.find((v) => v.id === spaceQuery) || null : null;
-    }, [spaceQuery, venues]);
+        return activeVenueId ? venues.find((v) => v.id === activeVenueId) || null : null;
+    }, [activeVenueId, venues]);
 
     const closeDossier = () => {
         router.push('/spaces', { scroll: false });
@@ -262,7 +265,7 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
                                     </motion.div>
                                 ) : (
                                     filteredVenues.map((venue, index) => {
-                                        const isSelected = spaceQuery === venue.id;
+                                        const isSelected = activeVenueId === venue.id;
                                         return (
                                             <motion.div
                                                 layout
@@ -273,7 +276,7 @@ export default function SpacesClient({ venues }: { venues: Venue[] }) {
                                                 className="group border-b border-lucas-slate/20 last:border-0"
                                             >
                                                 <Link 
-                                                    href={isSelected ? '/spaces' : `/spaces?space=${venue.id}`}
+                                                    href={isSelected ? '/spaces' : `/spaces/${venue.id}`}
                                                     scroll={false}
                                                     className={`block py-5 md:py-6 transition-colors duration-slow ${isSelected ? 'text-lucas-orange' : 'hover:text-lucas-orange'}`}
                                                 >
