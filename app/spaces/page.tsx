@@ -3,37 +3,18 @@ import { Metadata } from 'next';
 import { venues } from '@/data/venues';
 import SpacesClient from './spaces-client';
 
-type Props = {
-    searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    const spaceQuery = searchParams?.space as string | undefined;
-    const activeVenue = spaceQuery ? venues.find(v => v.id === spaceQuery) : null;
-
-    if (activeVenue) {
-        return {
-            title: `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
-            description: `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.fieldNotes}`,
-            openGraph: {
-                title: `${activeVenue.name.toUpperCase()} // THE LEDGER`,
-                description: `field notes and visual documentation from ${activeVenue.name}.`,
-                url: `https://www.yourdaybylucas.com/spaces?space=${activeVenue.id}`,
-            }
-        }
+export const metadata: Metadata = {
+    title: 'THE LEDGER : HONEST SPACES // LUCAS',
+    description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
+    alternates: {
+        canonical: '/spaces',
+    },
+    openGraph: {
+        title: 'THE LEDGER // LUCAS',
+        description: 'an inventory of honest spaces across ontario and worldwide.',
+        url: 'https://www.yourdaybylucas.com/spaces',
     }
-
-    // fallback for the main directory
-    return {
-        title: 'THE LEDGER : HONEST SPACES // LUCAS',
-        description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
-        openGraph: {
-            title: 'THE LEDGER // LUCAS',
-            description: 'an inventory of honest spaces across ontario and worldwide.',
-            url: 'https://www.yourdaybylucas.com/spaces',
-        }
-    }
-}
+};
 
 export default function SpacesPage() {
     const jsonLd = {
@@ -54,7 +35,7 @@ export default function SpacesPage() {
                 'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.fieldNotes}`,
                 // automatically pulling the high-res youtube thumbnail for the schema
                 'image': `https://img.youtube.com/vi/${venue.visualEmbed}/maxresdefault.jpg`, 
-                'url': `https://www.yourdaybylucas.com/spaces?space=${venue.id}`
+                'url': `https://www.yourdaybylucas.com/spaces/${venue.id}`
             }
         }))
     };

@@ -25,6 +25,41 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/blog/:slug*',
+        destination: '/journal/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/post/:slug*',
+        destination: '/journal/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/venue',
+        destination: '/spaces',
+        permanent: true,
+      },
+      {
+        source: '/venues',
+        destination: '/spaces',
+        permanent: true,
+      },
+      {
+        source: '/venue/:space*',
+        destination: '/spaces/:space*',
+        permanent: true,
+      },
+      {
+        source: '/venues/:space*',
+        destination: '/spaces/:space*',
+        permanent: true,
+      },
+      {
+        source: '/package',
+        destination: '/collections',
+        permanent: true,
+      },
+      {
         source: '/packages',
         destination: '/collections',
         permanent: true,
