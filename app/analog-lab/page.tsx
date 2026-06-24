@@ -13,11 +13,24 @@ const title = 'Super 8 Wedding Videographer Ontario | LUCAS';
 const description =
   'Ontario Super 8 wedding videographer based in Guelph, serving Toronto, Hamilton, Niagara, Waterloo, Muskoka, and beyond with real Kodak 8mm film.';
 
-const filmFrames = [
-  { id: '01', src: '/videos/clip_08.mp4', label: 'morning light' },
-  { id: '02', src: '/videos/clip_09.mp4', label: 'water and glass' },
-  { id: '03', src: '/videos/clip_10cheers.mp4', label: 'raised glasses' },
-  { id: '04', src: '/videos/clip_06.mp4', label: 'late light' },
+const heroFrames = [
+  {
+    id: '01',
+    src: '/videos/super-8-old-mill-dinner.m4v',
+    type: 'video/mp4',
+    label: 'candlelit dinner',
+  },
+  { id: '02', src: '/videos/super-8-hero-02.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '03', src: '/videos/super-8-hero-03.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '04', src: '/videos/super-8-hero-04.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '05', src: '/videos/super-8-hero-05.m4v', type: 'video/mp4', label: 'analog fragment' },
+];
+
+const archiveFrames = [
+  { id: '01', src: '/videos/super-8-archive-01.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '02', src: '/videos/super-8-archive-02.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '03', src: '/videos/super-8-archive-03.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '04', src: '/videos/super-8-archive-05.m4v', type: 'video/mp4', label: 'analog fragment' },
 ];
 
 const qualities = [
@@ -34,7 +47,7 @@ const qualities = [
   {
     number: '03',
     title: 'tactility',
-    body: 'actual celluloid moving through an actual camera. light recorded onto something physical.',
+    body: 'a cartridge clicks in. a short roll moves through the camera at eighteen frames a second. tiny photographs becoming motion before they ever become a file.',
   },
   {
     number: '04',
@@ -435,7 +448,6 @@ export default function AnalogLabPage() {
                 <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_104px]">
                   <div className="relative aspect-[4/3] overflow-hidden border border-lucas-navy/45 bg-lucas-navy">
                     <video
-                      src="/videos/clip_08.mp4"
                       autoPlay
                       loop
                       muted
@@ -443,7 +455,9 @@ export default function AnalogLabPage() {
                       preload="metadata"
                       className="h-full w-full object-cover opacity-90 grayscale-[10%] contrast-[1.08] saturate-[0.85]"
                       aria-hidden="true"
-                    />
+                    >
+                      <source src={heroFrames[0].src} type={heroFrames[0].type} />
+                    </video>
                     <div className="absolute inset-0 bg-grain opacity-30 mix-blend-overlay" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between border-t border-lucas-cream/40 pt-3 font-sans text-[9px] uppercase tracking-zissou text-lucas-cream/80">
                       <span>KODAK 200T</span>
@@ -466,14 +480,13 @@ export default function AnalogLabPage() {
                   </aside>
                 </div>
 
-                <div className="mt-3 grid grid-cols-4 gap-1 border border-lucas-navy/45 bg-lucas-navy p-2">
-                  {filmFrames.map((frame) => (
+                <div className="mt-3 grid grid-cols-5 gap-1 border border-lucas-navy/45 bg-lucas-navy p-2">
+                  {heroFrames.map((frame) => (
                     <div
                       key={frame.id}
                       className="group relative aspect-[4/3] overflow-hidden border border-lucas-cream/10 bg-lucas-cream/10"
                     >
                       <video
-                        src={frame.src}
                         autoPlay
                         loop
                         muted
@@ -481,7 +494,9 @@ export default function AnalogLabPage() {
                         preload="metadata"
                         className="h-full w-full object-cover opacity-85 transition duration-slow group-hover:scale-105 group-hover:opacity-100"
                         aria-label={frame.label}
-                      />
+                      >
+                        <source src={frame.src} type={frame.type} />
+                      </video>
                       <span className="absolute bottom-1 left-1 font-sans text-[8px] uppercase tracking-widest text-lucas-cream/70">
                         {frame.id}
                       </span>
@@ -567,6 +582,10 @@ export default function AnalogLabPage() {
                     className="object-cover object-left brightness-105 contrast-[1.04] saturate-[0.95]"
                   />
                   <div className="absolute inset-0 bg-grain opacity-25 mix-blend-overlay" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-4 border-t border-lucas-cream/45 bg-lucas-navy/55 px-3 py-2 font-sans text-[9px] uppercase tracking-zissou text-lucas-cream/90 backdrop-blur-[1px]">
+                    <span>OLD MILL TORONTO</span>
+                    <span>KODAK 500T</span>
+                  </div>
                 </div>
               </div>
 
@@ -660,11 +679,10 @@ export default function AnalogLabPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 md:grid-cols-4">
-                {filmFrames.map((frame, index) => (
+                {archiveFrames.map((frame, index) => (
                   <div key={frame.id} className="group bg-lucas-navy p-2">
                     <div className="relative aspect-[4/3] overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
                       <video
-                        src={frame.src}
                         autoPlay
                         loop
                         muted
@@ -672,7 +690,9 @@ export default function AnalogLabPage() {
                         preload="metadata"
                         className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                         aria-label={frame.label}
-                      />
+                      >
+                        <source src={frame.src} type={frame.type} />
+                      </video>
                       <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay" />
                       <div className="absolute inset-0 bg-lucas-navy/0 transition-colors duration-slow group-hover:bg-lucas-navy/10" />
                       <div className="absolute inset-x-0 top-0 flex justify-between border-b border-lucas-cream/20 bg-lucas-navy/75 px-3 py-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/75">
