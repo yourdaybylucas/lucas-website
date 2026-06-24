@@ -28,10 +28,10 @@ const heroFrames = [
 ];
 
 const archiveFrames = [
-  { id: '01', src: '/videos/super-8-archive-01.m4v', type: 'video/mp4', label: 'analog fragment' },
-  { id: '02', src: '/videos/super-8-archive-02.m4v', type: 'video/mp4', label: 'analog fragment' },
-  { id: '03', src: '/videos/super-8-archive-03.m4v', type: 'video/mp4', label: 'analog fragment' },
-  { id: '04', src: '/videos/super-8-archive-05.m4v', type: 'video/mp4', label: 'analog fragment' },
+  { id: '01', src: '/videos/super-8-archive-01.m4v', type: 'video/mp4', label: 'Grand Entrance' },
+  { id: '02', src: '/videos/super-8-archive-02.m4v', type: 'video/mp4', label: 'Reception Details' },
+  { id: '03', src: '/videos/super-8-archive-03.m4v', type: 'video/mp4', label: 'Recessional' },
+  { id: '04', src: '/videos/super-8-archive-05.m4v', type: 'video/mp4', label: 'First Look' },
 ];
 
 const qualities = [
@@ -623,7 +623,7 @@ export default function AnalogLabPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 md:grid-cols-4">
-                {archiveFrames.map((frame, index) => (
+                {archiveFrames.map((frame) => (
                   <div key={frame.id} className="group bg-lucas-navy p-2">
                     <div className="relative aspect-[4/3] overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
                       <video
@@ -637,14 +637,11 @@ export default function AnalogLabPage() {
                       >
                         <source src={frame.src} type={frame.type} />
                       </video>
-                      <div className="absolute inset-x-0 top-0 flex justify-between border-b border-lucas-cream/20 bg-lucas-navy/75 px-3 py-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/75">
-                        <span>{String(index + 1).padStart(2, '0')}</span>
-                        <span>{frame.label}</span>
-                      </div>
                     </div>
-                    <div className="mt-2 flex items-center justify-between gap-3 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
-                      <span>frame_{frame.id}</span>
-                      <span>super 8</span>
+                    <div className="mt-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
+                      <span>
+                        {frame.id} {frame.label}
+                      </span>
                     </div>
                   </div>
                 ))}
