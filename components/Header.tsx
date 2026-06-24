@@ -16,6 +16,7 @@ export default function Header() {
     const navLinks = [
         { label: "About", path: "/about" },
         { label: "Collections", path: "/collections" },
+        { label: "Analog Lab", path: "/analog-lab" },
         { label: "Journal", path: "/journal" },
     ];
 
@@ -123,7 +124,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 z-[90] bg-lucas-cream flex flex-col items-center justify-center gap-12"
+                        className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-10 bg-lucas-cream px-6 pb-10 pt-28"
                     >
                         <nav className="flex flex-col items-center gap-8">
                             {navLinks.map((link) => (
