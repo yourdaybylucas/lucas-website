@@ -28,6 +28,7 @@ export default function Footer() {
                                     src="/logos/Lucas Buttercream trans.png" 
                                     alt="LUCAS" 
                                     fill
+                                    sizes="(min-width: 768px) 240px, 200px"
                                     className="object-contain object-left"
                                     priority
                                 />
@@ -53,6 +54,7 @@ export default function Footer() {
                             <Link href="/" className="hover:text-lucas-orange transition-colors w-fit">Home</Link>
                             <Link href="/about" className="hover:text-lucas-orange transition-colors w-fit">About</Link>
                             <Link href="/collections" className="hover:text-lucas-orange transition-colors w-fit">Collections</Link>
+                            <Link href="/analog-lab" className="hover:text-lucas-orange transition-colors w-fit">Analog Lab</Link>
                             <Link href="/journal" className="hover:text-lucas-orange transition-colors w-fit">Journal</Link>
                             <Link href="/spaces" className="hover:text-lucas-orange transition-colors w-fit">Spaces</Link>
                         </nav>

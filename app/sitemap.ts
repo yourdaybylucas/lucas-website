@@ -67,6 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/analog-lab`,
+      lastModified: staticPageLastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: staticPageLastModified,
       changeFrequency: 'yearly' as const,
