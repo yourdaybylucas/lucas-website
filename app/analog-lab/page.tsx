@@ -24,7 +24,7 @@ const qualities = [
   {
     number: '01',
     title: 'imperfections',
-    body: 'the grain, the flicker, the softness around the edges. it breathes, and it stays unforced.',
+    body: 'the grain, the flicker, the softness around the edges. light blooms, shadows soften, and the image feels less exact in the best way.',
   },
   {
     number: '02',
@@ -39,7 +39,7 @@ const qualities = [
   {
     number: '04',
     title: 'staying power',
-    body: 'it looked good in 1974. it will look good 40 years from now, when you are watching it back. useful technology has a funny way of aging well.',
+    body: 'it looked good in 1974. it will look good 40 years from now, when you are watching it back.',
   },
 ];
 
@@ -104,7 +104,7 @@ const faqs = [
   {
     question: 'Can Super 8 be added to a digital wedding film?',
     answer:
-      'Yes. I often weave my favorite Super 8 fragments into the main highlight film. Usually, it is a small but noticeable part: enough to change the texture, not so much that it overpowers or distracts. Some collections also include a dedicated Super 8 film as its own analog piece.',
+      'Yes. I often weave my favorite Super 8 fragments into the main highlight film. Usually, it is a small but noticeable part: enough to change the texture, not so much that it overpowers or distracts. Every collection that includes Super 8 also includes a dedicated Super 8 film with all of the Super 8 footage I get.',
   },
   {
     question: 'Does filming Super 8 mean missing digital footage?',
@@ -114,12 +114,12 @@ const faqs = [
   {
     question: 'Do people notice the Super 8 camera?',
     answer:
-      'people notice it. they usually mention the sound first: that little mechanical whirr of film moving through the camera. it changes the room in a small way. not because it asks for attention, but because it feels like an object with a job.',
+      'Yes. People notice it in a good way. The camera is small and discreet, and the soft whirr of the film is part of the charm. It adds a little texture to the room without pulling anyone out of the moment.',
   },
   {
     question: 'Who is Super 8 best for?',
     answer:
-      'it tends to resonate with couples who value authenticity and have a keen eye for design. honest, tactile, considered, but not too polished.',
+      'It tends to resonate with couples who value authenticity and have a keen eye for design. Honest, tactile, considered, but not too polished.',
   },
   {
     question: 'How long is a Super 8 wedding film?',
@@ -389,12 +389,12 @@ export default function AnalogLabPage() {
               </div>
 
               <h1 className="font-sans text-[2.7rem] font-bold uppercase leading-[0.95] tracking-normal text-lucas-navy sm:text-6xl sm:leading-[0.92] xl:text-[4.35rem] 2xl:text-[4.75rem]">
-                Super 8 wedding videographer in Ontario
+                SUPER 8 WEDDING VIDEOGRAPHER IN ONTARIO
               </h1>
 
               <div className="mt-8 max-w-xl border-y border-lucas-navy/35 py-7">
                 <p className="font-serif text-2xl italic leading-[1.25] text-lucas-navy md:text-3xl">
-                  real film, finite rolls, a little bit of dust in the machine. the good kind.
+                  real film, finite rolls, a little bit of dust in the machine.
                 </p>
                 <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-lucas-navy/75">
                   in a world where everything is clean, sharp, and endlessly filmed, super 8 gives
@@ -446,8 +446,7 @@ export default function AnalogLabPage() {
                     />
                     <div className="absolute inset-0 bg-grain opacity-30 mix-blend-overlay" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between border-t border-lucas-cream/40 pt-3 font-sans text-[9px] uppercase tracking-zissou text-lucas-cream/80">
-                      <span>Kodak 500T</span>
-                      <span>Frame 02415709</span>
+                      <span>KODAK 200T</span>
                     </div>
                   </div>
 
@@ -505,7 +504,7 @@ export default function AnalogLabPage() {
                   </span>
                 </div>
                 <h2 className="font-sans text-5xl font-bold uppercase leading-[0.95] tracking-normal text-lucas-navy md:text-6xl lg:text-7xl">
-                  It feels different because it is different.
+                  IT FEELS DIFFERENT BECAUSE IT IS DIFFERENT.
                 </h2>
               </div>
               <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-lucas-slate">
@@ -527,7 +526,7 @@ export default function AnalogLabPage() {
                       {quality.number}
                     </span>
                   </div>
-                  <p className="font-serif text-xl italic leading-relaxed text-lucas-navy">
+                  <p className="prose-soul italic text-lucas-navy">
                     {quality.body}
                   </p>
                 </article>
@@ -546,7 +545,7 @@ export default function AnalogLabPage() {
                   <span>[ 04 steps ]</span>
                 </div>
                 <h2 className="font-sans text-5xl font-bold uppercase leading-none tracking-normal md:text-7xl lg:text-8xl">
-                  From light to reel.
+                  FROM LIGHT TO REEL.
                 </h2>
                 <p className="mt-8 max-w-md font-serif text-2xl italic leading-snug text-lucas-cream/80">
                   i reach for super 8 when the room starts moving: first looks, cocktail hour
@@ -585,7 +584,7 @@ export default function AnalogLabPage() {
                         [ {item.step} ]
                       </span>
                     </div>
-                    <p className="mt-12 font-serif text-xl italic leading-relaxed text-lucas-cream/75">
+                    <p className="mt-12 prose-soul italic text-lucas-cream/75">
                       {item.body}
                     </p>
                   </article>
@@ -605,7 +604,7 @@ export default function AnalogLabPage() {
                 </span>
               </div>
               <h2 className="font-sans text-4xl font-bold uppercase leading-none tracking-normal md:text-5xl lg:text-6xl">
-                Guelph based. Ontario wide.
+                GUELPH BASED. ONTARIO WIDE.
               </h2>
               <p className="mt-8 max-w-md font-serif text-2xl italic leading-snug text-lucas-navy/80">
                 i work close to home and across the province. from city venues to tented fields and
@@ -636,7 +635,7 @@ export default function AnalogLabPage() {
             <div className="mb-12 flex flex-col justify-between gap-6 border-b border-lucas-navy/20 pb-6 md:flex-row md:items-end">
               <div>
                 <h2 className="font-sans text-4xl font-bold uppercase tracking-normal md:text-6xl">
-                  Visual Archive
+                  VISUAL ARCHIVE
                 </h2>
                 <p className="mt-3 font-serif text-xl italic text-lucas-navy/75">
                   frames, movement, texture. useful evidence, basically.
@@ -701,11 +700,11 @@ export default function AnalogLabPage() {
                   <span>[ faq ]</span>
                 </div>
                 <h2 className="font-sans text-4xl font-bold uppercase leading-none tracking-normal md:text-5xl lg:text-6xl">
-                  Practical Notes
+                  PRACTICAL NOTES
                 </h2>
                 <p className="mt-6 max-w-sm font-serif text-2xl italic leading-snug text-lucas-slate">
-                  the unfussy answers you usually need before deciding whether analog belongs in the
-                  day.
+                  a few practical notes on rolls, timing, texture, and how super 8 fits into the
+                  final film.
                 </p>
               </div>
             </div>
@@ -725,7 +724,7 @@ export default function AnalogLabPage() {
                       +
                     </span>
                   </summary>
-                  <p className="mt-6 max-w-4xl pl-11 font-serif text-2xl italic leading-relaxed text-lucas-slate md:pl-[4.25rem] md:text-[1.7rem]">
+                  <p className="mt-6 max-w-4xl pl-11 prose-soul italic text-lucas-slate md:pl-[4.25rem]">
                     {faq.answer}
                   </p>
                 </details>
@@ -744,10 +743,9 @@ export default function AnalogLabPage() {
               />
               <div className="mb-10 flex items-center justify-between border-b border-lucas-slate/30 pb-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
                 <span>analog lab // inquire</span>
-                <span>kodak + digital</span>
               </div>
-              <h2 className="max-w-3xl font-sans text-5xl font-bold uppercase leading-none tracking-normal md:text-7xl lg:text-8xl">
-                Let&apos;s make something that feels.
+              <h2 className="max-w-3xl font-sans text-4xl font-bold uppercase leading-none tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
+                LET&apos;S MAKE SOMETHING THAT FEELS.
               </h2>
               <p className="mt-8 max-w-xl font-serif text-2xl italic leading-snug text-lucas-cream/75">
                 if super 8 speaks to you, tell me what you both have in mind. i will reply with
@@ -777,9 +775,8 @@ export default function AnalogLabPage() {
                 alt="Lucas Bulger"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
-                className="object-cover brightness-110 grayscale contrast-[1.08]"
+                className="object-cover object-right"
               />
-              <div className="absolute inset-0 bg-lucas-navy/20 mix-blend-multiply" />
               <div className="absolute right-6 top-6 h-8 w-8 border-r border-t border-lucas-cream/40" />
               <div className="absolute bottom-6 left-6 h-8 w-8 border-b border-l border-lucas-cream/40" />
             </div>
