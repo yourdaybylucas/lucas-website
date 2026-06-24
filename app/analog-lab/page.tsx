@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Film, MapPin, Plus } from 'lucide-react';
+import AnalogHeroMedia from './analog-hero-media';
 
 const siteUrl = 'https://www.yourdaybylucas.com';
 const analogLabUrl = `${siteUrl}/analog-lab`;
@@ -445,64 +446,7 @@ export default function AnalogLabPage() {
                   strokeWidth={1.4}
                 />
 
-                <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_104px]">
-                  <div className="relative aspect-[4/3] overflow-hidden border border-lucas-navy/45 bg-lucas-navy">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="h-full w-full object-cover opacity-90 grayscale-[10%] contrast-[1.08] saturate-[0.85]"
-                      aria-hidden="true"
-                    >
-                      <source src={heroFrames[0].src} type={heroFrames[0].type} />
-                    </video>
-                    <div className="absolute inset-0 bg-grain opacity-30 mix-blend-overlay" />
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between border-t border-lucas-cream/40 pt-3 font-sans text-[9px] uppercase tracking-zissou text-lucas-cream/80">
-                      <span>KODAK 200T</span>
-                    </div>
-                  </div>
-
-                  <aside className="grid grid-cols-3 border border-lucas-navy/45 bg-lucas-cream font-sans text-[9px] uppercase tracking-zissou text-lucas-navy md:grid-cols-1">
-                    <div className="flex flex-col justify-between border-r border-lucas-navy/35 p-4 md:min-h-28 md:border-b md:border-r-0">
-                      <span>Roll</span>
-                      <span className="text-lucas-orange">A01</span>
-                    </div>
-                    <div className="flex flex-col justify-between border-r border-lucas-navy/35 p-4 md:min-h-28 md:border-b md:border-r-0">
-                      <span>Base</span>
-                      <span className="text-lucas-navy">Guelph</span>
-                    </div>
-                    <div className="flex flex-col justify-between p-4 md:min-h-28">
-                      <span>Range</span>
-                      <span className="text-lucas-navy">Ontario</span>
-                    </div>
-                  </aside>
-                </div>
-
-                <div className="mt-3 grid grid-cols-5 gap-1 border border-lucas-navy/45 bg-lucas-navy p-2">
-                  {heroFrames.map((frame) => (
-                    <div
-                      key={frame.id}
-                      className="group relative aspect-[4/3] overflow-hidden border border-lucas-cream/10 bg-lucas-cream/10"
-                    >
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full object-cover opacity-85 transition duration-slow group-hover:scale-105 group-hover:opacity-100"
-                        aria-label={frame.label}
-                      >
-                        <source src={frame.src} type={frame.type} />
-                      </video>
-                      <span className="absolute bottom-1 left-1 font-sans text-[8px] uppercase tracking-widest text-lucas-cream/70">
-                        {frame.id}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <AnalogHeroMedia frames={heroFrames} />
               </div>
             </div>
           </div>
@@ -688,13 +632,11 @@ export default function AnalogLabPage() {
                         muted
                         playsInline
                         preload="metadata"
-                        className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                         aria-label={frame.label}
                       >
                         <source src={frame.src} type={frame.type} />
                       </video>
-                      <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay" />
-                      <div className="absolute inset-0 bg-lucas-navy/0 transition-colors duration-slow group-hover:bg-lucas-navy/10" />
                       <div className="absolute inset-x-0 top-0 flex justify-between border-b border-lucas-cream/20 bg-lucas-navy/75 px-3 py-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/75">
                         <span>{String(index + 1).padStart(2, '0')}</span>
                         <span>{frame.label}</span>
