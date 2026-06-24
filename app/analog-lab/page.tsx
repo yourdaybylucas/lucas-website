@@ -452,11 +452,11 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="border-b border-lucas-navy/35 px-6 py-24 md:py-32">
-          <div className="mx-auto grid max-w-[90rem] gap-16 lg:grid-cols-12 lg:gap-12">
+        <section className="border-b border-lucas-navy/35 px-6 py-16 md:py-32">
+          <div className="mx-auto grid max-w-[90rem] gap-10 md:gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="flex flex-col justify-between lg:col-span-4">
               <div>
-                <div className="mb-8 flex items-center gap-4">
+                <div className="mb-6 flex items-center gap-4 md:mb-8">
                   <Film className="h-5 w-5 text-lucas-orange" strokeWidth={1.5} />
                   <span className="font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
                     why super 8mm
@@ -466,7 +466,7 @@ export default function AnalogLabPage() {
                   IT FEELS DIFFERENT BECAUSE IT IS DIFFERENT.
                 </h2>
               </div>
-              <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-lucas-slate">
+              <p className="mt-6 max-w-sm font-serif text-xl italic leading-snug text-lucas-slate md:mt-8 md:text-2xl">
                 not a filter. actual film moving through an actual camera.
               </p>
             </div>
@@ -475,7 +475,7 @@ export default function AnalogLabPage() {
               {qualities.map((quality) => (
                 <article
                   key={quality.number}
-                  className="group flex min-h-[20rem] flex-col justify-between border-b border-r border-lucas-navy/35 bg-lucas-cream p-8 transition-colors duration-slow hover:bg-lucas-sage/15 md:min-h-[22rem]"
+                  className="group flex min-h-56 flex-col justify-between border-b border-r border-lucas-navy/35 bg-lucas-cream p-6 transition-colors duration-slow hover:bg-lucas-sage/15 md:min-h-[22rem] md:p-8"
                 >
                   <div className="flex items-start justify-between gap-6">
                     <h3 className="font-sans text-sm font-medium lowercase tracking-wide text-lucas-navy">
@@ -485,7 +485,7 @@ export default function AnalogLabPage() {
                       {quality.number}
                     </span>
                   </div>
-                  <p className="prose-soul italic text-lucas-navy">
+                  <p className="mt-10 prose-soul italic text-lucas-navy md:mt-0">
                     {quality.body}
                   </p>
                 </article>
@@ -494,19 +494,19 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="relative border-b border-lucas-navy bg-lucas-navy px-6 py-24 text-lucas-cream md:py-32">
+        <section className="relative border-b border-lucas-navy bg-lucas-navy px-6 py-16 text-lucas-cream md:py-32">
           <div className="absolute inset-0 bg-grain opacity-[0.18] mix-blend-overlay pointer-events-none" />
-          <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
+          <div className="relative mx-auto grid max-w-7xl gap-8 md:gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="sticky top-32">
-                <div className="mb-8 flex items-center justify-between border-b border-lucas-slate/30 pb-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+              <div className="lg:sticky lg:top-32">
+                <div className="mb-6 flex items-center justify-between border-b border-lucas-slate/30 pb-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate md:mb-8 md:pb-5">
                   <span>the analog process</span>
                   <span>[ 04 steps ]</span>
                 </div>
-                <h2 className="font-sans text-5xl font-bold uppercase leading-none tracking-normal md:text-7xl lg:text-8xl">
+                <h2 className="font-sans text-4xl font-bold uppercase leading-none tracking-normal md:text-7xl lg:text-8xl">
                   FROM LIGHT TO REEL.
                 </h2>
-                <p className="mt-8 max-w-md font-serif text-2xl italic leading-snug text-lucas-cream/80">
+                <p className="mt-6 max-w-md font-serif text-xl italic leading-snug text-lucas-cream/80 md:mt-8 md:text-2xl">
                   i reach for super 8 when the room starts moving: first looks, cocktail hour
                   laughter, hands, walking, dancing, the small rush of people being fully in it. the
                   slower shutter gives motion a little smear, which is a technical way of saying it
@@ -516,8 +516,8 @@ export default function AnalogLabPage() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="mb-10 border border-lucas-slate/30 bg-lucas-navy p-3">
-                <div className="relative aspect-[4/3] overflow-hidden border border-lucas-slate/30 bg-lucas-cream/5">
+              <div className="mb-6 border border-lucas-slate/30 bg-lucas-navy p-2 md:mb-10 md:p-3">
+                <div className="relative aspect-[16/9] overflow-hidden border border-lucas-slate/30 bg-lucas-cream/5 md:aspect-[4/3]">
                   <Image
                     src="/images/analog-lab/super8-candlelit-dinner.jpg"
                     alt="Super 8 still of a candlelit wedding dinner"
@@ -537,7 +537,7 @@ export default function AnalogLabPage() {
                 {process.map((item) => (
                   <article
                     key={item.step}
-                    className="group flex min-h-64 flex-col justify-between border-b border-r border-lucas-slate/30 p-6 transition-colors duration-slow hover:bg-lucas-cream/10 md:min-h-72 md:p-8"
+                    className="group border-b border-r border-lucas-slate/30 p-5 transition-colors duration-slow hover:bg-lucas-cream/10 sm:flex sm:min-h-64 sm:flex-col sm:justify-between md:min-h-72 md:p-8"
                   >
                     <div className="flex items-start justify-between gap-6">
                       <h3 className="font-sans text-sm font-medium lowercase tracking-wide text-lucas-cream">
@@ -547,7 +547,7 @@ export default function AnalogLabPage() {
                         [ {item.step} ]
                       </span>
                     </div>
-                    <p className="mt-12 prose-soul italic text-lucas-cream/75">
+                    <p className="mt-5 prose-soul italic text-lucas-cream/75 sm:mt-12">
                       {item.body}
                     </p>
                   </article>
@@ -557,7 +557,7 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="border-b border-lucas-navy/35 px-6 py-24 md:py-28">
+        <section className="border-b border-lucas-navy/35 px-6 py-16 md:py-28">
           <div className="mx-auto grid max-w-7xl overflow-hidden border border-lucas-navy/45 lg:grid-cols-[0.9fr_1.4fr]">
             <div className="border-b border-lucas-navy/35 bg-lucas-sage/20 p-8 md:p-12 lg:border-b-0 lg:border-r">
               <div className="mb-8 flex items-center gap-4">
@@ -593,9 +593,9 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="px-6 py-24 md:py-28">
+        <section className="px-6 py-16 md:py-28">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-12 flex flex-col justify-between gap-6 border-b border-lucas-navy/20 pb-6 md:flex-row md:items-end">
+            <div className="mb-8 flex flex-col justify-between gap-6 border-b border-lucas-navy/20 pb-5 md:mb-12 md:flex-row md:items-end md:pb-6">
               <div>
                 <h2 className="font-sans text-4xl font-bold uppercase tracking-normal md:text-6xl">
                   VISUAL ARCHIVE
@@ -650,20 +650,19 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="border-y border-lucas-navy/35 bg-lucas-sage/10 px-6 py-24 md:py-32">
-          <div className="mx-auto grid max-w-[90rem] gap-12 lg:grid-cols-12 lg:gap-16">
+        <section className="border-y border-lucas-navy/35 bg-lucas-sage/10 px-6 py-16 md:py-32">
+          <div className="mx-auto grid max-w-[90rem] gap-8 md:gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
-                <div className="mb-8 flex items-center justify-between border-b border-lucas-navy/25 pb-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+                <div className="mb-6 flex items-center justify-between border-b border-lucas-navy/25 pb-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate md:mb-8 md:pb-5">
                   <span>analog notes</span>
                   <span>[ faq ]</span>
                 </div>
                 <h2 className="font-sans text-4xl font-bold uppercase leading-none tracking-normal md:text-5xl lg:text-6xl">
                   PRACTICAL NOTES
                 </h2>
-                <p className="mt-6 max-w-sm font-serif text-2xl italic leading-snug text-lucas-slate">
-                  a few practical notes on rolls, timing, texture, and how super 8 fits into the
-                  final film.
+                <p className="mt-5 max-w-sm font-serif text-xl italic leading-snug text-lucas-slate md:mt-6 md:text-2xl">
+                  rolls, timing, texture, and how super 8 fits into the final film.
                 </p>
               </div>
             </div>
@@ -672,7 +671,7 @@ export default function AnalogLabPage() {
               {faqs.map((faq, index) => (
                 <details
                   key={faq.question}
-                  className="group border-b border-lucas-navy/35 py-8 md:py-9"
+                  className="group border-b border-lucas-navy/35 py-5 md:py-9"
                 >
                   <summary className="grid cursor-pointer list-none grid-cols-[auto_1fr_auto] items-center gap-5 font-sans text-sm font-medium lowercase tracking-wide text-lucas-navy md:gap-8">
                     <span className="font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
@@ -683,7 +682,7 @@ export default function AnalogLabPage() {
                       +
                     </span>
                   </summary>
-                  <p className="mt-6 max-w-4xl pl-11 prose-soul italic text-lucas-slate md:pl-[4.25rem]">
+                  <p className="mt-4 max-w-4xl pl-11 font-serif text-lg italic leading-relaxed text-lucas-slate md:mt-6 md:pl-[4.25rem] md:text-xl">
                     {faq.answer}
                   </p>
                 </details>
@@ -692,26 +691,26 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="px-6 py-24 md:py-32">
+        <section className="px-6 py-16 md:py-32">
           <div className="mx-auto grid max-w-7xl overflow-hidden border border-lucas-navy bg-lucas-navy text-lucas-cream lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative p-8 md:p-12 lg:p-16">
+            <div className="relative p-6 md:p-12 lg:p-16">
               <Plus
                 className="absolute left-4 top-4 h-4 w-4 text-lucas-cream/30"
                 aria-hidden="true"
                 strokeWidth={1.4}
               />
-              <div className="mb-10 flex items-center justify-between border-b border-lucas-slate/30 pb-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+              <div className="mb-8 flex items-center justify-between border-b border-lucas-slate/30 pb-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate md:mb-10 md:pb-5">
                 <span>analog lab // inquire</span>
               </div>
-              <h2 className="max-w-3xl font-sans text-4xl font-bold uppercase leading-none tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
+              <h2 className="max-w-3xl font-sans text-[2.45rem] font-bold uppercase leading-none tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
                 LET&apos;S MAKE SOMETHING THAT FEELS.
               </h2>
-              <p className="mt-8 max-w-xl font-serif text-2xl italic leading-snug text-lucas-cream/75">
+              <p className="mt-6 max-w-xl font-serif text-xl italic leading-snug text-lucas-cream/75 md:mt-8 md:text-2xl">
                 if super 8 speaks to you, tell me what you both have in mind. i will reply with
                 availability, collection details, and next steps.
               </p>
 
-              <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-12">
                 <Link
                   href="/#contact"
                   className="group inline-flex items-center justify-center gap-3 border border-lucas-cream bg-lucas-cream px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-navy transition-colors duration-slow hover:border-lucas-orange hover:bg-transparent hover:text-lucas-cream"
@@ -728,7 +727,7 @@ export default function AnalogLabPage() {
               </div>
             </div>
 
-            <div className="relative min-h-[360px] border-t border-lucas-slate/30 lg:border-l lg:border-t-0">
+            <div className="relative min-h-[280px] border-t border-lucas-slate/30 md:min-h-[360px] lg:border-l lg:border-t-0">
               <Image
                 src="/images/about/about_1.2.JPG"
                 alt="Lucas Bulger"
