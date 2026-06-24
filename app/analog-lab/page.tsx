@@ -28,8 +28,8 @@ const qualities = [
   },
   {
     number: '02',
-    title: 'intention',
-    body: 'a roll is short. every press of the trigger has to earn its place.',
+    title: 'scarcity',
+    body: 'a short roll forces a decision. i have to read the room in real time and ask what actually deserves film: the movement, the emotion, the small pieces that will still matter later.',
   },
   {
     number: '03',
@@ -39,7 +39,7 @@ const qualities = [
   {
     number: '04',
     title: 'staying power',
-    body: 'it looked good in 1974. it will probably look good in 2074. useful technology has a funny way of aging well.',
+    body: 'it looked good in 1974. it will look good 40 years from now, when you are watching it back. useful technology has a funny way of aging well.',
   },
 ];
 
@@ -52,7 +52,7 @@ const process = [
   {
     step: '02',
     title: 'the camera',
-    body: 'a small super 8 camera keeps the footprint quiet. i work in brief fragments so the analog footage stays attentive instead of everywhere.',
+    body: 'a small super 8 camera keeps the footprint quiet. when it makes sense, i mount it to my digital camera, so the same moment can live in two textures at once.',
   },
   {
     step: '03',
@@ -62,7 +62,7 @@ const process = [
   {
     step: '04',
     title: 'the scan',
-    body: 'the scan comes back digital, then i cut it with restraint inside the final edit or as its own short analog piece.',
+    body: 'the scan comes back digital, then i cut it with restraint: sometimes as its own short analog piece, sometimes woven into the highlight film beside digital footage.',
   },
 ];
 
@@ -104,7 +104,22 @@ const faqs = [
   {
     question: 'Can Super 8 be added to a digital wedding film?',
     answer:
-      'Yes. Super 8 pairs naturally with digital coverage when you want the full shape of the day and the distinct texture of analog film.',
+      'Yes. I often weave my favorite Super 8 fragments into the main highlight film. Usually, it is a small but noticeable part: enough to change the texture, not so much that it overpowers or distracts. Some collections also include a dedicated Super 8 film as its own analog piece.',
+  },
+  {
+    question: 'Does filming Super 8 mean missing digital footage?',
+    answer:
+      'No. When it makes sense, I mount the Super 8 camera to my digital camera, so the same moment can live in two textures at once.',
+  },
+  {
+    question: 'Do people notice the Super 8 camera?',
+    answer:
+      'people notice it. they usually mention the sound first: that little mechanical whirr of film moving through the camera. it changes the room in a small way. not because it asks for attention, but because it feels like an object with a job.',
+  },
+  {
+    question: 'Who is Super 8 best for?',
+    answer:
+      'it tends to resonate with couples who value authenticity and have a keen eye for design. honest, tactile, considered, but not too polished.',
   },
   {
     question: 'How long is a Super 8 wedding film?',
@@ -382,8 +397,8 @@ export default function AnalogLabPage() {
                   real film, finite rolls, a little bit of dust in the machine. the good kind.
                 </p>
                 <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-lucas-navy/75">
-                  i love super 8 because it refuses to be too clean. it makes the record feel physical,
-                  imperfect, warm, and very much alive.
+                  in a world where everything is clean, sharp, and endlessly filmed, super 8 gives
+                  the image a little resistance.
                 </p>
               </div>
 
@@ -494,7 +509,7 @@ export default function AnalogLabPage() {
                 </h2>
               </div>
               <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-lucas-slate">
-                not a filter. not nostalgia cosplay. actual film moving through an actual camera.
+                not a filter. actual film moving through an actual camera.
               </p>
             </div>
 
@@ -534,8 +549,10 @@ export default function AnalogLabPage() {
                   From light to reel.
                 </h2>
                 <p className="mt-8 max-w-md font-serif text-2xl italic leading-snug text-lucas-cream/80">
-                  i keep the process simple on the day and precise after it. super 8 has enough
-                  character on its own. it does not need a heavy hand.
+                  i reach for super 8 when the room starts moving: first looks, cocktail hour
+                  laughter, hands, walking, dancing, the small rush of people being fully in it. the
+                  slower shutter gives motion a little smear, which is a technical way of saying it
+                  feels alive.
                 </p>
               </div>
             </div>
@@ -544,11 +561,11 @@ export default function AnalogLabPage() {
               <div className="mb-10 border border-lucas-slate/30 bg-lucas-navy p-3">
                 <div className="relative aspect-[4/3] overflow-hidden border border-lucas-slate/30 bg-lucas-cream/5">
                   <Image
-                    src="/images/about/about_8.jpg"
-                    alt="Lucas filming a quiet getting-ready moment"
+                    src="/images/analog-lab/super8-candlelit-dinner.jpg"
+                    alt="Super 8 still of a candlelit wedding dinner"
                     fill
                     sizes="(min-width: 1024px) 54vw, 100vw"
-                    className="object-cover grayscale-[12%] contrast-[1.03] saturate-[0.9]"
+                    className="object-cover object-left brightness-105 contrast-[1.04] saturate-[0.95]"
                   />
                   <div className="absolute inset-0 bg-grain opacity-25 mix-blend-overlay" />
                 </div>
@@ -730,11 +747,11 @@ export default function AnalogLabPage() {
                 <span>kodak + digital</span>
               </div>
               <h2 className="max-w-3xl font-sans text-5xl font-bold uppercase leading-none tracking-normal md:text-7xl lg:text-8xl">
-                Let&apos;s make something that feels held.
+                Let&apos;s make something that feels.
               </h2>
               <p className="mt-8 max-w-xl font-serif text-2xl italic leading-snug text-lucas-cream/75">
-                if super 8 is the texture you keep returning to, tell me what you both have in mind. i
-                will reply with availability, collection details, and honest next steps.
+                if super 8 speaks to you, tell me what you both have in mind. i will reply with
+                availability, collection details, and next steps.
               </p>
 
               <div className="mt-12 flex flex-col gap-3 sm:flex-row">
@@ -756,18 +773,15 @@ export default function AnalogLabPage() {
 
             <div className="relative min-h-[360px] border-t border-lucas-slate/30 lg:border-l lg:border-t-0">
               <Image
-                src="/images/img1.JPG"
-                alt="Lucas holding a camera in soft motion blur"
+                src="/images/about/about_1.2.JPG"
+                alt="Lucas Bulger"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
-                className="object-cover grayscale contrast-[1.1]"
+                className="object-cover brightness-110 grayscale contrast-[1.08]"
               />
               <div className="absolute inset-0 bg-lucas-navy/20 mix-blend-multiply" />
               <div className="absolute right-6 top-6 h-8 w-8 border-r border-t border-lucas-cream/40" />
               <div className="absolute bottom-6 left-6 h-8 w-8 border-b border-l border-lucas-cream/40" />
-              <div className="absolute inset-x-6 bottom-6 border-t border-lucas-cream/40 pt-4 font-sans text-[9px] uppercase tracking-zissou text-lucas-cream/80">
-                one person. one camera bag. several tiny rolls of film.
-              </div>
             </div>
           </div>
         </section>
