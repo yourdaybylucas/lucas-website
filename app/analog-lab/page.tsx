@@ -610,10 +610,10 @@ export default function AnalogLabPage() {
               <span className="px-3 py-2 text-right">ontario</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 md:grid-cols-4">
+            <div className="grid h-[420px] grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 sm:h-[460px] md:h-[250px] md:grid-cols-4 lg:h-[280px] 2xl:h-[320px]">
               {archiveFrames.map((frame) => (
-                <div key={frame.id} className="group bg-lucas-navy p-2">
-                  <div className="relative aspect-[4/3] overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
+                <div key={frame.id} className="group flex min-h-0 flex-col bg-lucas-navy p-2">
+                  <div className="relative min-h-0 flex-1 overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
                     <video
                       autoPlay
                       loop
