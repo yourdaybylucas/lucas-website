@@ -600,8 +600,8 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="border-y border-lucas-navy bg-lucas-navy py-8 text-lucas-cream md:py-10">
-          <div className="w-full">
+        <section className="border-y border-lucas-navy bg-lucas-navy px-4 py-8 text-lucas-cream md:px-6 md:py-10">
+          <div className="mx-auto max-w-[90rem]">
             <div className="mb-2 grid grid-cols-3 border border-lucas-cream/15 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
               <span className="border-r border-lucas-cream/15 px-3 py-2">visual archive</span>
               <span className="border-r border-lucas-cream/15 px-3 py-2 text-center">
@@ -610,7 +610,7 @@ export default function AnalogLabPage() {
               <span className="px-3 py-2 text-right">ontario</span>
             </div>
 
-            <div className="grid h-[420px] grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 sm:h-[460px] md:h-[250px] md:grid-cols-4 lg:h-[280px] 2xl:h-[320px]">
+            <div className="grid h-[360px] grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 sm:h-[400px] md:h-[220px] md:grid-cols-4 lg:h-[240px] xl:h-[260px]">
               {archiveFrames.map((frame) => (
                 <div key={frame.id} className="group flex min-h-0 flex-col bg-lucas-navy p-2">
                   <div className="relative min-h-0 flex-1 overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
