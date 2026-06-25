@@ -431,6 +431,13 @@ export default function AnalogLabPage() {
                   view collections
                 </Link>
               </div>
+              <Link
+                href="/journal"
+                className="group mt-6 inline-flex w-fit items-center gap-3 font-sans text-[10px] uppercase tracking-zissou text-lucas-orange"
+              >
+                view recent work
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-slow group-hover:translate-x-1" />
+              </Link>
             </div>
 
             <div className="lg:col-span-7">
@@ -593,59 +600,39 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="px-6 py-16 md:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-8 flex flex-col justify-between gap-6 border-b border-lucas-navy/20 pb-5 md:mb-12 md:flex-row md:items-end md:pb-6">
-              <div>
-                <h2 className="font-sans text-4xl font-bold uppercase tracking-normal md:text-6xl">
-                  VISUAL ARCHIVE
-                </h2>
-                <p className="mt-3 font-serif text-xl italic text-lucas-navy/75">
-                  frames, movement, texture. useful evidence, basically.
-                </p>
-              </div>
-              <Link
-                href="/journal"
-                className="group inline-flex w-fit items-center gap-3 font-sans text-[10px] uppercase tracking-zissou text-lucas-orange"
-              >
-                view recent work
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-slow group-hover:translate-x-1" />
-              </Link>
+        <section className="border-y border-lucas-navy bg-lucas-navy py-8 text-lucas-cream md:py-10">
+          <div className="w-full">
+            <div className="mb-2 grid grid-cols-3 border border-lucas-cream/15 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
+              <span className="border-r border-lucas-cream/15 px-3 py-2">visual archive</span>
+              <span className="border-r border-lucas-cream/15 px-3 py-2 text-center">
+                four fragments
+              </span>
+              <span className="px-3 py-2 text-right">ontario</span>
             </div>
 
-            <div className="border border-lucas-navy/45 bg-lucas-navy p-2 text-lucas-cream md:p-3">
-              <div className="mb-2 grid grid-cols-3 border border-lucas-cream/15 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
-                <span className="border-r border-lucas-cream/15 px-3 py-2">contact sheet</span>
-                <span className="border-r border-lucas-cream/15 px-3 py-2 text-center">
-                  kodak fragments
-                </span>
-                <span className="px-3 py-2 text-right">ontario</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 md:grid-cols-4">
-                {archiveFrames.map((frame) => (
-                  <div key={frame.id} className="group bg-lucas-navy p-2">
-                    <div className="relative aspect-[4/3] overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                        aria-label={frame.label}
-                      >
-                        <source src={frame.src} type={frame.type} />
-                      </video>
-                    </div>
-                    <div className="mt-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
-                      <span>
-                        {frame.id} {frame.label}
-                      </span>
-                    </div>
+            <div className="grid grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 md:grid-cols-4">
+              {archiveFrames.map((frame) => (
+                <div key={frame.id} className="group bg-lucas-navy p-2">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      aria-label={frame.label}
+                    >
+                      <source src={frame.src} type={frame.type} />
+                    </video>
                   </div>
-                ))}
-              </div>
+                  <div className="mt-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
+                    <span>
+                      {frame.id} {frame.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
