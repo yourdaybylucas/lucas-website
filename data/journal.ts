@@ -23,6 +23,31 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "046",
+        slug: "alex-nick-chateau-hermitage-de-combas",
+        title: "alex & nick",
+        location: "Château Hermitage de Combas",
+        date: "May 16, 2025",
+        format: "Digital + Super 8mm",
+        stock: "Kodak Vision3 200T",
+        excerpt: "an ethereal, intimate celebration at a breathtaking french chateau, fueled by heartfelt vows, prosecco, and the incredible energy of seventy of their closest friends.",
+        videoId: "xCRgV8RAX78",
+        secondaryVideoId: "XfkIzsNPIoE",
+        fieldNotes: [
+            "their story wasn't love at first sight, but started as a friendship that slowly grew into a deep, unwavering connection.",
+            "nick brought a calm, steady presence that put everyone at ease, while alex radiated undeniable warmth and joy.",
+            "the day was pure magic, crossing the ocean for everything from prosecco pours to an unforgettable dance floor."
+        ],
+        vendors: [
+            { name: "Samantha Nicholas", role: "Planner", url: "https://www.samanthanicholas.ca" },
+            { name: "Lydia Ivy Photography", role: "Photography", url: "https://lydiaivy.com" },
+            { name: "Taylor Switzer Makeup", role: "Makeup", url: "https://taylorswitzer.com" },
+            { name: "The Flower Shop Designs", role: "Florals", url: "" },
+            { name: "Château Hermitage de Combas", role: "Venue", url: "https://hermitagedecombas.com" },
+            { name: "Wildfire DJs & Louis Palmer Music", role: "DJ", url: "https://instagram.com/wildfire_djs" }
+        ]
+    },
+    {
         "id": "045",
         "slug": "monica-luka-old-mill-toronto",
         "title": "monica & luka",
