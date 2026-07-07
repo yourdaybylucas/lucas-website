@@ -86,13 +86,19 @@ export default function PrivateCollectionsPage() {
     };
 
     useEffect(() => {
-        const pricingHashes = new Set(["pricing", "purist", "collections-pricing"]);
+        const collectionsHashes = new Set(["pricing", "collections", "collections-pricing"]);
+        const puristHashes = new Set(["purist", "purist-pricing"]);
 
         const openDeepLink = () => {
             const hash = window.location.hash.replace("#", "").toLowerCase();
 
-            if (pricingHashes.has(hash)) {
+            if (puristHashes.has(hash)) {
                 setActiveTab("purist");
+            } else if (collectionsHashes.has(hash)) {
+                setActiveTab("narrative");
+            }
+
+            if (collectionsHashes.has(hash) || puristHashes.has(hash)) {
                 window.setTimeout(() => {
                     document.getElementById("collections")?.scrollIntoView({
                         behavior: "smooth",
@@ -794,8 +800,7 @@ export default function PrivateCollectionsPage() {
                             transition={{ duration: 0.8 }}
                             className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
                         >
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="w-2 h-2 bg-lucas-orange rounded-none animate-pulse"></span>
+                            <div className="flex items-center mb-6">
                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
                                     [ 05 // Next Steps ]
                                 </span>
