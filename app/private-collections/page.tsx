@@ -86,13 +86,19 @@ export default function PrivateCollectionsPage() {
     };
 
     useEffect(() => {
-        const pricingHashes = new Set(["pricing", "purist", "collections-pricing"]);
+        const collectionsHashes = new Set(["pricing", "collections", "collections-pricing"]);
+        const puristHashes = new Set(["purist", "purist-pricing"]);
 
         const openDeepLink = () => {
             const hash = window.location.hash.replace("#", "").toLowerCase();
 
-            if (pricingHashes.has(hash)) {
+            if (puristHashes.has(hash)) {
                 setActiveTab("purist");
+            } else if (collectionsHashes.has(hash)) {
+                setActiveTab("narrative");
+            }
+
+            if (collectionsHashes.has(hash) || puristHashes.has(hash)) {
                 window.setTimeout(() => {
                     document.getElementById("collections")?.scrollIntoView({
                         behavior: "smooth",
