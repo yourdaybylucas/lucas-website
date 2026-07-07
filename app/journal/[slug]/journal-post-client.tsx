@@ -7,6 +7,8 @@ import { JournalEntry } from "@/data/journal";
 import CinematicPlayer from "@/components/CinematicPlayer";
 
 export default function JournalPostClient({ post }: { post: JournalEntry }) {
+    const secondaryVideoLabel = post.secondaryVideoLabel ?? "Digital Reel";
+
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 relative overflow-hidden">
             
@@ -130,12 +132,12 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                                 <div className="flex items-center gap-3 mb-8">
                                     <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full"></span>
                                     <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                                        Digital Reel
+                                        {secondaryVideoLabel}
                                     </h3>
                                 </div>
                                 <CinematicPlayer 
                                     videoId={post.secondaryVideoId} 
-                                    altText={`${post.title} Digital Reel`} 
+                                    altText={`${post.title} ${secondaryVideoLabel}`} 
                                 />
                             </div>
                         )}

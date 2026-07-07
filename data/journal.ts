@@ -19,6 +19,7 @@ export interface JournalEntry {
     fieldNotes: string[];
     vendors?: Vendor[];
     secondaryVideoId?: string; // Add this line
+    secondaryVideoLabel?: string;
 }
 
 export const journalEntries: JournalEntry[] = [
@@ -33,6 +34,7 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "an ethereal, intimate celebration at a breathtaking french chateau, fueled by heartfelt vows, prosecco, and the incredible energy of seventy of their closest friends.",
         videoId: "xCRgV8RAX78",
         secondaryVideoId: "XfkIzsNPIoE",
+        secondaryVideoLabel: "Super 8 Film",
         fieldNotes: [
             "their story wasn't love at first sight, but started as a friendship that slowly grew into a deep, unwavering connection.",
             "nick brought a calm, steady presence that put everyone at ease, while alex radiated undeniable warmth and joy.",

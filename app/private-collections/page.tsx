@@ -85,6 +85,29 @@ export default function PrivateCollectionsPage() {
         }
     };
 
+    useEffect(() => {
+        const pricingHashes = new Set(["pricing", "purist", "collections-pricing"]);
+
+        const openDeepLink = () => {
+            const hash = window.location.hash.replace("#", "").toLowerCase();
+
+            if (pricingHashes.has(hash)) {
+                setActiveTab("purist");
+                window.setTimeout(() => {
+                    document.getElementById("collections")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }, 75);
+            }
+        };
+
+        openDeepLink();
+        window.addEventListener("hashchange", openDeepLink);
+
+        return () => window.removeEventListener("hashchange", openDeepLink);
+    }, []);
+
     return (
         <main className="h-[100dvh] bg-lucas-cream flex flex-col lg:flex-row relative overflow-hidden">
             
@@ -455,7 +478,7 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('kvLEmAzg5kQ')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
+                                                            <button onClick={() => setActiveVideo('xCRgV8RAX78')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
                                                                 <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
                                                                     <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">weekend narrative film</span>
