@@ -800,8 +800,7 @@ export default function PrivateCollectionsPage() {
                             transition={{ duration: 0.8 }}
                             className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
                         >
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="w-2 h-2 bg-lucas-orange rounded-none animate-pulse"></span>
+                            <div className="flex items-center mb-6">
                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
                                     [ 05 // Next Steps ]
                                 </span>

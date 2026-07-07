@@ -128,37 +128,37 @@ const environmentNotes = [
         id: "01",
         title: "The Margin",
         subtitle: "schedule empty space",
-        content: "try building empty space into your timeline. buffer time isn't just for running late; it's the fifteen minutes you get to sit alone together with a drink before the reception. that quiet margin is where the unforced magic happens."
+        content: "build empty space into your timeline. buffer time isn't just for running late; it's the private fifteen minutes you share before the reception. that quiet margin is where unforced magic happens."
     },
     {
         id: "02",
         title: "The Footprint",
         subtitle: "minimize transit",
-        content: "keeping location hopping to a minimum means less time in transit and more time actually being present. the best narrative moments usually happen when you just sit still and exist with your people."
+        content: "keep location hopping to a minimum. less time in transit means more room to be present. the most honest narrative moments usually unfold when you simply sit still and exist with your people."
     },
     {
         id: "03",
         title: "The Roster",
         subtitle: "keep formal photos tight",
-        content: "long, exhaustive family photo lists can quickly drain your energy and pull you away from the party. keeping the formal roster tight—immediate family only—lets the rest of the day remain completely unforced."
+        content: "exhaustive family photo lists can drain your energy quickly. keep the formal roster tight—immediate family only—so the rest of the day stays unforced and present."
     },
     {
         id: "04",
         title: "The Audio Backbone",
         subtitle: "words carry weight",
-        content: "the spoken words anchor the film. honest, handwritten promises usually carry more weight than reading from a screen. for speeches, keeping the roster tight with a few meaningful toasts will always outshine an open mic."
+        content: "spoken words anchor the film. handwritten promises usually carry more weight than reading from a screen, and a few meaningful toasts will always outshine an open mic."
     },
     {
         id: "05",
         title: "The Micro-Details",
         subtitle: "let go of the steering wheel",
-        content: "it's rare that anyone remembers the napkin folds, but they always remember the energy in the room. try not to let minor logistical hiccups pull you out of the present moment. once the day starts, simply let go of the steering wheel and let it unfold."
+        content: "guests rarely remember the napkin folds, but they remember the energy in the room. try not to let minor logistical hiccups pull you away. once the day begins, let go and let it unfold."
     },
     {
         id: "06",
         title: "The Rulebook",
         subtitle: "make the day your own",
-        content: "there are no actual rules. have a friend officiate. skip the cake cutting. do whatever it takes to make the day feel like you. the more the environment reflects who you both are, the more honest the final film will be."
+        content: "there are no actual rules. have a friend officiate, skip the cake cutting, or build the day around whatever feels like you. the more the environment reflects you both, the more honest the final film will be."
     }
 ];
 
@@ -432,7 +432,7 @@ export default function TheGuidePage() {
                                     </div>
 
                                     <p className="font-serif text-[clamp(1.1rem,1.5vw,1.3rem)] text-lucas-cream/80 lowercase leading-relaxed max-w-2xl">
-                                        the best films don't come from perfect timelines or heavily curated details. they come from you both actually being present. when you bring your own genuine energy and just have fun, the film naturally reflects that. these notes aren't a list of rules—they are simply a framework to help protect your time, keep you grounded, and allow you to actually enjoy the party.
+                                        the best films do not come from perfect timelines. they come from you being present. these notes are simply a way to protect your time, keep the room grounded, and let the day breathe.
                                     </p>
                                 </div>
 
@@ -443,24 +443,8 @@ export default function TheGuidePage() {
                                             <motion.div 
                                                 key={note.id}
                                                 variants={fadeUpItem} 
-                                                className="flex-none w-[85vw] md:w-[380px] lg:w-[420px] group border border-lucas-cream/20 p-6 md:p-8 hover:bg-lucas-cream/5 transition-colors duration-500 flex flex-col justify-between min-h-[300px] lg:min-h-[320px] snap-start bg-lucas-navy relative overflow-hidden"
+                                                className="flex-none w-[85vw] md:w-[380px] lg:w-[420px] border border-lucas-cream/20 p-6 md:p-8 hover:bg-lucas-cream/5 transition-colors duration-500 flex flex-col min-h-[300px] lg:min-h-[320px] snap-start bg-lucas-navy relative overflow-hidden"
                                             >
-                                                {/* Accent Line */}
-                                                <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10"></div>
-
-                                                <div className="flex flex-col mb-8 relative z-10">
-                                                    <div className="flex items-center justify-between mb-6">
-                                                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange font-bold">
-                                                            [ {note.id} ]
-                                                        </span>
-                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-cream/60 border-b border-lucas-cream/20 pb-1">
-                                                            {note.title}
-                                                        </span>
-                                                    </div>
-                                                    <h3 className="font-sans text-xl md:text-2xl uppercase tracking-tight text-lucas-cream">
-                                                        {note.subtitle}
-                                                    </h3>
-                                                </div>
                                                 <p className="font-serif text-[clamp(1.05rem,1.2vw,1.15rem)] leading-[1.6] text-lucas-cream/80 lowercase italic relative z-10">
                                                     {note.content}
                                                 </p>
@@ -488,9 +472,6 @@ export default function TheGuidePage() {
                                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy">
                                         Trusted Peers //
                                     </h2>
-                                    <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mt-2">
-                                        [ presence over perfection ]
-                                    </p>
                                 </div>
                                 <p className="font-serif text-lg italic text-lucas-navy/80 lowercase max-w-md md:text-right leading-snug">
                                     working with vendors who share the same ethos changes the entire feeling of the day. this is a curated inventory of peers.
@@ -499,9 +480,9 @@ export default function TheGuidePage() {
 
                             {/* The Inventory Grid - Horizontal scroll on mobile, 4-col on desktop */}
                             <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 border-t border-l border-lucas-navy/20 bg-lucas-navy/5 shadow-[0_10px_40px_rgba(24,40,54,0.03)] overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                                {trustedPeers.map((group, idx) => (
+                                {trustedPeers.map((group) => (
                                     <motion.div 
-                                        key={idx} 
+                                        key={group.category} 
                                         variants={fadeUpItem} 
                                         className="flex-none w-[85vw] md:w-auto snap-start border-r border-b border-lucas-navy/20 p-6 lg:p-8 flex flex-col bg-lucas-cream hover:bg-[#FAF8F2] transition-colors duration-700 relative overflow-hidden group/box"
                                     >
@@ -509,13 +490,10 @@ export default function TheGuidePage() {
                                         <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-lucas-navy/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500" />
 
-                                        <div className="flex items-end justify-between border-b border-lucas-navy/10 pb-4 mb-5">
+                                        <div className="flex items-end border-b border-lucas-navy/10 pb-4 mb-5">
                                             <h3 className="font-sans text-[11px] tracking-zissou uppercase text-lucas-navy font-bold">
                                                 {group.category}
                                             </h3>
-                                            <span className="font-sans text-[8px] tracking-widest text-lucas-slate uppercase">
-                                                [ Cat. 0{idx + 1} ]
-                                            </span>
                                         </div>
 
                                         <ul className="flex flex-col">

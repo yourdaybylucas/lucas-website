@@ -26,28 +26,33 @@ const fadeUpItem = {
 export default function JournalPage() {
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 overflow-hidden relative">
-            <h1 className="sr-only">Wedding Films Journal</h1>
-
             {/* Global Texture */}
             <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
 
-                {/* 01. The Header (Compressed Ledger Style) */}
+                {/* 01. The Header */}
                 <motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex justify-between items-end border-b-2 border-lucas-navy pb-4 mb-12 md:mb-16"
+                    className="flex flex-col gap-8 border-b border-lucas-navy/25 pb-8 mb-12 md:mb-16 lg:flex-row lg:items-end lg:justify-between"
                 >
-                    <div className="flex items-center gap-4 font-sans text-[10px] md:text-xs tracking-zissou uppercase text-lucas-navy font-bold">
-                        <span className="w-2 h-2 bg-lucas-orange flex-shrink-0 animate-pulse"></span>
-                        <span>[ The Archive ]</span>
+                    <div>
+                        <div className="mb-5 flex items-center gap-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+                            <span className="h-px w-12 bg-lucas-orange" />
+                            <span>journal // wedding films</span>
+                        </div>
+                        <h1 className="font-sans text-5xl font-bold uppercase leading-none tracking-normal text-lucas-navy md:text-7xl">
+                            THE ARCHIVE
+                        </h1>
                     </div>
 
-                    <div className="flex flex-col items-end text-right font-sans text-[8px] md:text-[9px] tracking-widest uppercase text-lucas-slate">
-                        <span>Doc Ref // LC-JRNL-01</span>
-                        <span className="mt-1">Inventory Count: {journalEntries.length}</span>
+                    <div className="grid w-full grid-cols-2 border border-lucas-navy/20 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate lg:w-72">
+                        <span className="border-r border-lucas-navy/20 px-4 py-3">records</span>
+                        <span className="px-4 py-3 text-right text-lucas-navy">
+                            {String(journalEntries.length).padStart(2, '0')}
+                        </span>
                     </div>
                 </motion.div>
 

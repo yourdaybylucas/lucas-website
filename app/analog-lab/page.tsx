@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Film, MapPin, Plus } from 'lucide-react';
+import { ArrowRight, Film, Plus } from 'lucide-react';
 import AnalogHeroMedia from './analog-hero-media';
 
 const siteUrl = 'https://www.yourdaybylucas.com';
@@ -422,7 +422,6 @@ export default function AnalogLabPage() {
                   className="group inline-flex items-center justify-center gap-3 border border-lucas-navy bg-lucas-navy px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-cream transition-colors duration-slow hover:bg-transparent hover:text-lucas-navy"
                 >
                   inquire about the day
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-slow group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/collections"
@@ -560,42 +559,6 @@ export default function AnalogLabPage() {
                   </article>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-lucas-navy/35 px-6 py-16 md:py-28">
-          <div className="mx-auto grid max-w-7xl overflow-hidden border border-lucas-navy/45 lg:grid-cols-[0.9fr_1.4fr]">
-            <div className="border-b border-lucas-navy/35 bg-lucas-sage/20 p-8 md:p-12 lg:border-b-0 lg:border-r">
-              <div className="mb-8 flex items-center gap-4">
-                <MapPin className="h-5 w-5 text-lucas-orange" strokeWidth={1.5} />
-                <span className="font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
-                  rooted in ontario
-                </span>
-              </div>
-              <h2 className="font-sans text-4xl font-bold uppercase leading-none tracking-normal md:text-5xl lg:text-6xl">
-                GUELPH BASED. ONTARIO WIDE.
-              </h2>
-              <p className="mt-8 max-w-md font-serif text-2xl italic leading-snug text-lucas-navy/80">
-                i work close to home and across the province. from city venues to tented fields and
-                lakeside weekends.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 border-lucas-navy/20 md:grid-cols-5">
-              {locations.map((location, index) => (
-                <div
-                  key={location}
-                  className="flex min-h-32 flex-col justify-between border-b border-r border-lucas-navy/35 p-5"
-                >
-                  <span className="font-sans text-[10px] text-lucas-slate">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="font-sans text-[10px] uppercase tracking-zissou text-lucas-navy">
-                    {location}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
