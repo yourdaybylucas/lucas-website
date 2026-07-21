@@ -8,6 +8,12 @@ type Props = {
     params: Promise<{ slug: string }>
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+    return journalEntries.map((post) => ({ slug: post.slug }));
+}
+
 // 1. DYNAMIC SEO METADATA
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
@@ -17,18 +23,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         return { title: 'Record Not Found // LUCAS' };
     }
 
-    // prioritizing the venue in the title for google search ranking
+    const pageUrl = `https://www.yourdaybylucas.com/journal/${post.slug}`;
+    const thumbnailUrl = `https://img.youtube.com/vi/${post.primaryVideo.id}/maxresdefault.jpg`;
+
     return {
-        title: `${post.location.toUpperCase()} WEDDING FILM // ${post.title.toUpperCase()} : LUCAS`,
-        description: `honest, nostalgic wedding cinema for ${post.title} at ${post.location}. shot on ${post.format}. ${post.excerpt}`,
+        title: post.seo.title,
+        description: post.seo.description,
         alternates: {
             canonical: `/journal/${post.slug}`,
         },
         openGraph: {
-            title: `${post.location} Wedding Film // LUCAS`,
-            description: post.excerpt,
-            url: `https://www.yourdaybylucas.com/journal/${post.slug}`,
-            images: [`https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`],
+            type: 'video.other',
+            title: post.seo.title,
+            description: post.seo.description,
+            url: pageUrl,
+            siteName: 'LUCAS : Wedding Filmmaker',
+            locale: 'en_CA',
+            images: [thumbnailUrl],
+            videos: [`https://www.youtube.com/embed/${post.primaryVideo.id}`],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.seo.title,
+            description: post.seo.description,
+            images: [thumbnailUrl],
         }
     }
 }
@@ -41,28 +59,66 @@ export default async function JournalPostPage({ params }: Props) {
         notFound();
     }
 
-    // 2. JSON-LD SCHEMA (Tells Google this is a video shot at a specific physical place)
-    const videoJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'VideoObject',
-        'name': `${post.title} - ${post.location} Wedding Film`,
-        'description': post.excerpt,
-        'thumbnailUrl': `https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`,
-        'uploadDate': new Date(post.date).toISOString(),
-        'embedUrl': `https://www.youtube.com/embed/${post.videoId}`,
-        'locationCreated': {
-            '@type': 'Place',
-            'name': post.location
+    const pageUrl = `https://www.yourdaybylucas.com/journal/${post.slug}`;
+    const videos = [post.primaryVideo, ...(post.secondaryVideo ? [post.secondaryVideo] : [])];
+    const placeJsonLd = {
+        '@type': 'Place',
+        'name': post.place.name,
+        ...(post.place.url ? { 'sameAs': post.place.url } : {}),
+        'address': {
+            '@type': 'PostalAddress',
+            'addressLocality': post.place.locality,
+            ...(post.place.region ? { 'addressRegion': post.place.region } : {}),
+            'addressCountry': post.place.country,
         },
+    };
+    const videoJsonLd = videos.map((video, index) => ({
+        '@type': 'VideoObject',
+        '@id': `${pageUrl}#video-${index + 1}`,
+        'name': video.title,
+        'description': `${video.title}. ${post.excerpt}`,
+        'thumbnailUrl': [`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`],
+        'uploadDate': video.uploadDate,
+        'duration': video.duration,
+        'embedUrl': `https://www.youtube.com/embed/${video.id}`,
+        'inLanguage': 'en-CA',
+        'isFamilyFriendly': true,
+        'locationCreated': placeJsonLd,
         'author': {
             '@type': 'Person',
-            'name': 'Lucas Bulger'
-        }
+            '@id': 'https://www.yourdaybylucas.com/about#lucas-bulger',
+            'name': 'Lucas Bulger',
+            'url': 'https://www.yourdaybylucas.com/about',
+        },
+    }));
+
+    const webPageJsonLd = {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        'url': pageUrl,
+        'name': post.seo.title,
+        'description': post.seo.description,
+        'datePublished': post.publishedAt,
+        'dateModified': post.updatedAt,
+        'inLanguage': 'en-CA',
+        'mainEntity': { '@id': `${pageUrl}#video-1` },
+        'video': videos.map((_, index) => ({ '@id': `${pageUrl}#video-${index + 1}` })),
+        'author': {
+            '@type': 'Person',
+            '@id': 'https://www.yourdaybylucas.com/about#lucas-bulger',
+            'name': 'Lucas Bulger',
+            'url': 'https://www.yourdaybylucas.com/about',
+        },
+        'about': {
+            '@type': 'Place',
+            'name': post.place.name,
+            ...(post.place.url ? { 'sameAs': post.place.url } : {}),
+        },
     };
 
     const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
         'itemListElement': [
             {
                 '@type': 'ListItem',
@@ -79,21 +135,22 @@ export default async function JournalPostPage({ params }: Props) {
             {
                 '@type': 'ListItem',
                 'position': 3,
-                'name': `${post.location} Wedding Film`,
-                'item': `https://www.yourdaybylucas.com/journal/${post.slug}`,
+                'name': `${post.place.name} Wedding Film`,
+                'item': pageUrl,
             },
         ],
+    };
+
+    const journalJsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [webPageJsonLd, ...videoJsonLd, breadcrumbJsonLd],
     };
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(journalJsonLd).replace(/</g, '\\u003c') }}
             />
             {/* pass the data down to the animated client file */}
             <JournalPostClient post={post} />

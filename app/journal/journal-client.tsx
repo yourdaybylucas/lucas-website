@@ -75,7 +75,7 @@ export default function JournalPage() {
                             {/* The Film Slide (YouTube Thumbnail Hero) */}
                             <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
-                                    src={`https://img.youtube.com/vi/${post.videoId}/maxresdefault.jpg`}
+                                    src={`https://img.youtube.com/vi/${post.primaryVideo.id}/maxresdefault.jpg`}
                                     alt={post.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -115,11 +115,11 @@ export default function JournalPage() {
                                     <div className="flex flex-col gap-3 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase text-lucas-slate border-t border-lucas-navy/10 pt-5 mb-6">
                                         <div className="flex justify-between items-start">
                                             <span className="w-20 shrink-0">Venue //</span>
-                                            <span className="text-right text-lucas-navy">{post.location}</span>
+                                            <span className="text-right text-lucas-navy">{post.place.name}</span>
                                         </div>
                                         <div className="flex justify-between items-start">
                                             <span className="w-20 shrink-0">Date //</span>
-                                            <span className="text-right text-lucas-orange">{post.date}</span>
+                                            <span className="text-right text-lucas-orange">{post.weddingDate}</span>
                                         </div>
                                         <div className="flex justify-between items-start">
                                             <span className="w-20 shrink-0">Format //</span>

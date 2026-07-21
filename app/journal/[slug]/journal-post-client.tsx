@@ -7,7 +7,7 @@ import { JournalEntry } from "@/data/journal";
 import CinematicPlayer from "@/components/CinematicPlayer";
 
 export default function JournalPostClient({ post }: { post: JournalEntry }) {
-    const secondaryVideoLabel = post.secondaryVideoLabel ?? "Digital Reel";
+    const hasAnalogMaterial = post.stock !== "Sensor Only";
 
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 relative overflow-hidden">
@@ -42,12 +42,16 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         </span>
                         <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] text-lucas-navy italic lowercase leading-[1.1] md:leading-none max-w-2xl">
                             {post.title}
+                            <span className="sr-only">
+                                {` — ${post.place.name} wedding film in ${post.place.locality}, ${post.place.country}`}
+                            </span>
                         </h1>
                     </div>
                     
                     <div className="flex flex-col items-start md:items-end gap-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy">
-                        <span className="text-lucas-orange">{post.date}</span>
-                        <span>{post.location}</span>
+                        <span className="text-lucas-orange">{post.weddingDate}</span>
+                        <span>{post.place.name}</span>
+                        <span className="text-lucas-slate">{post.place.locality}, {post.place.country}</span>
                     </div>
                 </motion.div>
 
@@ -57,7 +61,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full mb-16 lg:mb-24 relative z-10"
                 >
-                    <CinematicPlayer videoId={post.videoId} altText={post.title} />
+                    <CinematicPlayer videoId={post.primaryVideo.id} altText={post.primaryVideo.title} />
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
@@ -77,7 +81,13 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                             </div>
                             <div className="flex flex-col gap-1">
                                 <span className="text-lucas-slate">Film Stock //</span>
-                                <span className="text-lucas-navy">{post.stock}</span>
+                                {hasAnalogMaterial ? (
+                                    <Link href="/analog-lab" className="text-lucas-navy hover:text-lucas-orange transition-colors duration-300">
+                                        {post.stock}
+                                    </Link>
+                                ) : (
+                                    <span className="text-lucas-navy">{post.stock}</span>
+                                )}
                             </div>
                         </div>
 
@@ -114,10 +124,13 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         transition={{ duration: 1, delay: 0.5 }}
                         className="md:col-span-8"
                     >
-                        <div className="flex items-center mb-8">
+                        <div className="flex items-center justify-between gap-6 mb-8">
                             <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
                                 Field Notes
                             </h3>
+                            <Link href="/about" className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate hover:text-lucas-orange transition-colors duration-300 text-right">
+                                Filmed + edited by Lucas
+                            </Link>
                         </div>
                         
                         <div className="flex flex-col gap-6 font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] text-lucas-navy/90 leading-[1.8] lowercase">
@@ -126,16 +139,16 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                             ))}
                         </div>
 
-                        {post.secondaryVideoId && (
+                        {post.secondaryVideo && (
                             <div className="mt-16 pt-12 border-t border-lucas-navy/10">
                                 <div className="flex items-center mb-8">
                                     <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                                        {secondaryVideoLabel}
+                                        {post.secondaryVideo.label}
                                     </h3>
                                 </div>
                                 <CinematicPlayer 
-                                    videoId={post.secondaryVideoId} 
-                                    altText={`${post.title} ${secondaryVideoLabel}`} 
+                                    videoId={post.secondaryVideo.id}
+                                    altText={post.secondaryVideo.title}
                                 />
                             </div>
                         )}
