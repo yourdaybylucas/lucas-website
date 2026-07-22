@@ -1,4 +1,5 @@
 import { journalEntries } from '@/data/journal';
+import { getYouTubeThumbnailUrl } from '@/lib/youtube-thumbnail';
 
 const BASE_URL = 'https://www.yourdaybylucas.com';
 
@@ -31,7 +32,7 @@ export function GET() {
 
             return [
                 '    <video:video>',
-                `      <video:thumbnail_loc>${escapeXml(`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`)}</video:thumbnail_loc>`,
+                `      <video:thumbnail_loc>${escapeXml(getYouTubeThumbnailUrl(video.id))}</video:thumbnail_loc>`,
                 `      <video:title>${escapeXml(video.title)}</video:title>`,
                 `      <video:description>${escapeXml(description)}</video:description>`,
                 `      <video:player_loc allow_embed="yes">${escapeXml(`https://www.youtube.com/embed/${video.id}`)}</video:player_loc>`,

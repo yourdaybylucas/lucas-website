@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { getYouTubeThumbnailPath } from "@/lib/youtube-thumbnail";
 
 interface CinematicPlayerProps {
     videoId: string;
@@ -38,7 +39,7 @@ export default function CinematicPlayer({
             onClick={() => setIsPlaying(true)}
         >
             <Image
-                src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                src={getYouTubeThumbnailPath(videoId)}
                 alt={altText}
                 fill
                 sizes="(max-width: 768px) 100vw, 80vw"

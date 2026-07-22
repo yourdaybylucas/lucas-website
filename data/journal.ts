@@ -83,8 +83,8 @@ export const journalEntries: JournalEntry[] = [
         },
         fieldNotes: [
             "they met at 24 in a tiny board game café in downtown toronto. two weeks after jonny slid into tiffany’s dms, they went on their first date. years later, that wonderfully unlikely monday night led all the way to the vineyards of saint-émilion.",
-            "their promises were built around the quiet ways they care for each other: tea brewed on sick days, warm hugs when life feels heavy, small just-thinking-of-you gifts, and the peaceful, cozy life they keep choosing together. nothing performed. just two people who can joke, smile, and exist easily in the same room.",
-            "maison dubreuil sits three minutes from saint-émilion, a restored 1908 farmhouse with old stone, open sky, and rows of vines in every direction. i kept the digital film close to the voices, then let the 200t stock bottle the warmth and movement around them. ‘no measure of time with you will be long enough, but we’ll start with forever.’"
+            "their promises were built around the quiet ways they care for each other: tea brewed on sick days, warm hugs when life feels heavy, small just-thinking-of-you gifts, and the peaceful, cozy life they keep choosing together.",
+            "maison dubreuil sits three minutes from saint-émilion, a restored 1908 farmhouse with old stone, open sky, and rows of vines in every direction. i filmed the day on digital and 200t super 8, keeping things simple and letting it unfold as it did. ‘no measure of time with you will be long enough, but we’ll start with forever.’"
         ],
         vendors: [
             { name: "Maison Dubreuil", role: "Venue", url: "https://www.maisondubreuil.com/" },
