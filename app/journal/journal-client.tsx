@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { journalEntries } from "@/data/journal";
+import { getYouTubeThumbnailPath } from "@/lib/youtube-thumbnail";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
@@ -75,7 +76,7 @@ export default function JournalPage() {
                             {/* The Film Slide (YouTube Thumbnail Hero) */}
                             <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
-                                    src={`https://img.youtube.com/vi/${post.primaryVideo.id}/maxresdefault.jpg`}
+                                    src={getYouTubeThumbnailPath(post.primaryVideo.id)}
                                     alt={post.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
