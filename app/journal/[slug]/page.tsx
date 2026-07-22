@@ -2,7 +2,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { journalEntries } from '@/data/journal';
-import { getYouTubeThumbnailUrl } from '@/lib/youtube-thumbnail';
 import JournalPostClient from './journal-post-client';
 
 type Props = {
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const pageUrl = `https://www.yourdaybylucas.com/journal/${post.slug}`;
-    const thumbnailUrl = getYouTubeThumbnailUrl(post.primaryVideo.id);
+    const thumbnailUrl = `https://img.youtube.com/vi/${post.primaryVideo.id}/maxresdefault.jpg`;
 
     return {
         title: post.seo.title,
@@ -78,7 +77,7 @@ export default async function JournalPostPage({ params }: Props) {
         '@id': `${pageUrl}#video-${index + 1}`,
         'name': video.title,
         'description': `${video.title}. ${post.excerpt}`,
-        'thumbnailUrl': [getYouTubeThumbnailUrl(video.id)],
+        'thumbnailUrl': [`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`],
         'uploadDate': video.uploadDate,
         'duration': video.duration,
         'embedUrl': `https://www.youtube.com/embed/${video.id}`,
