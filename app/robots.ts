@@ -6,6 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.yourdaybylucas.com/sitemap.xml',
+    sitemap: [
+      'https://www.yourdaybylucas.com/sitemap.xml',
+      'https://www.yourdaybylucas.com/video-sitemap.xml',
+    ],
   };
 }
