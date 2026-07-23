@@ -32,6 +32,7 @@ const featuredFilms = [
 // reordered for narrative weight
 const loveLetters = [
   { name: "Kristen & Frankie", quote: "he had this amazing ability to be everywhere without ever being intrusive - capturing every genuine emotion, every tiny detail, and all the moments we never even saw happening." },
+  { name: "Alex & Nick", quote: "what lucas created feels so different from a typical wedding video, in the absolute best way. it is artistic without ever feeling overly produced and emotional without feeling forced." },
   { name: "Megan & Mike", quote: "every look, every laugh, every detail of our day was documented so thoughtfully and artistically." },
   { name: "Billie Jo & Neil", quote: "somehow he is everywhere, but you never see him... lucas captured the warmth, the feel, the emotion." },
   { name: "Jessica & Brandon", quote: "the vibe of the video is completely tailored to brandon and i and who we are as people." },
