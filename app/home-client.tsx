@@ -218,7 +218,7 @@ export default function Home() {
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
             <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
-              Field Notes
+              Their Words
             </h2>
             <span className="text-lucas-slate font-sans uppercase tracking-zissou text-xs">
               [ Archive of Feedback ]
