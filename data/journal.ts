@@ -47,6 +47,46 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "048",
+        slug: "jenna-clark-whistle-bear-golf-club",
+        title: "jenna & clark",
+        place: {
+            name: "Whistle Bear Golf Club",
+            locality: "Cambridge",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://whistlebear.ca/weddings/"
+        },
+        weddingDate: "May 31, 2026",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a relaxed day at whistle bear, full of big laughs, honest vows, and the quiet certainty of finding home in another person.",
+        primaryVideo: {
+            id: "KfOXk9GKan0",
+            title: "Whistle Bear Golf Club Wedding // A Love That Feels Like Home",
+            label: "Wedding Film",
+            uploadDate: "2026-08-05T20:32:00-07:00",
+            duration: "PT5M53S"
+        },
+        seo: {
+            title: "Whistle Bear Golf Club Wedding Film | Jenna & Clark | LUCAS",
+            description: "Watch Jenna and Clark’s Whistle Bear Golf Club wedding film in Cambridge, Ontario, filmed digitally by Lucas Bulger."
+        },
+        fieldNotes: [
+            "jenna said falling in love with clark never felt like falling. it felt like walking into a house and realizing she was home. their vows returned to that same certainty: a life built together, a family, shared memories, and growing old hand in hand.",
+            "the people closest to them spoke about what changed when they found each other. jenna brought out a lighter, brighter side of clark; clark gave her the genuine, kind, honest, and encouraging partnership her family knew she deserved.",
+            "their day at whistle bear was relaxed and personal, moving easily from quiet promises to big laughs with the people who know them best. as jenna put it, forever could never feel like enough."
+        ],
+        vendors: [
+            { name: "Whistle Bear Golf Club", role: "Venue", url: "https://whistlebear.ca/weddings/" },
+            { name: "Sandra Monaco Photography", role: "Photography", url: "https://sandramonacophoto.com/" },
+            { name: "Wildwood", role: "Florals", url: "https://www.bywildwood.com/" },
+            { name: "Your Day by Lucas", role: "Wedding Film", url: "https://www.yourdaybylucas.com/" }
+        ]
+    },
+    {
         id: "047",
         slug: "tiffany-jonny-maison-dubreuil",
         title: "tiffany & jonny",
