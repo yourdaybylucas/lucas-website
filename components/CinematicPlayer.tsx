@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface CinematicPlayerProps {
@@ -8,15 +8,24 @@ interface CinematicPlayerProps {
     altText?: string;
     className?: string;
     autoPlayDefault?: boolean;
+    allowLowResThumbnailFallback?: boolean;
+    thumbnailQuality?: "maxresdefault" | "sddefault";
 }
 
 export default function CinematicPlayer({
     videoId,
-    altText = "LUCAS Cinematic Record",
+    altText = "LUCAS Wedding Film",
     className = "",
-    autoPlayDefault = false
+    autoPlayDefault = false,
+    allowLowResThumbnailFallback = false,
+    thumbnailQuality = "maxresdefault",
 }: CinematicPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(autoPlayDefault);
+    const [thumbnailVariant, setThumbnailVariant] = useState<"maxresdefault" | "sddefault" | "hqdefault">(thumbnailQuality);
+
+    useEffect(() => {
+        setThumbnailVariant(thumbnailQuality);
+    }, [thumbnailQuality, videoId]);
 
     if (isPlaying) {
         return (
@@ -38,11 +47,17 @@ export default function CinematicPlayer({
             onClick={() => setIsPlaying(true)}
         >
             <Image
-                src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                key={`${videoId}-${thumbnailVariant}`}
+                src={`https://img.youtube.com/vi/${videoId}/${thumbnailVariant}.jpg`}
                 alt={altText}
                 fill
                 sizes="(max-width: 768px) 100vw, 80vw"
                 className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out z-0"
+                onError={() => {
+                    if (allowLowResThumbnailFallback && thumbnailVariant === "maxresdefault") {
+                        setThumbnailVariant("hqdefault");
+                    }
+                }}
             />
             
             {/* The Zissou Play Button */}

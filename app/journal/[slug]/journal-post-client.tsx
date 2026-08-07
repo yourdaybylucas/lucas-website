@@ -70,7 +70,11 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full mb-16 lg:mb-24 relative z-10"
                 >
-                    <CinematicPlayer videoId={post.primaryVideo.id} altText={post.primaryVideo.title} />
+                    <CinematicPlayer
+                        videoId={post.primaryVideo.id}
+                        altText={post.primaryVideo.title}
+                        thumbnailQuality={post.primaryVideo.thumbnailQuality}
+                    />
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
@@ -158,6 +162,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                                 <CinematicPlayer 
                                     videoId={post.secondaryVideo.id}
                                     altText={post.secondaryVideo.title}
+                                    thumbnailQuality={post.secondaryVideo.thumbnailQuality}
                                 />
                             </div>
                         )}

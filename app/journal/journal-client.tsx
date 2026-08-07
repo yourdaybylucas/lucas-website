@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { journalEntries } from "@/data/journal";
+import { getJournalVideoThumbnail, journalEntries } from "@/data/journal";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
@@ -24,6 +24,10 @@ const fadeUpItem = {
 };
 
 export default function JournalPage() {
+    const entriesByWeddingDate = [...journalEntries].sort((a, b) =>
+        b.weddingDateIso.localeCompare(a.weddingDateIso)
+    );
+
     return (
         <main className="min-h-screen bg-lucas-cream pt-32 pb-32 px-6 lg:px-12 overflow-hidden relative">
             {/* Global Texture */}
@@ -63,7 +67,7 @@ export default function JournalPage() {
                     animate="visible"
                     className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-lucas-navy/15 bg-lucas-slate shadow-2xl"
                 >
-                    {journalEntries.map((post) => (
+                    {entriesByWeddingDate.map((post) => (
                         <motion.article 
                             key={post.id}
                             variants={fadeUpItem}
@@ -75,7 +79,7 @@ export default function JournalPage() {
                             {/* The Film Slide (YouTube Thumbnail Hero) */}
                             <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
-                                    src={`https://img.youtube.com/vi/${post.primaryVideo.id}/maxresdefault.jpg`}
+                                    src={getJournalVideoThumbnail(post.primaryVideo)}
                                     alt={post.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
