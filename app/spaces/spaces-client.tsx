@@ -447,25 +447,6 @@ export default function SpacesClient({
                                         </p>
                                     </div>
 
-                                    <div className="mt-10 border-t border-lucas-slate/20">
-                                        <p className="py-4 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">
-                                            scale // largest published seated setup
-                                        </p>
-                                        {[
-                                            ['intimate', 'up to 100'],
-                                            ['standard', '101–200'],
-                                            ['grand', '201+'],
-                                        ].map(([label, value]) => (
-                                            <div
-                                                key={label}
-                                                className="flex items-center justify-between border-t border-lucas-slate/15 py-4 font-sans text-xs lowercase"
-                                            >
-                                                <span className="text-lucas-navy">{label}</span>
-                                                <span className="text-lucas-slate">{value}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
                                     <p className="mt-auto pt-10 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
                                         <span className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-lucas-orange" aria-hidden="true" />
                                         select a space for the full dossier
