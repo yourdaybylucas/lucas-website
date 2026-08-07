@@ -77,7 +77,7 @@ const timeline: TimelineEntry[] = [
         id: "07",
         year: "Present",
         desc: "over 200 weddings filmed. the passion remains exactly the same.",
-        img: "/images/about/about_8_lydia-ivy.jpg",
+        img: "/images/about/about_8_lydia-ivy-sat20.jpg",
         alt: "Lucas filming a wedding reception beneath palm trees",
         credit: "Lydia Ivy Photography",
     },
