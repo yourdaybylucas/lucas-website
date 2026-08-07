@@ -50,7 +50,16 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     
                     <div className="flex flex-col items-start md:items-end gap-2 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy">
                         <span className="text-lucas-orange">{post.weddingDate}</span>
-                        <span>{post.place.name}</span>
+                        {post.place.venueId ? (
+                            <Link
+                                href={`/spaces/${post.place.venueId}`}
+                                className="transition-colors duration-300 hover:text-lucas-orange"
+                            >
+                                {post.place.name}
+                            </Link>
+                        ) : (
+                            <span>{post.place.name}</span>
+                        )}
                         <span className="text-lucas-slate">{post.place.locality}, {post.place.country}</span>
                     </div>
                 </motion.div>

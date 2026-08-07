@@ -115,7 +115,16 @@ export default function JournalPage() {
                                     <div className="flex flex-col gap-3 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase text-lucas-slate border-t border-lucas-navy/10 pt-5 mb-6">
                                         <div className="flex justify-between items-start">
                                             <span className="w-20 shrink-0">Venue //</span>
-                                            <span className="text-right text-lucas-navy">{post.place.name}</span>
+                                            {post.place.venueId ? (
+                                                <Link
+                                                    href={`/spaces/${post.place.venueId}`}
+                                                    className="text-right text-lucas-navy transition-colors duration-300 hover:text-lucas-orange"
+                                                >
+                                                    {post.place.name}
+                                                </Link>
+                                            ) : (
+                                                <span className="text-right text-lucas-navy">{post.place.name}</span>
+                                            )}
                                         </div>
                                         <div className="flex justify-between items-start">
                                             <span className="w-20 shrink-0">Date //</span>

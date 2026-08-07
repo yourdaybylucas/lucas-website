@@ -63,6 +63,7 @@ export default async function JournalPostPage({ params }: Props) {
     const videos = [post.primaryVideo, ...(post.secondaryVideo ? [post.secondaryVideo] : [])];
     const placeJsonLd = {
         '@type': 'Place',
+        ...(post.place.venueId ? { '@id': `https://www.yourdaybylucas.com/spaces/${post.place.venueId}#venue` } : {}),
         'name': post.place.name,
         ...(post.place.url ? { 'sameAs': post.place.url } : {}),
         'address': {
@@ -110,9 +111,13 @@ export default async function JournalPostPage({ params }: Props) {
             'url': 'https://www.yourdaybylucas.com/about',
         },
         'about': {
-            '@type': 'Place',
-            'name': post.place.name,
-            ...(post.place.url ? { 'sameAs': post.place.url } : {}),
+            ...(post.place.venueId
+                ? { '@id': `https://www.yourdaybylucas.com/spaces/${post.place.venueId}#venue` }
+                : {
+                    '@type': 'Place',
+                    'name': post.place.name,
+                    ...(post.place.url ? { 'sameAs': post.place.url } : {}),
+                }),
         },
     };
 

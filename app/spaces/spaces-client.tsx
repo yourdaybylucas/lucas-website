@@ -4,7 +4,17 @@ import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Venue, Geography, Scale, Atmosphere, Footprint } from '@/data/venues';
+import {
+    Venue,
+    Geography,
+    Scale,
+    Atmosphere,
+    Footprint,
+    GEOGRAPHY_OPTIONS,
+    SCALE_OPTIONS,
+    ATMOSPHERE_OPTIONS,
+    FOOTPRINT_OPTIONS,
+} from '@/data/venues';
 import { MapPin, Users, Building, Lock, X } from 'lucide-react';
 import CinematicPlayer from "@/components/CinematicPlayer";
 
@@ -62,6 +72,16 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
                 {venue.fieldNotes}
             </p>
         </div>
+
+        {venue.journalSlug && (
+            <Link
+                href={`/journal/${venue.journalSlug}`}
+                className="mt-6 flex items-center justify-between border-t border-lucas-navy/15 pt-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate transition-colors duration-slow hover:text-lucas-orange"
+            >
+                <span>Watch a wedding at {venue.name}</span>
+                <span aria-hidden="true">→</span>
+            </Link>
+        )}
     </motion.div>
 );
 
@@ -136,7 +156,7 @@ export default function SpacesClient({
         title: string;
         icon: any;
         category: keyof typeof activeFilters;
-        options: string[];
+        options: readonly string[];
     }) => (
         <div className="mb-8 border-b border-lucas-slate/30 pb-6 last:border-0">
             <div className="flex items-center gap-2 mb-4 text-lucas-slate">
@@ -211,32 +231,37 @@ export default function SpacesClient({
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
                     <aside className="lg:col-span-3 lg:sticky lg:top-32">
-                        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">The Ledger</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">
+                            The Ledger
+                            {activeVenue && (
+                                <span className="sr-only">: {activeVenue.name} wedding venue in {activeVenue.location}, Ontario</span>
+                            )}
+                        </h1>
                         <p className="text-base text-lucas-slate lowercase mb-12">an inventory of ontario's best.</p>
 
                         <FilterSection
                             title="Geography"
                             category="geography"
                             icon={MapPin}
-                            options={['gta', 'niagara', 'tri-cities + west', 'northern escapes']}
+                            options={GEOGRAPHY_OPTIONS}
                         />
                         <FilterSection
                             title="Scale"
                             category="scale"
                             icon={Users}
-                            options={['intimate', 'standard', 'grand']}
+                            options={SCALE_OPTIONS}
                         />
                         <FilterSection
                             title="Atmosphere"
                             category="atmosphere"
                             icon={Building}
-                            options={['historical estate', 'industrial canvas', 'modern minimal', 'glass + nature']}
+                            options={ATMOSPHERE_OPTIONS}
                         />
                         <FilterSection
                             title="Footprint"
                             category="footprint"
                             icon={Lock}
-                            options={['exclusive use', 'shared estate']}
+                            options={FOOTPRINT_OPTIONS}
                         />
 
                         {(activeFilters.geography || activeFilters.scale || activeFilters.atmosphere || activeFilters.footprint) && (
