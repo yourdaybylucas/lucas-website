@@ -1,7 +1,7 @@
 // app/about/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
     motion,
     Variants,
@@ -85,6 +85,50 @@ const timeline: TimelineEntry[] = [
 
 export default function AboutPage() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    useEffect(() => {
+        let animationFrame: number | null = null;
+
+        const updateActiveEntry = () => {
+            const viewportCentre = window.innerHeight / 2;
+            let nearestIndex = 0;
+            let nearestDistance = Number.POSITIVE_INFINITY;
+
+            rowRefs.current.forEach((row, index) => {
+                if (!row) return;
+
+                const rect = row.getBoundingClientRect();
+                const rowCentre = rect.top + rect.height / 2;
+                const distanceFromCentre = Math.abs(rowCentre - viewportCentre);
+
+                if (distanceFromCentre < nearestDistance) {
+                    nearestDistance = distanceFromCentre;
+                    nearestIndex = index;
+                }
+            });
+
+            setActiveIndex((currentIndex) =>
+                currentIndex === nearestIndex ? currentIndex : nearestIndex
+            );
+            animationFrame = null;
+        };
+
+        const queueUpdate = () => {
+            if (animationFrame !== null) return;
+            animationFrame = window.requestAnimationFrame(updateActiveEntry);
+        };
+
+        updateActiveEntry();
+        window.addEventListener("scroll", queueUpdate, { passive: true });
+        window.addEventListener("resize", queueUpdate);
+
+        return () => {
+            window.removeEventListener("scroll", queueUpdate);
+            window.removeEventListener("resize", queueUpdate);
+            if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+        };
+    }, []);
 
     return (
         <main className="bg-lucas-cream">
@@ -226,10 +270,13 @@ export default function AboutPage() {
                             {timeline.map((item, idx) => (
                                 <motion.div
                                     key={item.id}
-                                    onViewportEnter={() => setActiveIndex(idx)}
-                                    viewport={{ margin: "-40% 0px -40% 0px" }}
+                                    ref={(element) => {
+                                        rowRefs.current[idx] = element;
+                                    }}
                                     className={`group relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 py-8 md:py-10 border-b border-lucas-slate/10 transition-all duration-700 ${
-                                        activeIndex === idx ? 'opacity-100 bg-lucas-cream/[0.03]' : 'opacity-40 hover:opacity-70'
+                                        activeIndex === idx
+                                            ? 'opacity-100 bg-lucas-cream/[0.03]'
+                                            : 'opacity-100 md:opacity-40 md:hover:opacity-70'
                                     }`}
                                 >
                                     {/* Active Row Accent Line */}
@@ -295,10 +342,10 @@ export default function AboutPage() {
                                     <AnimatePresence>
                                         <motion.div
                                             key={activeIndex}
-                                            initial={{ opacity: 0, scale: 1.05, filter: "blur(4px)" }}
+                                            initial={{ opacity: 0, scale: 1.02, filter: "blur(2px)" }}
                                             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                                            exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-                                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                            exit={{ opacity: 0, scale: 0.98, filter: "blur(2px)" }}
+                                            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                                             className="absolute inset-0"
                                         >
                                             <Image
