@@ -393,8 +393,8 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.lune1860.ca/pages/wedding-venue",
             venueId: "lune-1860"
         },
-        weddingDate: "Aug. 2, 2025",
-        weddingDateIso: "2025-08-02",
+        weddingDate: "Aug. 2, 2026",
+        weddingDateIso: "2026-08-02",
         publishedAt: "2026-08-07",
         updatedAt: "2026-08-07",
         format: "Digital",
@@ -459,6 +459,7 @@ export const journalEntries: JournalEntry[] = [
             { name: "Whistle Bear Golf Club", role: "Venue", url: "https://whistlebear.ca/weddings/" },
             { name: "Sandra Monaco Photography", role: "Photography", url: "https://sandramonacophoto.com/" },
             { name: "Wildwood", role: "Florals", url: "https://www.bywildwood.com/" },
+            { name: "QA Entertainment", role: "DJ", url: "https://www.qaentertainment.com/" },
             { name: "Your Day by Lucas", role: "Wedding Film", url: "https://www.yourdaybylucas.com/" }
         ]
     },
@@ -522,8 +523,8 @@ export const journalEntries: JournalEntry[] = [
             country: "France",
             url: "https://hermitagedecombas.com/"
         },
-        weddingDate: "May 16, 2025",
-        weddingDateIso: "2025-05-16",
+        weddingDate: "May 16, 2026",
+        weddingDateIso: "2026-05-16",
         publishedAt: "2026-07-06",
         updatedAt: "2026-07-06",
         format: "Digital + Super 8mm",
@@ -710,8 +711,8 @@ export const journalEntries: JournalEntry[] = [
             url: "https://spencers.ca/weddings/",
             venueId: "spencers-waterfront"
         },
-        weddingDate: "Oct. 12, 2025",
-        weddingDateIso: "2025-10-12",
+        weddingDate: "Aug. 16, 2025",
+        weddingDateIso: "2025-08-16",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital + Super 8mm",
@@ -752,8 +753,8 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.graydonhall.com/",
             venueId: "graydon-hall-manor"
         },
-        weddingDate: "Sep. 28, 2025",
-        weddingDateIso: "2025-09-28",
+        weddingDate: "Aug. 18, 2025",
+        weddingDateIso: "2025-08-18",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital",
@@ -795,8 +796,8 @@ export const journalEntries: JournalEntry[] = [
             url: "https://palettamansion.com/",
             venueId: "paletta-mansion"
         },
-        weddingDate: "Sep. 14, 2025",
-        weddingDateIso: "2025-09-14",
+        weddingDate: "June 29, 2025",
+        weddingDateIso: "2025-06-29",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital + Super 8mm",
@@ -834,8 +835,8 @@ export const journalEntries: JournalEntry[] = [
             region: "Ontario",
             country: "Canada"
         },
-        weddingDate: "Aug. 02, 2025",
-        weddingDateIso: "2025-08-02",
+        weddingDate: "Aug. 16, 2025",
+        weddingDateIso: "2025-08-16",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Editorial / Notes",

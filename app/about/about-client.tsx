@@ -27,7 +27,16 @@ const staggerContainer: Variants = {
     },
 };
 
-const timeline = [
+type TimelineEntry = {
+    id: string;
+    year: string;
+    desc: string;
+    img: string;
+    alt?: string;
+    credit?: string;
+};
+
+const timeline: TimelineEntry[] = [
     {
         id: "01",
         year: "2014",
@@ -68,7 +77,9 @@ const timeline = [
         id: "07",
         year: "Present",
         desc: "over 200 weddings filmed. the passion remains exactly the same.",
-        img: "/images/about/about_8.jpg",
+        img: "/images/about/about_8_lydia-ivy.jpg",
+        alt: "Lucas filming a wedding reception beneath palm trees",
+        credit: "Lydia Ivy Photography",
     },
 ];
 
@@ -251,10 +262,15 @@ export default function AboutPage() {
                                             <div className="relative w-full h-full bg-[#0a1118]">
                                                 <Image
                                                     src={item.img}
-                                                    alt={item.year}
+                                                    alt={item.alt ?? item.year}
                                                     fill
                                                     className="object-cover scale-105"
                                                 />
+                                                {item.credit && (
+                                                    <span className="absolute bottom-3 right-3 z-10 border border-lucas-cream/30 bg-lucas-navy/80 px-2.5 py-1.5 font-sans text-[7px] tracking-zissou uppercase text-lucas-cream backdrop-blur-sm">
+                                                        Photo // {item.credit}
+                                                    </span>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -287,11 +303,16 @@ export default function AboutPage() {
                                         >
                                             <Image
                                                 src={timeline[activeIndex].img}
-                                                alt={`Evidence ${timeline[activeIndex].id}`}
+                                                alt={timeline[activeIndex].alt ?? `Evidence ${timeline[activeIndex].id}`}
                                                 fill
                                                 className="object-cover"
                                                 priority
                                             />
+                                            {timeline[activeIndex].credit && (
+                                                <span className="absolute bottom-3 right-3 z-10 border border-lucas-cream/30 bg-lucas-navy/80 px-2.5 py-1.5 font-sans text-[7px] tracking-zissou uppercase text-lucas-cream backdrop-blur-sm">
+                                                    Photo // {timeline[activeIndex].credit}
+                                                </span>
+                                            )}
                                         </motion.div>
                                     </AnimatePresence>
                                 </div>
