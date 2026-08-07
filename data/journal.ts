@@ -12,6 +12,7 @@ export interface JournalPlace {
     region?: string;
     country: string;
     url?: string;
+    venueId?: string;
 }
 
 export interface JournalVideo {
@@ -55,7 +56,8 @@ export const journalEntries: JournalEntry[] = [
             locality: "Cambridge",
             region: "Ontario",
             country: "Canada",
-            url: "https://whistlebear.ca/weddings/"
+            url: "https://whistlebear.ca/weddings/",
+            venueId: "whistle-bear-golf-club"
         },
         weddingDate: "May 31, 2026",
         publishedAt: "2026-08-07",
@@ -77,7 +79,7 @@ export const journalEntries: JournalEntry[] = [
         fieldNotes: [
             "jenna said falling in love with clark never felt like falling. it felt like walking into a house and realizing she was home. their vows returned to that same certainty: a life built together, a family, shared memories, and growing old hand in hand.",
             "the people closest to them spoke about what changed when they found each other. jenna brought out a lighter, brighter side of clark; clark gave her the genuine, kind, honest, and encouraging partnership her family knew she deserved.",
-            "their day at whistle bear was relaxed and personal, moving easily from quiet promises to big laughs with the people who know them best. as jenna put it, forever could never feel like enough."
+            "their day at whistle bear golf club in cambridge was relaxed and personal, moving easily from quiet promises to big laughs with the people who know them best. as jenna put it, forever could never feel like enough."
         ],
         vendors: [
             { name: "Whistle Bear Golf Club", role: "Venue", url: "https://whistlebear.ca/weddings/" },

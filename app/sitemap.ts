@@ -4,7 +4,7 @@ import { venues } from '@/data/venues';
 import { journalEntries } from '@/data/journal';
 
 const STATIC_PAGE_LAST_MODIFIED = '2026-06-23';
-const VENUES_LAST_REVIEWED = '2026-06-23';
+const VENUES_LAST_REVIEWED = '2026-08-07';
 
 function dateFromIsoDate(date: string) {
   return new Date(`${date}T00:00:00.000Z`);

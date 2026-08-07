@@ -27,14 +27,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
-        description: `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.fieldNotes}`,
+        title: activeVenue.seoTitle ?? `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
+        description: activeVenue.seoDescription ?? `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.fieldNotes}`,
         alternates: {
             canonical: `/spaces/${activeVenue.id}`,
         },
         openGraph: {
-            title: `${activeVenue.name.toUpperCase()} // THE LEDGER`,
-            description: `field notes and visual documentation from ${activeVenue.name}.`,
+            title: activeVenue.seoTitle ?? `${activeVenue.name.toUpperCase()} // THE LEDGER`,
+            description: activeVenue.seoDescription ?? `field notes and visual documentation from ${activeVenue.name}.`,
             url: `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`,
             images: [`https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`],
         },
@@ -52,6 +52,7 @@ export default async function SpacePage({ params }: Props) {
     const venueJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'EventVenue',
+        '@id': `https://www.yourdaybylucas.com/spaces/${activeVenue.id}#venue`,
         'name': activeVenue.name,
         'address': {
             '@type': 'PostalAddress',
@@ -62,6 +63,7 @@ export default async function SpacePage({ params }: Props) {
         'description': `honest, nostalgic wedding cinematography at ${activeVenue.name}. ${activeVenue.fieldNotes}`,
         'image': `https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`,
         'url': `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`,
+        ...(activeVenue.officialUrl ? { 'sameAs': activeVenue.officialUrl } : {}),
     };
 
     const breadcrumbJsonLd = {
