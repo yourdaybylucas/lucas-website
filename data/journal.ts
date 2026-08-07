@@ -21,6 +21,11 @@ export interface JournalVideo {
     label: string;
     uploadDate: string;
     duration: string;
+    thumbnailQuality?: "maxresdefault" | "sddefault";
+}
+
+export function getJournalVideoThumbnail(video: JournalVideo) {
+    return `https://img.youtube.com/vi/${video.id}/${video.thumbnailQuality ?? "maxresdefault"}.jpg`;
 }
 
 export interface JournalSeo {
@@ -34,6 +39,7 @@ export interface JournalEntry {
     title: string;
     place: JournalPlace;
     weddingDate: string;
+    weddingDateIso: string;
     publishedAt: string;
     updatedAt: string;
     format: string;
@@ -48,6 +54,373 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "057",
+        slug: "olivia-eli-port-cunnington-lodge-muskoka",
+        title: "olivia & eli",
+        place: {
+            name: "Port Cunnington Lodge",
+            locality: "Lake of Bays",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://portcunningtonlodge.com/weddings/"
+        },
+        weddingDate: "June 21, 2025",
+        weddingDateIso: "2025-06-21",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "ten years together, one lodge to themselves, and a full muskoka weekend built around the people who know them best.",
+        primaryVideo: {
+            id: "s8Zuuc169lE",
+            title: "10 Years in the Making | Olivia and Eli's Muskoka Wedding at Port Cunnington Lodge",
+            label: "Wedding Film",
+            uploadDate: "2025-09-04T08:21:20-07:00",
+            duration: "PT8M7S"
+        },
+        seo: {
+            title: "Port Cunnington Lodge Wedding Film | Olivia & Eli | LUCAS",
+            description: "Watch Olivia and Eli’s Port Cunnington Lodge wedding film from a full weekend on Lake of Bays in Muskoka, Ontario."
+        },
+        fieldNotes: [
+            "after ten years together, olivia and eli turned the wedding into a full weekend at port cunnington lodge. having the property to themselves gave everyone time to settle in, catch up, and celebrate without compressing it all into a few hours.",
+            "one of their closest friends officiated, so the ceremony carried the same balance as the rest of the weekend: personal vows, a lot of feeling, and enough well-earned roasting to keep things loose. the speeches followed suit.",
+            "the lake, docks, lodge, and late-night dance floor gave the film a distinctly muskoka rhythm. quiet when it needed to be, then very much not quiet once the party started."
+        ],
+        vendors: [
+            { name: "Port Cunnington Lodge", role: "Venue", url: "https://portcunningtonlodge.com/weddings/" },
+            { name: "The Bride's Butler", role: "Planning", url: "https://thebridesbutler.ca/" },
+            { name: "Whim & Willow Photo", role: "Photography", url: "https://whimandwillowphoto.com/" },
+            { name: "Jessy Beck Design", role: "Florals", url: "https://www.jessybeckdesign.com/" }
+        ]
+    },
+    {
+        id: "056",
+        slug: "kaylee-kyle-cabo-destination-wedding",
+        title: "kaylee & kyle",
+        place: {
+            name: "Sandos Finisterra",
+            locality: "Cabo San Lucas",
+            region: "Baja California Sur",
+            country: "Mexico",
+            url: "https://www.sandos.com/sandos-finisterra/weddings-sandos-finisterra"
+        },
+        weddingDate: "Jan. 31, 2024",
+        weddingDateIso: "2024-01-31",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "an ontario crowd in cabo for a week of poolside hangs, a catamaran, personal vows, and a wedding that behaved more like a holiday.",
+        primaryVideo: {
+            id: "d9kgyZ3NnjA",
+            title: "An Unforgettable Week In Cabo | Ontario Couple Hosts Destination Wedding in Mexico",
+            label: "Wedding Film",
+            uploadDate: "2024-02-06T11:00:30-08:00",
+            duration: "PT6M50S",
+            thumbnailQuality: "sddefault"
+        },
+        seo: {
+            title: "Cabo Destination Wedding Film | Kaylee & Kyle | LUCAS",
+            description: "Watch Kaylee and Kyle’s destination wedding film at Sandos Finisterra in Cabo San Lucas, Mexico, with nearly 100 guests from Ontario."
+        },
+        fieldNotes: [
+            "kaylee and kyle brought nearly one hundred of their favourite people from ontario to cabo. the wedding sat inside a full week together rather than at the centre of one tightly scheduled day.",
+            "the days moved between the pool and a catamaran before everyone gathered at sandos finisterra. against the cabo skyline, they read personal vows that gave the film its quieter centre.",
+            "destination weddings have a useful looseness to them. by the time the ceremony arrives, everyone has already shared meals, swims, sun, and a few late nights. that familiarity is all over this one."
+        ],
+        vendors: [
+            { name: "Sandos Finisterra", role: "Venue", url: "https://www.sandos.com/sandos-finisterra/weddings-sandos-finisterra" }
+        ]
+    },
+    {
+        id: "055",
+        slug: "nicole-blake-private-property-toronto",
+        title: "nicole & blake",
+        place: {
+            name: "Private Property",
+            locality: "Toronto",
+            region: "Ontario",
+            country: "Canada"
+        },
+        weddingDate: "Aug. 18, 2023",
+        weddingDateIso: "2023-08-18",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a toronto backyard, roughly eighty people, and a wedding planned in two months before nicole and blake moved to the uk.",
+        primaryVideo: {
+            id: "fVA-LpxyxBs",
+            title: "Couple Hosts a Beautiful Backyard Wedding in Toronto Before Moving to the UK",
+            label: "Wedding Film",
+            uploadDate: "2023-09-27T20:32:50-07:00",
+            duration: "PT5M7S"
+        },
+        seo: {
+            title: "Toronto Backyard Wedding Film | Nicole & Blake | LUCAS",
+            description: "Watch Nicole and Blake’s intimate private-property wedding film from a thoughtfully planned backyard celebration in Toronto, Ontario."
+        },
+        fieldNotes: [
+            "with new jobs taking them to the uk, nicole and blake handed their team a two-month planning window. around eighty people still fit into the toronto backyard without the celebration losing its intimate scale.",
+            "a tent linked the property's two levels, creating one continuous route from the afternoon ceremony into dinner and the evening party. the setting felt personal because it was personal; family history was already built into the place.",
+            "private-property weddings ask for more planning behind the scenes, but they give the finished film something a conventional venue cannot manufacture. the day belongs to a place that already means something."
+        ],
+        vendors: [
+            { name: "Laura Olsen Events", role: "Planning", url: "https://lauraolsenevents.ca/" },
+            { name: "515 Photo Co.", role: "Photography", url: "https://www.515photoco.com/" },
+            { name: "DJ Dash", role: "DJ", url: "https://www.thedjdash.com/" }
+        ]
+    },
+    {
+        id: "054",
+        slug: "dom-spencer-langdon-hall",
+        title: "dom & spencer",
+        place: {
+            name: "Langdon Hall",
+            locality: "Cambridge",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://langdonhall.ca/weddings",
+            venueId: "langdon-hall"
+        },
+        weddingDate: "Oct. 18, 2025",
+        weddingDateIso: "2025-10-18",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a fall day at langdon hall for two genuine teammates, equal parts steady devotion, private jokes, and very good timing.",
+        primaryVideo: {
+            id: "gOZQGueoLkM",
+            title: "The Kind of Love that Lasts | Beautiful Fall Wedding Day at Langdon Hall",
+            label: "Wedding Film",
+            uploadDate: "2026-02-05T09:09:48-08:00",
+            duration: "PT7M47S"
+        },
+        seo: {
+            title: "Langdon Hall Wedding Film | Dom & Spencer | LUCAS",
+            description: "Watch Dom and Spencer’s fall wedding film at Langdon Hall, a country-house wedding venue in Cambridge, Ontario."
+        },
+        fieldNotes: [
+            "dom and spencer describe one another as teammates, and the evidence is in both the heavy moments and the small ones. when life called for everything to stop for brain surgery, they stopped. when it called for a private joke, they had plenty ready.",
+            "their vows never chased perfection. they were about making each other better, funnier, and more fully themselves, which left the ceremony moving without ever becoming too polished.",
+            "langdon hall suited that balance. the dark house interiors, red brick, forest, and late-season gardens gave the digital film real range while the entire day stayed grounded on one property."
+        ],
+        vendors: [
+            { name: "Langdon Hall", role: "Venue", url: "https://langdonhall.ca/weddings" },
+            { name: "W Events", role: "Planning", url: "https://www.weventsanddecor.com/" },
+            { name: "Erin Blackwood Photography", role: "Photography", url: "https://erinblackwood.com/" },
+            { name: "Simply Beautiful Decor", role: "Decor", url: "https://simplybeautifuldecor.ca/" },
+            { name: "The DJ Co.", role: "DJ", url: "https://thedjco.ca/" },
+            { name: "Power of Love Celebrations", role: "Officiant", url: "https://poweroflovecelebrations.com/" }
+        ]
+    },
+    {
+        id: "053",
+        slug: "mikhail-saira-harding-waterfront-estate",
+        title: "mikhail & saira",
+        place: {
+            name: "Harding Waterfront Estate",
+            locality: "Mississauga",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://www.mississauga.ca/hospitality-services/harding-waterfront-estate/",
+            venueId: "harding-waterfront"
+        },
+        weddingDate: "Apr. 25, 2026",
+        weddingDateIso: "2026-04-25",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a classic, faith-centred day at harding waterfront estate, with no first look and all the anticipation left intact.",
+        primaryVideo: {
+            id: "kuwH4ulnNEA",
+            title: "An evidence of grace | Mikhail + Saira's Harding Waterfront Estate Wedding",
+            label: "Wedding Film",
+            uploadDate: "2026-06-04T09:12:07-07:00",
+            duration: "PT6M31S"
+        },
+        seo: {
+            title: "Harding Waterfront Estate Wedding Film | Mikhail & Saira",
+            description: "Watch Mikhail and Saira’s digital wedding film at Harding Waterfront Estate, a historic lakefront venue in Mississauga, Ontario."
+        },
+        fieldNotes: [
+            "mikhail and saira skipped the first look. he wanted the traditional anticipation of seeing her walk down the aisle, and leaving that moment alone gave the ceremony a real sense of arrival.",
+            "their faith sat at the centre of the day through personal prayers, grounded vows, and saira describing mikhail as an evidence of grace in her life. her mother's speech carried that same weight into the reception.",
+            "harding's historic house, open lawn, and lake ontario wind gave the film a classic shape without making it feel formal. the edit stays observational and patient, with a few bloopers left in at the end for accuracy."
+        ],
+        vendors: [
+            { name: "Harding Waterfront Estate", role: "Venue", url: "https://www.mississauga.ca/hospitality-services/harding-waterfront-estate/" },
+            { name: "Alyssa Marie Photography", role: "Photography", url: "https://alyssamarie.ca/" }
+        ]
+    },
+    {
+        id: "052",
+        slug: "abbey-dean-muskoka-elopement",
+        title: "abbey & dean",
+        place: {
+            name: "Camp Wind Rose",
+            locality: "Muskoka",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://www.instagram.com/campwindrose/"
+        },
+        weddingDate: "Aug. 8, 2025",
+        weddingDateIso: "2025-08-08",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "rain, a canoe, vows on a small algonquin island, dinner at the cottage, and one curious snapping turtle at sunset.",
+        primaryVideo: {
+            id: "OpriEnhPFws",
+            title: "Adventurous Elopement in Muskoka | Canoe, Island Vows, and Sunset Swim",
+            label: "Elopement Film",
+            uploadDate: "2025-08-21T10:21:17-07:00",
+            duration: "PT4M37S",
+            thumbnailQuality: "sddefault"
+        },
+        seo: {
+            title: "Muskoka Elopement Film | Abbey & Dean | LUCAS",
+            description: "Watch Abbey and Dean’s adventurous Muskoka elopement film with a canoe trip, private island vows in Algonquin, and a cottage dinner."
+        },
+        fieldNotes: [
+            "one week before the larger wedding, abbey and dean planned something smaller with family at a muskoka cottage. the morning stayed slow before everyone headed toward algonquin with a canoe and very little interest in dry shoes.",
+            "rain came down during the paddle, then cleared as they reached a small island. they helped each other get ready there and read their vows with no room, aisle, or audience pulling focus.",
+            "the day ended back at camp wind rose with dinner, cake, and a sunset swim interrupted by a snapping turtle. a concise and fairly perfect summary of a muskoka elopement: beautiful, quiet, and slightly feral."
+        ],
+        vendors: [
+            { name: "Camp Wind Rose", role: "Cottage", url: "https://www.instagram.com/campwindrose/" },
+            { name: "Evelyn Barkey Photography", role: "Photography", url: "https://evelynbarkey.com/" }
+        ]
+    },
+    {
+        id: "051",
+        slug: "barbara-hamilton-rcyc-toronto-island",
+        title: "barbara & hamilton",
+        place: {
+            name: "Royal Canadian Yacht Club",
+            locality: "Toronto Island",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://rcyc.ca/Occasions/Weddings",
+            venueId: "rcyc"
+        },
+        weddingDate: "Sep. 6, 2025",
+        weddingDateIso: "2025-09-06",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "comfort, laughter, a little frosé, and a toronto island wedding with the city sitting quietly across the harbour.",
+        primaryVideo: {
+            id: "9mTq-dXKW84",
+            title: "100 Minus One Day | Barbara + Hamilton's Toronto Island Wedding at The RCYC",
+            label: "Wedding Film",
+            uploadDate: "2026-01-23T13:04:46-08:00",
+            duration: "PT7M7S",
+            thumbnailQuality: "sddefault"
+        },
+        seo: {
+            title: "RCYC Toronto Island Wedding Film | Barbara & Hamilton",
+            description: "Watch Barbara and Hamilton’s Royal Canadian Yacht Club wedding film on Toronto Island, with harbour and skyline views."
+        },
+        fieldNotes: [
+            "barbara and hamilton's relationship did not begin with a dramatic turning point. it started with comfort, laughter, frosé, and the ease of realizing that being together required very little performance.",
+            "their words kept returning to inner character and the daily choice to show up for one another. the vows felt deliberate, but the room around them stayed light enough for the laughter to land.",
+            "the boat crossing makes an rcyc wedding feel removed from toronto before the day has even started. then the island clubhouse, open lawn, docks, and skyline keep the city present without letting it take over."
+        ],
+        vendors: [
+            { name: "Royal Canadian Yacht Club", role: "Venue", url: "https://rcyc.ca/Occasions/Weddings" },
+            { name: "Black Dog Weddings", role: "Planning", url: "https://www.blackdogweddings.com/" },
+            { name: "Corynn Fowler Photography", role: "Photography", url: "https://www.corynnfowlerphotography.com/" }
+        ]
+    },
+    {
+        id: "050",
+        slug: "alex-sharan-globe-and-mail-centre",
+        title: "alex & sharan",
+        place: {
+            name: "The Globe and Mail Centre",
+            locality: "Toronto",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://www.globeandmailcentre.com/wedding-private/weddings/",
+            venueId: "globe-and-mail-centre"
+        },
+        weddingDate: "July 19, 2024",
+        weddingDateIso: "2024-07-19",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "alex and sharan above king east, with a glass room, an open terrace, and toronto doing most of the work outside.",
+        primaryVideo: {
+            id: "koOkRfluMIc",
+            title: "Breathtaking Toronto Wedding at The Globe and Mail Centre",
+            label: "Wedding Film",
+            uploadDate: "2024-09-17T14:14:56-07:00",
+            duration: "PT5M55S",
+            thumbnailQuality: "sddefault"
+        },
+        seo: {
+            title: "Globe and Mail Centre Wedding Film | Alex & Sharan",
+            description: "Watch Alex and Sharan’s wedding film at The Globe and Mail Centre, a modern Toronto venue with a 17th-floor terrace and skyline views."
+        },
+        fieldNotes: [
+            "alex and sharan gathered everyone high above toronto's king east district. the glass room kept the skyline present through the reception, while the terrace opened the day out toward the lake and downtown.",
+            "the creative team kept the room clean and considered: pretty plans on the structure, lace and luce behind the stills, and the dulce dwelling bringing softness into a deliberately minimal venue.",
+            "the globe and mail centre is at its best when sunset is treated as part of the timeline. once the light shifts across the seventeenth floor, the city becomes a moving backdrop rather than a static view."
+        ],
+        vendors: [
+            { name: "The Globe and Mail Centre", role: "Venue", url: "https://www.globeandmailcentre.com/wedding-private/weddings/" },
+            { name: "Pretty Plans", role: "Planning", url: "https://www.prettyplans.ca/" },
+            { name: "Lace + Luce", role: "Photography", url: "https://www.laceandluce.com/" },
+            { name: "The Dulce Dwelling", role: "Florals", url: "https://www.thedulcedwelling.com/" }
+        ]
+    },
+    {
+        id: "049",
+        slug: "aalia-josh-lune-1860",
+        title: "aalia & josh",
+        place: {
+            name: "Lune 1860",
+            locality: "Goderich",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://www.lune1860.ca/pages/wedding-venue",
+            venueId: "lune-1860"
+        },
+        weddingDate: "Aug. 2, 2025",
+        weddingDateIso: "2025-08-02",
+        publishedAt: "2026-08-07",
+        updatedAt: "2026-08-07",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "two people from the same hometown whose paths kept crossing until dinner at joey's finally changed the route.",
+        primaryVideo: {
+            id: "f3L54oek57o",
+            title: "Emotive + Fun Lune 1860 Wedding | Aalia & Josh’s Heartfelt Day in Goderich",
+            label: "Wedding Film",
+            uploadDate: "2025-11-05T09:22:23-08:00",
+            duration: "PT6M5S"
+        },
+        seo: {
+            title: "Lune 1860 Wedding Film | Aalia & Josh | LUCAS",
+            description: "Watch Aalia and Josh’s digital wedding film at Lune 1860, an intimate private-estate wedding venue near Goderich, Ontario."
+        },
+        fieldNotes: [
+            "aalia and josh grew up in the same hometown, their paths crossing without quite meeting until the timing finally worked. dinner at joey's became the start of a life shaped by devotion, laughter, and family.",
+            "their daughter aerys stayed close to the centre of the day. between the tearful vows and a full dance floor, the wedding felt less like the start of a family than a celebration of the one already there.",
+            "lune 1860 remains one of my favourite places to film. every matte interior has its own palette, the grounds stay quiet, and the newer reception space carries that same editorial restraint into the evening."
+        ],
+        vendors: [
+            { name: "Lune 1860", role: "Venue", url: "https://www.lune1860.ca/pages/wedding-venue" }
+        ]
+    },
+    {
         id: "048",
         slug: "jenna-clark-whistle-bear-golf-club",
         title: "jenna & clark",
@@ -60,6 +433,7 @@ export const journalEntries: JournalEntry[] = [
             venueId: "whistle-bear-golf-club"
         },
         weddingDate: "May 31, 2026",
+        weddingDateIso: "2026-05-31",
         publishedAt: "2026-08-07",
         updatedAt: "2026-08-07",
         format: "Digital",
@@ -100,6 +474,7 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.maisondubreuil.com/"
         },
         weddingDate: "May 20, 2026",
+        weddingDateIso: "2026-05-20",
         publishedAt: "2026-07-21",
         updatedAt: "2026-07-21",
         format: "Digital + Super 8mm",
@@ -148,6 +523,7 @@ export const journalEntries: JournalEntry[] = [
             url: "https://hermitagedecombas.com/"
         },
         weddingDate: "May 16, 2025",
+        weddingDateIso: "2025-05-16",
         publishedAt: "2026-07-06",
         updatedAt: "2026-07-06",
         format: "Digital + Super 8mm",
@@ -197,6 +573,7 @@ export const journalEntries: JournalEntry[] = [
             "url": "https://www.oldmilltoronto.com/"
         },
         "weddingDate": "Feb. 28, 2026",
+        "weddingDateIso": "2026-02-28",
         "publishedAt": "2026-04-14",
         "updatedAt": "2026-04-14",
         "format": "Digital + Super 8mm",
@@ -245,6 +622,7 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.ellebystella.ca/"
         },
         weddingDate: "Aug. 22, 2025",
+        weddingDateIso: "2025-08-22",
         publishedAt: "2026-03-11",
         updatedAt: "2026-03-11",
         format: "Digital + Super 8mm",
@@ -288,6 +666,7 @@ export const journalEntries: JournalEntry[] = [
             venueId: "elora-mill"
         },
         weddingDate: "Feb. 16, 2025",
+        weddingDateIso: "2025-02-16",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital",
@@ -332,6 +711,7 @@ export const journalEntries: JournalEntry[] = [
             venueId: "spencers-waterfront"
         },
         weddingDate: "Oct. 12, 2025",
+        weddingDateIso: "2025-10-12",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital + Super 8mm",
@@ -373,6 +753,7 @@ export const journalEntries: JournalEntry[] = [
             venueId: "graydon-hall-manor"
         },
         weddingDate: "Sep. 28, 2025",
+        weddingDateIso: "2025-09-28",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital",
@@ -415,6 +796,7 @@ export const journalEntries: JournalEntry[] = [
             venueId: "paletta-mansion"
         },
         weddingDate: "Sep. 14, 2025",
+        weddingDateIso: "2025-09-14",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Digital + Super 8mm",
@@ -453,6 +835,7 @@ export const journalEntries: JournalEntry[] = [
             country: "Canada"
         },
         weddingDate: "Aug. 02, 2025",
+        weddingDateIso: "2025-08-02",
         publishedAt: "2026-03-10",
         updatedAt: "2026-03-10",
         format: "Editorial / Notes",

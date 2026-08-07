@@ -38,7 +38,11 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
         </div>
 
         <div className="mb-10 w-full">
-            <CinematicPlayer videoId={venue.visualEmbed} altText={`Lucas Film at ${venue.name}`} />
+            <CinematicPlayer
+                videoId={venue.visualEmbed}
+                altText={`Lucas Film at ${venue.name}`}
+                allowLowResThumbnailFallback
+            />
         </div>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 mb-10 text-sm">
