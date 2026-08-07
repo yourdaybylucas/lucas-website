@@ -4,40 +4,73 @@ import { venues } from '@/data/venues';
 import SpacesClient from './spaces-client';
 
 export const metadata: Metadata = {
-    title: 'THE LEDGER : HONEST SPACES // LUCAS',
-    description: 'an inventory of honest spaces across ontario and worldwide. intimate, grand, and unconventional environments for the day.',
+    title: 'Ontario Wedding Venue Guide | The Ledger | LUCAS',
+    description: 'A practical guide to Ontario wedding venues I have filmed, with firsthand notes on atmosphere, scale, preparation spaces, venue flow, and property use.',
     alternates: {
         canonical: '/spaces',
     },
     openGraph: {
-        title: 'THE LEDGER // LUCAS',
-        description: 'an inventory of honest spaces across ontario and worldwide.',
+        title: 'Ontario Wedding Venue Guide | The Ledger | LUCAS',
+        description: 'Firsthand field notes on Ontario wedding venues, including atmosphere, scale, preparation spaces, venue flow, and property use.',
         url: 'https://www.yourdaybylucas.com/spaces',
     }
 };
 
 export default function SpacesPage() {
+    const pageUrl = 'https://www.yourdaybylucas.com/spaces';
+    const itemListId = `${pageUrl}#item-list`;
+
     const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        'itemListElement': venues.map((venue, index) => ({
-            '@type': 'ListItem',
-            'position': index + 1,
-            'item': {
-                '@type': 'EventVenue',
-                'name': venue.name,
-                'address': {
-                    '@type': 'PostalAddress',
-                    'addressLocality': venue.location,
-                    'addressRegion': 'ON',
-                    'addressCountry': 'CA'
+        '@graph': [
+            {
+                '@type': 'CollectionPage',
+                '@id': `${pageUrl}#webpage`,
+                'url': pageUrl,
+                'name': 'Ontario Wedding Venue Guide',
+                'description': 'A practical guide to Ontario wedding venues Lucas has filmed, with firsthand notes on atmosphere, scale, preparation spaces, venue flow, and property use.',
+                'mainEntity': {
+                    '@id': itemListId,
                 },
-                'description': `honest, nostalgic wedding cinematography at ${venue.name}. ${venue.fieldNotes}`,
-                // automatically pulling the high-res youtube thumbnail for the schema
-                'image': `https://img.youtube.com/vi/${venue.visualEmbed}/maxresdefault.jpg`, 
-                'url': `https://www.yourdaybylucas.com/spaces/${venue.id}`
-            }
-        }))
+            },
+            {
+                '@type': 'ItemList',
+                '@id': itemListId,
+                'name': 'Ontario Wedding Venues Lucas Has Filmed',
+                'numberOfItems': venues.length,
+                'itemListElement': venues.map((venue, index) => {
+                    const guideUrl = `${pageUrl}/${venue.id}`;
+                    const venueId = `${venue.officialUrl.replace(/\/$/, '')}#venue`;
+
+                    return {
+                        '@type': 'ListItem',
+                        'position': index + 1,
+                        'url': guideUrl,
+                        'item': {
+                            '@type': 'EventVenue',
+                            '@id': venueId,
+                            'name': venue.name,
+                            'address': {
+                                '@type': 'PostalAddress',
+                                'addressLocality': venue.location,
+                                'addressRegion': 'ON',
+                                'addressCountry': 'CA',
+                            },
+                            'description': venue.overview,
+                            'image': `https://img.youtube.com/vi/${venue.visualEmbed}/maxresdefault.jpg`,
+                            'url': venue.officialUrl,
+                            'sameAs': venue.officialUrl,
+                            'subjectOf': {
+                                '@type': 'WebPage',
+                                '@id': `${guideUrl}#webpage`,
+                                'url': guideUrl,
+                                'name': `${venue.name} Wedding Venue Guide`,
+                            },
+                        },
+                    };
+                }),
+            },
+        ],
     };
 
     return (

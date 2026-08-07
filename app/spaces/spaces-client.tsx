@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -73,15 +74,63 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
             </p>
         </div>
 
-        {venue.journalSlug && (
-            <Link
-                href={`/journal/${venue.journalSlug}`}
-                className="mt-6 flex items-center justify-between border-t border-lucas-navy/15 pt-5 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate transition-colors duration-slow hover:text-lucas-orange"
+        <div className="mt-8 border-t border-lucas-navy/15 pt-8">
+            <h3 className="font-sans text-[10px] uppercase tracking-zissou text-lucas-orange">
+                {venue.name} wedding venue guide
+            </h3>
+
+            <div className="mt-6 space-y-7">
+                <div>
+                    <h4 className="mb-2 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">The setting</h4>
+                    <p className="prose-soul text-base leading-loose text-lucas-navy md:text-lg">
+                        {venue.overview}
+                    </p>
+                </div>
+
+                <div>
+                    <h4 className="mb-2 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">Planning the film</h4>
+                    <p className="prose-soul text-base leading-loose text-lucas-navy md:text-lg">
+                        {venue.planningNotes}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div className="mt-8 border-t border-lucas-navy/15 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+            <a
+                href={venue.officialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between py-5 transition-colors duration-slow hover:text-lucas-orange"
             >
-                <span>Watch a wedding at {venue.name}</span>
+                <span>Visit {venue.name}</span>
+                <span aria-hidden="true">↗</span>
+            </a>
+
+            {venue.journalSlug && (
+                <Link
+                    href={`/journal/${venue.journalSlug}`}
+                    className="flex items-center justify-between border-t border-lucas-navy/10 py-5 transition-colors duration-slow hover:text-lucas-orange"
+                >
+                    <span>Watch a wedding at {venue.name}</span>
+                    <span aria-hidden="true">→</span>
+                </Link>
+            )}
+        </div>
+
+        <div className="mt-4 border border-lucas-slate/15 bg-lucas-navy/[0.025] p-5 md:p-6">
+            <p className="prose-soul text-lg leading-snug text-lucas-navy">
+                considering {venue.name}?
+            </p>
+            <Link
+                href="/#contact"
+                aria-label={`Ask Lucas about filming a wedding at ${venue.name}`}
+                className="mt-3 flex items-center justify-between font-sans text-[10px] uppercase tracking-zissou text-lucas-slate transition-colors duration-slow hover:text-lucas-orange"
+            >
+                <span>ask me about filming here</span>
                 <span aria-hidden="true">→</span>
             </Link>
-        )}
+        </div>
     </motion.div>
 );
 
@@ -93,6 +142,7 @@ export default function SpacesClient({
     activeVenueId?: string;
 }) {
     const router = useRouter();
+    const [isMounted, setIsMounted] = useState(false);
     
     const [activeFilters, setActiveFilters] = useState<{
         geography: Geography | null;
@@ -125,13 +175,26 @@ export default function SpacesClient({
     };
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
         const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+        const previousBodyOverflow = document.body.style.overflow;
+        const previousHtmlOverflow = document.documentElement.style.overflow;
+
         if (activeVenue && isMobile) {
             document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = '';
+            document.body.style.overflow = previousBodyOverflow;
+            document.documentElement.style.overflow = previousHtmlOverflow;
         }
-        return () => { document.body.style.overflow = ''; };
+
+        return () => {
+            document.body.style.overflow = previousBodyOverflow;
+            document.documentElement.style.overflow = previousHtmlOverflow;
+        };
     }, [activeVenue]);
 
     const handleFilterClick = (category: keyof typeof activeFilters, value: string) => {
@@ -152,11 +215,13 @@ export default function SpacesClient({
         icon: Icon,
         category,
         options,
+        optionDetails,
     }: {
         title: string;
         icon: any;
         category: keyof typeof activeFilters;
         options: readonly string[];
+        optionDetails?: Partial<Record<string, string>>;
     }) => (
         <div className="mb-8 border-b border-lucas-slate/30 pb-6 last:border-0">
             <div className="flex items-center gap-2 mb-4 text-lucas-slate">
@@ -170,16 +235,23 @@ export default function SpacesClient({
                         <button
                             key={opt}
                             onClick={() => handleFilterClick(category, opt)}
-                            className={`text-left text-sm transition-colors duration-slow flex items-center gap-3 ${
+                            className={`group flex w-full items-center gap-3 text-left text-sm transition-colors duration-slow ${
                                 isActive ? 'text-lucas-orange font-medium' : 'text-lucas-navy hover:text-lucas-slate'
                             }`}
                         >
                             <span className="font-sans text-[10px] tracking-widest opacity-70 w-6 flex-shrink-0 text-center">
                                 {isActive ? '[ x ]' : '[   ]'}
                             </span>
-                            <span className="lowercase">
+                            <span className="min-w-0 flex-1 lowercase">
                                 {opt}
                             </span>
+                            {optionDetails?.[opt] && (
+                                <span className={`shrink-0 font-sans text-[10px] lowercase transition-colors duration-slow ${
+                                    isActive ? 'text-lucas-orange/80' : 'text-lucas-slate group-hover:text-lucas-navy'
+                                }`}>
+                                    {optionDetails[opt]}
+                                </span>
+                            )}
                         </button>
                     );
                 })}
@@ -190,42 +262,49 @@ export default function SpacesClient({
     return (
         <main className="min-h-screen bg-lucas-cream text-lucas-navy font-sans relative pt-32 pb-24">
             
-            <AnimatePresence>
-                {activeVenue && (
-                    <motion.div
-                        initial={{ y: '100%' }}
-                        animate={{ y: 0 }}
-                        exit={{ y: '100%' }}
-                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 z-[150] lg:hidden flex flex-col justify-end pointer-events-none"
-                    >
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-lucas-navy/40 backdrop-blur-sm pointer-events-auto" 
-                            onClick={closeDossier} 
-                        />
-                        
-                        <div className="bg-lucas-cream w-full h-[85vh] rounded-t-xl shadow-[0_-10px_40px_rgba(24,40,54,0.2)] pointer-events-auto overflow-y-auto relative flex flex-col">
-                            <div className="sticky top-0 right-0 left-0 bg-lucas-cream/90 backdrop-blur-md z-20 flex justify-between items-center p-4 border-b border-lucas-slate/20">
-                                <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate ml-2">
-                                    [ The Dossier ]
-                                </span>
-                                <button 
-                                    onClick={closeDossier} 
-                                    className="p-2 text-lucas-navy hover:text-lucas-orange transition-colors"
-                                >
-                                    <X size={20} strokeWidth={1.5} />
-                                </button>
+            {isMounted && createPortal(
+                <AnimatePresence>
+                    {activeVenue && (
+                        <motion.div
+                            initial={{ y: '100%' }}
+                            animate={{ y: 0 }}
+                            exit={{ y: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="fixed inset-0 z-[150] lg:hidden flex flex-col justify-end pointer-events-none"
+                        >
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="absolute inset-0 bg-lucas-navy/40 backdrop-blur-sm pointer-events-auto"
+                                onClick={closeDossier}
+                            />
+
+                            <div
+                                className="bg-lucas-cream w-full h-[85vh] rounded-t-xl shadow-[0_-10px_40px_rgba(24,40,54,0.2)] pointer-events-auto overflow-y-auto relative flex flex-col"
+                                data-lenis-prevent
+                            >
+                                <div className="sticky top-0 right-0 left-0 bg-lucas-cream/90 backdrop-blur-md z-20 flex justify-between items-center p-4 border-b border-lucas-slate/20">
+                                    <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate ml-2">
+                                        [ The Dossier ]
+                                    </span>
+                                    <button
+                                        onClick={closeDossier}
+                                        aria-label={`Close ${activeVenue.name} dossier`}
+                                        className="p-2 text-lucas-navy hover:text-lucas-orange transition-colors"
+                                    >
+                                        <X size={20} strokeWidth={1.5} />
+                                    </button>
+                                </div>
+                                <div className="flex-grow p-0">
+                                    <DossierCard venue={activeVenue} />
+                                </div>
                             </div>
-                            <div className="flex-grow p-0">
-                                <DossierCard venue={activeVenue} />
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-20">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -233,11 +312,12 @@ export default function SpacesClient({
                     <aside className="lg:col-span-3 lg:sticky lg:top-32">
                         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2">
                             The Ledger
+                            <span className="sr-only"> — Ontario wedding venue guide</span>
                             {activeVenue && (
                                 <span className="sr-only">: {activeVenue.name} wedding venue in {activeVenue.location}, Ontario</span>
                             )}
                         </h1>
-                        <p className="text-base text-lucas-slate lowercase mb-12">an inventory of ontario's best.</p>
+                        <p className="text-base text-lucas-slate lowercase mb-12">field notes on ontario wedding venues i've filmed.</p>
 
                         <FilterSection
                             title="Geography"
@@ -250,6 +330,11 @@ export default function SpacesClient({
                             category="scale"
                             icon={Users}
                             options={SCALE_OPTIONS}
+                            optionDetails={{
+                                intimate: 'up to 100',
+                                standard: '101–200',
+                                grand: '201+',
+                            }}
                         />
                         <FilterSection
                             title="Atmosphere"
@@ -262,6 +347,10 @@ export default function SpacesClient({
                             category="footprint"
                             icon={Lock}
                             options={FOOTPRINT_OPTIONS}
+                            optionDetails={{
+                                'exclusive use': 'one event',
+                                'shared property': 'multi-use',
+                            }}
                         />
 
                         {(activeFilters.geography || activeFilters.scale || activeFilters.atmosphere || activeFilters.footprint) && (
@@ -344,9 +433,43 @@ export default function SpacesClient({
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    className="h-full min-h-[500px] border border-lucas-slate/20 border-dashed flex items-center justify-center p-8 bg-lucas-navy/[0.02]"
+                                    className="h-full min-h-[500px] border border-lucas-slate/20 border-dashed flex flex-col p-8 md:p-10 bg-lucas-navy/[0.02]"
                                 >
-                                    <p className="text-lucas-slate lowercase text-sm">select a space to view the dossier.</p>
+                                    <div>
+                                        <p className="font-sans text-[10px] uppercase tracking-zissou text-lucas-orange">
+                                            [ About the ledger ]
+                                        </p>
+                                        <h2 className="prose-soul mt-6 max-w-sm text-3xl leading-tight text-lucas-navy">
+                                            a firsthand guide to places i’ve filmed.
+                                        </h2>
+                                        <p className="prose-soul mt-4 max-w-sm text-lg leading-relaxed text-lucas-slate">
+                                            notes on how each venue looks, moves, and works across the day. useful context, not a ranking.
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-10 border-t border-lucas-slate/20">
+                                        <p className="py-4 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">
+                                            scale // largest published seated setup
+                                        </p>
+                                        {[
+                                            ['intimate', 'up to 100'],
+                                            ['standard', '101–200'],
+                                            ['grand', '201+'],
+                                        ].map(([label, value]) => (
+                                            <div
+                                                key={label}
+                                                className="flex items-center justify-between border-t border-lucas-slate/15 py-4 font-sans text-xs lowercase"
+                                            >
+                                                <span className="text-lucas-navy">{label}</span>
+                                                <span className="text-lucas-slate">{value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <p className="mt-auto pt-10 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
+                                        <span className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-lucas-orange" aria-hidden="true" />
+                                        select a space for the full dossier
+                                    </p>
                                 </motion.div>
                             )}
                         </AnimatePresence>

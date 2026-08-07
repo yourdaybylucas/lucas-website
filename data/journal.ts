@@ -284,7 +284,8 @@ export const journalEntries: JournalEntry[] = [
             locality: "Elora",
             region: "Ontario",
             country: "Canada",
-            url: "https://eloramill.ca/"
+            url: "https://eloramill.ca/",
+            venueId: "elora-mill"
         },
         weddingDate: "Feb. 16, 2025",
         publishedAt: "2026-03-10",
@@ -327,7 +328,8 @@ export const journalEntries: JournalEntry[] = [
             locality: "Burlington",
             region: "Ontario",
             country: "Canada",
-            url: "https://pearleweddings.ca/spencers/"
+            url: "https://spencers.ca/weddings/",
+            venueId: "spencers-waterfront"
         },
         weddingDate: "Oct. 12, 2025",
         publishedAt: "2026-03-10",
@@ -367,7 +369,8 @@ export const journalEntries: JournalEntry[] = [
             locality: "Toronto",
             region: "Ontario",
             country: "Canada",
-            url: "https://www.graydonhall.com/"
+            url: "https://www.graydonhall.com/",
+            venueId: "graydon-hall-manor"
         },
         weddingDate: "Sep. 28, 2025",
         publishedAt: "2026-03-10",
@@ -408,7 +411,8 @@ export const journalEntries: JournalEntry[] = [
             locality: "Burlington",
             region: "Ontario",
             country: "Canada",
-            url: "https://palettamansion.com/"
+            url: "https://palettamansion.com/",
+            venueId: "paletta-mansion"
         },
         weddingDate: "Sep. 14, 2025",
         publishedAt: "2026-03-10",

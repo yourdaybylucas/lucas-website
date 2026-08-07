@@ -26,16 +26,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
+    const title = `${activeVenue.name} Wedding Videographer | LUCAS`;
+
     return {
-        title: activeVenue.seoTitle ?? `${activeVenue.name.toUpperCase()} // THE LEDGER : LUCAS`,
-        description: activeVenue.seoDescription ?? `honest, nostalgic wedding cinematography at ${activeVenue.name}, ${activeVenue.location}. ${activeVenue.fieldNotes}`,
+        title,
+        description: activeVenue.seoDescription,
         alternates: {
             canonical: `/spaces/${activeVenue.id}`,
         },
         openGraph: {
-            title: activeVenue.seoTitle ?? `${activeVenue.name.toUpperCase()} // THE LEDGER`,
-            description: activeVenue.seoDescription ?? `field notes and visual documentation from ${activeVenue.name}.`,
+            title,
+            description: activeVenue.seoDescription,
             url: `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`,
+            type: 'article',
+            images: [`https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description: activeVenue.seoDescription,
             images: [`https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`],
         },
     };
@@ -49,44 +58,82 @@ export default async function SpacePage({ params }: Props) {
         notFound();
     }
 
-    const venueJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'EventVenue',
-        '@id': `https://www.yourdaybylucas.com/spaces/${activeVenue.id}#venue`,
-        'name': activeVenue.name,
-        'address': {
-            '@type': 'PostalAddress',
-            'addressLocality': activeVenue.location,
-            'addressRegion': 'ON',
-            'addressCountry': 'CA',
-        },
-        'description': `honest, nostalgic wedding cinematography at ${activeVenue.name}. ${activeVenue.fieldNotes}`,
-        'image': `https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`,
-        'url': `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`,
-        ...(activeVenue.officialUrl ? { 'sameAs': activeVenue.officialUrl } : {}),
-    };
+    const pageUrl = `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`;
+    const venueId = `${activeVenue.officialUrl.replace(/\/$/, '')}#venue`;
 
-    const breadcrumbJsonLd = {
+    const breadcrumbId = `${pageUrl}#breadcrumb`;
+
+    const structuredData = {
         '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        'itemListElement': [
+        '@graph': [
             {
-                '@type': 'ListItem',
-                'position': 1,
-                'name': 'Home',
-                'item': 'https://www.yourdaybylucas.com',
+                '@type': 'WebPage',
+                '@id': `${pageUrl}#webpage`,
+                'url': pageUrl,
+                'name': `${activeVenue.name} Wedding Videographer`,
+                'description': activeVenue.seoDescription,
+                'isPartOf': {
+                    '@type': 'CollectionPage',
+                    '@id': 'https://www.yourdaybylucas.com/spaces#webpage',
+                    'name': 'Ontario Wedding Venue Guide',
+                    'url': 'https://www.yourdaybylucas.com/spaces',
+                },
+                'mainEntity': {
+                    '@id': venueId,
+                },
+                'about': {
+                    '@id': venueId,
+                },
+                'breadcrumb': {
+                    '@id': breadcrumbId,
+                },
+                'author': {
+                    '@type': 'Person',
+                    'name': 'Lucas Bulger',
+                    'url': 'https://www.yourdaybylucas.com/about',
+                },
             },
             {
-                '@type': 'ListItem',
-                'position': 2,
-                'name': 'Spaces',
-                'item': 'https://www.yourdaybylucas.com/spaces',
-            },
-            {
-                '@type': 'ListItem',
-                'position': 3,
+                '@type': 'EventVenue',
+                '@id': venueId,
                 'name': activeVenue.name,
-                'item': `https://www.yourdaybylucas.com/spaces/${activeVenue.id}`,
+                'address': {
+                    '@type': 'PostalAddress',
+                    'addressLocality': activeVenue.location,
+                    'addressRegion': 'ON',
+                    'addressCountry': 'CA',
+                },
+                'description': activeVenue.overview,
+                'image': `https://img.youtube.com/vi/${activeVenue.visualEmbed}/maxresdefault.jpg`,
+                'url': activeVenue.officialUrl,
+                'sameAs': activeVenue.officialUrl,
+                'mainEntityOfPage': {
+                    '@id': `${pageUrl}#webpage`,
+                },
+            },
+            {
+                '@type': 'BreadcrumbList',
+                '@id': breadcrumbId,
+                'itemListElement': [
+                    {
+                        '@type': 'ListItem',
+                        'position': 1,
+                        'name': 'Home',
+                        'item': 'https://www.yourdaybylucas.com',
+                    },
+                    {
+                        '@type': 'ListItem',
+                        'position': 2,
+                        'name': 'Spaces',
+                        'item': 'https://www.yourdaybylucas.com/spaces',
+                    },
+                    {
+                        '@type': 'ListItem',
+                        'position': 3,
+                        'name': activeVenue.name,
+                        'item': pageUrl,
+                    },
+                ],
             },
         ],
     };
@@ -95,11 +142,7 @@ export default async function SpacePage({ params }: Props) {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(venueJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
             />
             <Suspense fallback={<div className="min-h-screen bg-lucas-cream" />}>
                 <SpacesClient venues={venues} activeVenueId={activeVenue.id} />
