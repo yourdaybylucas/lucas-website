@@ -393,8 +393,8 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.lune1860.ca/pages/wedding-venue",
             venueId: "lune-1860"
         },
-        weddingDate: "Aug. 2, 2026",
-        weddingDateIso: "2026-08-02",
+        weddingDate: "Aug. 2, 2025",
+        weddingDateIso: "2025-08-02",
         publishedAt: "2026-08-07",
         updatedAt: "2026-08-07",
         format: "Digital",
