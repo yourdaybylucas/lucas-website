@@ -77,7 +77,7 @@ export const venues: Venue[] = [
     name: 'Graydon Hall Manor',
     location: 'Toronto',
     officialUrl: 'https://www.graydonhall.com/',
-    journalSlug: 'melanie-kevin-graydon',
+    journalSlug: 'carina-harrison-graydon-hall-manor',
     seoDescription: 'Graydon Hall Manor wedding videography in Toronto, with firsthand notes on the stone terrace, clear canopy, manor interiors, and all-in-one venue flow.',
     overview: 'graydon hall manor is a private events estate in north york, built around an english-georgian manor, formal gardens, and a broad stone terrace. the terrace canopy allows dinner and dancing to stay visually connected to the gardens while retaining a reliable covered plan.',
     planningNotes: 'the manor works especially well when preparations, ceremony, cocktails, and reception all stay on site. the rooms are close enough for an efficient timeline, but each area has a distinct visual identity, which keeps the finished film from feeling like it happened in a single room.',
@@ -89,7 +89,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '1 am extension available',
     fieldNotes: 'feels like a european villa dropped in the heart of toronto. a dream space for photo and film. the stone terrace bounces outdoor light beautifully, and the stunning clear tent with trees growing through it sets an incredible vibe for the evening.',
-    visualEmbed: 'GHhmsEs_8x8',
+    visualEmbed: 'sWmeSpQ9eqs',
   },
   {
     id: 'harding-waterfront',
