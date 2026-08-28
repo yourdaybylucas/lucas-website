@@ -23,10 +23,10 @@ const partners = [
 ];
 
 const featuredFilms = [
-  { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8mm" },
-  { id: "KfOXk9GKan0", names: "Jenna + Clark", locale: "Whistle Bear Golf Club", format: "Digital" },
-  { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" },
-  { id: "f3L54oek57o", names: "Aalia + Joshua", locale: "Lune 1860", format: "Digital" }
+  { id: "xCRgV8RAX78", names: "Alex + Nick", locale: "South of France", format: "Digital + Super 8" },
+  { id: "KfOXk9GKan0", names: "Jenna + Clark", locale: "Whistle Bear", format: "Digital" },
+  { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8" },
+  { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" }
 ];
 
 // reordered for narrative weight
@@ -136,7 +136,7 @@ export default function Home() {
             
             <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
               <p>
-                i’m there to hang out and keep things grounded - capturing the honest moments, the laughter, the tears, and the feeling that lasts long after the day itself. 
+                i’m there to hang out and keep things grounded - capturing the laughts, tears, and the feeling that lasts long after the day itself.
               </p>
               <p>
                 no crews. no scripts. just me.
