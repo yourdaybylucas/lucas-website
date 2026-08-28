@@ -743,8 +743,8 @@ export const journalEntries: JournalEntry[] = [
     },
     {
         id: "041",
-        slug: "melanie-kevin-graydon",
-        title: "melanie & kevin",
+        slug: "carina-harrison-graydon-hall-manor",
+        title: "carina & harrison",
         place: {
             name: "Graydon Hall Manor",
             locality: "Toronto",
@@ -753,35 +753,37 @@ export const journalEntries: JournalEntry[] = [
             url: "https://www.graydonhall.com/",
             venueId: "graydon-hall-manor"
         },
-        weddingDate: "Aug. 18, 2025",
-        weddingDateIso: "2025-08-18",
-        publishedAt: "2026-03-10",
-        updatedAt: "2026-03-10",
+        weddingDate: "July 8, 2025",
+        weddingDateIso: "2025-07-08",
+        publishedAt: "2026-08-28",
+        updatedAt: "2026-08-28",
         format: "Digital",
         stock: "Sensor Only",
-        excerpt: "twelve years in the making. a story that started at a penny press machine on a high school trip, brought to life under the stone terraces of graydon hall.",
+        excerpt: "a tuesday wedding that moved from a traditional tea ceremony into an ethereal evening at graydon hall manor, shaped by heartfelt vows, family, and exquisite personal detail.",
         primaryVideo: {
-            id: "GHhmsEs_8x8",
-            title: "Romantic Graydon Hall Manor Wedding | Kevin & Melanie’s High School Sweetheart Story",
+            id: "sWmeSpQ9eqs",
+            title: "Carina & Harrison’s Ethereal Wedding at Graydon Hall Manor | Toronto Wedding Video",
             label: "Wedding Film",
-            uploadDate: "2025-11-15T12:52:36-08:00",
-            duration: "PT6M57S"
+            uploadDate: "2025-10-07T13:59:51-07:00",
+            duration: "PT5M19S"
         },
         seo: {
-            title: "Graydon Hall Manor Wedding Film | Melanie & Kevin | LUCAS",
-            description: "Watch Melanie and Kevin’s Graydon Hall Manor wedding film in Toronto, documented digitally by Ontario wedding filmmaker Lucas Bulger."
+            title: "Graydon Hall Manor Wedding Film | Carina & Harrison | LUCAS",
+            description: "Watch Carina and Harrison’s digital wedding film at Graydon Hall Manor in Toronto, including their traditional tea ceremony, first look and heartfelt vows."
         },
         fieldNotes: [
-            "twelve years in the making. it started at a penny press machine during a high school trip to an aquarium in philadelphia, and ended up here, exchanging promises in the gardens of graydon hall manor.",
-            "they are the rare and beautiful story of high school sweethearts who actually made it. growing up alongside each other, their love transitioned from a sweet, shy crush to something deeply rooted and genuine.",
-            "the space feels like a european villa dropped directly into toronto. the stone terrace bounced the natural light beautifully, and working alongside emily mickelson and the team at forever wildfield kept the entire day feeling effortless and grounded.",
-            "i didn't need to orchestrate a single moment. their connection genuinely feels like a honeymoon phase that never ends. i just stayed close, paid attention, and collected the honest frames."
+            "the day began away from the venue with a traditional tea ceremony before moving into graydon hall manor. that shift gave the film two distinct rhythms: a meaningful family tradition first, followed by the quiet elegance of the estate.",
+            "carina and harrison brought an incredible amount of intention to every detail. multiple wardrobe changes, an emotional first look, and deeply felt ceremony vows made the day feel elevated without ever losing its personal centre.",
+            "graydon hall suited the atmosphere beautifully. the stone, gardens, and terrace carried the whimsical styling naturally, while the people closest to them kept the entire day warm, grounded, and full of feeling."
         ],
         vendors: [
             { name: "Graydon Hall Manor", role: "Venue", url: "https://www.graydonhall.com/" },
-            { name: "Emily Mickelson", role: "Photography", url: "https://www.emilymickelson.com/" },
-            { name: "Forever Wildfield", role: "Florals", url: "https://foreverwildfield.com/" },
-            { name: "Your Day by Lucas", role: "Videography", url: "https://www.yourdaybylucas.com/" }
+            { name: "Eric Cheng Photography", role: "Photography", url: "https://ericcheng.ca/" },
+            { name: "Daybreak Studios", role: "Content Creation", url: "https://www.daybreakstudios.co/" },
+            { name: "Destiny Weddings", role: "Planning", url: "https://www.destinyweddings.ca/cn/" },
+            { name: "Amor Wedding", role: "Florals", url: "https://www.amorwedding.ca/" },
+            { name: "Louminous", role: "Makeup", url: "https://louminous.ca/" },
+            { name: "Your Day by Lucas", role: "Wedding Film", url: "https://www.yourdaybylucas.com/" }
         ]
     },
 {
