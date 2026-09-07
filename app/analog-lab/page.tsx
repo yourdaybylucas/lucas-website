@@ -419,13 +419,13 @@ export default function AnalogLabPage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/#contact"
-                  className="group inline-flex items-center justify-center gap-3 border border-lucas-navy bg-lucas-navy px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-cream transition-colors duration-slow hover:bg-transparent hover:text-lucas-navy"
+                  className="lucas-button lucas-button--filled inline-flex items-center justify-center gap-3 px-7 py-4 font-sans text-xs font-medium lowercase"
                 >
                   inquire about the day
                 </Link>
                 <Link
                   href="/collections"
-                  className="inline-flex items-center justify-center border border-lucas-navy/30 px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-navy transition-colors duration-slow hover:border-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream"
+                  className="lucas-button inline-flex items-center justify-center px-7 py-4 font-sans text-xs font-medium lowercase"
                 >
                   view collections
                 </Link>
@@ -663,14 +663,14 @@ export default function AnalogLabPage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-12">
                 <Link
                   href="/#contact"
-                  className="group inline-flex items-center justify-center gap-3 border border-lucas-cream bg-lucas-cream px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-navy transition-colors duration-slow hover:border-lucas-orange hover:bg-transparent hover:text-lucas-cream"
+                  className="lucas-button lucas-button--inverse lucas-button--filled inline-flex items-center justify-center gap-3 px-7 py-4 font-sans text-xs font-medium lowercase"
                 >
                   inquire about the day
-                  <ArrowRight className="h-3.5 w-3.5 text-lucas-orange transition-transform duration-slow group-hover:translate-x-1" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <Link
                   href="/collections"
-                  className="inline-flex items-center justify-center border border-lucas-slate/40 px-7 py-4 font-sans text-xs font-medium lowercase text-lucas-cream transition-colors duration-slow hover:border-lucas-cream"
+                  className="lucas-button lucas-button--inverse inline-flex items-center justify-center px-7 py-4 font-sans text-xs font-medium lowercase"
                 >
                   view collections
                 </Link>

@@ -129,6 +129,7 @@ Layout:
 - Prefer editorial grids, ledgers, inventory rows, thin borders, archival labels, and restrained motion.
 - Avoid overly rounded cards, generic SaaS blocks, bubbly gradients, and stock-photo polish.
 - Let the work feel designed but not precious.
+- CTA buttons use the shared `lucas-button` style: instant navy/cream inversion, no fades, wipes, movement, or scaling, and a clear keyboard-focus outline. Use the inverse colours on dark backgrounds and the filled variant for existing solid buttons.
 
 ## Technical Stack
 

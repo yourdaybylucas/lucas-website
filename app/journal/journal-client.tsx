@@ -71,11 +71,8 @@ export default function JournalPage() {
                         <motion.article 
                             key={post.id}
                             variants={fadeUpItem}
-                            className="group relative flex flex-col border-r border-b border-lucas-navy/15 bg-lucas-cream hover:bg-[#EAE4D3] transition-colors duration-700 p-6 md:p-8 lg:p-10 overflow-hidden"
+                            className="group relative flex flex-col border-r border-b border-lucas-navy/15 bg-lucas-cream p-6 md:p-8 lg:p-10 overflow-hidden"
                         >
-                            {/* Top Orange Interaction Line */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-30"></div>
-
                             {/* The Film Slide (YouTube Thumbnail Hero) */}
                             <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
@@ -83,20 +80,13 @@ export default function JournalPage() {
                                     alt={post.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
-                                    className="object-cover grayscale contrast-110 brightness-90 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[1200ms] ease-out z-0"
+                                    className="object-cover grayscale contrast-110 brightness-90 z-0"
                                 />
 
                                 {/* Structural Viewfinder Overlay */}
-                                <div className="absolute inset-0 pointer-events-none z-10 p-4 opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                                <div className="absolute inset-0 pointer-events-none z-10 p-4 opacity-50">
                                     <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-lucas-cream/70"></div>
                                     <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-lucas-cream/70"></div>
-                                </div>
-
-                                {/* Hover Badge */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none bg-lucas-navy/10 backdrop-blur-[2px]">
-                                    <span className="bg-lucas-cream text-lucas-navy font-sans text-[10px] tracking-zissou uppercase px-6 py-3 border border-lucas-navy/10 shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                        View Record
-                                    </span>
                                 </div>
                             </Link>
 
@@ -106,7 +96,7 @@ export default function JournalPage() {
                                     {/* The Soul (Title) & Fig Marker */}
                                     <div className="flex justify-between items-start mb-6">
                                         <Link href={`/journal/${post.slug}`}>
-                                            <h2 className="font-serif text-[clamp(1.75rem,2vw,2.5rem)] text-lucas-navy italic lowercase leading-[1.1] group-hover:text-lucas-orange transition-colors duration-500 pr-4">
+                                            <h2 className="font-serif text-[clamp(1.75rem,2vw,2.5rem)] text-lucas-navy italic lowercase leading-[1.1] group-hover:text-lucas-orange group-focus-within:text-lucas-orange transition-colors duration-200 motion-reduce:transition-none pr-4">
                                                 {post.title}
                                             </h2>
                                         </Link>
@@ -151,7 +141,7 @@ export default function JournalPage() {
                                     <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">
                                         End of entry
                                     </span>
-                                    <Link href={`/journal/${post.slug}`} className="text-lucas-slate group-hover:text-lucas-orange transform group-hover:translate-x-1 transition-all duration-300">
+                                    <Link href={`/journal/${post.slug}`} aria-label={`View record: ${post.title}`} className="text-lucas-slate">
                                         <ArrowRight size={16} strokeWidth={1.5} />
                                     </Link>
                                 </div>

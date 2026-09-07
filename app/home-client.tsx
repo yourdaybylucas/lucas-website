@@ -150,7 +150,7 @@ export default function Home() {
             <motion.div variants={fadeUpItem}>
               <Link 
                 href="/about" 
-                className="inline-block border border-lucas-navy text-lucas-navy px-10 py-4 font-sans text-xs tracking-zissou uppercase hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-300"
+                className="lucas-button inline-block px-10 py-4 font-sans text-xs tracking-zissou uppercase"
               >
                 More About Me
               </Link>

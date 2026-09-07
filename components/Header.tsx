@@ -24,7 +24,8 @@ export default function Header() {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -44,48 +45,39 @@ export default function Header() {
         return null;
     }
 
-    const headerBg = scrolled ? "bg-lucas-cream/80 backdrop-blur-md border-b border-lucas-slate/10" : "bg-transparent border-b border-transparent";
+    const headerBg = scrolled ? "bg-lucas-cream border-lucas-slate/20" : "bg-transparent border-transparent";
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${headerBg}`}>
-                <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <header className={`fixed top-0 left-0 right-0 z-[100] h-18 md:h-20 border-b ${headerBg}`}>
+                <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                     
                     {/* Brand (Static / Grounded) */}
-                    <Link href="/" className="hover:opacity-70 transition-opacity flex items-center py-4 z-[101] relative">
+                    <Link href="/" className="hover:opacity-70 flex items-center py-2 z-[101] relative focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy">
                         <Image 
                             src="/logos/L Blue Transparent.png" 
                             alt="LUCAS" 
-                            width={50} 
-                            height={50} 
-                            className="object-contain"
+                            width={44}
+                            height={44}
+                            className="h-10 w-10 md:h-11 md:w-11 object-contain"
                             priority
                         />
                     </Link>
 
-                    {/* Desktop Nav (Zissou Bracket Hover) */}
+                    {/* Static brackets mark the current section. */}
                     <nav className="hidden md:flex items-center gap-12">
                         {navLinks.map((link) => {
-                            const isActive = pathname === link.path;
+                            const isActive = pathname === link.path || pathname.startsWith(`${link.path}/`);
                             return (
                                 <Link
                                     key={link.path}
                                     href={link.path}
-                                    className="group relative font-sans text-[10px] tracking-widest uppercase flex items-center justify-center h-10"
+                                    aria-current={isActive ? 'page' : undefined}
+                                    className={`relative font-sans text-[10px] tracking-widest uppercase flex items-center justify-center h-10 hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy ${isActive ? 'text-lucas-orange' : 'text-lucas-navy'}`}
                                 >
-                                    {/* Left Bracket */}
-                                    <span className={`absolute -left-3 transition-all duration-slow ${isActive ? 'opacity-100 text-lucas-orange translate-x-0' : 'opacity-0 text-lucas-slate translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'}`}>
-                                        [
-                                    </span>
-                                    
-                                    <span className={`transition-colors duration-slow ${isActive ? 'text-lucas-orange' : 'text-lucas-navy group-hover:text-lucas-orange'}`}>
-                                        {link.label}
-                                    </span>
-
-                                    {/* Right Bracket */}
-                                    <span className={`absolute -right-3 transition-all duration-slow ${isActive ? 'opacity-100 text-lucas-orange translate-x-0' : 'opacity-0 text-lucas-slate -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'}`}>
-                                        ]
-                                    </span>
+                                    {isActive && <span aria-hidden="true" className="absolute -left-3">[</span>}
+                                    {link.label}
+                                    {isActive && <span aria-hidden="true" className="absolute -right-3">]</span>}
                                 </Link>
                             );
                         })}
@@ -97,7 +89,7 @@ export default function Header() {
                         <div className="hidden md:flex items-center">
                             <Link
                                 href="/#contact"
-                                className="font-sans text-[10px] tracking-widest uppercase border border-lucas-navy px-8 py-3.5 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow bg-transparent"
+                                className="lucas-button font-sans text-[10px] tracking-widest uppercase px-8 py-3.5"
                             >
                                 Inquire
                             </Link>
@@ -105,9 +97,11 @@ export default function Header() {
 
                         {/* Mobile Menu Toggle */}
                         <button 
-                            className="md:hidden z-[101] relative text-lucas-navy p-2 focus:outline-none"
+                            className="md:hidden z-[101] relative text-lucas-navy p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
+                            aria-expanded={mobileMenuOpen}
+                            aria-controls="mobile-navigation"
                         >
                             {mobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
                         </button>
@@ -124,7 +118,8 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-10 bg-lucas-cream px-6 pb-10 pt-28"
+                        id="mobile-navigation"
+                        className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-10 bg-lucas-cream px-6 pb-10 pt-24"
                     >
                         <nav className="flex flex-col items-center gap-8">
                             {navLinks.map((link) => (
@@ -132,7 +127,8 @@ export default function Header() {
                                     key={link.path}
                                     href={link.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="font-sans text-xl tracking-zissou uppercase text-lucas-navy hover:text-lucas-orange transition-colors duration-slow"
+                                    aria-current={pathname === link.path || pathname.startsWith(`${link.path}/`) ? 'page' : undefined}
+                                    className={`font-sans text-xl tracking-zissou uppercase hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy ${pathname === link.path || pathname.startsWith(`${link.path}/`) ? 'text-lucas-orange' : 'text-lucas-navy'}`}
                                 >
                                     {link.label}
                                 </Link>
@@ -141,7 +137,7 @@ export default function Header() {
                             <Link
                                 href="/#contact"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="mt-8 font-sans text-xs tracking-widest uppercase border border-lucas-navy px-10 py-4 text-lucas-navy hover:bg-lucas-navy hover:text-lucas-cream transition-colors duration-slow"
+                                className="lucas-button mt-8 font-sans text-xs tracking-widest uppercase px-10 py-4"
                             >
                                 Inquire
                             </Link>

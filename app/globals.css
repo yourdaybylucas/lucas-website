@@ -37,6 +37,55 @@
   }
 }
 
+@layer components {
+  /* Shared CTA treatment: instant ink/paper inversion, with no decorative motion. */
+  .lucas-button {
+    --button-ink: var(--color-lucas-navy);
+    --button-paper: var(--color-lucas-cream);
+    border: 1px solid var(--button-ink);
+    background-color: transparent;
+    color: var(--button-ink);
+    transition: none;
+  }
+
+  .lucas-button--inverse {
+    --button-ink: var(--color-lucas-cream);
+    --button-paper: var(--color-lucas-navy);
+  }
+
+  .lucas-button--filled {
+    background-color: var(--button-ink);
+    color: var(--button-paper);
+  }
+
+  @media (hover: hover) {
+    .lucas-button:hover {
+      background-color: var(--button-ink);
+      color: var(--button-paper);
+    }
+
+    .lucas-button--filled:hover {
+      background-color: transparent;
+      color: var(--button-ink);
+    }
+  }
+
+  .lucas-button:active {
+    background-color: var(--button-ink);
+    color: var(--button-paper);
+  }
+
+  .lucas-button--filled:active {
+    background-color: transparent;
+    color: var(--button-ink);
+  }
+
+  .lucas-button:focus-visible {
+    outline: 2px solid var(--button-ink);
+    outline-offset: 4px;
+  }
+}
+
 @layer utilities {
   .prose-soul {
     font-family: var(--font-cormorant), serif;

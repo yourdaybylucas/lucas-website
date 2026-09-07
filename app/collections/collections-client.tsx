@@ -28,15 +28,8 @@ export default function CollectionsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex flex-col items-center justify-center text-center mb-[clamp(4rem,8vh,8rem)] relative"
+                    className="flex flex-col items-center justify-center text-center pt-12 mb-[clamp(4rem,8vh,8rem)] relative"
                 >
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-px bg-lucas-slate/30"></div>
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                            [ the approach ]
-                        </span>
-                        <div className="w-12 h-px bg-lucas-slate/30"></div>
-                    </div>
                     <p className="font-serif text-[clamp(1.875rem,4vw,3rem)] text-lucas-navy italic max-w-2xl leading-[1.4]">
                         no hourly clocks. <br className="hidden md:block"/>just you, me, and the day.
                     </p>
@@ -203,10 +196,9 @@ export default function CollectionsPage() {
                     
                     <Link 
                         href="/#contact" 
-                        className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden"
+                        className="lucas-button inline-flex items-center justify-center px-12 py-5 font-sans text-xs tracking-zissou uppercase"
                     >
-                        <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
-                        <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
+                        <span>
                             Inquire
                         </span>
                     </Link>

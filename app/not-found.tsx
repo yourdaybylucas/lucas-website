@@ -38,12 +38,11 @@ export default function NotFound() {
         {/* 04. The Action */}
         <Link 
           href="/" 
-          className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden bg-lucas-cream"
+          className="lucas-button inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase"
         >
-          <span className="absolute inset-0 w-full h-full bg-lucas-navy transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
-          <span className="relative z-10 group-hover:text-lucas-cream transition-colors duration-500 delay-100 flex items-center gap-3">
+          <span className="flex items-center gap-3">
               Return To Home
-              <span className="text-lucas-slate group-hover:text-lucas-cream/70 transition-colors">→</span>
+              <span aria-hidden="true">→</span>
           </span>
         </Link>
       </motion.div>

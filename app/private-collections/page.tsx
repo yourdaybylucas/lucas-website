@@ -818,12 +818,11 @@ export default function PrivateCollectionsPage() {
                                 href="https://calendar.app.google/hHwZZoq1LYGWCo6u9" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase text-lucas-navy border border-lucas-navy overflow-hidden bg-lucas-cream rounded-none"
+                                className="lucas-button inline-flex items-center justify-center px-12 py-5 font-sans text-[10px] tracking-zissou uppercase rounded-none"
                             >
-                                <span className="absolute inset-0 w-full h-full bg-lucas-orange transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0"></span>
-                                <span className="relative z-10 flex items-center gap-4 group-hover:text-lucas-cream transition-colors duration-500 delay-100">
+                                <span className="flex items-center gap-4">
                                     Access The Calendar
-                                    <span className="text-lucas-slate group-hover:text-lucas-cream/70 transition-colors">→</span>
+                                    <span aria-hidden="true">→</span>
                                 </span>
                             </a>
                         </motion.div>

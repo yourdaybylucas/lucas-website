@@ -42,8 +42,10 @@ export default function CinematicPlayer({
     }
 
     return (
-        <div 
-            className={`relative w-full aspect-video bg-[#0a1118] overflow-hidden cursor-pointer group shadow-2xl border border-lucas-navy/10 ${className}`}
+        <button
+            type="button"
+            aria-label={`Play film: ${altText}`}
+            className={`relative block w-full aspect-video bg-[#0a1118] overflow-hidden cursor-pointer group/player border border-lucas-navy/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange ${className}`}
             onClick={() => setIsPlaying(true)}
         >
             <Image
@@ -52,7 +54,7 @@ export default function CinematicPlayer({
                 alt={altText}
                 fill
                 sizes="(max-width: 768px) 100vw, 80vw"
-                className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out z-0"
+                className="object-cover z-0"
                 onError={() => {
                     if (allowLowResThumbnailFallback && thumbnailVariant === "maxresdefault") {
                         setThumbnailVariant("hqdefault");
@@ -60,14 +62,14 @@ export default function CinematicPlayer({
                 }}
             />
             
-            {/* The Zissou Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-lucas-orange/90 backdrop-blur-md flex items-center justify-center text-lucas-cream transform group-hover:scale-110 transition-transform duration-500 ease-out shadow-xl">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+            {/* Only the play control changes colour; the film stays still. */}
+            <span className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                <span className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-lucas-cream/70 bg-lucas-navy flex items-center justify-center text-lucas-cream group-hover/player:bg-lucas-cream group-hover/player:text-lucas-navy group-focus-visible/player:bg-lucas-cream group-focus-visible/player:text-lucas-navy">
+                    <svg aria-hidden="true" className="w-5 h-5 md:w-6 md:h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                     </svg>
-                </div>
-            </div>
-        </div>
+                </span>
+            </span>
+        </button>
     );
 }

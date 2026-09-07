@@ -4,7 +4,6 @@ import { Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
-import CustomCursor from '@/components/CustomCursor';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -97,7 +96,6 @@ export default function RootLayout({
         />
 
         <SmoothScrollProvider>
-          <CustomCursor />
           
           {/* analog grain overlay */}
           <div className="fixed inset-0 z-50 pointer-events-none bg-grain opacity-[0.15] mix-blend-multiply"></div>

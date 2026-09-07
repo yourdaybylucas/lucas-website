@@ -6,38 +6,29 @@ import { useEffect, useState } from "react";
 // Added a 'desktopOnly' flag to the 4 clips we want to kill on mobile
 const clipData = [
     // Visible Mobile & Desktop
-    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[12%] left-[5%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, parallax: -1, desktopOnly: false },
-    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[15%] right-[3%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, parallax: 1.2, desktopOnly: false },
-    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, parallax: 0.6, desktopOnly: false },
-    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, parallax: 1, desktopOnly: false },
-    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[74%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, parallax: -0.7, desktopOnly: false },
+    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[12%] left-[5%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, desktopOnly: false },
+    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[15%] right-[3%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, desktopOnly: false },
+    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, desktopOnly: false },
+    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, desktopOnly: false },
+    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[74%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, desktopOnly: false },
     
     // Desktop Only
-    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, parallax: 0.5, desktopOnly: true },
-    { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, parallax: -0.8, desktopOnly: true },
-    { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, delay: 0.3, parallax: -1.2, desktopOnly: true },
-    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, parallax: 1.3, desktopOnly: true },
+    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, desktopOnly: true },
+    { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, desktopOnly: true },
+    { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, delay: 0.3, desktopOnly: true },
+    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, desktopOnly: true },
 ];
 
-const FloatingClip = ({ data, mouseX, mouseY }: any) => {
+const FilmClip = ({ data }: { data: (typeof clipData)[number] }) => {
     return (
         <motion.div
-            whileHover={{ scale: 1.05, zIndex: 50 }} 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-                opacity: 1,
-                y: mouseY * data.parallax,
-                x: mouseX * data.parallax,
-                rotate: data.rotate
-            }}
-            transition={{
-                opacity: { duration: 1, delay: data.delay },
-                y: { type: "spring", stiffness: 40, damping: 20 },
-                x: { type: "spring", stiffness: 40, damping: 20 },
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: data.delay }}
             className={`absolute bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
             style={{ 
-                width: 'clamp(100px, 24vw, 260px)' 
+                width: 'clamp(100px, 24vw, 260px)',
+                rotate: data.rotate
             }}
         >
             <div className="relative w-full aspect-[4/3] bg-lucas-navy/10 overflow-hidden mb-2 md:mb-3 pointer-events-none">
@@ -60,7 +51,6 @@ const FloatingClip = ({ data, mouseX, mouseY }: any) => {
 };
 
 export default function HeroSection() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isDesktop, setIsDesktop] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
 
@@ -77,17 +67,6 @@ export default function HeroSection() {
         return () => window.removeEventListener("resize", checkDevice);
     }, []);
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: (e.clientX / window.innerWidth - 0.5) * 20,
-                y: (e.clientY / window.innerHeight - 0.5) * 20,
-            });
-        };
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
-
     // Strip out the 4 desktop videos if we are on mobile to save payload
     const visibleClips = isMounted && isDesktop ? clipData : clipData.filter(c => !c.desktopOnly);
 
@@ -97,12 +76,7 @@ export default function HeroSection() {
             {/* Background Scattered Clips */}
             <div className="absolute inset-0 z-10">
                 {visibleClips.map((clip) => (
-                    <FloatingClip 
-                        key={clip.id} 
-                        data={clip} 
-                        mouseX={mousePosition.x} 
-                        mouseY={mousePosition.y} 
-                    />
+                    <FilmClip key={clip.id} data={clip} />
                 ))}
             </div>
 
