@@ -117,12 +117,9 @@ export default function CollectionsPage() {
                         
                         <div className="flex justify-between items-start mb-12 relative z-10">
                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
-                            <div className="flex items-center gap-2">
-                                <span className="w-1 h-1 bg-lucas-orange rounded-full animate-pulse"></span>
-                                <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 px-3 py-1.5">
-                                    The Flagship
-                                </span>
-                            </div>
+                            <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 px-3 py-1.5">
+                                The Flagship
+                            </span>
                         </div>
                         <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] italic mb-10 text-lucas-cream relative z-10">
                             The Analog

@@ -64,7 +64,7 @@ export default function CinematicPlayer({
             
             {/* Only the play control changes colour; the film stays still. */}
             <span className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <span className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-lucas-cream/70 bg-lucas-navy flex items-center justify-center text-lucas-cream group-hover/player:bg-lucas-cream group-hover/player:text-lucas-navy group-focus-visible/player:bg-lucas-cream group-focus-visible/player:text-lucas-navy">
+                <span className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-lucas-orange flex items-center justify-center text-lucas-cream group-hover/player:bg-lucas-cream group-hover/player:text-lucas-orange group-focus-visible/player:bg-lucas-cream group-focus-visible/player:text-lucas-orange">
                     <svg aria-hidden="true" className="w-5 h-5 md:w-6 md:h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                     </svg>

@@ -6,26 +6,23 @@ import { useEffect, useState } from "react";
 // Added a 'desktopOnly' flag to the 4 clips we want to kill on mobile
 const clipData = [
     // Visible Mobile & Desktop
-    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[12%] left-[5%] md:top-[12%] md:left-[10%]", rotate: -6, delay: 0.2, desktopOnly: false },
-    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[15%] right-[3%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, delay: 0.4, desktopOnly: false },
-    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, delay: 0.9, desktopOnly: false },
-    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, delay: 0.6, desktopOnly: false },
-    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[74%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, delay: 1.0, desktopOnly: false },
+    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[12%] left-[5%] md:top-[12%] md:left-[10%]", rotate: -6, desktopOnly: false },
+    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[15%] right-[3%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, desktopOnly: false },
+    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, desktopOnly: false },
+    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, desktopOnly: false },
+    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[74%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, desktopOnly: false },
     
     // Desktop Only
-    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, delay: 0.8, desktopOnly: true },
-    { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, delay: 0.5, desktopOnly: true },
-    { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, delay: 0.3, desktopOnly: true },
-    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, delay: 0.7, desktopOnly: true },
+    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, desktopOnly: true },
+    { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, desktopOnly: true },
+    { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, desktopOnly: true },
+    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, desktopOnly: true },
 ];
 
 const FilmClip = ({ data }: { data: (typeof clipData)[number] }) => {
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: data.delay }}
-            className={`absolute hover:z-10 bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
+            className={`absolute bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
             style={{ 
                 width: 'clamp(100px, 24vw, 260px)',
                 rotate: data.rotate
@@ -74,11 +71,16 @@ export default function HeroSection() {
         <section className="relative w-full h-[100dvh] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
 
             {/* Background Scattered Clips */}
-            <div className="absolute inset-0 z-10">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isMounted ? 1 : 0 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="absolute inset-0 z-10"
+            >
                 {visibleClips.map((clip) => (
                     <FilmClip key={clip.id} data={clip} />
                 ))}
-            </div>
+            </motion.div>
 
             {/* Main Hero Content */}
             <div className="relative z-20 text-center flex flex-col items-center pointer-events-none">
