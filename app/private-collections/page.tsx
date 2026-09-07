@@ -2,20 +2,20 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { X, Maximize } from "lucide-react";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+        transition: { duration: 0.45 }
     }
 };
 
 const fadeUpItem = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.45, ease: "easeOut" as const } }
 };
 
 const sectionsNav = [
@@ -30,10 +30,6 @@ export default function PrivateCollectionsPage() {
     const [activeSection, setActiveSection] = useState("Intro");
     const [activeVideo, setActiveVideo] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'narrative' | 'purist'>('narrative');
-
-    const narrativeRef = useRef<HTMLDivElement | null>(null);
-    const puristRef = useRef<HTMLDivElement | null>(null);
-    const [tabContentHeight, setTabContentHeight] = useState(0);
 
     // intersection observer to highlight the active index dot
     useEffect(() => {
@@ -54,29 +50,6 @@ export default function PrivateCollectionsPage() {
         sections.forEach((section) => observer.observe(section));
         return () => sections.forEach((section) => observer.unobserve(section));
     }, []);
-
-    useEffect(() => {
-        const updateHeight = () => {
-            const narrativeHeight = narrativeRef.current?.offsetHeight ?? 0;
-            const puristHeight = puristRef.current?.offsetHeight ?? 0;
-            setTabContentHeight(Math.max(narrativeHeight, puristHeight));
-        };
-
-        updateHeight();
-
-        window.addEventListener("resize", updateHeight);
-        return () => window.removeEventListener("resize", updateHeight);
-    }, []);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            const narrativeHeight = narrativeRef.current?.offsetHeight ?? 0;
-            const puristHeight = puristRef.current?.offsetHeight ?? 0;
-            setTabContentHeight(Math.max(narrativeHeight, puristHeight));
-        }, 50);
-
-        return () => clearTimeout(timeout);
-    }, [activeTab]);
 
     const scrollTo = (id: string) => {
         const element = document.getElementById(id);
@@ -125,11 +98,11 @@ export default function PrivateCollectionsPage() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-[200] flex items-center justify-center bg-lucas-navy/95 backdrop-blur-xl p-4 md:p-12"
+                        className="fixed inset-0 z-[200] flex items-center justify-center bg-lucas-navy p-4 md:p-12"
                         onClick={() => setActiveVideo(null)}
                     >
                         <button 
-                            className="absolute top-6 right-6 md:top-12 md:right-12 text-lucas-cream hover:text-lucas-orange transition-colors duration-300 z-10"
+                            className="absolute top-6 right-6 md:top-12 md:right-12 text-lucas-cream hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange z-10"
                             onClick={() => setActiveVideo(null)}
                             aria-label="Close video"
                         >
@@ -137,7 +110,7 @@ export default function PrivateCollectionsPage() {
                         </button>
                         
                         <div 
-                            className="relative w-full max-w-6xl aspect-video bg-black shadow-2xl overflow-hidden border border-lucas-slate/20"
+                            className="relative w-full max-w-6xl aspect-video bg-black shadow-md overflow-hidden border border-lucas-slate/20"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <iframe
@@ -167,9 +140,9 @@ export default function PrivateCollectionsPage() {
                         <button 
                             key={item.id}
                             onClick={() => scrollTo(item.id)}
-                            className={`flex items-center gap-6 text-left transition-colors duration-300 ${activeSection === item.id ? 'text-lucas-orange' : 'text-lucas-slate hover:text-lucas-navy'}`}
+                            className={`flex items-center gap-6 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange ${activeSection === item.id ? 'text-lucas-orange' : 'text-lucas-slate hover:text-lucas-navy'}`}
                         >
-                            <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id ? 'bg-lucas-orange scale-125' : 'bg-lucas-cream border border-lucas-navy/20'}`}></div>
+                            <div className={`w-2 h-2 rounded-full ${activeSection === item.id ? 'bg-lucas-orange' : 'bg-lucas-cream border border-lucas-navy/20'}`}></div>
                             {item.label}
                         </button>
                     ))}
@@ -177,21 +150,21 @@ export default function PrivateCollectionsPage() {
             </aside>
 
             {/* MOBILE PROGRESS MAP (Sticky Bottom - Mobile Only) */}
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] lg:hidden flex items-center gap-4 bg-lucas-navy/90 backdrop-blur-md px-6 py-4 rounded-full border border-lucas-cream/10 shadow-2xl transition-all duration-500">
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] lg:hidden flex items-center gap-2 bg-lucas-navy px-6 py-4 rounded-full border border-lucas-cream/10 shadow-md">
                 {sectionsNav.map((item, index) => (
                     <button
                         key={item.id}
                         onClick={() => scrollTo(item.id)}
                         aria-label={`Scroll to ${item.label}`}
-                        className="relative flex items-center justify-center p-1"
+                        className="relative group/nav flex items-center justify-center w-8 h-8 focus-visible:outline-2 focus-visible:outline-lucas-cream"
                     >
-                        <div className={`rounded-full transition-all duration-500 ease-out ${
+                        <div className={`w-2 h-2 rounded-full ${
                             activeSection === item.id 
-                                ? 'w-2.5 h-2.5 bg-lucas-orange' 
-                                : 'w-1.5 h-1.5 bg-lucas-cream/30 hover:bg-lucas-cream/60'
+                                ? 'bg-lucas-orange'
+                                : 'bg-lucas-cream/30 group-hover/nav:bg-lucas-cream/60'
                         }`} />
                         {index < sectionsNav.length - 1 && (
-                            <div className={`absolute left-full top-1/2 -translate-y-1/2 h-px transition-all duration-500 w-4 ${
+                            <div className={`absolute left-full top-1/2 -translate-y-1/2 h-px w-2 ${
                                 sectionsNav.findIndex(s => s.id === activeSection) >= index + 1
                                     ? 'bg-lucas-orange/50'
                                     : 'bg-transparent'
@@ -201,48 +174,45 @@ export default function PrivateCollectionsPage() {
                 ))}
             </div>
 
-            {/* SCROLLING CONTENT (The Snapping Container) */}
+            {/* SCROLLING CONTENT */}
             <div 
                 id="dossier-scroll-container" 
-                className="flex-1 h-full overflow-y-auto overflow-x-hidden snap-y snap-proximity scroll-smooth px-6 lg:px-16"
+                className="flex-1 min-w-0 h-full overflow-y-auto overflow-x-hidden snap-y snap-proximity scroll-smooth [overflow-anchor:none] px-6 lg:px-16"
             >
                 <div className="w-full max-w-6xl mx-auto flex flex-col">
                     
                     {/* 01. The Grounded Welcome */}
-                    <section id="Intro" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-20 relative">
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                    <section id="Intro" className="snap-start min-h-[100dvh] w-full flex flex-col justify-center py-20 relative">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
                             
                             <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-7 flex flex-col relative"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.45, ease: "easeOut" }}
+                                className="lg:col-span-7 min-w-0 flex flex-col relative"
                             >
-                                <div className="absolute -top-12 lg:-top-20 -left-4 lg:-left-12 text-lucas-slate/15 font-sans text-[10rem] lg:text-[14rem] font-light leading-none pointer-events-none select-none">
-                                    [
-                                </div>
                                 
-                                <div className="relative z-10 pl-2 lg:pl-6">
+                                <div className="relative z-10">
                                     <p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
-                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt.</em>
+                                        i’m there to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt.</em>
                                     </p>
                                 </div>
                             </motion.div>
 
                             <motion.div 
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-                                className="lg:col-span-5 relative aspect-[4/3] bg-lucas-navy/5 shadow-2xl overflow-hidden group"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.45, ease: "easeOut" }}
+                                className="lg:col-span-5 min-w-0 relative aspect-[4/3] bg-lucas-navy/5 shadow-md overflow-hidden group"
                             >
-                                <div className="absolute inset-0 bg-lucas-navy/10 z-10 group-hover:bg-transparent transition-colors duration-1000"></div>
+                                <div className="absolute inset-0 bg-lucas-navy/10 z-10"></div>
                                 <video 
                                     src="/videos/clip_10cheers.mp4" 
                                     autoPlay 
                                     loop 
                                     muted 
                                     playsInline
-                                    className="object-cover w-full h-full grayscale-[50%] contrast-[1.1] group-hover:grayscale-0 transition-all duration-1000"
+                                    className="object-cover w-full h-full grayscale-[50%] contrast-[1.1]"
                                 />
                             </motion.div>
 
@@ -250,7 +220,7 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 02. The Collections Grid */}
-                    <section id="collections" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-start lg:justify-center py-10 lg:py-16 relative">
+                    <section id="collections" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col justify-start py-10 lg:py-16 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
@@ -263,81 +233,65 @@ export default function PrivateCollectionsPage() {
                                         The Collections
                                     </h2>
                                     <p className="font-serif text-[clamp(1rem,1.25vw,1.125rem)] text-lucas-navy/90 italic">
-                                        pick a philosophy. the baseline is included in everything.
+                                        choose digital, add super 8, or bring me along for the weekend.
                                     </p>
                                 </div>
 
                                 <div className="flex bg-lucas-cream border border-lucas-navy/20 p-1 relative w-full md:w-fit md:self-start xl:self-auto shadow-sm">
                                     <div 
-                                        className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-lucas-navy transition-all duration-500 ease-[0.16,1,0.3,1]"
+                                        className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-lucas-navy ease-[0.16,1,0.3,1]"
                                         style={{ left: activeTab === 'narrative' ? '4px' : 'calc(50%)' }}
                                     ></div>
                                     
                                     <button 
                                         onClick={() => setActiveTab('narrative')}
-                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap transition-colors duration-500 ${activeTab === 'narrative' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-navy'}`}
+                                        aria-pressed={activeTab === 'narrative'}
+                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lucas-orange ${activeTab === 'narrative' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-navy'}`}
                                     >
                                         The Narrative
                                     </button>
                                     <button 
                                         onClick={() => setActiveTab('purist')}
-                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap transition-colors duration-500 ${activeTab === 'purist' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-orange'}`}
+                                        aria-pressed={activeTab === 'purist'}
+                                        className={`relative z-10 flex-1 md:flex-none md:w-40 px-6 py-2.5 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lucas-orange ${activeTab === 'purist' ? 'text-lucas-cream' : 'text-lucas-slate hover:text-lucas-orange'}`}
                                     >
                                         The Purist
                                     </button>
                                 </div>
                             </div>
 
-                            <motion.div variants={fadeUpItem} className="mb-10 lg:mb-12">
-                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-y border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20">
-                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 01 ]</span>
-                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">
-                                            {activeTab === 'narrative' ? 'Unlimited Coverage' : '8 Hours Coverage'}
-                                        </h4>
-                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">
-                                            {activeTab === 'narrative' ? 'from getting ready to lights up.' : 'the core framework. options to extend.'}
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 02 ]</span>
-                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Provincial Travel</h4>
-                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">miles within ontario are on me.</p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 03 ]</span>
-                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Aerial Perspectives</h4>
-                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">drone documentation (if permitted).</p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-4 lg:p-5 hover:bg-lucas-navy/5 transition-colors duration-slow">
-                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-orange font-bold">[ 04 ]</span>
-                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy leading-tight mt-1">Digital Archive</h4>
-                                        <p className="font-serif text-[11px] text-lucas-slate italic mt-1 leading-tight">curated online delivery of all films.</p>
-                                    </div>
-                                </div>
+                            <motion.div variants={fadeUpItem} className="mb-6 border-y border-lucas-navy/20 py-3">
+                                <p className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-3">
+                                    {activeTab === 'narrative' ? 'Included in all three collections' : 'Included with The Purist'}
+                                </p>
+                                <ul className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
+                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">01</span>{activeTab === 'narrative' ? 'Unlimited coverage' : '8 hours coverage'}</li>
+                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">02</span>Travel within Ontario</li>
+                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">03</span>Drone footage (where permitted)</li>
+                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">04</span>Online delivery of all films</li>
+                                </ul>
+                                <p className="font-serif text-[11px] text-lucas-slate italic mt-2">
+                                    {activeTab === 'narrative' ? 'coverage from getting ready to lights up.' : 'additional coverage available beyond the included 8 hours.'}
+                                </p>
                             </motion.div>
+
+                            <p className="font-serif text-[12px] text-lucas-slate italic mb-4">select a film below to watch an example.</p>
 
                             <div
                                 className="grid grid-cols-1 grid-rows-1 w-full relative"
-                                style={{ height: tabContentHeight ? `${tabContentHeight}px` : "auto" }}
                             >
-                                <AnimatePresence initial={false} mode="wait">
+
                                     {activeTab === 'narrative' ? (
                                         <motion.div
-                                            ref={narrativeRef}
                                             key="narrative-grid"
-                                            initial={{ opacity: 0, y: 15 }}
-                                            animate={{ opacity: 1, y: 0, zIndex: 10 }}
-                                            exit={{ opacity: 0, y: -15, zIndex: 0 }}
-                                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                            initial={false}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0 }}
                                             className="col-start-1 row-start-1 grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 relative items-stretch w-full h-full"
                                         >
                                             {/* VOL 01 */}
-                                            <div className="flex flex-col group transition-colors duration-1000 relative overflow-hidden bg-lucas-cream hover:bg-lucas-navy/5 h-full w-full">
-                                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none">
-                                                    <video src="/videos/clip_digital.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                                                </div>
-                                                <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20"></div>
+                                            <div className="flex flex-col group relative overflow-hidden bg-lucas-cream h-full w-full">
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
                                                     <div className="flex justify-between items-start mb-6 lg:mb-8">
@@ -355,30 +309,30 @@ export default function PrivateCollectionsPage() {
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow">
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('GHhmsEs_8x8')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">5-minute narrative film</span>
+                                                            <button onClick={() => setActiveVideo('GHhmsEs_8x8')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">5-minute wedding film</span>
                                                                 </span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('ZbMe6X3OAQ8')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary ceremony edit</span>
+                                                            <button onClick={() => setActiveVideo('ZbMe6X3OAQ8')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">ceremony edit</span>
                                                                 </span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('Ys5aHnB63aU')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary reception edit</span>
+                                                            <button onClick={() => setActiveVideo('Ys5aHnB63aU')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">reception edit</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ speeches & first dances ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ speeches & first dances ]</span>
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -386,20 +340,14 @@ export default function PrivateCollectionsPage() {
                                             </div>
 
                                             {/* VOL 02 */}
-                                            <div className="flex flex-col bg-lucas-navy text-lucas-cream relative z-20 lg:-translate-y-4 shadow-2xl border border-lucas-navy group overflow-hidden h-full w-full">
+                                            <div className="flex flex-col bg-lucas-navy text-lucas-cream relative z-20 shadow-md border border-lucas-navy group overflow-hidden h-full w-full">
                                                 <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
-                                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-15 transition-opacity duration-1000 pointer-events-none mix-blend-screen">
-                                                    <video src="/videos/clip_super8.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover filter contrast-150" />
-                                                </div>
 
-                                                <div className="absolute top-0 bottom-0 left-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
-                                                <div className="absolute top-0 bottom-0 right-2 w-2 border-y-[10px] border-transparent border-dashed group-hover:border-lucas-cream/10 transition-colors duration-700 pointer-events-none z-0"></div>
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
                                                     <div className="flex justify-between items-start mb-6 lg:mb-8">
                                                         <div className="flex items-center gap-2">
                                                             <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
-                                                            <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                         </div>
                                                         <p className="font-sans text-xs tracking-widest text-lucas-cream">$6,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
@@ -408,42 +356,42 @@ export default function PrivateCollectionsPage() {
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-cream/10 pb-4 lg:pb-6">
                                                         <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
-                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-orange">Hybrid + Physical</span>
+                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-orange">Digital + Super 8</span>
                                                     </div>
 
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-cream flex-grow">
                                                         <li className="flex items-start gap-4 opacity-60">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <span>everything in vol. 01</span>
+                                                            <span>ceremony & reception edits from The Essential</span>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('q2Qw5G4M0Lc')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">5-minute narrative film</span>
+                                                            <button onClick={() => setActiveVideo('q2Qw5G4M0Lc')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">5-minute wedding film</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ digital + super 8 ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ digital + super 8 ]</span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
+                                                            <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-minute super 8mm film</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ authentic kodak stock ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ authentic kodak stock ]</span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('3hDxnAgeL-Y')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
+                                                            <button onClick={() => setActiveVideo('3hDxnAgeL-Y')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">30-second digital reel</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ delivered before you wake up ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ delivered the next morning ]</span>
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -451,11 +399,7 @@ export default function PrivateCollectionsPage() {
                                             </div>
 
                                             {/* VOL 03 */}
-                                            <div className="flex flex-col group transition-colors duration-1000 relative overflow-hidden bg-lucas-cream hover:bg-lucas-navy/5 h-full w-full">
-                                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none">
-                                                    <video src="/videos/clip_weekend.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                                                </div>
-                                                <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20"></div>
+                                            <div className="flex flex-col group relative overflow-hidden bg-lucas-cream h-full w-full">
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
                                                     <div className="flex justify-between items-start mb-6 lg:mb-8">
@@ -467,35 +411,35 @@ export default function PrivateCollectionsPage() {
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-navy/10 pb-4 lg:pb-6">
                                                         <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
-                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-navy">Multi-Day Hybrid</span>
+                                                        <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-navy">Digital + Super 8 · Multi-Day</span>
                                                     </div>
 
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow">
                                                         <li className="flex items-start gap-4 opacity-60">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <span>everything in vol. 02</span>
+                                                            <span>everything in The Analog</span>
                                                         </li>
                                                         <li className="flex items-start gap-4">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
                                                             <div className="flex flex-col items-start text-left">
-                                                                <span className="border-b border-transparent pb-0.5">multi-day coverage</span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ welcome party + the day ]</span>
+                                                                <span className="border-b border-transparent pb-0.5">welcome party coverage</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ alongside the wedding day ]</span>
                                                             </div>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('xCRgV8RAX78')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">weekend narrative film</span>
+                                                            <button onClick={() => setActiveVideo('xCRgV8RAX78')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">watch a weekend example</span>
                                                                 </span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 pt-2">
                                                             <span className="text-lucas-orange/70 mt-0.5">+</span>
                                                             <div className="flex flex-col items-start">
-                                                                <span>the physical artifacts</span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ printed frames + super 8 spool + linen box ]</span>
+                                                                <span>exclusive focus</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block">[ your wedding is the only one I take on that weekend ]</span>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -504,12 +448,11 @@ export default function PrivateCollectionsPage() {
                                         </motion.div>
                                     ) : (
                                         <motion.div
-                                            ref={puristRef}
                                             key="purist-grid"
-                                            initial={{ opacity: 0, y: 15 }}
-                                            animate={{ opacity: 1, y: 0, zIndex: 10 }}
-                                            exit={{ opacity: 0, y: -15, zIndex: 0 }}
-                                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                            initial={false}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0 }}
                                             className="col-start-1 row-start-1 border border-lucas-navy/20 bg-lucas-cream relative overflow-hidden shadow-sm w-full h-full"
                                         >
                                             <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange"></div>
@@ -520,7 +463,6 @@ export default function PrivateCollectionsPage() {
                                                         <div className="flex justify-between items-start mb-10">
                                                             <div className="flex items-center gap-2">
                                                                 <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 00 ]</span>
-                                                                <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                                             </div>
                                                             <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,400 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                         </div>
@@ -535,7 +477,7 @@ export default function PrivateCollectionsPage() {
                                                         </div>
 
                                                         <p className="font-serif text-[clamp(0.85rem,1vw,0.95rem)] leading-[1.6] text-lucas-navy/80 lowercase italic pr-4">
-                                                            for couples who don't want a heavily produced highlight film. entirely unforced. driven by the raw, nostalgic weight of authentic super 8mm and full-length documentary edits. anchored by a 60-second digital reel delivered in one week.
+                                                            for couples drawn to real super 8 film. a short film, full-length digital ceremony and reception edits, and a 60-second digital reel delivered in one week.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -544,47 +486,47 @@ export default function PrivateCollectionsPage() {
                                                     <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none mix-blend-overlay z-0"></div>
 
                                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-8 relative z-10">
-                                                        [ The Inventory ]
+                                                        [ Your Films ]
                                                     </span>
 
                                                     <ul className="flex flex-col gap-6 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow relative z-10">
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-min super 8mm core film</span>
+                                                            <button onClick={() => setActiveVideo('Ozy1MUKZZR4')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">3-minute super 8mm film</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ authentic kodak stock ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ authentic kodak stock ]</span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('pjG38GNQOxQ')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary ceremony edit</span>
+                                                            <button onClick={() => setActiveVideo('pjG38GNQOxQ')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">ceremony edit</span>
                                                                 </span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('Fn9sr1eJESY')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
-                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">documentary reception edit</span>
+                                                            <button onClick={() => setActiveVideo('Fn9sr1eJESY')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
+                                                                    <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">reception edit</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ speeches & first dances ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ speeches & first dances ]</span>
                                                             </button>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <button onClick={() => setActiveVideo('hUOVbTsxAho')} className="text-left flex flex-col items-start hover:text-lucas-orange transition-colors duration-300 w-full">
-                                                                <span className="flex items-center gap-2 transform transition-transform duration-300 group-hover/link:translate-x-1">
-                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange transition-colors" />
+                                                            <button onClick={() => setActiveVideo('hUOVbTsxAho')} className="text-left flex flex-col items-start hover:text-lucas-orange focus-visible:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-orange w-full">
+                                                                <span className="flex items-center gap-2 transform">
+                                                                    <Maximize size={12} className="text-lucas-slate group-hover/link:text-lucas-orange" />
                                                                     <span className="border-b border-transparent group-hover/link:border-lucas-orange/30 pb-0.5">60-second digital reel</span>
                                                                 </span>
-                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform transition-transform duration-300 group-hover/link:translate-x-1">[ delivered in one week ]</span>
+                                                                <span className="text-[10px] text-lucas-slate normal-case font-serif italic tracking-normal mt-1 block transform">[ delivered in one week ]</span>
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -592,21 +534,21 @@ export default function PrivateCollectionsPage() {
 
                                                 <div className="p-8 lg:p-12 bg-lucas-cream flex flex-col relative h-full">
                                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-8 block">
-                                                        [ The Additions ]
+                                                        [ Optional Additions ]
                                                     </span>
 
                                                     <ul className="flex flex-col gap-6 font-sans text-[10px] uppercase tracking-widest text-lucas-navy flex-grow">
-                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group hover:bg-lucas-navy/5 transition-colors p-2 -mx-2 rounded-sm cursor-default">
+                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group p-2 -mx-2 rounded-sm cursor-default">
                                                             <div className="flex justify-between items-end mb-1">
-                                                                <span className="font-bold text-lucas-navy group-hover:text-lucas-orange transition-colors">+ Extra Super 8mm Roll</span>
+                                                                <span className="font-bold text-lucas-navy">+ Extra Super 8mm Roll</span>
                                                                 <span className="text-lucas-orange">$800</span>
                                                             </div>
                                                             <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal">[ brings the core film to 6 minutes ]</span>
                                                         </li>
 
-                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group hover:bg-lucas-navy/5 transition-colors p-2 -mx-2 rounded-sm cursor-default">
+                                                        <li className="flex flex-col border-b border-lucas-navy/10 pb-4 group p-2 -mx-2 rounded-sm cursor-default">
                                                             <div className="flex justify-between items-end mb-1">
-                                                                <span className="font-bold text-lucas-navy group-hover:text-lucas-orange transition-colors">+ Additional Time</span>
+                                                                <span className="font-bold text-lucas-navy">+ Additional Time</span>
                                                                 <span className="text-lucas-orange">$300</span>
                                                             </div>
                                                             <span className="text-[9px] text-lucas-slate normal-case font-serif italic tracking-normal">[ per extra hour ]</span>
@@ -615,21 +557,21 @@ export default function PrivateCollectionsPage() {
 
                                                     <div className="mt-8 pt-6 border-t border-lucas-navy/20">
                                                         <p className="font-serif text-[13px] text-lucas-slate lowercase italic leading-relaxed">
-                                                            all modular additions are completely optional and can be decided upon one month prior to the day.
+                                                            additions are optional. you can decide one month before the wedding.
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </motion.div>
                                     )}
-                                </AnimatePresence>
+
                             </div>
                         </motion.div>
                     </section>
 
                     {/* 03. Logistics / FAQs */}
-                    <section id="notes" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col justify-center py-12 lg:py-16 relative">
-                        <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] rounded-sm shadow-2xl relative overflow-hidden w-full">
+                    <section id="notes" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col justify-center py-12 lg:py-16 relative">
+                        <div className="bg-lucas-navy text-lucas-cream p-[clamp(1.5rem,4vw,3.5rem)] rounded-sm shadow-md relative overflow-hidden w-full">
                             <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay"></div>
                             
                             <motion.div 
@@ -643,9 +585,6 @@ export default function PrivateCollectionsPage() {
                                     <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold">
                                         Notes
                                     </h2>
-                                    <span className="font-sans text-[10px] tracking-zissou text-lucas-cream/60 uppercase hidden md:block">
-                                        [ Logistics & Parameters ]
-                                    </span>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-16 gap-y-8 lg:gap-y-10">
@@ -703,26 +642,19 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 04. The Blueprint / Progression */}
-                    <section id="progression" className="min-h-[100dvh] w-full snap-start flex flex-col justify-center py-12 lg:py-24 relative bg-lucas-cream overflow-hidden">
+                    <section id="progression" className="snap-start min-h-[100dvh] w-full flex flex-col justify-center py-12 lg:py-24 relative bg-lucas-cream overflow-hidden">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
-                            className="w-full max-w-6xl mx-auto px-6 lg:px-16"
+                            className="w-full max-w-6xl mx-auto"
                         >
-                            <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 gap-4">
+                            <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
                                 <div>
-                                    <p className="font-sans uppercase tracking-[0.2em] text-lucas-slate text-[10px] mb-2">
-                                        [ the blueprint ]
-                                    </p>
                                     <h2 className="font-sans font-bold text-3xl md:text-4xl text-lucas-navy uppercase tracking-tight">
                                         How This Works.
                                     </h2>
-                                </div>
-                                <div className="flex flex-col md:items-end">
-                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
-                                    <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy">LC-PRG-2026</span>
                                 </div>
                             </div>
 
@@ -737,16 +669,16 @@ export default function PrivateCollectionsPage() {
                                     <motion.div 
                                         key={index}
                                         variants={fadeUpItem}
-                                        className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-5 border-b border-dashed border-lucas-navy/20 group hover:bg-lucas-navy/5 transition-colors duration-500 relative px-4 -mx-4"
+                                        className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-5 border-b border-dashed border-lucas-navy/20 group relative px-4 -mx-4"
                                     >
                                         <div className="md:col-span-3 flex items-center gap-4">
                                             <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center border border-lucas-navy/30 rounded-none bg-lucas-cream">
                                                 {step.status === 'past' && <div className="w-full h-full bg-lucas-slate/40"></div>}
-                                                {step.status === 'active' && <div className="w-2 h-2 bg-lucas-orange animate-pulse"></div>}
+                                                {step.status === 'active' && <div className="w-2 h-2 bg-lucas-orange"></div>}
                                             </div>
                                             <div className="flex flex-col">
                                                 <span className="font-sans text-[9px] text-lucas-slate tracking-zissou uppercase mb-0.5">[{step.ref}]</span>
-                                                <span className={`font-sans uppercase tracking-[0.2em] text-[10px] font-bold transition-colors duration-500 ${
+                                                <span className={`font-sans uppercase tracking-[0.2em] text-[10px] font-bold ${
                                                     step.status === 'active' 
                                                         ? 'text-lucas-orange' 
                                                         : step.status === 'past' 
@@ -776,11 +708,11 @@ export default function PrivateCollectionsPage() {
 
                                         <div className="hidden md:flex md:col-span-1 items-center justify-end">
                                             {step.status === 'active' ? (
-                                                <div className="w-8 h-8 relative border border-lucas-orange/30 overflow-hidden mix-blend-multiply transition-transform duration-500 group-hover:scale-110">
+                                                <div className="w-8 h-8 relative border border-lucas-orange/30 overflow-hidden mix-blend-multiply">
                                                     <img src="/images/img1.JPG" alt="current step" className="object-cover w-full h-full grayscale opacity-60" />
                                                 </div>
                                             ) : (
-                                                <div className="w-8 h-8 border border-lucas-slate/10 flex items-center justify-center transition-colors duration-500 group-hover:border-lucas-slate/30">
+                                                <div className="w-8 h-8 border border-lucas-slate/10 flex items-center justify-center">
                                                     <div className="w-1 h-1 rounded-full bg-lucas-slate/20"></div>
                                                 </div>
                                             )}
@@ -792,19 +724,14 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 05. The Intro (CTA) */}
-                    <section id="booking" className="min-h-[100dvh] h-auto w-full snap-start flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
+                    <section id="booking" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col md:flex-row items-center justify-between py-16 lg:py-24 relative gap-12 lg:gap-16">
                         <motion.div 
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.45, ease: "easeOut" }}
                             className="w-full md:w-1/2 flex flex-col items-start pt-12 md:pt-0 z-10"
                         >
-                            <div className="flex items-center mb-6">
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                                    [ 05 // Next Steps ]
-                                </span>
-                            </div>
                             
                             <h2 className="font-sans font-bold text-[clamp(3rem,5vw,4.5rem)] uppercase text-lucas-navy mb-6 leading-[0.9] tracking-tight">
                                 Let's Talk.
@@ -828,25 +755,17 @@ export default function PrivateCollectionsPage() {
                         </motion.div>
 
                         <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 1 }}
-                            className="w-full md:w-1/2 relative aspect-[3/4] lg:aspect-[4/5] bg-lucas-navy/5 shadow-2xl group overflow-hidden border border-lucas-navy/10"
+                            transition={{ duration: 0.45, ease: "easeOut" }}
+                            className="w-full md:w-1/2 relative aspect-[3/4] lg:aspect-[4/5] bg-lucas-navy/5 shadow-md group overflow-hidden border border-lucas-navy/10"
                         >
-                            <div className="absolute top-5 left-5 z-20 flex flex-col gap-1.5 mix-blend-difference">
-                                <span className="font-sans text-[8px] tracking-zissou uppercase text-lucas-cream/70 border border-lucas-cream/20 px-1.5 py-0.5 w-fit">
-                                    [ Fig. 01 ]
-                                </span>
-                            </div>
-                            
-                            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
-                            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-lucas-cream/40 z-20 m-5 pointer-events-none"></div>
 
                             <img 
                                 src="/images/img1.JPG" 
                                 alt="lucas bulger - filmmaker" 
-                                className="object-cover w-full h-full grayscale contrast-125 brightness-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2000ms] ease-out"
+                                className="object-cover w-full h-full grayscale contrast-125 brightness-90"
                             />
                         </motion.div>
                     </section>

@@ -136,12 +136,12 @@ export default function AboutPage() {
             <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-32 max-w-7xl mx-auto gap-12 md:gap-16 lg:gap-24">
                 {/* The Portrait */}
                 <motion.figure
-                    initial={{ opacity: 0, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
                     className="w-[85%] max-w-[300px] md:w-2/5 md:max-w-[380px] shrink-0 mt-8 md:mt-0"
                 >
-                    <div className="aspect-[4/5] bg-lucas-navy/5 shadow-2xl p-2 md:p-3 border border-lucas-slate/20">
+                    <div className="aspect-[4/5] bg-lucas-navy/5 shadow-md p-2 md:p-3 border border-lucas-slate/20">
                         <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
                             <Image
                                 src="/images/about/about_1.2.JPG"

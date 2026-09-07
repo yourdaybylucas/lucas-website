@@ -40,24 +40,15 @@ export default function JournalPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="flex flex-col gap-8 border-b border-lucas-navy/25 pb-8 mb-12 md:mb-16 lg:flex-row lg:items-end lg:justify-between"
+                    className="flex items-baseline justify-between gap-6 mb-8 md:mb-10"
                 >
-                    <div>
-                        <div className="mb-5 flex items-center gap-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
-                            <span className="h-px w-12 bg-lucas-orange" />
-                            <span>journal // wedding films</span>
-                        </div>
-                        <h1 className="font-sans text-5xl font-bold uppercase leading-none tracking-normal text-lucas-navy md:text-7xl">
-                            THE ARCHIVE
-                        </h1>
-                    </div>
+                    <h1 className="font-sans text-3xl md:text-4xl font-bold uppercase leading-none tracking-normal text-lucas-navy">
+                        Journal
+                    </h1>
 
-                    <div className="grid w-full grid-cols-2 border border-lucas-navy/20 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate lg:w-72">
-                        <span className="border-r border-lucas-navy/20 px-4 py-3">records</span>
-                        <span className="px-4 py-3 text-right text-lucas-navy">
-                            {String(journalEntries.length).padStart(2, '0')}
-                        </span>
-                    </div>
+                    <p className="shrink-0 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">
+                        {journalEntries.length} records
+                    </p>
                 </motion.div>
 
                 {/* 02. The High-End Gallery Grid */}

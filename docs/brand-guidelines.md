@@ -85,8 +85,8 @@ Current private/internal collection inventory:
 
 - Vol. 00: The Purist, $4,400 + HST. Private collection. Analog heavy. 3-minute super 8mm core film, documentary ceremony edit, documentary reception edit, and a 60-second digital reel delivered in one week.
 - Vol. 01: The Essential, $5,800 + HST. Digital only. 5-minute narrative film, documentary ceremony edit, documentary reception edit.
-- Vol. 02: The Analog, $6,800 + HST. Hybrid + physical. Includes digital + super 8mm direction, 3-minute super 8mm film, and a short digital reel.
-- Vol. 03: The Weekend, $8,200 + HST. Multi-day hybrid. Welcome party + the day, weekend narrative film, and physical artifacts.
+- Vol. 02: The Analog, $6,800 + HST. Digital + super 8mm. Includes digital + super 8mm direction, 3-minute super 8mm film, and a short digital reel.
+- Vol. 03: The Weekend, $8,200 + HST. Everything in The Analog, welcome party coverage, and exclusive focus: Lucas takes on only this wedding that weekend. Do not list physical keepsakes or an additional weekend film as separate inclusions.
 - Additions: extra super 8mm roll, additional time.
 
 Private pricing rule:
