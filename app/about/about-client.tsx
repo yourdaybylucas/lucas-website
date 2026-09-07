@@ -135,30 +135,27 @@ export default function AboutPage() {
             {/* 01. THE INTRODUCTION (Hero) */}
             <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-32 max-w-7xl mx-auto gap-12 md:gap-16 lg:gap-24">
                 {/* The Portrait */}
-                <motion.div
+                <motion.figure
                     initial={{ opacity: 0, filter: "blur(10px)" }}
                     animate={{ opacity: 1, filter: "blur(0px)" }}
                     transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-[85%] max-w-[300px] md:w-2/5 md:max-w-[380px] shrink-0 relative aspect-[4/5] bg-lucas-navy/5 shadow-2xl p-2 md:p-3 border border-lucas-slate/20 mt-8 md:mt-0"
+                    className="w-[85%] max-w-[300px] md:w-2/5 md:max-w-[380px] shrink-0 mt-8 md:mt-0"
                 >
-                    <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
-                        <Image
-                            src="/images/about/about_1.2.JPG"
-                            alt="Lucas Bulger"
-                            fill
-                            className="object-cover transition-all duration-1000"
-                        />
+                    <div className="aspect-[4/5] bg-lucas-navy/5 shadow-2xl p-2 md:p-3 border border-lucas-slate/20">
+                        <div className="relative w-full h-full bg-[#0a1118] overflow-hidden group">
+                            <Image
+                                src="/images/about/about_1.2.JPG"
+                                alt="Lucas Bulger"
+                                fill
+                                className="object-cover transition-all duration-1000"
+                            />
+                        </div>
                     </div>
 
-                    <div className="absolute -bottom-4 -right-2 md:-right-6 flex flex-col bg-lucas-cream border border-lucas-navy px-4 py-2 z-10 shadow-xl">
-                        <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                            Fig. 00 — On Location
-                        </span>
-                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate mt-0.5">
-                            Documented by a guest
-                        </span>
-                    </div>
-                </motion.div>
+                    <figcaption className="mt-3 font-sans text-[9px] tracking-widest uppercase text-lucas-slate">
+                        documented by a guest
+                    </figcaption>
+                </motion.figure>
 
                 {/* The Narrative (The Passion) */}
                 <motion.div

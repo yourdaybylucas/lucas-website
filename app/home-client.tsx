@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
 import CinematicPlayer from "@/components/CinematicPlayer";
+import InquiryForm from "@/components/InquiryForm";
 
 const partners = [
   { name: "Wakefield Estate", url: "https://www.wakefieldestate.ca/" },
@@ -121,17 +122,10 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="w-full lg:w-6/12 flex flex-col justify-center"
           >
-            <motion.div variants={fadeUpItem} className="flex items-center gap-4 mb-10">
-              <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
-              <h2 className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                the approach
-              </h2>
-            </motion.div>
-
             <motion.div variants={fadeUpItem}>
-              <p className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
+              <h2 className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
                 not a production. not content.<br className="hidden md:block" /> just <span className="italic text-lucas-navy/90">easy company</span> and a keen<br className="hidden md:block" /> eye.
-              </p>
+              </h2>
             </motion.div>
             
             <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
@@ -262,29 +256,17 @@ export default function Home() {
       </section>
 
       {/* the ledger (inquiry form) */}
-      <section ref={contactRef} id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-40 px-6 overflow-hidden">
+      <section ref={contactRef} id="contact" className="relative z-10 bg-lucas-navy text-lucas-cream py-16 lg:py-32 px-6 overflow-hidden">
         
         {/* subtle analog grain overlay */}
         <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
 
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 relative">
-          
-          {/* the vertical spine (desktop only) */}
-          <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-px bg-lucas-slate/10"></div>
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 xl:gap-24 relative">
 
          {/* the anchor (text column) */}
-          <div className="lg:col-span-5 lg:pr-24 flex flex-col items-start text-left h-fit z-10">
-            
-            {/* inventory header */}
-            <div className="flex items-center justify-between w-full border-b border-lucas-slate/20 pb-6 mb-8">
-              <div className="flex items-center gap-4">
-                <span className="w-2 h-2 rounded-full bg-lucas-orange"></span>
-                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">Availability</span>
-              </div>
-              <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ 04 ]</span>
-            </div>
+          <div className="lg:col-span-5 flex flex-col items-start text-left h-fit z-10">
 
-            <h2 className="font-sans text-5xl md:text-6xl lg:text-[4.5rem] uppercase font-bold text-lucas-cream tracking-tight mb-4 lg:mb-8">
+            <h2 className="font-sans text-5xl md:text-6xl lg:text-[4.5rem] uppercase font-bold text-lucas-cream tracking-tight lg:mb-8">
               INQUIRE.
             </h2>
 
@@ -319,35 +301,13 @@ export default function Home() {
 
           </div>
           {/* the dossier (form column) */}
-          <div className="lg:col-span-7 lg:pl-24 w-full z-10 mt-4 lg:mt-0">
+          <div className="lg:col-span-7 min-w-0 w-full z-10">
             
-            {/* structural frame */}
-            <div className="relative bg-[#111d27] p-2 md:p-8 border border-lucas-slate/5 shadow-2xl">
-              
-              {/* editorial crosshairs */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-lucas-slate/30"></div>
-              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-lucas-slate/30"></div>
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-lucas-slate/30"></div>
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-lucas-slate/30"></div>
-
-              {/* iframe locked to 750px height across all viewports */}
-              <div className="w-full h-full min-h-[750px] overflow-hidden">
-                {isContactInView ? (
-                  <iframe 
-                    src="https://app.lemlii.com/inquiry/your-day-by-lucas" 
-                    className="w-full h-[750px] border-0 outline-none bg-transparent transition-opacity duration-1000 ease-in" 
-                    title="commission lucas"
-                    style={{ border: 'none', margin: 0, padding: 0 }}
-                  />
-                ) : (
-                  // structural placeholder so the layout doesn't shift when it finally loads
-                  <div className="w-full h-[700px] bg-[#111d27] flex flex-col items-center justify-center font-sans text-[10px] tracking-zissou uppercase text-lucas-slate/50">
-                    <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse mb-3"></span>
-                    [ establishing secure connection ... ]
-                  </div>
-                )}
-              </div>
-            </div>
+            {isContactInView ? (
+              <InquiryForm />
+            ) : (
+              <div className="min-h-[700px]" />
+            )}
 
           </div>
 

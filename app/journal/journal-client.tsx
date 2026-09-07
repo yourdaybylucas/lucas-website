@@ -73,6 +73,7 @@ export default function JournalPage() {
                             variants={fadeUpItem}
                             className="group relative flex flex-col border-r border-b border-lucas-navy/15 bg-lucas-cream p-6 md:p-8 lg:p-10 overflow-hidden"
                         >
+                            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-lucas-orange opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 pointer-events-none" />
                             {/* The Film Slide (YouTube Thumbnail Hero) */}
                             <Link href={`/journal/${post.slug}`} className="relative w-full aspect-video bg-lucas-navy/5 overflow-hidden mb-8 block shadow-md border border-lucas-navy/10">
                                 <Image 
