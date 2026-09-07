@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { X, Maximize } from "lucide-react";
 
 const fadeUpContainer = {
@@ -30,6 +30,29 @@ export default function PrivateCollectionsPage() {
     const [activeSection, setActiveSection] = useState("Intro");
     const [activeVideo, setActiveVideo] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'narrative' | 'purist'>('narrative');
+
+    const collectionsContentRef = useRef<HTMLDivElement>(null);
+    const narrativePanelRef = useRef<HTMLDivElement>(null);
+    const [narrativeHeight, setNarrativeHeight] = useState(0);
+
+    // Center against The Narrative only. The Purist shares its top edge and
+    // remains in normal flow, so longer content never overlaps the next section.
+    useLayoutEffect(() => {
+        const content = collectionsContentRef.current;
+        const narrative = narrativePanelRef.current;
+        if (!content || !narrative) return;
+        const measure = () => {
+            if (!narrative.getClientRects().length) return;
+            setNarrativeHeight(Math.ceil(
+                narrative.getBoundingClientRect().bottom - content.getBoundingClientRect().top
+            ));
+        };
+        const observer = new ResizeObserver(measure);
+        observer.observe(content);
+        observer.observe(narrative);
+        measure();
+        return () => observer.disconnect();
+    }, []);
 
     // intersection observer to highlight the active index dot
     useEffect(() => {
@@ -220,14 +243,16 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 02. The Collections Grid */}
-                    <section id="collections" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col justify-center py-10 lg:py-16 relative">
-                        <motion.div 
+                    <section id="collections" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col py-10 lg:pb-12 lg:pt-[max(3rem,calc((100dvh_-_var(--narrative-content-height))_/_2))] relative"
+                        style={{ "--narrative-content-height": `${narrativeHeight}px` } as CSSProperties}>
+                        <motion.div
+                            ref={collectionsContentRef}
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                         >
-                            <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 pt-8 lg:pt-0 gap-6">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
                                 <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold text-lucas-navy">
                                     The Collections
                                 </h2>
@@ -255,8 +280,8 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </div>
 
-                            <motion.div variants={fadeUpItem} className="mb-8">
-                                <p className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-3">
+                            <motion.div variants={fadeUpItem} className="mb-5 relative">
+                                <p className="absolute left-3 top-0 -translate-y-1/2 bg-lucas-cream px-2 font-sans text-[9px] tracking-zissou text-lucas-slate uppercase">
                                     {activeTab === 'narrative' ? 'Included in all three collections' : 'Included with The Purist'}
                                 </p>
                                 <div className="grid grid-cols-2 md:grid-cols-4 border-y border-lucas-navy/10">
@@ -287,18 +312,21 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </motion.div>
 
+                            {/* Keep the inactive Narrative measurable without reserving blank space for it. */}
                             <div
                                 className="grid grid-cols-1 grid-rows-1 w-full relative"
                             >
 
-                                    {activeTab === 'narrative' ? (
                                         <motion.div
                                             key="narrative-grid"
+                                            ref={narrativePanelRef}
+                                            aria-hidden={activeTab !== 'narrative'}
+                                            inert={activeTab !== 'narrative'}
                                             initial={false}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
                                             transition={{ duration: 0 }}
-                                            className="col-start-1 row-start-1 grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 relative items-stretch w-full h-full"
+                                            className={`col-start-1 row-start-1 grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 items-stretch w-full ${activeTab === 'narrative' ? 'relative grid' : 'hidden lg:grid lg:invisible lg:absolute lg:inset-x-0 lg:top-0'}`}
                                         >
                                             {/* VOL 01 */}
                                             <div className="flex flex-col group relative overflow-hidden bg-lucas-cream h-full w-full">
@@ -456,14 +484,15 @@ export default function PrivateCollectionsPage() {
                                                 </div>
                                             </div>
                                         </motion.div>
-                                    ) : (
                                         <motion.div
                                             key="purist-grid"
+                                            aria-hidden={activeTab !== 'purist'}
+                                            inert={activeTab !== 'purist'}
                                             initial={false}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
                                             transition={{ duration: 0 }}
-                                            className="col-start-1 row-start-1 border border-lucas-navy/20 bg-lucas-cream relative overflow-hidden shadow-sm w-full h-full"
+                                            className={`col-start-1 row-start-1 border border-lucas-navy/20 bg-lucas-cream relative overflow-hidden shadow-sm w-full h-full ${activeTab === 'purist' ? 'block' : 'hidden'}`}
                                         >
                                             <div className="absolute top-0 left-0 w-full h-1 bg-lucas-orange"></div>
 
@@ -568,7 +597,7 @@ export default function PrivateCollectionsPage() {
                                                 </div>
                                             </div>
                                         </motion.div>
-                                    )}
+
 
                             </div>
                         </motion.div>
