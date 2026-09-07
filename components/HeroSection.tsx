@@ -25,7 +25,7 @@ const FilmClip = ({ data }: { data: (typeof clipData)[number] }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: data.delay }}
-            className={`absolute bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
+            className={`absolute hover:z-10 bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
             style={{ 
                 width: 'clamp(100px, 24vw, 260px)',
                 rotate: data.rotate
