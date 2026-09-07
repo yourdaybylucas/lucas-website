@@ -133,7 +133,7 @@ export default function AboutPage() {
     return (
         <main className="bg-lucas-cream">
             {/* 01. THE INTRODUCTION (Hero) */}
-            <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-32 md:pb-40 max-w-7xl mx-auto gap-12 md:gap-16 lg:gap-24">
+            <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-32 pb-32 max-w-7xl mx-auto gap-12 md:gap-16 lg:gap-24">
                 {/* The Portrait */}
                 <motion.div
                     initial={{ opacity: 0, filter: "blur(10px)" }}
@@ -167,12 +167,6 @@ export default function AboutPage() {
                     variants={staggerContainer}
                     className="w-full md:w-3/5 flex flex-col items-start text-left"
                 >
-                    <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                        <span className="font-sans text-[10px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/20 bg-lucas-orange/5 px-2 py-0.5 rounded-sm">
-                            [ The Introduction ]
-                        </span>
-                    </motion.div>
-
                     <motion.h1
                         variants={fadeUp}
                         className="font-sans text-[clamp(2.25rem,4vw,4.5rem)] uppercase font-bold text-lucas-navy leading-[0.9] tracking-tight mb-8"
@@ -201,36 +195,12 @@ export default function AboutPage() {
                             interactions that carry weight.
                         </p>
                         <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. the thrill hasn't worn off. i'm here to hang out,
-                            keep things grounded, and document that elusive feeling.
+                            i genuinely love doing this. i'm here to hang out, read the room, and document
+                            that elusive feeling, without making the day revolve around a camera.
                         </p>
                     </motion.div>
                 </motion.div>
 
-                {/* Interactive Scroll Indicator (Reverse Triangle) */}
-                <motion.button
-                    onClick={() =>
-                        document.getElementById("record")?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group cursor-pointer p-4 z-20"
-                    aria-label="Scroll to record"
-                >
-                    <span className="font-sans text-[9px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
-                        [ Proceed ]
-                    </span>
-                    <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="text-lucas-orange transform group-hover:translate-y-1.5 transition-transform duration-500 ease-[0.16,1,0.3,1]"
-                    >
-                        <polygon points="12,21 2,5 22,5" />
-                    </svg>
-                </motion.button>
             </section>
 
             {/* 02. THE RECORD (The Ledger View) */}
