@@ -194,7 +194,7 @@ export default function PrivateCollectionsPage() {
                                 
                                 <div className="relative z-10">
                                     <p className="font-serif text-[clamp(1.75rem,3.5vw,3rem)] text-lucas-navy leading-[1.4] lowercase">
-                                        i’m there to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt.</em>
+                                        the goal isn't to direct a perfect script; it's to hang out, let the day breathe, and <em className="italic text-lucas-orange/90">bottle exactly how it all felt.</em>
                                     </p>
                                 </div>
                             </motion.div>
@@ -220,24 +220,19 @@ export default function PrivateCollectionsPage() {
                     </section>
 
                     {/* 02. The Collections Grid */}
-                    <section id="collections" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col justify-start py-10 lg:py-16 relative">
+                    <section id="collections" className="snap-start min-h-[100dvh] h-auto w-full flex flex-col justify-center py-10 lg:py-16 relative">
                         <motion.div 
                             variants={fadeUpContainer}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}
                         >
-                            <div className="flex flex-col xl:flex-row xl:items-end justify-between mb-8 pt-8 lg:pt-0 gap-6">
-                                <div>
-                                    <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold text-lucas-navy mb-3">
-                                        The Collections
-                                    </h2>
-                                    <p className="font-serif text-[clamp(1rem,1.25vw,1.125rem)] text-lucas-navy/90 italic">
-                                        choose digital, add super 8, or bring me along for the weekend.
-                                    </p>
-                                </div>
+                            <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 pt-8 lg:pt-0 gap-6">
+                                <h2 className="font-sans text-2xl md:text-3xl uppercase tracking-tight font-bold text-lucas-navy">
+                                    The Collections
+                                </h2>
 
-                                <div className="flex bg-lucas-cream border border-lucas-navy/20 p-1 relative w-full md:w-fit md:self-start xl:self-auto shadow-sm">
+                                <div className="flex bg-lucas-cream border border-lucas-navy/20 p-1 relative w-full md:w-fit shrink-0 shadow-sm">
                                     <div 
                                         className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-lucas-navy ease-[0.16,1,0.3,1]"
                                         style={{ left: activeTab === 'narrative' ? '4px' : 'calc(50%)' }}
@@ -260,22 +255,37 @@ export default function PrivateCollectionsPage() {
                                 </div>
                             </div>
 
-                            <motion.div variants={fadeUpItem} className="mb-6 border-y border-lucas-navy/20 py-3">
+                            <motion.div variants={fadeUpItem} className="mb-8">
                                 <p className="font-sans text-[9px] tracking-zissou text-lucas-slate uppercase mb-3">
                                     {activeTab === 'narrative' ? 'Included in all three collections' : 'Included with The Purist'}
                                 </p>
-                                <ul className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
-                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">01</span>{activeTab === 'narrative' ? 'Unlimited coverage' : '8 hours coverage'}</li>
-                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">02</span>Travel within Ontario</li>
-                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">03</span>Drone footage (where permitted)</li>
-                                    <li className="flex items-baseline gap-2"><span className="text-[9px] tracking-zissou text-lucas-slate">04</span>Online delivery of all films</li>
-                                </ul>
-                                <p className="font-serif text-[11px] text-lucas-slate italic mt-2">
-                                    {activeTab === 'narrative' ? 'coverage from getting ready to lights up.' : 'additional coverage available beyond the included 8 hours.'}
-                                </p>
+                                <div className="grid grid-cols-2 md:grid-cols-4 border-y border-lucas-navy/10">
+                                    <div className="flex flex-col gap-2 p-4 lg:p-5 border-r border-b md:border-b-0 border-lucas-navy/10">
+                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">01</span>
+                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
+                                            {activeTab === 'narrative' ? 'Unlimited coverage' : '8 hours coverage'}
+                                        </h4>
+                                        <p className="font-serif text-[11px] text-lucas-slate italic leading-tight">
+                                            {activeTab === 'narrative' ? 'from getting ready to lights up.' : 'additional time available.'}
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col gap-2 p-4 lg:p-5 border-b md:border-b-0 md:border-r border-lucas-navy/10">
+                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">02</span>
+                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy">Provincial travel</h4>
+                                        <p className="font-serif text-[11px] text-lucas-slate italic leading-tight">travel within ontario included.</p>
+                                    </div>
+                                    <div className="flex flex-col gap-2 p-4 lg:p-5 border-r border-lucas-navy/10">
+                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">03</span>
+                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy">Drone footage</h4>
+                                        <p className="font-serif text-[11px] text-lucas-slate italic leading-tight">if permitted.</p>
+                                    </div>
+                                    <div className="flex flex-col gap-2 p-4 lg:p-5">
+                                        <span className="font-sans text-[9px] tracking-zissou text-lucas-slate">04</span>
+                                        <h4 className="font-sans text-[10px] uppercase tracking-widest text-lucas-navy">Digital archive</h4>
+                                        <p className="font-serif text-[11px] text-lucas-slate italic leading-tight">online delivery of all films.</p>
+                                    </div>
+                                </div>
                             </motion.div>
-
-                            <p className="font-serif text-[12px] text-lucas-slate italic mb-4">select a film below to watch an example.</p>
 
                             <div
                                 className="grid grid-cols-1 grid-rows-1 w-full relative"
@@ -362,7 +372,7 @@ export default function PrivateCollectionsPage() {
                                                     <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest text-lucas-cream flex-grow">
                                                         <li className="flex items-start gap-4 opacity-60">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
-                                                            <span>ceremony & reception edits from The Essential</span>
+                                                            <span>everything in The Essential</span>
                                                         </li>
                                                         <li className="flex items-start gap-4 group/link">
                                                             <span className="text-lucas-orange mt-0.5">+</span>
@@ -555,11 +565,6 @@ export default function PrivateCollectionsPage() {
                                                         </li>
                                                     </ul>
 
-                                                    <div className="mt-8 pt-6 border-t border-lucas-navy/20">
-                                                        <p className="font-serif text-[13px] text-lucas-slate lowercase italic leading-relaxed">
-                                                            additions are optional. you can decide one month before the wedding.
-                                                        </p>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </motion.div>
