@@ -54,6 +54,49 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "058",
+        slug: "emily-harry-windermere-house-muskoka",
+        title: "emily & harry",
+        place: {
+            name: "Windermere House",
+            locality: "Muskoka",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://windermerehouse.com/weddings/",
+            venueId: "windermere-house"
+        },
+        weddingDate: "June 20, 2026",
+        weddingDateIso: "2026-06-20",
+        publishedAt: "2026-09-15",
+        updatedAt: "2026-09-15",
+        format: "Digital + Super 8",
+        stock: "Digital + Super 8mm",
+        excerpt: "two worlds meeting on lake rosseau, a sunset boat ride, and a full muskoka weekend with people from across the world.",
+        primaryVideo: {
+            id: "xWph1lN0CXM",
+            title: "Muskoka Wedding Weekend at Windermere House // Emily & Harry",
+            label: "Wedding Film",
+            uploadDate: "2026-09-15T09:13:03-07:00",
+            duration: "PT7M18S"
+        },
+        seo: {
+            title: "Windermere House Wedding Film | Emily & Harry | LUCAS",
+            description: "Watch Emily and Harry’s digital and Super 8 wedding film at Windermere House on Lake Rosseau in Muskoka, Ontario, filmed June 20, 2026."
+        },
+        fieldNotes: [
+            "harry is british, emily is canadian, and over five years their two worlds gradually became one. for their wedding weekend, people came from across the world to muskoka, a place that has always felt like home to emily.",
+            "the weekend started with a welcome party and a sunset boat ride. windermere house on lake rosseau gave everyone a place to come together before the june wedding day.",
+            "their vows and speeches kept returning to steadiness, loyalty, laughter, and a life that feels easy together. i put this one together in digital and super 8. and then there was the party. a very, very good party."
+        ],
+        vendors: [
+            { name: "Samantha Nicholas Events", role: "Planning", url: "https://www.samanthanicholas.ca" },
+            { name: "Windermere House", role: "Venue", url: "https://windermerehouse.com" },
+            { name: "Evelyn Barkey", role: "Photography", url: "https://evelynbarkey.com" },
+            { name: "LP Entertainment", role: "Band", url: "https://www.lpentertainment.ca" },
+            { name: "Hunt & Gather Floral", role: "Florals", url: "https://www.huntandgatherfloral.com" }
+        ]
+    },
+    {
         id: "057",
         slug: "olivia-eli-port-cunnington-lodge-muskoka",
         title: "olivia & eli",

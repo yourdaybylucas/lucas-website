@@ -2,6 +2,7 @@
 import { MetadataRoute } from 'next';
 import { venues } from '@/data/venues';
 import { journalEntries } from '@/data/journal';
+import { MUSKOKA_PAGE_PATH } from '@/data/muskoka';
 
 const STATIC_PAGE_LAST_MODIFIED = '2026-06-23';
 const VENUES_LAST_REVIEWED = '2026-08-07';
@@ -22,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // base static routes
   const routes = [
+    {
+      url: `${baseUrl}${MUSKOKA_PAGE_PATH}`,
+      lastModified: dateFromIsoDate('2026-09-15'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
     {
       url: baseUrl,
       lastModified: staticPageLastModified,

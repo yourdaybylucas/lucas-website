@@ -1,4 +1,4 @@
-export const GEOGRAPHY_OPTIONS = ['gta', 'niagara', 'tri-cities + west'] as const;
+export const GEOGRAPHY_OPTIONS = ['gta', 'niagara', 'tri-cities + west', 'muskoka'] as const;
 export const SCALE_OPTIONS = ['intimate', 'standard', 'grand'] as const;
 export const ATMOSPHERE_OPTIONS = ['heritage + estate', 'industrial canvas', 'modern minimal', 'glass + nature'] as const;
 export const FOOTPRINT_OPTIONS = ['exclusive use', 'shared property'] as const;
@@ -34,6 +34,25 @@ export interface Venue {
 }
 
 export const venues: Venue[] = [
+  {
+    id: 'windermere-house',
+    name: 'Windermere House',
+    location: 'Windermere',
+    officialUrl: 'https://windermerehouse.com/weddings/',
+    journalSlug: 'emily-harry-windermere-house-muskoka',
+    seoDescription: 'Windermere House wedding videography in Muskoka, Ontario, with firsthand notes on Lake Rosseau ceremonies, wedding weekends, and a digital and Super 8 film.',
+    overview: 'windermere house is a Victorian-style hotel overlooking lake rosseau in muskoka. the front lawn hosts outdoor ceremonies, the covered verandah keeps cocktails close to the lake, and the islandview room seats up to 120 guests for dinner. on-site rooms and suites make it a natural base for a full weekend together.',
+    planningNotes: 'for a wedding weekend, a lake cruise the evening before is worth considering. pickup can be arranged right from windermere, giving everyone a chance to settle in together on the water. arrange the cruise and pickup with your planner and boat operator. for the wedding film, keeping the lawn ceremony, verandah cocktails, and reception on one property leaves more time with your people.',
+    geography: 'muskoka',
+    scale: 'standard',
+    atmosphere: 'heritage + estate',
+    footprint: 'shared property',
+    prep: 'on-site rooms + suites',
+    flow: 'all-in-one',
+    curfew: 'confirm with venue',
+    fieldNotes: 'the ceremony location is the part i keep coming back to. lake rosseau opens up behind you, and the whole setting feels unmistakably muskoka. with a pool, a tennis court, and on-site accommodations, there is room for everyone to settle in and spend time together between the planned parts. add a boat ride the night before and the weekend starts to feel like a few days at the lake with your favourite people. a very good place to bring a camera.',
+    visualEmbed: 'xWph1lN0CXM',
+  },
   {
     id: 'langdon-hall',
     name: 'Langdon Hall',
