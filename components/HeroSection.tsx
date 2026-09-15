@@ -1,34 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
-// Added a 'desktopOnly' flag to the 4 clips we want to kill on mobile
-const clipData = [
-    // Visible Mobile & Desktop
-    { id: "01", src: "/videos/clip_01.mp4", tailwind: "top-[12%] left-[5%] md:top-[12%] md:left-[10%]", rotate: -6, desktopOnly: false },
-    { id: "02", src: "/videos/clip_09.mp4", tailwind: "top-[15%] right-[3%] md:top-[16%] md:left-[78%] md:right-auto", rotate: 4, desktopOnly: false },
-    { id: "06", src: "/videos/clip_06.mp4", tailwind: "top-[65%] left-[11%] md:top-[66%] md:left-[7%]", rotate: -4, desktopOnly: false },
-    { id: "04", src: "/videos/clip_07.mp4", tailwind: "top-[72%] right-[2%] md:top-[58%] md:left-[75%] md:right-auto", rotate: -5, desktopOnly: false },
-    { id: "09", src: "/videos/clip_08.mp4", tailwind: "top-[74%] left-[28%] md:top-[68%] md:left-[85%] md:right-auto", rotate: 4, desktopOnly: false },
-    
-    // Desktop Only
-    { id: "07", src: "/videos/clip_02.mp4", tailwind: "hidden md:flex md:top-[15%] md:left-[20%]", rotate: 2, desktopOnly: true },
-    { id: "05", src: "/videos/clip_04.mp4", tailwind: "hidden md:flex md:top-[42%] md:left-[6%]", rotate: -8, desktopOnly: true },
-    { id: "03", src: "/videos/clip_03.mp4", tailwind: "hidden md:flex md:top-[55%] md:left-[13%]", rotate: 3, desktopOnly: true },
-    { id: "08", src: "/videos/clip_05.mp4", tailwind: "hidden md:flex md:top-[45%] md:left-[82%]", rotate: 6, desktopOnly: true },
+const desktopQuery = "(min-width: 768px)";
+
+const subscribeToViewport = (onChange: () => void) => {
+    const mediaQuery = window.matchMedia(desktopQuery);
+    mediaQuery.addEventListener("change", onChange);
+    return () => mediaQuery.removeEventListener("change", onChange);
+};
+
+const getDesktopSnapshot = () => window.matchMedia(desktopQuery).matches;
+const getServerDesktopSnapshot = () => false;
+
+const clipGroups = [
+    {
+        side: "left",
+        position: "top-[clamp(6rem,15svh,10rem)] md:left-[clamp(1.75rem,6vw,7rem)] md:top-[calc(50%+16px)]",
+        clips: [
+            { id: "01", src: "/videos/clip_01.mp4", mobile: true, placement: "-rotate-[1.5deg] md:left-0 md:top-0" },
+            { id: "07", src: "/videos/clip_02.mp4", mobile: false, placement: "z-20 rotate-1 md:left-[14%] md:top-[18%] lg:left-[24%]" },
+            { id: "05", src: "/videos/clip_04.mp4", mobile: false, placement: "-rotate-1 md:left-[-8%] md:top-[42%]" },
+            { id: "03", src: "/videos/clip_03.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 rotate-[1.5deg] md:z-auto md:rotate-1 md:left-[3%] md:top-[62%]" },
+            { id: "06", src: "/videos/clip_06.mp4", mobile: false, placement: "z-20 rotate-[1.5deg] md:left-[14%] md:top-[81%] lg:left-[28%]" },
+        ],
+    },
+    {
+        side: "right",
+        position: "bottom-[clamp(4rem,15svh,10rem)] md:bottom-auto md:right-[clamp(1.75rem,6vw,7rem)] md:top-[calc(50%+32px)]",
+        clips: [
+            { id: "02", src: "/videos/clip_09.mp4", mobile: true, placement: "rotate-[1.5deg] md:left-0 md:top-0" },
+            { id: "04", src: "/videos/clip_07.mp4", mobile: false, placement: "z-20 -rotate-1 md:left-[-14%] md:top-[22%] lg:left-[-22%]" },
+            { id: "08", src: "/videos/clip_05.mp4", mobile: false, placement: "z-30 rotate-1 md:left-[5%] md:top-[53%]" },
+            { id: "09", src: "/videos/clip_08.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 -rotate-[1.5deg] md:left-[-12%] md:top-[75%] lg:left-[-22%]" },
+        ],
+    },
 ];
 
-const FilmClip = ({ data }: { data: (typeof clipData)[number] }) => {
+const FilmClip = ({ data }: { data: (typeof clipGroups)[number]["clips"][number] }) => {
     return (
-        <motion.div
-            className={`absolute bg-[#EAE4D3] flex-col p-2 pb-6 md:p-2.5 md:pb-7 border border-lucas-slate/20 shadow-xl overflow-hidden ${data.tailwind}`}
-            style={{ 
-                width: 'clamp(100px, 24vw, 260px)',
-                rotate: data.rotate
-            }}
+        <div
+            data-hero-clip={data.id}
+            className={`relative w-full shrink-0 bg-[#F8F2E7] p-[3px] shadow-[0_2px_8px_rgba(24,40,54,0.08)] md:absolute md:translate-x-0 md:translate-y-0 md:p-[5px] ${data.placement}`}
         >
-            <div className="relative w-full aspect-[4/3] bg-lucas-navy/10 overflow-hidden mb-2 md:mb-3 pointer-events-none">
+            <div className="relative aspect-[4/3] overflow-hidden bg-lucas-navy/10">
                 <video
                     src={data.src}
                     autoPlay
@@ -39,46 +55,38 @@ const FilmClip = ({ data }: { data: (typeof clipData)[number] }) => {
                 />
                 <div className="absolute inset-0 bg-grain mix-blend-overlay"></div>
             </div>
-            
-            <span className="font-sans text-[8px] md:text-[9px] uppercase tracking-zissou text-lucas-slate text-center pointer-events-none">
-                CLIP_{data.id}
-            </span>
-        </motion.div>
+        </div>
     );
 };
 
 export default function HeroSection() {
-    const [isDesktop, setIsDesktop] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-        
-        // Check window size on load and resize
-        const checkDevice = () => {
-            setIsDesktop(window.innerWidth >= 768);
-        };
-        
-        checkDevice();
-        window.addEventListener("resize", checkDevice);
-        return () => window.removeEventListener("resize", checkDevice);
-    }, []);
-
-    // Strip out the 4 desktop videos if we are on mobile to save payload
-    const visibleClips = isMounted && isDesktop ? clipData : clipData.filter(c => !c.desktopOnly);
+    const isDesktop = useSyncExternalStore(
+        subscribeToViewport,
+        getDesktopSnapshot,
+        getServerDesktopSnapshot,
+    );
 
     return (
-        <section className="relative w-full h-[100dvh] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
+        <section className="relative w-full h-[100svh] min-h-[38rem] md:min-h-[40rem] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center [--hero-clip-width:min(18vw,calc((100svh-176px)/3),260px)] lg:[--hero-clip-width:min(20vw,calc((100svh-176px)/3),260px)]">
 
-            {/* Background Scattered Clips */}
+            {/* Loose groups frame the title, with fewer films on mobile. */}
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: isMounted ? 1 : 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="absolute inset-0 z-10"
+                className="pointer-events-none absolute inset-0 z-10"
+                aria-hidden="true"
             >
-                {visibleClips.map((clip) => (
-                    <FilmClip key={clip.id} data={clip} />
+                {clipGroups.map((group) => (
+                    <div
+                        key={group.side}
+                        data-hero-group={group.side}
+                        className={`absolute inset-x-6 grid grid-cols-2 md:inset-x-auto md:block md:h-[calc(var(--hero-clip-width)*3)] md:w-[var(--hero-clip-width)] md:-translate-y-1/2 ${group.position}`}
+                    >
+                        {group.clips
+                            .filter((clip) => clip.mobile || isDesktop)
+                            .map((clip) => <FilmClip key={clip.id} data={clip} />)}
+                    </div>
                 ))}
             </motion.div>
 
