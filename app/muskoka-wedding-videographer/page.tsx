@@ -80,9 +80,9 @@ export default function MuskokaPage() {
       />
 
       <div className="bg-lucas-cream text-lucas-navy">
-        <section className="px-6 pb-20 pt-36 md:px-12 md:pb-32 md:pt-28">
+        <section data-desktop-image-hero className="relative px-6 pb-20 pt-36 md:h-svh md:min-h-[40rem] md:bg-lucas-navy md:px-12 md:pb-0 md:pt-[clamp(9rem,18svh,12rem)]">
           <div className="mx-auto max-w-7xl">
-            <h1 className="mb-10 md:mb-8">
+            <h1 className="relative z-10 mb-10 md:mb-0 md:text-lucas-cream">
               <span className="block font-sans text-[clamp(3.5rem,10.5vw,9rem)] font-bold uppercase leading-[0.95] tracking-[-0.035em]">
                 Muskoka{' '}
               </span>
@@ -91,14 +91,14 @@ export default function MuskokaPage() {
               </span>
             </h1>
 
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-lucas-navy/5 md:aspect-[2/1]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-lucas-navy/5 md:absolute md:inset-0 md:aspect-auto">
               <Image
                 src={MUSKOKA_HERO.src}
                 alt={MUSKOKA_HERO.alt}
                 fill
                 priority
-                sizes="(max-width: 767px) calc(160vw - 77px), (max-width: 1376px) calc(100vw - 96px), 1280px"
-                className="origin-[62%_64%] scale-[1.6] object-cover md:scale-100 md:object-center"
+                sizes="(max-width: 767px) calc(160vw - 77px), 100vw"
+                className="origin-[62%_64%] scale-[1.6] object-cover md:scale-100 md:object-[center_40%]"
               />
             </div>
           </div>

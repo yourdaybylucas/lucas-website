@@ -84,6 +84,13 @@
     outline: 2px solid var(--button-ink);
     outline-offset: 4px;
   }
+
+  @media (min-width: 48rem) {
+    .header-over-desktop-image .lucas-button {
+      --button-ink: var(--color-lucas-cream);
+      --button-paper: var(--color-lucas-navy);
+    }
+  }
 }
 
 @layer utilities {

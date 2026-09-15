@@ -6,10 +6,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { MUSKOKA_PAGE_PATH } from "@/data/muskoka";
 
 export default function Header() {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    const [pastImageHero, setPastImageHero] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // [ Updated Inventory ]
@@ -21,13 +23,19 @@ export default function Header() {
     ];
 
     useEffect(() => {
+        const imageHero = document.querySelector('[data-desktop-image-hero]');
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
+            setPastImageHero(!imageHero || imageHero.getBoundingClientRect().bottom <= 80);
         };
         handleScroll();
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+        window.addEventListener("resize", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleScroll);
+        };
+    }, [pathname]);
 
     // lock body scroll when mobile menu is open
     useEffect(() => {
@@ -46,22 +54,33 @@ export default function Header() {
     }
 
     const headerBg = scrolled ? "bg-lucas-cream border-lucas-slate/20" : "bg-transparent border-transparent";
+    const overDesktopImage = pathname === MUSKOKA_PAGE_PATH && !pastImageHero && !mobileMenuOpen;
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-[100] h-18 md:h-20 border-b ${headerBg}`}>
+            <header className={`fixed top-0 left-0 right-0 z-[100] h-18 md:h-20 border-b ${headerBg} ${overDesktopImage ? 'header-over-desktop-image md:bg-transparent md:border-transparent' : ''}`}>
                 <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                     
                     {/* Brand (Static / Grounded) */}
-                    <Link href="/" className="hover:opacity-70 flex items-center py-2 z-[101] relative focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy">
+                    <Link href="/" className={`hover:opacity-70 flex items-center py-2 z-[101] relative focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy ${overDesktopImage ? 'md:focus-visible:outline-lucas-cream' : ''}`}>
                         <Image 
                             src="/logos/L Blue Transparent.png" 
                             alt="LUCAS" 
                             width={44}
                             height={44}
-                            className="h-10 w-10 md:h-11 md:w-11 object-contain"
+                            className={`h-10 w-10 md:h-11 md:w-11 object-contain ${overDesktopImage ? 'md:hidden' : ''}`}
                             priority
                         />
+                        {overDesktopImage && (
+                            <Image
+                                src="/logos/L Cream Transparent.png"
+                                alt="LUCAS"
+                                width={44}
+                                height={44}
+                                className="hidden h-11 w-11 object-contain md:block"
+                                priority
+                            />
+                        )}
                     </Link>
 
                     {/* Static brackets mark the current section. */}
@@ -73,7 +92,7 @@ export default function Header() {
                                     key={link.path}
                                     href={link.path}
                                     aria-current={isActive ? 'page' : undefined}
-                                    className={`relative font-sans text-[10px] tracking-widest uppercase flex items-center justify-center h-10 hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy ${isActive ? 'text-lucas-orange' : 'text-lucas-navy'}`}
+                                    className={`relative font-sans text-[10px] tracking-widest uppercase flex items-center justify-center h-10 hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 ${overDesktopImage ? 'text-lucas-cream focus-visible:outline-lucas-cream' : isActive ? 'text-lucas-orange focus-visible:outline-lucas-navy' : 'text-lucas-navy focus-visible:outline-lucas-navy'}`}
                                 >
                                     {isActive && <span aria-hidden="true" className="absolute -left-3">[</span>}
                                     {link.label}
