@@ -14,34 +14,34 @@ const subscribeToViewport = (onChange: () => void) => {
 const getDesktopSnapshot = () => window.matchMedia(desktopQuery).matches;
 const getServerDesktopSnapshot = () => false;
 
-const clipColumns = [
+const clipGroups = [
     {
         side: "left",
-        position: "top-[clamp(6rem,15svh,10rem)] md:left-[clamp(2rem,5vw,6rem)] md:top-[calc(50%+24px)]",
+        position: "top-[clamp(6rem,15svh,10rem)] md:left-[clamp(1.75rem,6vw,7rem)] md:top-[calc(50%+24px)]",
         clips: [
-            { id: "01", src: "/videos/clip_01.mp4", mobile: true },
-            { id: "07", src: "/videos/clip_02.mp4", mobile: false },
-            { id: "05", src: "/videos/clip_04.mp4", mobile: false },
-            { id: "03", src: "/videos/clip_03.mp4", mobile: true },
+            { id: "01", src: "/videos/clip_01.mp4", mobile: true, placement: "-rotate-2 md:left-0 md:top-0" },
+            { id: "07", src: "/videos/clip_02.mp4", mobile: false, placement: "z-20 rotate-1 md:left-[14%] md:top-[20%] lg:left-[26%]" },
+            { id: "05", src: "/videos/clip_04.mp4", mobile: false, placement: "-rotate-1 md:left-[-8%] md:top-[52%]" },
+            { id: "03", src: "/videos/clip_03.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 rotate-2 md:left-[14%] md:top-[72%] lg:left-[22%]" },
         ],
     },
     {
         side: "right",
-        position: "bottom-[clamp(4rem,15svh,10rem)] md:bottom-auto md:right-[clamp(2rem,5vw,6rem)] md:top-[calc(50%+56px)]",
+        position: "bottom-[clamp(4rem,15svh,10rem)] md:bottom-auto md:right-[clamp(1.75rem,6vw,7rem)] md:top-[calc(50%+48px)]",
         clips: [
-            { id: "02", src: "/videos/clip_09.mp4", mobile: true },
-            { id: "04", src: "/videos/clip_07.mp4", mobile: false },
-            { id: "06", src: "/videos/clip_06.mp4", mobile: false },
-            { id: "09", src: "/videos/clip_08.mp4", mobile: true },
+            { id: "02", src: "/videos/clip_09.mp4", mobile: true, placement: "rotate-2 md:left-0 md:top-0" },
+            { id: "04", src: "/videos/clip_07.mp4", mobile: false, placement: "z-20 -rotate-1 md:left-[-14%] md:top-[21%] lg:left-[-26%]" },
+            { id: "06", src: "/videos/clip_06.mp4", mobile: false, placement: "rotate-1 md:left-[8%] md:top-[52%]" },
+            { id: "09", src: "/videos/clip_08.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 -rotate-2 md:left-[-12%] md:top-[72%] lg:left-[-20%]" },
         ],
     },
 ];
 
-const FilmClip = ({ data }: { data: (typeof clipColumns)[number]["clips"][number] }) => {
+const FilmClip = ({ data }: { data: (typeof clipGroups)[number]["clips"][number] }) => {
     return (
         <div
             data-hero-clip={data.id}
-            className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-lucas-navy/10"
+            className={`relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-lucas-navy/10 md:absolute md:translate-x-0 md:translate-y-0 ${data.placement}`}
         >
             <video
                 src={data.src}
@@ -64,9 +64,9 @@ export default function HeroSection() {
     );
 
     return (
-        <section className="relative w-full h-[100svh] min-h-[38rem] md:min-h-[40rem] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center">
+        <section className="relative w-full h-[100svh] min-h-[38rem] md:min-h-[40rem] bg-lucas-cream overflow-hidden flex flex-col items-center justify-center [--hero-clip-width:min(19vw,calc((100svh-176px)/2.75),280px)] lg:[--hero-clip-width:min(21vw,calc((100svh-176px)/2.75),280px)]">
 
-            {/* Four films per desktop column; two per row on mobile. */}
+            {/* Loose pairs frame the title, with fewer films on mobile. */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -74,13 +74,13 @@ export default function HeroSection() {
                 className="pointer-events-none absolute inset-0 z-10"
                 aria-hidden="true"
             >
-                {clipColumns.map((column) => (
+                {clipGroups.map((group) => (
                     <div
-                        key={column.side}
-                        data-hero-column={column.side}
-                        className={`absolute inset-x-6 grid grid-cols-2 gap-3 md:inset-x-auto md:flex md:w-[min(20vw,calc((100svh-184px)/3))] md:-translate-y-1/2 md:flex-col md:gap-2 ${column.position}`}
+                        key={group.side}
+                        data-hero-group={group.side}
+                        className={`absolute inset-x-6 grid grid-cols-2 md:inset-x-auto md:block md:h-[calc(var(--hero-clip-width)*2.75)] md:w-[var(--hero-clip-width)] md:-translate-y-1/2 ${group.position}`}
                     >
-                        {column.clips
+                        {group.clips
                             .filter((clip) => clip.mobile || isDesktop)
                             .map((clip) => <FilmClip key={clip.id} data={clip} />)}
                     </div>
