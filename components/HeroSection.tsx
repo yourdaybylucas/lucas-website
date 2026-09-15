@@ -22,8 +22,8 @@ const clipGroups = [
             { id: "01", src: "/videos/clip_01.mp4", mobile: true, placement: "-rotate-[1.5deg] md:left-0 md:top-0" },
             { id: "07", src: "/videos/clip_02.mp4", mobile: false, placement: "z-20 rotate-1 md:left-[14%] md:top-[18%] lg:left-[24%]" },
             { id: "05", src: "/videos/clip_04.mp4", mobile: false, placement: "-rotate-1 md:left-[-8%] md:top-[42%]" },
-            { id: "06", src: "/videos/clip_06.mp4", mobile: false, placement: "rotate-1 md:left-[3%] md:top-[62%]" },
-            { id: "03", src: "/videos/clip_03.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 rotate-[1.5deg] md:left-[14%] md:top-[81%] lg:left-[28%]" },
+            { id: "03", src: "/videos/clip_03.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 rotate-[1.5deg] md:z-auto md:rotate-1 md:left-[3%] md:top-[62%]" },
+            { id: "06", src: "/videos/clip_06.mp4", mobile: false, placement: "z-20 rotate-[1.5deg] md:left-[14%] md:top-[81%] lg:left-[28%]" },
         ],
     },
     {
@@ -32,7 +32,7 @@ const clipGroups = [
         clips: [
             { id: "02", src: "/videos/clip_09.mp4", mobile: true, placement: "rotate-[1.5deg] md:left-0 md:top-0" },
             { id: "04", src: "/videos/clip_07.mp4", mobile: false, placement: "z-20 -rotate-1 md:left-[-14%] md:top-[22%] lg:left-[-22%]" },
-            { id: "08", src: "/videos/clip_05.mp4", mobile: false, placement: "rotate-1 md:left-[5%] md:top-[53%]" },
+            { id: "08", src: "/videos/clip_05.mp4", mobile: false, placement: "z-30 rotate-1 md:left-[5%] md:top-[53%]" },
             { id: "09", src: "/videos/clip_08.mp4", mobile: true, placement: "z-20 -translate-x-2 translate-y-3 -rotate-[1.5deg] md:left-[-12%] md:top-[75%] lg:left-[-22%]" },
         ],
     },
