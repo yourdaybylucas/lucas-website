@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { JournalEntry } from "@/data/journal";
+import { MUSKOKA_FEATURED_SLUGS, MUSKOKA_PAGE_PATH } from "@/data/muskoka";
 import CinematicPlayer from "@/components/CinematicPlayer";
 
 export default function JournalPostClient({ post }: { post: JournalEntry }) {
@@ -151,6 +152,16 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                                 <p key={idx}>{paragraph}</p>
                             ))}
                         </div>
+
+                        {MUSKOKA_FEATURED_SLUGS.some((slug) => slug === post.slug) && (
+                            <Link
+                                href={MUSKOKA_PAGE_PATH}
+                                className="mt-8 inline-flex items-center gap-3 font-sans text-[10px] uppercase tracking-zissou text-lucas-navy hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy"
+                            >
+                                More Muskoka wedding films
+                                <ArrowUpRight size={14} aria-hidden="true" />
+                            </Link>
+                        )}
 
                         {post.secondaryVideo && (
                             <div className="mt-16 pt-12 border-t border-lucas-navy/10">

@@ -18,6 +18,7 @@ import {
 } from '@/data/venues';
 import { MapPin, Users, Building, Lock, X } from 'lucide-react';
 import CinematicPlayer from "@/components/CinematicPlayer";
+import { MUSKOKA_PAGE_PATH } from '@/data/muskoka';
 
 const DossierCard = ({ venue }: { venue: Venue }) => (
     <motion.div
@@ -117,6 +118,16 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
                     className="flex items-center justify-between border-t border-lucas-navy/10 py-5 transition-colors duration-slow hover:text-lucas-orange"
                 >
                     <span>Watch a wedding at {venue.name}</span>
+                    <span aria-hidden="true">→</span>
+                </Link>
+            )}
+
+            {venue.geography === 'muskoka' && (
+                <Link
+                    href={MUSKOKA_PAGE_PATH}
+                    className="flex items-center justify-between border-t border-lucas-navy/10 py-5 hover:text-lucas-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lucas-navy"
+                >
+                    <span>Muskoka wedding films</span>
                     <span aria-hidden="true">→</span>
                 </Link>
             )}

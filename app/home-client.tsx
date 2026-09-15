@@ -25,7 +25,7 @@ const partners = [
 
 const featuredFilms = [
   { id: "xCRgV8RAX78", names: "Alex + Nick", locale: "South of France", format: "Digital + Super 8" },
-  { id: "KfOXk9GKan0", names: "Jenna + Clark", locale: "Whistle Bear", format: "Digital" },
+  { id: "xWph1lN0CXM", names: "Emily + Harry", locale: "Windermere House", format: "Digital + Super 8" },
   { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8" },
   { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" }
 ];
