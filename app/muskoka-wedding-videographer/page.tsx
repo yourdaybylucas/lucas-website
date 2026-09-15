@@ -8,7 +8,7 @@ import { MUSKOKA_FEATURED_SLUGS, MUSKOKA_HERO, MUSKOKA_PAGE_PATH } from '@/data/
 
 const title = 'Muskoka Wedding Videographer | Digital + Super 8 | LUCAS';
 const description =
-  'Muskoka wedding videographer Lucas Bulger. Honest digital and Super 8 wedding films at Windermere House and Port Cunnington Lodge. No Muskoka travel fee.';
+  'Muskoka wedding videographer for private cottage weddings and wedding weekends. Honest digital and Super 8 films. No Muskoka travel fee.';
 const pageUrl = `https://www.yourdaybylucas.com${MUSKOKA_PAGE_PATH}`;
 const featuredFilms = MUSKOKA_FEATURED_SLUGS.map((slug) => {
   const film = journalEntries.find((entry) => entry.slug === slug);
@@ -80,26 +80,25 @@ export default function MuskokaPage() {
       />
 
       <div className="bg-lucas-cream text-lucas-navy">
-        <section className="px-6 pb-20 pt-36 md:px-12 md:pb-32 md:pt-44">
+        <section className="px-6 pb-20 pt-36 md:px-12 md:pb-32 md:pt-28">
           <div className="mx-auto max-w-7xl">
-            <h1 className="mb-10 md:mb-16">
+            <h1 className="mb-10 md:mb-8">
               <span className="block font-sans text-[clamp(3.5rem,10.5vw,9rem)] font-bold uppercase leading-[0.95] tracking-[-0.035em]">
                 Muskoka{' '}
               </span>
-              <span className="mt-4 block font-serif text-3xl italic leading-tight md:mt-5 md:text-5xl">
+              <span className="mt-4 block font-serif text-3xl italic leading-tight md:text-5xl md:leading-none">
                 wedding videographer
               </span>
             </h1>
 
-            <div className="w-full overflow-hidden bg-lucas-navy/5">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-lucas-navy/5 md:aspect-[2/1]">
               <Image
                 src={MUSKOKA_HERO.src}
                 alt={MUSKOKA_HERO.alt}
-                width={MUSKOKA_HERO.width}
-                height={MUSKOKA_HERO.height}
+                fill
                 priority
                 sizes="(max-width: 767px) calc(160vw - 77px), (max-width: 1376px) calc(100vw - 96px), 1280px"
-                className="h-auto w-full origin-[62%_64%] scale-[1.6] md:scale-100"
+                className="origin-[62%_64%] scale-[1.6] object-cover md:scale-100 md:object-center"
               />
             </div>
           </div>
@@ -165,8 +164,8 @@ export default function MuskokaPage() {
                   when the weather turns warm. especially on the water.
                 </p>
                 <p>
-                  there’s an ease to weddings here that i love. a little dressed up, a little
-                  barefoot, with time for everyone to settle in and enjoy a few days away together.
+                  there’s an ease to weddings here that i love. everyone gets to settle in
+                  and enjoy a few days away together.
                   i make digital and super 8 films that bring a little of that feeling home.
                 </p>
               </div>
