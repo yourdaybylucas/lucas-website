@@ -191,10 +191,6 @@ export default function AboutPage() {
                             40-point shot list, but to pay attention. to frame the unforced, human
                             interactions that carry weight.
                         </p>
-                        <p className="text-lucas-slate italic border-l-2 border-lucas-orange/30 pl-4 py-1 mt-4">
-                            i genuinely love doing this. i'm here to hang out, read the room, and document
-                            that elusive feeling, without making the day revolve around a camera.
-                        </p>
                     </motion.div>
                 </motion.div>
 

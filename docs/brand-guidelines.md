@@ -65,9 +65,9 @@ i don't run a production set, and i don't shoot for the algorithm. my approach i
 
 ## Home Page Distillation
 
-not a production. not content. just easy company and a keen eye.
+easy company and a keen eye.
 
-i'm there to hang out, keep things grounded, and collect the honest frames: the laughs, the tears, and exactly how the day actually felt.
+i’m lucas, a wedding filmmaker. i’m there to hang out with you, pay attention, and make you a film that holds onto the feeling that lasts long after the day itself.
 
 ## Vendor Blurb
 

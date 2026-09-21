@@ -123,22 +123,15 @@ export default function Home() {
             className="w-full lg:w-6/12 flex flex-col justify-center"
           >
             <motion.div variants={fadeUpItem}>
-              <h2 className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
-                not a production. not content.<br className="hidden md:block" /> just <span className="italic text-lucas-navy/90">easy company</span> and a keen<br className="hidden md:block" /> eye.
+              <h2 className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8 text-balance">
+                <span className="italic text-lucas-navy/90">easy company</span> and a keen eye.
               </h2>
             </motion.div>
             
-            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
+            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light">
               <p>
-                i’m there to hang out and keep things grounded - capturing the laughs, tears, and the feeling that lasts long after the day itself.
+                i’m lucas, a wedding filmmaker. i’m there to hang out with you, pay attention, and make you a film that holds onto the feeling that lasts long after the day itself.
               </p>
-              <p>
-                no crews. no scripts. just me.
-              </p>
-            </motion.div>
-            
-            <motion.div variants={fadeUpItem}>
-              <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">— lucas</p>
             </motion.div>
 
             <motion.div variants={fadeUpItem}>
