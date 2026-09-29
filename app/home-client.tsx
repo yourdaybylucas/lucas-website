@@ -74,7 +74,7 @@ export default function Home() {
       <HeroSection />
 
       {/* in good company (infinite marquee) */}
-      <section className="relative z-0 bg-lucas-navy text-lucas-slate py-8 border-y border-lucas-slate/10 overflow-hidden flex items-center">
+      <section className="relative z-0 bg-lucas-navy text-lucas-slate py-6 md:py-8 border-y border-lucas-slate/10 overflow-hidden flex items-center">
         <motion.div
           className="flex whitespace-nowrap gap-16 md:gap-32 w-max"
           animate={{ x: [0, -1000] }}
@@ -93,16 +93,16 @@ export default function Home() {
       </section>
 
       {/* about & philosophy */}
-      <section id="about" className="relative z-10 flex min-h-screen items-center justify-center bg-lucas-cream px-6 py-32 overflow-hidden">
+      <section id="about" className="relative z-10 flex md:min-h-screen items-center justify-center bg-lucas-cream px-6 py-20 md:py-32 overflow-hidden">
         
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-24 lg:gap-16 w-full">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 md:gap-24 lg:gap-16 w-full">
           
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-            className="w-full lg:w-5/12 relative flex justify-center mt-16 lg:mt-0"
+            className="w-full lg:w-5/12 relative flex justify-center md:mt-16 lg:mt-0"
           >
             <div className="relative w-full max-w-[320px] md:max-w-[500px] aspect-square">
               <Image
@@ -123,12 +123,12 @@ export default function Home() {
             className="w-full lg:w-6/12 flex flex-col justify-center"
           >
             <motion.div variants={fadeUpItem}>
-              <h2 className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-8">
+              <h2 className="font-serif text-4xl md:text-5xl leading-[1.3] text-lucas-navy mb-6 md:mb-8">
                 not a production. not content.<br className="hidden md:block" /> just <span className="italic text-lucas-navy/90">easy company</span> and a keen<br className="hidden md:block" /> eye.
               </h2>
             </motion.div>
             
-            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
+            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-8 md:mb-12 leading-[1.8] font-light space-y-6">
               <p>
                 i love doing this. i’m here to hang out, read the room, and document the feeling that lasts long after the day itself.
               </p>
@@ -138,7 +138,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={fadeUpItem}>
-              <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">- lucas</p>
+              <p className="font-serif text-2xl italic text-lucas-navy/80 mb-8 md:mb-10">- lucas</p>
             </motion.div>
 
             <motion.div variants={fadeUpItem}>
@@ -155,10 +155,10 @@ export default function Home() {
       </section>
 
       {/* the archive (featured films) */}
-      <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-32 px-6">
+      <section id="films" className="relative z-10 bg-lucas-navy text-lucas-cream py-20 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
           
-          <div className="flex justify-between items-end mb-24 border-b border-lucas-slate/20 pb-8">
+          <div className="flex justify-between items-end mb-12 md:mb-24 border-b border-lucas-slate/20 pb-6 md:pb-8">
             <h2 className="font-sans text-4xl md:text-6xl uppercase tracking-tight font-bold">
               The Archive
             </h2>
@@ -167,7 +167,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 md:mb-24">
             {featuredFilms.map((film, index) => (
               <motion.div 
                 key={film.id} 
@@ -180,7 +180,7 @@ export default function Home() {
                 
                 <CinematicPlayer videoId={film.id} altText={film.names} />
 
-                <div className="mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4 border-t border-lucas-slate/10 pt-6">
+                <div className="mt-6 md:mt-8 flex flex-col xl:flex-row justify-between xl:items-start gap-4 border-t border-lucas-slate/10 pt-6">
                   <div>
                     <h3 className="font-serif text-3xl md:text-4xl italic text-lucas-cream">
                       {film.names}
@@ -206,10 +206,10 @@ export default function Home() {
       </section>
 
       {/* notes (the ledger) */}
-      <section className="relative z-10 bg-lucas-cream py-32 px-6 md:px-12 border-t border-lucas-slate">
+      <section className="relative z-10 bg-lucas-cream py-20 md:py-32 px-6 md:px-12 border-t border-lucas-slate">
         <div className="max-w-7xl mx-auto">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-16 gap-4">
             <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
               Their Words
             </h2>
