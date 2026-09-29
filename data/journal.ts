@@ -54,6 +54,46 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "059",
+        slug: "mia-zaden-eaton-hall-king-city",
+        title: "mia & zaden",
+        place: {
+            name: "Eaton Hall",
+            locality: "King City",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://eatonhall.bypeterandpauls.com/",
+            venueId: "eaton-hall"
+        },
+        weddingDate: "July 3, 2026",
+        weddingDateIso: "2026-07-03",
+        publishedAt: "2026-09-29",
+        updatedAt: "2026-09-29",
+        format: "Digital",
+        stock: "Sensor Only",
+        excerpt: "a lake-facing ceremony, rain for mia's walk down the aisle, and sunshine by the kiss at eaton hall.",
+        primaryVideo: {
+            id: "TO_YOEe3ycw",
+            title: "Mia & Zaden | An Emotional Eaton Hall Wedding Film",
+            label: "Wedding Film",
+            uploadDate: "2026-09-29T09:31:36-07:00",
+            duration: "PT8M1S"
+        },
+        seo: {
+            title: "Eaton Hall Wedding Film | Mia & Zaden | LUCAS",
+            description: "Watch Mia and Zaden’s digital wedding film at Eaton Hall in King City, Ontario, from their July 3, 2026 wedding."
+        },
+        fieldNotes: [
+            "eaton hall feels like a castle tucked into king city. its library, getting-ready suite, lake-facing ceremony spot, and on-site tent keep the day close together while each part of the property feels distinct.",
+            "i have never seen wedding-day weather turn quite like this. the rain started pouring as mia walked down the aisle, and somehow the moment became more moving for it. by the time mia and zaden kissed at the end of the ceremony, the sun was out.",
+            "their faith and families were present throughout, especially in the vows and speeches. there was plenty of laughter too. i filmed this one entirely in digital, with the weather doing more than enough to give the day its own texture."
+        ],
+        vendors: [
+            { name: "Eaton Hall", role: "Venue", url: "https://eatonhall.bypeterandpauls.com/" },
+            { name: "Justin Greaves", role: "Photography", url: "https://justingreaves.com/" }
+        ]
+    },
+    {
         id: "058",
         slug: "emily-harry-windermere-house-muskoka",
         title: "emily & harry",
