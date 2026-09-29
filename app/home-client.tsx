@@ -136,7 +136,7 @@ export default function Home() {
                 no crews. no scripts. just me.
               </p>
             </motion.div>
-            
+
             <motion.div variants={fadeUpItem}>
               <p className="font-serif text-2xl italic text-lucas-navy/80 mb-10">- lucas</p>
             </motion.div>

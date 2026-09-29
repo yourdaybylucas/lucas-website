@@ -6,6 +6,7 @@ import { MUSKOKA_PAGE_PATH } from '@/data/muskoka';
 
 const STATIC_PAGE_LAST_MODIFIED = '2026-06-23';
 const VENUES_LAST_REVIEWED = '2026-08-07';
+const EATON_HALL_LAST_UPDATED = '2026-09-29';
 
 function dateFromIsoDate(date: string) {
   return new Date(`${date}T00:00:00.000Z`);
@@ -55,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/spaces`,
-      lastModified: venuesLastReviewed,
+      lastModified: dateFromIsoDate(EATON_HALL_LAST_UPDATED),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -70,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // dynamically append every venue in the ledger
   const spaceRoutes = venues.map((venue) => ({
     url: `${baseUrl}/spaces/${venue.id}`,
-    lastModified: venuesLastReviewed,
+    lastModified: venue.id === 'eaton-hall' ? dateFromIsoDate(EATON_HALL_LAST_UPDATED) : venuesLastReviewed,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
