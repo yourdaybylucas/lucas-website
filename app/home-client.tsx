@@ -130,10 +130,10 @@ export default function Home() {
             
             <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-12 leading-[1.8] font-light space-y-6">
               <p>
-                i’m there to hang out and keep things grounded - capturing the laughs, tears, and the feeling that lasts long after the day itself.
+                i love doing this. i’m here to hang out, read the room, and document the feeling that lasts long after the day itself.
               </p>
               <p>
-                no crews. no scripts. just me.
+                all without making the day revolve around a camera.
               </p>
             </motion.div>
 
