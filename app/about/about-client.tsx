@@ -206,8 +206,8 @@ export default function AboutPage() {
                     <div className="w-full md:w-1/2 flex flex-col relative">
                         
                         {/* Unified Sticky Header Group */}
-                        <div className="sticky top-24 z-30 bg-lucas-navy/95 backdrop-blur-md pt-4 pb-4 border-b border-lucas-slate/20 mb-4">
-                            <div className="flex items-end justify-between mb-8">
+                        <div className="sticky top-[72px] md:top-24 z-30 bg-lucas-navy md:bg-lucas-navy/95 backdrop-blur-md pt-4 pb-4 border-b border-lucas-slate/20 mb-4">
+                            <div className="flex items-end justify-between md:mb-8">
                                 <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
                                     The Record
                                 </h2>
@@ -345,13 +345,13 @@ export default function AboutPage() {
             </section>
 
         {/* 03. THE METHODOLOGY (The Ledger Grid) */}
-            <section className="relative z-10 bg-lucas-cream py-24 md:py-32 px-6 md:px-12 border-t border-lucas-slate/20">
+            <section id="how-i-work" className="relative z-10 bg-lucas-cream py-8 md:py-32 px-6 md:px-12 border-t border-lucas-slate/20 scroll-mt-[72px] md:scroll-mt-20">
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay pointer-events-none z-0"></div>
                 
                 <div className="max-w-6xl mx-auto relative z-10">
                     
                     {/* The Interm Adjusted Header (Awaiting Field Notes Structure) */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b-2 border-lucas-navy pb-6">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-16 gap-4 border-b-2 border-lucas-navy pb-4 md:pb-6">
                         <div className="flex items-end justify-between w-full">
                             <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
                                 How I Work.
@@ -368,7 +368,7 @@ export default function AboutPage() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-50px" }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-l border-t border-lucas-navy/20"
+                        className="grid grid-cols-2 lg:grid-cols-4 border-l border-t border-lucas-navy/20"
                     >
                         {[
                             {
@@ -395,23 +395,23 @@ export default function AboutPage() {
                             <motion.div 
                                 key={idx} 
                                 variants={fadeUp}
-                                className="group border-r border-b border-lucas-navy/20 p-6 lg:p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col justify-between min-h-[280px] lg:min-h-[320px] bg-lucas-cream"
+                                className="group border-r border-b border-lucas-navy/20 p-3 md:p-6 lg:p-8 hover:bg-lucas-sage/10 transition-colors duration-500 flex flex-col md:justify-between md:min-h-[280px] lg:min-h-[320px] bg-lucas-cream"
                             >
-                                <div className="flex justify-between items-start mb-8">
+                                <div className="flex justify-between items-start gap-2 mb-3 md:mb-8">
                                     <div className="flex flex-col gap-1">
-                                        <span className="text-lucas-navy font-sans uppercase tracking-zissou text-[11px] lg:text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
+                                        <span className="text-lucas-navy font-sans uppercase tracking-[0.08em] md:tracking-zissou text-[10px] md:text-[11px] lg:text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
                                             {item.title}
                                         </span>
-                                        <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[9px] lg:text-[10px]">
+                                        <span className="hidden md:block text-lucas-slate font-sans uppercase tracking-zissou text-[9px] lg:text-[10px]">
                                             [ Principle ]
                                         </span>
                                     </div>
-                                    <span className="text-lucas-slate font-sans text-xs group-hover:text-lucas-navy transition-colors duration-500">
+                                    <span className="shrink-0 text-lucas-slate font-sans text-[10px] md:text-xs group-hover:text-lucas-navy transition-colors duration-500">
                                         {item.num}
                                     </span>
                                 </div>
 
-                                <p className="font-serif text-[1.1rem] xl:text-[1.15rem] leading-[1.6] text-lucas-navy italic lowercase pr-2">
+                                <p className="font-serif text-base md:text-[1.1rem] xl:text-[1.15rem] leading-[1.4] md:leading-[1.6] text-lucas-navy italic lowercase md:pr-2">
                                     {item.desc}
                                 </p>
                             </motion.div>

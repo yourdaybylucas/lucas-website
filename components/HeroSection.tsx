@@ -96,7 +96,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="font-sans text-[10px] uppercase tracking-zissou text-lucas-slate mb-12"
+                    className="font-sans text-[9px] md:text-[10px] uppercase tracking-zissou text-lucas-slate mb-5 md:mb-12"
                 >
                     Ontario // Worldwide
                 </motion.p>
@@ -107,15 +107,15 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="flex flex-col items-center justify-center"
                 >
-                    <span className="font-sans font-medium text-sm md:text-base text-lucas-navy/70 uppercase tracking-[0.4em] mb-2 pl-3">
+                    <span className="font-sans font-medium text-[10px] md:text-base text-lucas-navy/70 uppercase tracking-[0.3em] md:tracking-[0.4em] mb-1 md:mb-2 pl-1 md:pl-3">
                         The Art Of
                     </span>
                     
                     <div className="flex items-baseline leading-none">
-                        <span className="font-serif italic text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-navy lowercase tracking-tight">
+                        <span className="font-serif italic text-[3.75rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-navy lowercase tracking-tight">
                             noticing
                         </span>
-                        <span className="font-serif text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-orange ml-2">
+                        <span className="font-serif text-[3.75rem] md:text-[6.5rem] lg:text-[8rem] text-lucas-orange ml-1 md:ml-2">
                             .
                         </span>
                     </div>
