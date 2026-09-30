@@ -107,7 +107,7 @@ export default function MuskokaPage() {
         <section aria-labelledby="muskoka-films" className="bg-lucas-navy px-6 py-20 text-lucas-cream md:px-12 md:py-32">
           <div className="mx-auto max-w-7xl">
             <h2 id="muskoka-films" className="mb-12 font-serif text-4xl leading-tight md:mb-20 md:text-6xl">
-              a few days at the lake.
+              a few days in cottage country.
             </h2>
 
             <div className="grid gap-16 md:grid-cols-2 md:gap-12">
