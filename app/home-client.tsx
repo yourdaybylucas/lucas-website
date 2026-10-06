@@ -278,12 +278,8 @@ export default function Home() {
             {/* scarcity / availability block */}
             <div className="hidden lg:flex flex-col gap-4 font-sans text-[10px] tracking-zissou uppercase text-lucas-slate w-full max-w-[320px]">
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
-                <span>2026</span>
-                <span className="text-lucas-orange">At Capacity *</span>
-              </div>
-              <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2027</span>
-                <span className="text-lucas-cream">Limited Availability</span>
+                <span className="text-lucas-orange">Limited Availability</span>
               </div>
               <div className="flex justify-between border-b border-lucas-slate/10 pb-3">
                 <span>2028</span>
@@ -292,10 +288,6 @@ export default function Home() {
               <div className="flex justify-between pb-3 border-b border-lucas-slate/10">
                 <span>Location</span>
                 <span className="text-lucas-cream">Ontario // Worldwide</span>
-              </div>
-              
-              <div className="mt-2 text-[9px] tracking-wider text-lucas-slate/70 leading-relaxed normal-case lowercase font-sans">
-                * fully commissioned for 2026, but please still reach out. i am always happy to check my waitlist or connect you with trusted peers.
               </div>
             </div>
 
