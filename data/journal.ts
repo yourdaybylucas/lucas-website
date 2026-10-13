@@ -54,6 +54,103 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        "id": "060",
+        "slug": "andrew-lisa-royal-botanical-gardens",
+        "title": "andrew & lisa",
+        "place": {
+            "name": "Royal Botanical Gardens",
+            "locality": "Burlington / Hamilton",
+            "region": "Ontario",
+            "country": "Canada",
+            "url": "https://www.rbg.ca/"
+        },
+        "weddingDate": "July 11, 2026",
+        "weddingDateIso": "2026-07-11",
+        "publishedAt": "2026-10-13",
+        "updatedAt": "2026-10-13",
+        "format": "Digital",
+        "stock": "Sensor Only",
+        "excerpt": "family and friends from different countries, a sunny day at the royal botanical gardens, and vows with room for a little magic: the gathering.",
+        "primaryVideo": {
+            "id": "lVdY1IDaTNs",
+            "title": "Andrew & Lisa | Royal Botanical Gardens Wedding Film",
+            "label": "Wedding Film",
+            "uploadDate": "2026-10-13T11:45:31-07:00",
+            "duration": "PT7M32S"
+        },
+        "seo": {
+            "title": "Royal Botanical Gardens Wedding Film | Andrew & Lisa | LUCAS",
+            "description": "Watch Andrew and Lisa’s digital wedding film at the Royal Botanical Gardens in Ontario, with lakeside preparations in Burlington and personal vows."
+        },
+        "fieldNotes": [
+            "andrew and lisa brought family and friends together from different countries for a warm, sunny wedding at the royal botanical gardens. the day began with getting ready near the lake in burlington before everyone gathered at the gardens.",
+            "they were comfortable with each other, open with their emotions, and happy to laugh at themselves. their personal vows included a promise to occasionally let the other win at magic: the gathering. a very specific kind of devotion.",
+            "in her speech, the maid of honour spoke about how they help each other become more fully themselves. after spending the day with them, i understood exactly what she meant. i filmed this one entirely in digital, letting their easy energy carry the film."
+        ],
+        "vendors": [
+            {
+                "name": "Lindsay Plank Events",
+                "role": "Planning & Design",
+                "url": "https://www.lindsayplankevents.com/"
+            },
+            {
+                "name": "Royal Botanical Gardens",
+                "role": "Venue",
+                "url": "https://www.rbg.ca/"
+            },
+            {
+                "name": "Kendra Ruth Photography",
+                "role": "Photography",
+                "url": "https://kendraruthphotography.com/"
+            },
+            {
+                "name": "Your Day by Lucas",
+                "role": "Wedding Film",
+                "url": "https://www.yourdaybylucas.com/"
+            },
+            {
+                "name": "Simply Elegant by Emma",
+                "role": "Florals",
+                "url": "https://simplyelegantbyemma.com/"
+            },
+            {
+                "name": "Victoria Rendon Beauty",
+                "role": "Hair & Makeup",
+                "url": "https://www.victoriarendonbeauty.com/home"
+            },
+            {
+                "name": "fig&lemon",
+                "role": "Catering",
+                "url": "https://figandlemon.ca/"
+            },
+            {
+                "name": "Special Event Rentals",
+                "role": "Rentals",
+                "url": "https://specialevents.ca/"
+            },
+            {
+                "name": "Grace Notes Events",
+                "role": "Ceremony Musicians",
+                "url": "https://www.gracenotesevents.com/"
+            },
+            {
+                "name": "586 Event Group",
+                "role": "DJ",
+                "url": "https://www.586eventgroup.com/"
+            },
+            {
+                "name": "All That’s Lovely",
+                "role": "Stationery",
+                "url": "https://allthatslovely.com/"
+            },
+            {
+                "name": "BCausLove",
+                "role": "Officiant",
+                "url": "https://bcauslove.com/"
+            }
+        ]
+    },
+    {
         id: "059",
         slug: "mia-zaden-eaton-hall-king-city",
         title: "mia & zaden",
