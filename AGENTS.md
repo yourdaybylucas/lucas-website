@@ -24,6 +24,7 @@ Before making copy, design, SEO, or brand-facing changes, read `docs/brand-guide
 - Keep visual changes consistent with the editorial Zissou system: cream canvas, navy ink, orange accents, thin borders, ledger labels, restrained motion.
 - Preserve design unless the request is explicitly a redesign.
 - For invisible SEO improvements, preserve the front-end appearance and verify rendered output when practical.
+- Play films in embedded YouTube players on the site. Use `getYouTubeEmbedUrl` from `lib/youtube.ts` for every YouTube iframe and every embed URL in metadata, schema, or sitemaps. It always sets `rel=0` and `playsinline=1`; do not override or omit these settings. Use the existing `CinematicPlayer` for thumbnail-to-inline playback. YouTube's `rel=0` restricts related videos to the source channel; it does not remove all suggestions.
 
 ## Verification
 

@@ -86,12 +86,10 @@ export default function CollectionsPage() {
                     viewport={{ once: true, margin: "-100px" }}
                     className="grid grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 mb-[clamp(2rem,4vh,4rem)] relative"
                 >
-                    {/* VOL 01 */}
+                    {/* The Essential */}
                     <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col group hover:bg-[#E5E0D5]/50 transition-colors duration-slow relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                        <div className="flex justify-between items-start mb-12">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 01 ]</p>
-                        </div>
+                        <div aria-hidden="true" className="h-[15px] mb-12" />
                         <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-lucas-navy italic mb-10">
                             The Essential
                         </h3>
@@ -111,12 +109,11 @@ export default function CollectionsPage() {
                         </ul>
                     </motion.div>
 
-                    {/* VOL 02 - The Flagship */}
+                    {/* The Analog - The Flagship */}
                     <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col bg-lucas-navy text-lucas-cream relative z-10 lg:scale-[1.03] shadow-2xl border border-lucas-navy group">
                         <div className="absolute inset-0 bg-grain opacity-[0.08] pointer-events-none mix-blend-overlay"></div>
                         
-                        <div className="flex justify-between items-start mb-12 relative z-10">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
+                        <div className="flex justify-end items-start mb-12 relative z-10">
                             <span className="font-sans text-[9px] tracking-zissou text-lucas-orange uppercase border border-lucas-orange/30 px-3 py-1.5">
                                 The Flagship
                             </span>
@@ -127,7 +124,7 @@ export default function CollectionsPage() {
                         <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest flex-grow relative z-10">
                             <li className="flex items-start gap-4 opacity-70">
                                 <span className="text-lucas-orange mt-0.5">+</span> 
-                                <span>Everything in Vol. 01</span>
+                                <span>Everything in The Essential</span>
                             </li>
                             <li className="flex items-start gap-4">
                                 <span className="text-lucas-orange mt-0.5">+</span> 
@@ -140,19 +137,17 @@ export default function CollectionsPage() {
                         </ul>
                     </motion.div>
 
-                    {/* VOL 03 */}
+                    {/* The Weekend */}
                     <motion.div variants={fadeUpItem} className="p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col group hover:bg-[#E5E0D5]/50 transition-colors duration-slow relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-1 bg-lucas-navy transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                        <div className="flex justify-between items-start mb-12">
-                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 03 ]</p>
-                        </div>
+                        <div aria-hidden="true" className="h-[15px] mb-12" />
                         <h3 className="font-serif text-[clamp(2rem,3vw,2.5rem)] text-lucas-navy italic mb-10">
                             The Weekend
                         </h3>
                         <ul className="flex flex-col gap-5 font-sans text-[11px] uppercase tracking-widest text-lucas-navy flex-grow">
                             <li className="flex items-start gap-4">
                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 
-                                <span>Everything in Vol. 02</span>
+                                <span>Everything in The Analog</span>
                             </li>
                             <li className="flex items-start gap-4">
                                 <span className="text-lucas-orange/70 mt-0.5">+</span> 

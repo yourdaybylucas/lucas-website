@@ -98,7 +98,7 @@ export default function HeroSection() {
                     transition={{ duration: 1 }}
                     className="font-sans text-[9px] md:text-[10px] uppercase tracking-zissou text-lucas-slate mb-5 md:mb-12"
                 >
-                    Ontario // Worldwide
+                    Ontario · Worldwide
                 </motion.p>
 
                 <motion.div

@@ -6,6 +6,8 @@
   --color-lucas-orange: #D65A31;
   --color-lucas-sage: #94A187;
   --color-lucas-slate: #7B8B9A;
+  /* Soft body copy on cream; labels and captions keep the original slate. */
+  --color-lucas-body: #6A7A89;
 
   --font-sans: var(--font-general-sans), "General Sans", system-ui, sans-serif;
   --font-serif: var(--font-cormorant), serif;

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { getYouTubeEmbedUrl } from "@/lib/youtube";
 
 interface CinematicPlayerProps {
     videoId: string;
@@ -31,7 +32,7 @@ export default function CinematicPlayer({
         return (
             <div className={`relative w-full aspect-video bg-[#0a1118] overflow-hidden border border-lucas-navy/10 ${className}`}>
                 <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
+                    src={getYouTubeEmbedUrl(videoId, { autoplay: true })}
                     title={altText}
                     className="w-full h-full absolute top-0 left-0 border-none"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

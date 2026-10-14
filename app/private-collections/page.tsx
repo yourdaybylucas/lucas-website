@@ -4,6 +4,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { X, Maximize } from "lucide-react";
+import { getYouTubeEmbedUrl } from "@/lib/youtube";
 
 const fadeUpContainer = {
     hidden: { opacity: 0 },
@@ -137,7 +138,7 @@ export default function PrivateCollectionsPage() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <iframe
-                                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&color=white&rel=0&modestbranding=1&playsinline=1`}
+                                src={getYouTubeEmbedUrl(activeVideo, { autoplay: true })}
                                 title="Lucas Film"
                                 className="w-full h-full absolute top-0 left-0 border-none"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
