@@ -13,7 +13,7 @@ const partners = [
   { name: "The Birds Papaya", url: "https://www.instagram.com/thebirdspapaya/?hl=en" },
   { name: "The Modern Bride", url: "https://www.tmodernbride.com/" },
   { name: "Langdon Hall", url: "https://langdonhall.ca/" },
-  { name: "Cruikston Park", url: "https://cruickstonpark.com/" },
+  { name: "Cruickston Park", url: "https://cruickstonpark.com/" },
   { name: "Clement & Co Events", url: "https://www.clementandcoevents.com/" },
   { name: "Wren House by Stella", url: "https://www.wrenhousebystella.ca/" },
   { name: "Samantha Nicholas", url: "https://www.samanthanicholas.ca/" },
@@ -24,10 +24,10 @@ const partners = [
 ];
 
 const featuredFilms = [
-  { id: "xCRgV8RAX78", names: "Alex + Nick", locale: "South of France", format: "Digital + Super 8" },
-  { id: "xWph1lN0CXM", names: "Emily + Harry", locale: "Windermere House", format: "Digital + Super 8" },
-  { id: "q2Qw5G4M0Lc", names: "Kristen + Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8" },
-  { id: "kXRULOzL9AQ", names: "Olivia + Max", locale: "Paletta Mansion", format: "Digital" }
+  { id: "xCRgV8RAX78", names: "Alex & Nick", locale: "South of France", format: "Digital + Super 8" },
+  { id: "xWph1lN0CXM", names: "Emily & Harry", locale: "Windermere House", format: "Digital + Super 8" },
+  { id: "q2Qw5G4M0Lc", names: "Kristen & Frankie", locale: "Spencer's at the Waterfront", format: "Digital + Super 8" },
+  { id: "kXRULOzL9AQ", names: "Olivia & Max", locale: "Paletta Mansion", format: "Digital" }
 ];
 
 // reordered for narrative weight
@@ -128,7 +128,7 @@ export default function Home() {
               </h2>
             </motion.div>
             
-            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-slate max-w-[440px] mb-8 md:mb-12 leading-[1.8] font-light space-y-6">
+            <motion.div variants={fadeUpItem} className="font-sans text-sm md:text-base text-lucas-body max-w-[440px] mb-8 md:mb-12 leading-[1.8] font-light space-y-6">
               <p>
                 i love doing this. i’m here to hang out, read the room, and document the feeling that lasts long after the day itself.
               </p>
@@ -213,9 +213,6 @@ export default function Home() {
             <h2 className="text-lucas-navy font-sans font-bold text-4xl uppercase tracking-normal">
               Their Words
             </h2>
-            <span className="text-lucas-slate font-sans uppercase tracking-zissou text-xs">
-              [ Archive of Feedback ]
-            </span>
           </div>
 
           <motion.div 
@@ -236,9 +233,6 @@ export default function Home() {
                     <span className="text-lucas-navy font-sans uppercase tracking-zissou text-xs font-medium">
                       {letter.name}
                     </span>
-                    <span className="text-lucas-slate font-sans uppercase tracking-zissou text-[10px]">
-                      [ unlisted ]
-                    </span>
                   </div>
                   <span className="text-lucas-slate font-sans text-xs">
                     {String(idx + 1).padStart(2, '0')}
@@ -246,7 +240,7 @@ export default function Home() {
                 </div>
 
                 <p className="font-serif text-[1.125rem] leading-[1.75] text-lucas-navy italic">
-                  "{letter.quote}"
+                  &quot;{letter.quote}&quot;
                 </p>
               </motion.div>
             ))}
@@ -287,7 +281,7 @@ export default function Home() {
               </div>
               <div className="flex justify-between pb-3 border-b border-lucas-slate/10">
                 <span>Location</span>
-                <span className="text-lucas-cream">Ontario // Worldwide</span>
+                <span className="text-lucas-cream">Ontario · Worldwide</span>
               </div>
             </div>
 

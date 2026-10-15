@@ -146,6 +146,7 @@ Layout:
 - Public AI context: `public/llms.txt`.
 - Internal brand context: this file.
 - AI coding guidance: root `AGENTS.md`.
+- Film playback: keep films embedded on the site with `rel=0` and `playsinline=1`. All YouTube embed URLs, including metadata and sitemap player URLs, use `getYouTubeEmbedUrl` from `lib/youtube.ts`. Related suggestions are limited to the video's source channel; YouTube does not support disabling them entirely.
 
 ## SEO And Public Context Rules
 

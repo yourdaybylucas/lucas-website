@@ -26,7 +26,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     <Link href="/journal" className="inline-flex items-center gap-3 text-lucas-slate hover:text-lucas-orange transition-colors duration-300 group">
                         <ArrowLeft size={14} className="transform group-hover:-translate-x-1 transition-transform duration-300" />
                         <span className="font-sans text-[10px] tracking-zissou uppercase">
-                            [ Return to Archive ]
+                            Return to Archive
                         </span>
                     </Link>
                 </motion.div>
@@ -39,7 +39,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                 >
                     <div className="flex flex-col">
                         <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase mb-4">
-                            Record // {post.id}
+                            Record {post.id}
                         </span>
                         <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] text-lucas-navy italic lowercase leading-[1.1] md:leading-none max-w-2xl">
                             {post.title}
@@ -90,11 +90,11 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         {/* Specs */}
                         <div className="flex flex-col gap-6 font-sans text-[10px] tracking-widest uppercase mb-12">
                             <div className="flex flex-col gap-1">
-                                <span className="text-lucas-slate">Format //</span>
+                                <span className="text-lucas-slate">Format ·</span>
                                 <span className="text-lucas-navy">{post.format}</span>
                             </div>
                             <div className="flex flex-col gap-1">
-                                <span className="text-lucas-slate">Film Stock //</span>
+                                <span className="text-lucas-slate">Film Stock ·</span>
                                 {hasAnalogMaterial ? (
                                     <Link href="/analog-lab" className="text-lucas-navy hover:text-lucas-orange transition-colors duration-300">
                                         {post.stock}
@@ -109,7 +109,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         {post.vendors && post.vendors.length > 0 && (
                             <div className="flex flex-col border-t border-lucas-navy/10 pt-8">
                                 <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-6">
-                                    [ The Team ]
+                                    The Team
                                 </span>
                                 <ul className="flex flex-col gap-4 font-sans text-[10px] uppercase tracking-widest text-lucas-navy">
                                     {post.vendors.map((vendor, idx) => (

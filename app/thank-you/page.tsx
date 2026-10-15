@@ -3,6 +3,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { getYouTubeEmbedUrl } from "@/lib/youtube";
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -63,7 +64,7 @@ export default function ThankYouPage() {
                         <div className="relative w-full h-full bg-lucas-navy/10 overflow-hidden">
                             {/* Note: Swap 'GHhmsEs_8x8' with your actual welcome video YouTube ID when ready */}
                             <iframe
-                                src={`https://www.youtube.com/embed/GHhmsEs_8x8?autoplay=0&color=white&rel=0&modestbranding=1&playsinline=1`}
+                                src={getYouTubeEmbedUrl("GHhmsEs_8x8")}
                                 title="A quick hello"
                                 className="w-full h-full absolute top-0 left-0 border-none grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

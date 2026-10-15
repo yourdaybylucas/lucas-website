@@ -100,7 +100,7 @@ export default function JournalPage() {
                                     {/* The Structure ("Small Letters" Metadata Ledger) */}
                                     <div className="flex flex-col gap-3 font-sans text-[9px] md:text-[10px] tracking-zissou uppercase text-lucas-slate border-t border-lucas-navy/10 pt-5 mb-6">
                                         <div className="flex justify-between items-start">
-                                            <span className="w-20 shrink-0">Venue //</span>
+                                            <span className="w-20 shrink-0">Venue ·</span>
                                             {post.place.venueId ? (
                                                 <Link
                                                     href={`/spaces/${post.place.venueId}`}
@@ -113,11 +113,11 @@ export default function JournalPage() {
                                             )}
                                         </div>
                                         <div className="flex justify-between items-start">
-                                            <span className="w-20 shrink-0">Date //</span>
+                                            <span className="w-20 shrink-0">Date ·</span>
                                             <span className="text-right text-lucas-orange">{post.weddingDate}</span>
                                         </div>
                                         <div className="flex justify-between items-start">
-                                            <span className="w-20 shrink-0">Format //</span>
+                                            <span className="w-20 shrink-0">Format ·</span>
                                             <span className="text-right text-lucas-navy">{post.format}</span>
                                         </div>
                                     </div>

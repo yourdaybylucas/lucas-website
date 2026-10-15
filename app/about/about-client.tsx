@@ -211,9 +211,6 @@ export default function AboutPage() {
                                 <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-cream leading-none">
                                     The Record
                                 </h2>
-                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                                    [ Documented History ]
-                                </span>
                             </div>
 
                             {/* Spreadsheet Column Headers (Desktop) */}
@@ -250,7 +247,7 @@ export default function AboutPage() {
                                     {/* Spreadsheet Cells */}
                                     <div className="flex items-center md:items-start gap-6 md:w-1/3 shrink-0 pl-4 md:pl-6 pt-1">
                                         <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase w-12">
-                                            [{item.id}]
+                                            {item.id}
                                         </span>
                                         <span className={`font-sans text-[11px] tracking-widest uppercase transition-colors duration-500 ${
                                             activeIndex === idx ? 'text-lucas-orange font-bold' : 'text-lucas-cream'
@@ -356,9 +353,6 @@ export default function AboutPage() {
                             <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy leading-none">
                                 How I Work.
                             </h2>
-                            <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase hidden md:block">
-                                [ System Process ]
-                            </span>
                         </div>
                     </div>
 
@@ -401,9 +395,6 @@ export default function AboutPage() {
                                     <div className="flex flex-col gap-1">
                                         <span className="text-lucas-navy font-sans uppercase tracking-[0.08em] md:tracking-zissou text-[10px] md:text-[11px] lg:text-xs font-bold group-hover:text-lucas-orange transition-colors duration-500">
                                             {item.title}
-                                        </span>
-                                        <span className="hidden md:block text-lucas-slate font-sans uppercase tracking-zissou text-[9px] lg:text-[10px]">
-                                            [ Principle ]
                                         </span>
                                     </div>
                                     <span className="shrink-0 text-lucas-slate font-sans text-[10px] md:text-xs group-hover:text-lucas-navy transition-colors duration-500">

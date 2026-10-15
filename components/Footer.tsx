@@ -45,10 +45,10 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Col 3: The Index */}
+                    {/* Col 3: Explore */}
                     <div className="col-span-1 border-r border-b lg:border-b-0 border-lucas-slate/20 p-8 md:p-10 flex flex-col hover:bg-lucas-slate/5 transition-colors duration-slow">
                         <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-10 block">
-                            [ The Index ]
+                            Explore
                         </span>
                         <nav className="flex flex-col gap-5 font-sans text-xs tracking-widest uppercase">
                             <Link href="/" className="hover:text-lucas-orange transition-colors w-fit">Home</Link>
@@ -60,10 +60,10 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Col 4: Network */}
+                    {/* Col 4: Elsewhere */}
                     <div className="col-span-1 border-r border-b lg:border-b-0 border-lucas-slate/20 p-8 md:p-10 flex flex-col hover:bg-lucas-slate/5 transition-colors duration-slow">
                         <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-10 block">
-                            [ Network ]
+                            Elsewhere
                         </span>
                         <nav className="flex flex-col gap-5 font-sans text-xs tracking-widest uppercase">
                             <a href="https://www.instagram.com/yourdaybylucas/" target="_blank" rel="noopener noreferrer" className="hover:text-lucas-orange transition-colors w-fit">Instagram</a>
@@ -72,17 +72,17 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Col 5: Currently (Simplified SEO / Contact) */}
+                    {/* Col 5: Home base */}
                     <div className="col-span-1 border-r border-lucas-slate/20 p-8 md:p-10 flex flex-col hover:bg-lucas-slate/5 transition-colors duration-slow">
                         <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate mb-10 block">
-                            [ Currently ]
+                            Home base
                         </span>
                         <address className="not-italic flex flex-col gap-5">
                             <span className="font-serif italic text-lucas-cream/80 text-lg leading-snug">
                                 guelph, ontario
                             </span>
                             <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate">
-                                home base // operating worldwide
+                                operating worldwide
                             </span>
                             <a href="tel:5192401891" className="font-serif italic text-lucas-cream/80 text-lg hover:text-lucas-orange transition-colors w-fit pt-2">
                                 519.240.1891

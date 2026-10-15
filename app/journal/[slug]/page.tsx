@@ -2,6 +2,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getJournalVideoThumbnail, journalEntries } from '@/data/journal';
+import { getYouTubeEmbedUrl } from '@/lib/youtube';
 import JournalPostClient from './journal-post-client';
 
 type Props = {
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             siteName: 'LUCAS : Wedding Filmmaker',
             locale: 'en_CA',
             images: [thumbnailUrl],
-            videos: [`https://www.youtube.com/embed/${post.primaryVideo.id}`],
+            videos: [getYouTubeEmbedUrl(post.primaryVideo.id)],
         },
         twitter: {
             card: 'summary_large_image',
@@ -81,7 +82,7 @@ export default async function JournalPostPage({ params }: Props) {
         'thumbnailUrl': [getJournalVideoThumbnail(video)],
         'uploadDate': video.uploadDate,
         'duration': video.duration,
-        'embedUrl': `https://www.youtube.com/embed/${video.id}`,
+        'embedUrl': getYouTubeEmbedUrl(video.id),
         'inLanguage': 'en-CA',
         'isFamilyFriendly': true,
         'locationCreated': placeJsonLd,
