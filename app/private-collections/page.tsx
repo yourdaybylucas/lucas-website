@@ -151,11 +151,8 @@ export default function PrivateCollectionsPage() {
 
             {/* THE DOSSIER INDEX (Static Left Sidebar - Desktop Only) */}
             <aside className="hidden lg:flex flex-col h-full w-64 border-r border-lucas-navy/10 pt-[clamp(6rem,15vh,10rem)] px-8 z-50 shrink-0 relative bg-lucas-cream">
-                <div className="flex items-center gap-3 mb-16">
+                <div aria-hidden="true" className="flex items-center h-[15px] mb-16">
                     <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
-                    <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">
-                        [ The Dossier ]
-                    </span>
                 </div>
 
                 <nav className="flex flex-col gap-8 font-sans text-[10px] tracking-widest uppercase relative">
@@ -329,19 +326,18 @@ export default function PrivateCollectionsPage() {
                                             transition={{ duration: 0 }}
                                             className={`col-start-1 row-start-1 grid-cols-1 lg:grid-cols-3 border border-lucas-navy/20 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 items-stretch w-full ${activeTab === 'narrative' ? 'relative grid' : 'hidden lg:grid lg:invisible lg:absolute lg:inset-x-0 lg:top-0'}`}
                                         >
-                                            {/* VOL 01 */}
+                                            {/* The Essential */}
                                             <div className="flex flex-col group relative overflow-hidden bg-lucas-cream h-full w-full">
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
-                                                    <div className="flex justify-between items-start mb-6 lg:mb-8">
-                                                        <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 01 ]</p>
+                                                    <div className="flex justify-end items-start mb-6 lg:mb-8">
                                                         <p className="font-sans text-xs tracking-widest text-lucas-navy">$5,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
                                                     <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] text-lucas-navy italic mb-2">
                                                         The Essential
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-navy/10 pb-4 lg:pb-6">
-                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
+                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format ·</span>
                                                         <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-navy">Digital Only</span>
                                                     </div>
 
@@ -378,23 +374,20 @@ export default function PrivateCollectionsPage() {
                                                 </div>
                                             </div>
 
-                                            {/* VOL 02 */}
+                                            {/* The Analog */}
                                             <div className="flex flex-col bg-lucas-navy text-lucas-cream relative z-20 shadow-md border border-lucas-navy group overflow-hidden h-full w-full">
                                                 <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none mix-blend-overlay z-0"></div>
 
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
-                                                    <div className="flex justify-between items-start mb-6 lg:mb-8">
-                                                        <div className="flex items-center gap-2">
-                                                            <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 02 ]</p>
-                                                        </div>
+                                                    <div className="flex justify-end items-start mb-6 lg:mb-8">
                                                         <p className="font-sans text-xs tracking-widest text-lucas-cream">$6,800 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
                                                     <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] italic mb-2 text-lucas-cream">
                                                         The Analog
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-cream/10 pb-4 lg:pb-6">
-                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
+                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format ·</span>
                                                         <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-orange">Digital + Super 8</span>
                                                     </div>
 
@@ -437,19 +430,18 @@ export default function PrivateCollectionsPage() {
                                                 </div>
                                             </div>
 
-                                            {/* VOL 03 */}
+                                            {/* The Weekend */}
                                             <div className="flex flex-col group relative overflow-hidden bg-lucas-cream h-full w-full">
 
                                                 <div className="p-5 lg:p-6 relative z-10 flex flex-col h-full">
-                                                    <div className="flex justify-between items-start mb-6 lg:mb-8">
-                                                        <p className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 03 ]</p>
+                                                    <div className="flex justify-end items-start mb-6 lg:mb-8">
                                                         <p className="font-sans text-xs tracking-widest text-lucas-navy">$8,200 <span className="text-[9px] text-lucas-slate">+ hst</span></p>
                                                     </div>
                                                     <h3 className="font-serif text-[clamp(1.25rem,2vw,1.75rem)] text-lucas-navy italic mb-2">
                                                         The Weekend
                                                     </h3>
                                                     <div className="flex items-center gap-3 mb-6 lg:mb-8 border-b border-lucas-navy/10 pb-4 lg:pb-6">
-                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format //</span>
+                                                        <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Format ·</span>
                                                         <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-navy">Digital + Super 8 · Multi-Day</span>
                                                     </div>
 
@@ -500,10 +492,7 @@ export default function PrivateCollectionsPage() {
                                             <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-lucas-navy/20 h-full w-full">
                                                 <div className="p-8 lg:p-12 flex flex-col justify-between h-full">
                                                     <div>
-                                                        <div className="flex justify-between items-start mb-10">
-                                                            <div className="flex items-center gap-2">
-                                                                <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase">[ Vol. 00 ]</span>
-                                                            </div>
+                                                        <div className="flex justify-end items-start mb-10">
                                                             <p className="font-sans text-sm tracking-widest text-lucas-navy">$4,400 <span className="text-[10px] text-lucas-slate">+ hst</span></p>
                                                         </div>
 
@@ -512,7 +501,7 @@ export default function PrivateCollectionsPage() {
                                                         </h3>
 
                                                         <div className="flex items-center gap-3 mb-8 border-b border-lucas-navy/10 pb-6">
-                                                            <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-slate">Format //</span>
+                                                            <span className="font-sans text-[9px] tracking-widest uppercase text-lucas-slate">Format ·</span>
                                                             <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-orange">Analog Heavy</span>
                                                         </div>
 
