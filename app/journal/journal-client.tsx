@@ -117,7 +117,7 @@ export default function JournalPage() {
                                             <span className="text-right text-lucas-orange">{post.weddingDate}</span>
                                         </div>
                                         <div className="flex justify-between items-start">
-                                            <span className="w-20 shrink-0">Format //</span>
+                                            <span className="w-20 shrink-0">Format ·</span>
                                             <span className="text-right text-lucas-navy">{post.format}</span>
                                         </div>
                                     </div>

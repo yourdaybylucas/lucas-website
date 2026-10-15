@@ -90,7 +90,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         {/* Specs */}
                         <div className="flex flex-col gap-6 font-sans text-[10px] tracking-widest uppercase mb-12">
                             <div className="flex flex-col gap-1">
-                                <span className="text-lucas-slate">Format //</span>
+                                <span className="text-lucas-slate">Format ·</span>
                                 <span className="text-lucas-navy">{post.format}</span>
                             </div>
                             <div className="flex flex-col gap-1">
