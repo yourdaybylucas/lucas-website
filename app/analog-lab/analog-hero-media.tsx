@@ -22,7 +22,7 @@ export default function AnalogHeroMedia({ frames }: AnalogHeroMediaProps) {
   }
 
   return (
-    <div className="relative isolate mx-auto w-full max-w-[560px]">
+    <div className="relative isolate mx-auto w-full max-w-[680px]">
       <div aria-hidden="true" className="pointer-events-none absolute -inset-3 -z-10 bg-lucas-navy/25 blur-2xl" />
       <div className="bg-lucas-navy p-3 sm:p-4">
         <div className="relative aspect-[4/3] overflow-hidden bg-lucas-navy">
