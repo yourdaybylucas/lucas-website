@@ -512,37 +512,22 @@ export default function AnalogLabPage() {
           </div>
         </section>
 
-        <section className="bg-lucas-navy px-4 pb-12 text-lucas-cream md:px-6 md:pb-16">
+        <section aria-label="Super 8 visual archive" className="bg-lucas-navy px-4 pb-12 text-lucas-cream md:px-6 md:pb-16">
           <div className="mx-auto max-w-[90rem]">
-            <div className="mb-2 grid grid-cols-3 border border-lucas-cream/15 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
-              <span className="border-r border-lucas-cream/15 px-3 py-2">visual archive</span>
-              <span className="border-r border-lucas-cream/15 px-3 py-2 text-center">
-                four fragments
-              </span>
-              <span className="px-3 py-2 text-right">ontario</span>
-            </div>
-
-            <div className="grid h-[360px] grid-cols-2 gap-px border border-lucas-cream/15 bg-lucas-cream/15 sm:h-[400px] md:h-[220px] md:grid-cols-4 lg:h-[240px] xl:h-[260px]">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
               {archiveFrames.map((frame) => (
-                <div key={frame.id} className="group flex min-h-0 flex-col bg-lucas-navy p-2">
-                  <div className="relative min-h-0 flex-1 overflow-hidden border border-lucas-cream/15 bg-lucas-cream/5">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                      aria-label={frame.label}
-                    >
-                      <source src={frame.src} type={frame.type} />
-                    </video>
-                  </div>
-                  <div className="mt-2 font-sans text-[8px] uppercase tracking-zissou text-lucas-cream/60">
-                    <span>
-                      {frame.id} {frame.label}
-                    </span>
-                  </div>
+                <div key={frame.id} className="group relative aspect-[3/2] overflow-hidden bg-lucas-cream/5">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    aria-label={frame.label}
+                  >
+                    <source src={frame.src} type={frame.type} />
+                  </video>
                 </div>
               ))}
             </div>
