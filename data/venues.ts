@@ -335,6 +335,7 @@ export const venues: Venue[] = [
     name: 'Wren House',
     location: 'St. Jacobs',
     officialUrl: 'https://www.wrenhousebystella.ca/',
+    journalSlug: 'meghan-graeme-wren-house',
     seoDescription: 'Wren House wedding videography in St. Jacobs, Ontario, with firsthand notes on the courtyard, riverside grounds, intimate scale, and venue flow.',
     overview: 'wren house is an intimate countryside venue in st. jacobs with a european-inspired house, enclosed courtyard, and grounds beside the conestogo river. the smaller footprint keeps the spaces connected while still offering several distinct settings for the day.',
     planningNotes: 'the venue suits a guest list that can inhabit the house and courtyard without crowding them. preparations and portraits can stay on site, and the riverside is best treated as a quiet change of pace rather than a separate excursion that pulls too much time from guests.',
@@ -346,7 +347,7 @@ export const venues: Venue[] = [
     flow: 'all-in-one',
     curfew: '11 pm hard stop',
     fieldNotes: 'european-inspired without feeling overly formal. the courtyard, riverside, and tucked-away grounds give the day real variety while keeping everything intimate and connected. soft, refined, and naturally quiet.',
-    visualEmbed: '9mTq-dXKW84',
+    visualEmbed: 'dMF8U20zaaE',
   },
   {
     id: 'kurtz-orchards',
