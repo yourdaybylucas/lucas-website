@@ -9,6 +9,7 @@ interface CinematicPlayerProps {
     altText?: string;
     className?: string;
     autoPlayDefault?: boolean;
+    renderEmbedOnLoad?: boolean;
     allowLowResThumbnailFallback?: boolean;
     thumbnailQuality?: "maxresdefault" | "sddefault";
 }
@@ -18,6 +19,7 @@ export default function CinematicPlayer({
     altText = "LUCAS Wedding Film",
     className = "",
     autoPlayDefault = false,
+    renderEmbedOnLoad = false,
     allowLowResThumbnailFallback = false,
     thumbnailQuality = "maxresdefault",
 }: CinematicPlayerProps) {
@@ -28,11 +30,11 @@ export default function CinematicPlayer({
         setThumbnailVariant(thumbnailQuality);
     }, [thumbnailQuality, videoId]);
 
-    if (isPlaying) {
+    if (isPlaying || renderEmbedOnLoad) {
         return (
             <div className={`relative w-full aspect-video bg-[#0a1118] overflow-hidden border border-lucas-navy/10 ${className}`}>
                 <iframe
-                    src={getYouTubeEmbedUrl(videoId, { autoplay: true })}
+                    src={getYouTubeEmbedUrl(videoId, { autoplay: isPlaying })}
                     title={altText}
                     className="w-full h-full absolute top-0 left-0 border-none"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

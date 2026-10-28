@@ -75,6 +75,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                         videoId={post.primaryVideo.id}
                         altText={post.primaryVideo.title}
                         thumbnailQuality={post.primaryVideo.thumbnailQuality}
+                        renderEmbedOnLoad
                     />
                 </motion.div>
 
@@ -174,6 +175,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                                     videoId={post.secondaryVideo.id}
                                     altText={post.secondaryVideo.title}
                                     thumbnailQuality={post.secondaryVideo.thumbnailQuality}
+                                    renderEmbedOnLoad
                                 />
                             </div>
                         )}
