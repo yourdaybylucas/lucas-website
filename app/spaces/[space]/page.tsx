@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (!activeVenue) {
         return {
-            title: 'Space Not Found // LUCAS',
+            title: 'Space Not Found · LUCAS',
         };
     }
 

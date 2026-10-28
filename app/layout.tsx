@@ -39,10 +39,10 @@ const generalSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.yourdaybylucas.com'), // Ensures all meta images/links resolve correctly
   title: 'Your Day By Lucas : Wedding Filmmaker',
-  description: 'your day by lucas. honest, nostalgic wedding cinema. blending digital and super 8mm, skipping the heavy production footprint. home is ontario // worldwide.',
+  description: 'your day by lucas. honest, nostalgic wedding cinema. blending digital and super 8mm, skipping the heavy production footprint. home is ontario · worldwide.',
   openGraph: {
     title: 'Your Day By Lucas : Wedding Filmmaker',
-    description: 'honest, nostalgic wedding cinema. digital + super 8mm. home is ontario // worldwide.',
+    description: 'honest, nostalgic wedding cinema. digital + super 8mm. home is ontario · worldwide.',
     url: 'https://www.yourdaybylucas.com',
     siteName: 'Your Day By Lucas',
     locale: 'en_CA',

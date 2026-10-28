@@ -377,7 +377,7 @@ export default function AnalogLabPage() {
             <div className="min-w-0 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end">
               <div className="mb-8 flex items-center gap-4 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
                 <span className="h-px w-12 bg-lucas-orange" />
-                <span>analog lab // ontario</span>
+                <span>analog lab · ontario</span>
               </div>
 
               <h1 className="font-sans text-[2.7rem] font-bold uppercase leading-[0.95] tracking-normal text-lucas-navy text-balance sm:text-6xl sm:leading-[0.92] xl:text-[4.35rem] 2xl:text-[4.75rem]">
@@ -594,7 +594,7 @@ export default function AnalogLabPage() {
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.5fr_0.75fr] lg:gap-16">
             <div>
               <div className="mb-6 font-sans text-[10px] uppercase tracking-zissou text-lucas-slate">
-                <span>analog lab // inquire</span>
+                <span>analog lab · inquire</span>
               </div>
               <h2 className="max-w-xl font-sans text-3xl font-bold uppercase leading-tight tracking-normal text-balance md:text-4xl">
                 LET&apos;S MAKE SOMETHING THAT FEELS.

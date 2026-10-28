@@ -40,7 +40,7 @@ export default function ThankYouPage() {
                     <div className="flex items-center gap-3 mb-6">
                         <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                         <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase font-bold">
-                            [ Status // Delivered ]
+                            [ Status · Delivered ]
                         </span>
                     </div>
                     

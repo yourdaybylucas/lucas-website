@@ -275,7 +275,7 @@ export default function AboutPage() {
                                                 />
                                                 {item.credit && (
                                                     <span className="absolute bottom-3 right-3 z-10 border border-lucas-cream/30 bg-lucas-navy/80 px-2.5 py-1.5 font-sans text-[7px] tracking-zissou uppercase text-lucas-cream backdrop-blur-sm">
-                                                        Photo // {item.credit}
+                                                        Photo · {item.credit}
                                                     </span>
                                                 )}
                                             </div>
@@ -317,7 +317,7 @@ export default function AboutPage() {
                                             />
                                             {timeline[activeIndex].credit && (
                                                 <span className="absolute bottom-3 right-3 z-10 border border-lucas-cream/30 bg-lucas-navy/80 px-2.5 py-1.5 font-sans text-[7px] tracking-zissou uppercase text-lucas-cream backdrop-blur-sm">
-                                                    Photo // {timeline[activeIndex].credit}
+                                                    Photo · {timeline[activeIndex].credit}
                                                 </span>
                                             )}
                                         </motion.div>
@@ -331,7 +331,7 @@ export default function AboutPage() {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="absolute -bottom-4 -left-4 bg-lucas-cream text-lucas-navy font-sans text-[9px] tracking-zissou uppercase px-4 py-2 shadow-xl z-20 flex flex-col gap-1 border border-lucas-navy/10"
                                 >
-                                    <span>Ref // {timeline[activeIndex].id}</span>
+                                    <span>Ref · {timeline[activeIndex].id}</span>
                                     <span className="text-lucas-orange font-bold">Year {timeline[activeIndex].year}</span>
                                 </motion.div>
                             </div>

@@ -34,7 +34,7 @@ const DossierCard = ({ venue }: { venue: Venue }) => (
                 {venue.name}
             </h2>
             <p className="uppercase tracking-[0.2em] text-xs text-lucas-slate mt-3">
-                loc : {venue.location} // {venue.geography}
+                loc : {venue.location} · {venue.geography}
             </p>
         </div>
 

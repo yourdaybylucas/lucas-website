@@ -268,7 +268,7 @@ export default function TheGuidePage() {
                                 <div className="flex items-center gap-3 mb-8 lg:mb-12 pl-2 lg:pl-6">
                                     <span className="w-1.5 h-1.5 bg-lucas-orange rounded-full animate-pulse"></span>
                                     <span className="font-sans text-[10px] tracking-zissou text-lucas-slate uppercase font-bold">
-                                        [ Status // Booked ]
+                                        [ Status · Booked ]
                                     </span>
                                 </div>
 
@@ -354,7 +354,7 @@ export default function TheGuidePage() {
                                     </h2>
                                 </div>
                                 <div className="flex flex-col text-left md:text-right">
-                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref //</span>
+                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref ·</span>
                                     <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy font-bold">LC-GD-BP</span>
                                 </div>
                             </div>
@@ -378,7 +378,7 @@ export default function TheGuidePage() {
                                         {/* Col 1: Metadata / Time */}
                                         <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-lucas-navy/10 p-5 md:p-6 flex flex-col justify-between bg-lucas-cream/50 group-hover:bg-transparent transition-colors duration-700">
                                             <span className="font-sans text-[10px] tracking-zissou uppercase text-lucas-slate group-hover:text-lucas-orange transition-colors duration-500">
-                                                Phase // {item.step}
+                                                Phase · {item.step}
                                             </span>
                                             <div className="mt-8 lg:mt-0 font-sans text-[9px] tracking-widest uppercase text-lucas-navy border border-lucas-navy/10 px-3 py-1.5 bg-lucas-navy/5 w-fit shadow-sm">
                                                 [ {item.timeline} ]
@@ -470,7 +470,7 @@ export default function TheGuidePage() {
                             <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 mb-8 lg:mb-12 gap-4">
                                 <div>
                                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy">
-                                        Trusted Peers //
+                                        Trusted Peers ·
                                     </h2>
                                 </div>
                                 <p className="font-serif text-lg italic text-lucas-navy/80 lowercase max-w-md md:text-right leading-snug">

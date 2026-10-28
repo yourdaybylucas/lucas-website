@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const post = journalEntries.find(p => p.slug === resolvedParams.slug);
 
     if (!post) {
-        return { title: 'Record Not Found // LUCAS' };
+        return { title: 'Record Not Found · LUCAS' };
     }
 
     const pageUrl = `https://www.yourdaybylucas.com/journal/${post.slug}`;

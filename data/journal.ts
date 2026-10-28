@@ -74,7 +74,7 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "honest vows, aperol spritzes, and a very good party at wren house in st. jacobs.",
         primaryVideo: {
             id: "dMF8U20zaaE",
-            title: "Intimate Vows, Aperol Spritzes & Super 8 Magic // Meghan + Graeme",
+            title: "Intimate Vows, Aperol Spritzes & Super 8 Magic · Meghan + Graeme",
             label: "Wedding Film",
             uploadDate: "2026-09-04",
             duration: "PT8M26S"
@@ -254,7 +254,7 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "two worlds meeting on lake rosseau, a sunset boat ride, and a full muskoka weekend with people from across the world.",
         primaryVideo: {
             id: "xWph1lN0CXM",
-            title: "Muskoka Wedding Weekend at Windermere House // Emily & Harry",
+            title: "Muskoka Wedding Weekend at Windermere House · Emily & Harry",
             label: "Wedding Film",
             uploadDate: "2026-09-15T09:13:03-07:00",
             duration: "PT7M18S"
@@ -664,7 +664,7 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "a relaxed day at whistle bear, full of big laughs, honest vows, and the quiet certainty of finding home in another person.",
         primaryVideo: {
             id: "KfOXk9GKan0",
-            title: "Whistle Bear Golf Club Wedding // A Love That Feels Like Home",
+            title: "Whistle Bear Golf Club Wedding · A Love That Feels Like Home",
             label: "Wedding Film",
             uploadDate: "2026-08-05T20:32:00-07:00",
             duration: "PT5M53S"
@@ -706,14 +706,14 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "from a random monday night at a toronto board game café to lifetime promises in the vineyards of saint-émilion. an easy, deeply felt day on digital and super 8.",
         primaryVideo: {
             id: "aXhgKAGdOww",
-            title: "Let’s start with forever // Tiffany + Jonny’s France Destination Wedding Film",
+            title: "Let’s start with forever · Tiffany + Jonny’s France Destination Wedding Film",
             label: "Wedding Film",
             uploadDate: "2026-07-21T11:23:20-07:00",
             duration: "PT5M36S"
         },
         secondaryVideo: {
             id: "Zce2J1Ovaec",
-            title: "Toronto to France on Super 8 // Tiffany + Jonny at Maison Du Breuil",
+            title: "Toronto to France on Super 8 · Tiffany + Jonny at Maison Du Breuil",
             label: "Super 8 Film",
             uploadDate: "2026-07-21T12:58:03-07:00",
             duration: "PT3M5S"
@@ -755,14 +755,14 @@ export const journalEntries: JournalEntry[] = [
         excerpt: "an ethereal, intimate celebration at a breathtaking french chateau, fueled by heartfelt vows, prosecco, and the incredible energy of seventy of their closest friends.",
         primaryVideo: {
             id: "xCRgV8RAX78",
-            title: "70 Friends & A French Chateau // Alex & Nick’s Ethereal Wedding in the South of France",
+            title: "70 Friends & A French Chateau · Alex & Nick’s Ethereal Wedding in the South of France",
             label: "Wedding Film",
             uploadDate: "2026-07-05T09:20:39-07:00",
             duration: "PT8M28S"
         },
         secondaryVideo: {
             id: "XfkIzsNPIoE",
-            title: "Alex & Nick’s Wedding in the South of France // The Super 8 Film",
+            title: "Alex & Nick’s Wedding in the South of France · The Super 8 Film",
             label: "Super 8 Film",
             uploadDate: "2026-07-06T10:56:05-07:00",
             duration: "PT3M19S"
