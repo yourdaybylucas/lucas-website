@@ -762,7 +762,7 @@ export default function PrivateCollectionsPage() {
                             </h2>
                             
                             <p className="font-serif italic text-[clamp(1.25rem,2vw,1.5rem)] text-lucas-navy/85 mb-10 max-w-md lowercase leading-relaxed">
-                                zero obligation. we jump on a video call, run through the logistics of the day, and most importantly—make sure i'm actually someone you want hanging around.
+                                zero obligation. we jump on a video call, run through the logistics of the day, and most importantly, make sure i'm actually someone you want hanging around.
                             </p>
                             
                             <a 
