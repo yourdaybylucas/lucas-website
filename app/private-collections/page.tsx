@@ -151,8 +151,8 @@ export default function PrivateCollectionsPage() {
 
             {/* THE DOSSIER INDEX (Static Left Sidebar - Desktop Only) */}
             <aside className="hidden lg:flex flex-col h-full w-64 border-r border-lucas-navy/10 pt-[clamp(6rem,15vh,10rem)] px-8 z-50 shrink-0 relative bg-lucas-cream">
-                <div aria-hidden="true" className="flex items-center h-[15px] mb-16">
-                    <span className="w-2 h-2 bg-lucas-orange rounded-full"></span>
+                <div className="flex items-center h-[15px] mb-16 font-sans text-[9px] uppercase tracking-zissou text-lucas-slate">
+                    Contents
                 </div>
 
                 <nav className="flex flex-col gap-8 font-sans text-[10px] tracking-widest uppercase relative">
