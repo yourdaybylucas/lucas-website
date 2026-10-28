@@ -354,7 +354,7 @@ export default function TheGuidePage() {
                                     </h2>
                                 </div>
                                 <div className="flex flex-col text-left md:text-right">
-                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref ·</span>
+                                    <span className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate">Document Ref</span>
                                     <span className="font-sans text-[10px] tracking-widest uppercase text-lucas-navy font-bold">LC-GD-BP</span>
                                 </div>
                             </div>
@@ -470,7 +470,7 @@ export default function TheGuidePage() {
                             <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-lucas-navy pb-4 mb-8 lg:mb-12 gap-4">
                                 <div>
                                     <h2 className="font-sans text-3xl md:text-4xl uppercase tracking-tight font-bold text-lucas-navy">
-                                        Trusted Peers ·
+                                        Trusted Peers
                                     </h2>
                                 </div>
                                 <p className="font-serif text-lg italic text-lucas-navy/80 lowercase max-w-md md:text-right leading-snug">
