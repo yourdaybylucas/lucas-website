@@ -141,7 +141,7 @@ export default function JournalPostClient({ post }: { post: JournalEntry }) {
                     >
                         <div className="flex items-center justify-between gap-6 mb-8">
                             <h3 className="font-sans text-[10px] tracking-zissou uppercase text-lucas-navy font-bold">
-                                Field Notes
+                                Notes
                             </h3>
                             <Link href="/about" className="font-sans text-[8px] tracking-widest uppercase text-lucas-slate hover:text-lucas-orange transition-colors duration-300 text-right">
                                 Filmed + edited by Lucas
