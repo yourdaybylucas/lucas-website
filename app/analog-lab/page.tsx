@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Film, Plus } from 'lucide-react';
+import { ArrowRight, Film } from 'lucide-react';
 import AnalogHeroMedia from './analog-hero-media';
 import FinishedFilms from './finished-films';
 
@@ -391,20 +391,7 @@ export default function AnalogLabPage() {
             </div>
 
             <div className="min-w-0 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
-              <div className="relative border border-lucas-navy/45 bg-lucas-sage/20 p-3 shadow-sm md:p-5">
-                <Plus
-                  className="absolute -left-2 -top-2 h-4 w-4 text-lucas-navy"
-                  aria-hidden="true"
-                  strokeWidth={1.4}
-                />
-                <Plus
-                  className="absolute -bottom-2 -right-2 h-4 w-4 text-lucas-navy"
-                  aria-hidden="true"
-                  strokeWidth={1.4}
-                />
-
-                <AnalogHeroMedia frames={heroFrames} />
-              </div>
+              <AnalogHeroMedia frames={heroFrames} />
             </div>
 
             <div className="min-w-0 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start">
