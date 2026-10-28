@@ -54,6 +54,49 @@ export interface JournalEntry {
 
 export const journalEntries: JournalEntry[] = [
     {
+        id: "061",
+        slug: "meghan-graeme-wren-house",
+        title: "meghan & graeme",
+        place: {
+            name: "Wren House",
+            locality: "St. Jacobs",
+            region: "Ontario",
+            country: "Canada",
+            url: "https://www.wrenhousebystella.ca/",
+            venueId: "wren-house"
+        },
+        weddingDate: "June 5, 2026",
+        weddingDateIso: "2026-06-05",
+        publishedAt: "2026-10-28",
+        updatedAt: "2026-10-28",
+        format: "Digital + Super 8",
+        stock: "Digital + Super 8mm",
+        excerpt: "honest vows, aperol spritzes, and a very good party at wren house in st. jacobs.",
+        primaryVideo: {
+            id: "dMF8U20zaaE",
+            title: "Intimate Vows, Aperol Spritzes & Super 8 Magic // Meghan + Graeme",
+            label: "Wedding Film",
+            uploadDate: "2026-09-04",
+            duration: "PT8M26S"
+        },
+        seo: {
+            title: "Wren House Wedding Film | Meghan & Graeme | LUCAS",
+            description: "Watch Meghan and Graeme's digital and Super 8 wedding film at Wren House in St. Jacobs, Ontario, filmed June 5, 2026."
+        },
+        fieldNotes: [
+            "meghan and graeme gathered their people at wren house in st. jacobs for a day that made room for both the heavy feelings and a proper party.",
+            "their vows kept coming back to the same idea: home can be a person, and choosing each other is something you do over and over again. the speeches added another view of them together, with plenty of affection and a well-placed reminder that graeme is out of his league.",
+            "after the ceremony, aperol spritzes were poured, spicy margaritas were shaken, and cocktail hour was officially underway. i filmed this one on digital and super 8, keeping the quiet promises and the energy of the party side by side."
+        ],
+        vendors: [
+            { name: "Wren House", role: "Venue", url: "https://www.wrenhousebystella.ca/" },
+            { name: "Emily Michelson", role: "Photography", url: "https://emilymichelson.com/" },
+            { name: "Your Day by Lucas", role: "Wedding Film", url: "https://www.yourdaybylucas.com/" },
+            { name: "Le Jardin Fresh Design", role: "Florals", url: "https://www.lejardinfreshdesign.com/" },
+            { name: "Exclusive Vibez", role: "DJ / Band", url: "https://www.exclusivevibez.ca/" }
+        ]
+    },
+    {
         "id": "060",
         "slug": "andrew-lisa-royal-botanical-gardens",
         "title": "andrew & lisa",
